@@ -35,13 +35,12 @@ export function useMetadata({
     setMetaTag("og:title", ogTitle);
     setMetaTag("og:image", ogImage);
 
-    // Set favicon
     if (favicon) {
       let link: HTMLLinkElement | null = document.querySelector('link[rel="icon"]');
       if (!link) {
         link = document.createElement("link");
         link.rel = "icon";
-        link.type = "image/png"; // Adjust type if needed (image/svg+xml, image/x-icon)
+        link.type = "image/png"; 
         document.head.appendChild(link);
       }
       link.href = favicon;
