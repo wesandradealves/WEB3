@@ -49,7 +49,6 @@ export default function RootLayout({
                   onExitComplete={() => window.scrollTo(0, 0)}
                 >
                   <motion.div
-                    className="h-100"
                     initial={{ x: 0, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     exit={{ x: 0, opacity: 0 }}
