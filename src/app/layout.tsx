@@ -26,7 +26,7 @@ export default function RootLayout({
   useMetadata({
     title: "Dourado Cash",
     description: "Onde o dinheiro se transforma em Ouro!",
-    favicon: "./favicon.png",
+    // favicon: "./favicon.png",
     ogTitle: "Dourado Cash",
     // ogImage: "//mercado.dourado.cash/icons/Icon-192.png",
   });
