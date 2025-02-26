@@ -3,11 +3,9 @@ import Script from "next/script";
 import { useMetadata } from "@/hooks/useMetadata";
 import {
   _colors,
-  _fonts,
   _breakpoints,
 } from "@/assets/scss/variables";
 const theme = {
-  _fonts,
   _colors,
   _breakpoints,
 };
