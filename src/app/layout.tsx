@@ -61,7 +61,7 @@ export default function RootLayout({
                 </AnimatePresence>
               </StyledJsxRegistry>
             </Suspense>
-          <GlobalStyle />
+            <GlobalStyle />
         </ThemeProvider>
       </body>
     </html>
