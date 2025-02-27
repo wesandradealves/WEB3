@@ -9,7 +9,8 @@
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "prepare": "husky"
+    "test": "echo \"No tests configured\" && exit 0",
+    "prepare": "husky && husky install"
   },
   "lint-staged": {
     "**/*.{js,ts,jsx,tsx}": "eslint --fix"
@@ -47,7 +48,7 @@
     "eslint-config-next": "15.1.7",
     "eslint-plugin-react": "^7.37.2",
     "globals": "^15.13.0",
-    "husky": "^9.1.7",
+    "husky": "^8.0.3",
     "lint-staged": "^15.4.3",
     "postcss": "^8",
     "sass": "^1.77.4",
