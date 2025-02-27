@@ -10,7 +10,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "echo \"No tests configured\" && exit 0",
-    "lint:watch": "chokidar '**/*.{js,ts,jsx,tsx}' -c 'eslint --fix {path}'",
+    "lint:watch": "chokidar '**/*.{js,ts,jsx,tsx}' -c 'eslint --fix --no-warn-ignored {path}'",
     "prepare": "husky && husky install"
   },
   "lint-staged": {
