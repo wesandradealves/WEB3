@@ -6,9 +6,9 @@ import Footer from "@/components/footer/footer";
 
 export default function Template({ children }: { children: React.ReactNode }) {
   return (
-    <App id="primary">
+    <App id="primary" className="h-screen flex flex-start flex-col">
       <Header />
-      <main>
+      <main className="flex-1">
         {children}
       </main>
       <Footer />

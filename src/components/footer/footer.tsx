@@ -6,7 +6,7 @@ import { Container } from './styles';
 export default function Footer() {
   return (
       <Container>
-         footer 
+        <div className='container m-auto'>footer</div>  
       </Container>
   );
 }

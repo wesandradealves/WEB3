@@ -6,7 +6,7 @@ import { Container } from './styles';
 export default function Header() {
   return (
       <Container>
-         header 
+        <div className='container m-auto'>Header</div> 
       </Container>
   );
 }

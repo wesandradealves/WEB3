@@ -1,8 +1,8 @@
 "use client";
 export default function Home() {
   return (
-    <>
-      Home   
-    </>
+    <section>
+      <div className='container m-auto'>Home</div> 
+    </section>
   );
 }
