@@ -16,14 +16,14 @@ export default function Header() {
                 <Image width={226} height={74} src='/img/bdm-logo-golden.svg' alt='Onde o dinheiro se transforma em Ouro!' />
               </Link>
             </div>
-            <Navigation gap={20} data={[
+            <Navigation gap={91} data={[
               { title: 'Soluções e Produtos', url: '#' },
               { title: 'Mercados', url: '#' },
               { title: 'Clientes', url: '#' },
               { title: 'Para empresas', url: '#' },
               { title: 'Sobre nós', url: '#' },
             ]} className={''} />
-            <Navigation gap={6} data={[
+            <Navigation gap={24} data={[
               { title: 'Login', url: '#' },
               { title: 'Register', url: '#' },
             ]} className={'--shortcuts'} />

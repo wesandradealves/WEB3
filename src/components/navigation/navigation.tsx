@@ -8,7 +8,7 @@ import { navigation } from './typo';
 export default function Navigation(Props: Props) {
     return (
         <Container role='navigation' className={`navigation ${Props.className}`}>
-            <List className={`flex items-center gap-${Props.gap}`}>
+            <List gap={Props.gap} className={`flex items-center gap-${Props.gap}`}>
                 {Props.data && Props.data.map(function(row: navigation, i: number){
                 return (
                 <ListItem key={i}>
