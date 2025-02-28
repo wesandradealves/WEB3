@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Container, List, ListItem } from './styles';
 import { Props } from './typo';
 import { navigation } from './typo';
+import Button from '../button/button';
 
 export default function Navigation(Props: Props) {
     return (
@@ -12,9 +13,9 @@ export default function Navigation(Props: Props) {
                 {Props.data && Props.data.map(function(row: navigation, i: number){
                 return (
                 <ListItem key={i}>
-                    <Link title={row.title} href={row.url}>
+                    {row?.type && row.type == 'button' ? <Button className={row?.btnClass} href='#' tag={'a'}>Registro</Button> : <Link title={row.title} href={row.url}>
                         {row.title}
-                    </Link>
+                    </Link>}
                 </ListItem>
                 );
             }) }  

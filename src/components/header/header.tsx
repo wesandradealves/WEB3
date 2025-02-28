@@ -25,7 +25,7 @@ export default function Header() {
             ]} className={''} />
             <Navigation gap={24} data={[
               { title: 'Login', url: '#' },
-              { title: 'Register', url: '#' },
+              { title: 'Register', url: '#', type: 'button', btnClass: '--primary' },
             ]} className={'--shortcuts'} />
           </div>
         </div> 
