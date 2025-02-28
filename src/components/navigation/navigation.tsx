@@ -9,10 +9,10 @@ import Button from '../button/button';
 export default function Navigation(Props: Props) {
     return (
         <Container role='navigation' className={`navigation ${Props.className}`}>
-            <List gap={Props.gap} className={`flex items-center gap-${Props.gap}`}>
+            <List className={`list w-full justify-center flex items-center ${Props?.ListClassName}`}>
                 {Props.data && Props.data.map(function(row: navigation, i: number){
                 return (
-                <ListItem key={i}>
+                <ListItem className={`list-item ${row?.className}`} key={i}>
                     {row?.type && row.type == 'button' ? <Button className={row?.btnClass} href='#' tag={'a'}>Registro</Button> : <Link title={row.title} href={row.url}>
                         {row.title}
                     </Link>}

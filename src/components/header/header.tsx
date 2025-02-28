@@ -4,29 +4,52 @@ import Link from 'next/link';
 import Image from "next/image";
 import { Container } from './styles';
 import Navigation from '../navigation/navigation';
-// import { Props } from './typo';
+import 'hamburgers/dist/hamburgers.css';
+import { useState } from 'react';
+import classNames from 'classnames';
 
 export default function Header() {
+  const [expanded, setExpand] = useState<boolean>(false);
+
   return (
       <Container>
         <div className='container m-auto'>
-          <div className='flex justify-between items-center'>
+          <div className='flex justify-between items-center gap-6'>
             <div className='logo'>
               <Link href={'/'}>
                 <Image width={226} height={74} src='/img/bdm-logo-golden.svg' alt='Onde o dinheiro se transforma em Ouro!' />
               </Link>
             </div>
-            <Navigation gap={91} data={[
+            <Navigation className='hidden xl:flex flex-1' ListClassName='gap-6 2xl:gap-20' data={[
               { title: 'Soluções e Produtos', url: '#' },
               { title: 'Mercados', url: '#' },
               { title: 'Clientes', url: '#' },
               { title: 'Para empresas', url: '#' },
               { title: 'Sobre nós', url: '#' },
-            ]} className={''} />
-            <Navigation gap={24} data={[
-              { title: 'Login', url: '#' },
-              { title: 'Register', url: '#', type: 'button', btnClass: '--primary' },
-            ]} className={'--shortcuts'} />
+            ]} />
+            <div className='ms-auto flex items-center justify-end gap-6'>
+              <Navigation ListClassName='gap-6' data={[
+                { title: 'Login', url: '#', className: 'hidden sm:block' },
+                { title: 'Register', url: '#', type: 'button', btnClass: '--primary' },
+              ]} className={'--shortcuts'} />
+              <span className='block xl:hidden'>
+                <button 
+                className={
+                    classNames(
+                    "hamburger hamburger--collapse",
+                        {
+                          'is-active': !!expanded
+                        }
+                    )      
+                }
+                onClick={() => setExpand(!expanded)}
+                type="button">
+                  <span className="hamburger-box">
+                    <span className="hamburger-inner"></span>
+                  </span>
+                </button>
+              </span>
+            </div>
           </div>
         </div> 
       </Container>

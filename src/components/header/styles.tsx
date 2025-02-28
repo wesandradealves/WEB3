@@ -1,10 +1,23 @@
 import styled from 'styled-components';
-import { pxToRem } from "@/utils";
 
 export const Container = styled.header`
-    // padding: ${pxToRem(0)};
     .container {
         padding-top: 24px;
         padding-bottom: 24px;
+        .navigation {
+            &.--shortcuts {
+                .list-item {
+                    font-weight: 500;
+                }
+            }
+        }
+        .hamburger {
+            &-inner, &-inner::before, &-inner::after {
+                border-radius: 0;
+                height: 2px;
+                background-color: ${props => props.theme._colors.primary.bdm1};
+            }
+        }
+        
     }
 `;
