@@ -51,11 +51,8 @@ export const Container = styled.nav`
         }
     }
     &.--mobile {
-        position: fixed;
-        top: 0;
         left: -100%;
-        z-index: 1000;
-        background: black;
+        background: rgba(0,0,0,.9);
         transition: left 0.3s ease-in-out;
         &.block {
             left: 0;
