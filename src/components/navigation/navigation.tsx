@@ -31,16 +31,22 @@ export default function Navigation(Props: Props) {
         }
     };
 
+    const handleResize = () => {
+        setExpandedItems({});
+    };
+
     useEffect(() => {
         document.addEventListener('mousedown', handleClickOutside);
+        window.addEventListener('resize', handleResize);
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
+            window.removeEventListener('resize', handleResize);
         };
     }, []);
 
     return (
         <Container role='navigation' 
-            className={classNames(`navigation ${Props.className}`, { '--mobile h-full w-full': !!Props?.mobile })} ref={navRef}>
+            className={classNames(`navigation ${Props.className}`, { '--mobile h-full w-full fixed top-0 z-1000': !!Props?.mobile })} ref={navRef}>
             <List 
                 className={classNames(`list w-full flex ${Props?.ListClassName}`, {
                     'justify-center items-center': !Props?.mobile,

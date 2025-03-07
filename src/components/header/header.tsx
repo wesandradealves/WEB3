@@ -5,14 +5,25 @@ import Image from "next/image";
 import { Container } from './styles';
 import Navigation from '../navigation/navigation';
 import 'hamburgers/dist/hamburgers.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import classNames from 'classnames';
 
 export default function Header() {
   const [expanded, setExpand] = useState<boolean>(false);
 
+  const handleResize = () => {
+    setExpand(false);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
-      <Container>
+      <Container className='w-full fixed top-0 left-0 z-50'>
         <div className='container m-auto'>
           <div className='flex justify-between items-center gap-6'>
             <div className='logo'>
@@ -78,4 +89,3 @@ export default function Header() {
       </Container>
   );
 }
-
