@@ -1,1 +1,3 @@
-export type Props = Record<string, unknown>;
+export default interface Props {
+    className: string;
+}

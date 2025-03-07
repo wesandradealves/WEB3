@@ -10,20 +10,33 @@ import classNames from 'classnames';
 
 export default function Header() {
   const [expanded, setExpand] = useState<boolean>(false);
+  const [scrolled, setScrolled] = useState<boolean>(false);
 
   const handleResize = () => {
     setExpand(false);
   };
 
+  const handleScroll = () => {
+    console.log('Scroll event detected:', window.scrollY);
+    if (window.scrollY > 0) {
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+  };
+
   useEffect(() => {
     window.addEventListener('resize', handleResize);
+    window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('resize', handleResize);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+  
 
   return (
-      <Container className='w-full fixed top-0 left-0 z-50'>
+      <Container className={classNames('w-full fixed top-0 left-0 z-50', { 'scrolled': scrolled })}>
         <div className='container m-auto'>
           <div className='flex justify-between items-center gap-6'>
             <div className='logo'>
