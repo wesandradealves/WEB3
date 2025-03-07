@@ -5,6 +5,7 @@ interface Data {
   btnLabel?: string;
   btnClass?: string;
   media?: string;
+  placeholder?: string;
 }
 
 export default interface Props {

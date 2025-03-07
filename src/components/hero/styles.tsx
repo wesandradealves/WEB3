@@ -14,6 +14,11 @@ export const Container = styled.section`
     }
 `;
 
+export const Placeholder = styled.img`
+
+`;
+
+
 export const Title = styled.h2`
     color: inherit;
     font-size: ${pxToRem(32)};
