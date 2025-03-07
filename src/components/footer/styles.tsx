@@ -4,8 +4,8 @@ import { colors } from '@/assets/scss/colors';
 import { breakpoints } from '@/assets/scss/breakpoints';
 
 export const Container = styled.footer`
-  background: ${colors.primary.bdm0};
-  padding: ${pxToRem(40)} 0;
+  background: ${colors.primary.bdm3};
+  padding: 25px;
   margin-top: auto;
 
   .footer-content {
@@ -13,33 +13,53 @@ export const Container = styled.footer`
     justify-content: space-between;
     align-items: flex-start;
     gap: ${pxToRem(30)};
+    max-width: ${pxToRem(1200)};
+    margin: 0 auto;
 
     @media (max-width: ${breakpoints.md}) {
       flex-direction: column;
       gap: ${pxToRem(40)};
+      align-items: center;
     }
+  }
+`;
+
+export const LogoWrapper = styled.div`
+margin-top: ${pxToRem(10)};
+  img {
+    width: ${pxToRem(100)};
+    height: auto;
   }
 `;
 
 export const LeftSection = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${pxToRem(20)};
-  width: 40%;
+  gap: ${pxToRem(15)};
+  width: ${pxToRem(300)};
+
+  @media (max-width: ${breakpoints.md}) {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
 `;
 
 export const RightSections = styled.div`
   display: flex;
-  gap: ${pxToRem(60)};
+  gap: ${pxToRem(80)};
+  flex-wrap: wrap;
 
   @media (max-width: ${breakpoints.md}) {
     width: 100%;
-    justify-content: space-between;
+    justify-content: center;
+    gap: ${pxToRem(40)};
   }
 
   @media (max-width: ${breakpoints.sm}) {
     flex-direction: column;
-    gap: ${pxToRem(30)};
+    align-items: center;
+    text-align: center;
   }
 `;
 
@@ -78,8 +98,6 @@ export const FooterSection = styled.div`
     margin: 0;
 
     li {
-      margin-bottom: ${pxToRem(8)};
-
       a {
         color: #000;
         text-decoration: none;

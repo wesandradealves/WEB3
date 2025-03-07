@@ -1,14 +1,24 @@
 "use client";
 
-import { Container, LeftSection, RightSections, SocialLinks, FooterSection, LegalText } from './styles';
+import { Container, LeftSection, RightSections, SocialLinks, FooterSection, LegalText, LogoWrapper } from './styles';
 import { FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
     <Container>
       <div className="container m-auto">
         <div className="footer-content">
-          {/* Seção Esquerda (Social + Copyright) */}
+          {/* Seção Esquerda (Logo + Social + Copyright) */}
+          <LogoWrapper>
+              <Image 
+                src="/img/bdm-logo.svg" 
+                alt="BDM Digital" 
+                width={100} 
+                height={20}
+                priority
+              />
+            </LogoWrapper>
           <LeftSection>
             <SocialLinks>
               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
