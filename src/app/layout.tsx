@@ -15,7 +15,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ThemeProvider } from "styled-components";
 import StyledJsxRegistry from "./registry";
 import { Suspense } from "react";
-import Footer from "@/components/footer/footer";
 
 export default function RootLayout({
   children,
@@ -62,7 +61,6 @@ export default function RootLayout({
                 </AnimatePresence>
               </StyledJsxRegistry>
             </Suspense>
-            <Footer />
             <GlobalStyle />
         </ThemeProvider>
       </body>
