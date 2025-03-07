@@ -13,6 +13,10 @@ export const ListItem = styled.li`
     position: relative;
     font-size: ${pxToRem(16)};
     line-height: ${pxToRem(24)};
+    &.expanded,
+    &:hover {
+        color: ${props => props.theme._colors.primary.bdm1} !important;
+    }
     &.expanded {
         [class*="fa-"] {
             transform: rotate(180deg);
@@ -37,6 +41,9 @@ export const Container = styled.nav`
             ${ListItem} {
                 color: black;
                 font-weight: 600;
+                &:hover {
+                    color: white !important;
+                }
                 a {
                     color: inherit
                 }
