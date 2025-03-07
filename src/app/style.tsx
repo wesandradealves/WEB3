@@ -1,5 +1,5 @@
 import styled, {createGlobalStyle} from "styled-components";
-
+import { pxToRem } from "@/utils";
 export const GlobalStyle = createGlobalStyle `
     *,
     *:before,
@@ -66,17 +66,18 @@ export const GlobalStyle = createGlobalStyle `
         -webkit-font-smoothing: antialiased;
         text-size-adjust: none;
         text-decoration: none;
-        font-family: "Lato", serif !important;
     }
 
     html,
     body {
         line-height: 1.4;
-        font-family: 'Inter', sans-serif;
+        font-family: 'Montserrat', sans-serif;
         font-optical-sizing: auto;
         font-style: normal;
         overflow-x: hidden;
-        @include px-to-rem(font-size, 16px);
+        min-width: ${props => props.theme._breakpoints.sm};
+        font-size: ${pxToRem(16)};
+        background-color: black;
         #__next {
             overflow-x: inherit;
         }
