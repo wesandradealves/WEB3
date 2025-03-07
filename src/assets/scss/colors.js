@@ -3,6 +3,7 @@ export const colors = {
        bdm0: '#FFE000',
        bdm1: '#D1921F',
        bdm2: '#FFC037',
-       bdm3: '#FFC700'
+       bdm3: '#FFC700',
+       bdm4: '#FFFFFF'
     }
 }
