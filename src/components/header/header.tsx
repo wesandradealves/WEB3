@@ -22,7 +22,7 @@ const Header = ({ scrollPosition }: Props) => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-  
+
   return (
       <Container 
       className={classNames(`w-full fixed top-0 left-0 z-50 header`, {
@@ -40,7 +40,7 @@ const Header = ({ scrollPosition }: Props) => {
               </Link>
             </div>
             
-            <Navigation className='hidden xl:flex flex-1' ListClassName='gap-6 2xl:gap-20' data={[
+            <Navigation isScrolling={scrollPosition} className='hidden xl:flex flex-1' ListClassName='gap-6 2xl:gap-20' data={[
               { title: 'Soluções e Produtos', url: '#', below: [
                 { title: 'Ouro', url: '#' },
                 { title: 'Prata', url: '#' },

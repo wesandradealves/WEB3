@@ -12,6 +12,12 @@ export default function Navigation(Props: Props) {
     const [expandedItems, setExpandedItems] = useState<{ [key: number]: boolean }>({});
     const navRef = useRef<HTMLDivElement>(null);
 
+    useEffect(() => {
+        if (Props.isScrolling) {
+            setExpandedItems({});
+        }
+    }, [Props.isScrolling]);
+
     const toggleExpand = (index: number) => {
         setExpandedItems(prevState => ({
             ...prevState,
