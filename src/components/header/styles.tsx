@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { List, ListItem } from '../navigation/styles';
 
 export const Container = styled.header`
+    transition: background-color 0.5s ease;
+
     ${List} {
         ${ListItem} {
             color: white;
@@ -40,8 +42,11 @@ export const Container = styled.header`
     }
 
     .container {
-        padding-top: 24px;
-        padding-bottom: 24px;
+        transition: all 0.5s ease;
         z-index: initial;
+    }
+
+    &.scrolled {
+        background-color: rgba(0,0,0,0.8);
     }
 `;
