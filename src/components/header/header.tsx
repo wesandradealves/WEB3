@@ -7,37 +7,32 @@ import Navigation from '../navigation/navigation';
 import 'hamburgers/dist/hamburgers.css';
 import { useState, useEffect } from 'react';
 import classNames from 'classnames';
+import Props from './typo';
 
-export default function Header() {
+const Header = ({ scrollPosition }: Props) => {
   const [expanded, setExpand] = useState<boolean>(false);
-  const [scrolled, setScrolled] = useState<boolean>(false);
 
   const handleResize = () => {
     setExpand(false);
   };
 
-  const handleScroll = () => {
-    console.log('Scroll event detected:', window.scrollY);
-    if (window.scrollY > 0) {
-      setScrolled(true);
-    } else {
-      setScrolled(false);
-    }
-  };
-
   useEffect(() => {
     window.addEventListener('resize', handleResize);
-    window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('resize', handleResize);
-      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
   
-
   return (
-      <Container className={classNames('w-full fixed top-0 left-0 z-50', { 'scrolled': scrolled })}>
-        <div className='container m-auto'>
+      <Container 
+      className={classNames(`w-full fixed top-0 left-0 z-50 header`, {
+          'scrolled': scrollPosition > 0
+      })}>
+        <div 
+        className={classNames('container', {
+          'pt-3 pb-3': scrollPosition > 0,
+          'pt-6 pb-6': scrollPosition <= 0,
+        })}>
           <div className='flex justify-between items-center gap-6'>
             <div className='logo'>
               <Link href={'/'}>
@@ -102,3 +97,5 @@ export default function Header() {
       </Container>
   );
 }
+
+export default Header;

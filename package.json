@@ -26,6 +26,7 @@
     "framer-motion": "^11.5.4",
     "hamburgers": "^1.2.1",
     "lodash": "^4.17.21",
+    "motion": "^12.4.11",
     "next": "15.1.7",
     "pace-js": "^1.2.4",
     "react": "^19.0.0",
