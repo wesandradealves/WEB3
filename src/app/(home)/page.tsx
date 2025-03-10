@@ -31,7 +31,6 @@ export default function Home() {
       </Section>
 
       <Section 
-        barstitle="on"
         title='<span><b>DBM Digital:</b></span>  <b>Sua Ponte para o Metaverso</b>' >
         <>Conteudo</>
       </Section>
