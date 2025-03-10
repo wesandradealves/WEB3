@@ -10,21 +10,18 @@ export default function Footer() {
     <Container className="bg-white py-5 rounded-t-2xl">
       <div className="container m-auto px-5">
         <div className="flex flex-col md:flex-row justify-between items-start gap-8 py-5">
-
-        <Link href="/" className="mb-4">
-              <Image 
-                src="/img/bdm-logo.svg" 
-                alt="BDM Digital" 
-                width={160} 
-                height={40}
-                className="w-24 h-auto"
-                priority
-              />
-            </Link>
-          {/* Seção Esquerda */}
-          <section className="flex flex-col gap-4 md:max-w-[300px]">
-           
-            
+          <Link href="/" className="mb-4">
+            <Image 
+              src="/img/bdm-logo.svg" 
+              alt="BDM Digital" 
+              width={160} 
+              height={40}
+              className="w-24 h-auto"
+              priority
+            />
+          </Link>
+          
+          <div className="flex flex-col gap-4 md:max-w-[300px]">
             <div className="flex gap-4">
               <a href="https://twitter.com" target="_blank" rel="noopener" className="text-black hover:opacity-70">
                 <FaTwitter size={24} />
@@ -42,10 +39,9 @@ export default function Footer() {
               <br />
               Desenvolvido por Dourado.cash
             </p>
-          </section>
+          </div>
 
-          {/* Seção Direita */}
-          <section className="flex flex-col md:flex-row gap-8 md:gap-20">
+          <div className="flex flex-col md:flex-row gap-8 md:gap-20">
             <div className="min-w-[200px]">
               <h4 className="font-bold text-lg mb-3">Explore</h4>
               <ul className="space-y-2">
@@ -65,7 +61,7 @@ export default function Footer() {
                 <li><Link href="/api" className="text-gray-600 hover:text-black hover:underline">API</Link></li>
               </ul>
             </div>
-          </section>
+          </div>
         </div>
       </div>
     </Container>
