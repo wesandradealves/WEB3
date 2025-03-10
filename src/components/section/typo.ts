@@ -6,4 +6,5 @@ export interface Props {
     className?: string;
     id?: string;
     children: React.ReactNode;
+    barstitle?: string;
 }

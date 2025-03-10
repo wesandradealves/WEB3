@@ -10,6 +10,7 @@ export const Default = () => (
     children={<div>Default Content</div>} 
     subtitle="Default Subtitle" 
     title="Default Title" 
+    barstitle={"on"}
   />
 );
 

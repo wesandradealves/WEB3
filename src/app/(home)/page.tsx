@@ -1,6 +1,7 @@
 "use client";
 import Hero from "@/components/hero/hero";
 import Section from "@/components/section/section";
+
 export default function Home() {
   return (
     <>
