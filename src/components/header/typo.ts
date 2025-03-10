@@ -1,3 +1,4 @@
 export default interface Props {
-    className: string;
+    className?: string;
+    scrollPosition: number;
 }
