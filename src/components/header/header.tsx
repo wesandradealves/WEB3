@@ -12,6 +12,12 @@ import Props from './typo';
 const Header = ({ scrollPosition }: Props) => {
   const [expanded, setExpand] = useState<boolean>(false);
 
+  useEffect(() => {
+      if (scrollPosition) {
+        setExpand(false);
+      }
+  }, [scrollPosition]);
+
   const handleResize = () => {
     setExpand(false);
   };
