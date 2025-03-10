@@ -15,9 +15,24 @@ export default function Home() {
       }}/>
 
       <Section 
-        background="/img/img-terra-dourada.png"
+        title='Uma <span><b>Nova Era</b></span> de Prosperidade <b>Compartilhada</b>' >
+        <>Conteudo</>
+      </Section>
+
+      <Section 
+        title='Tecnologia que <span><b>Transforma Realidades</b></span>' >
+        <>Conteudo</>
+      </Section>
+
+      <Section 
         title='Por que Escolher a <span><b>DBM Digital</b></span>?' 
         subtitle='O <b>BDM Digital</b> valorizou mais de <b>100 vezes</b> a poupança, isso em apenas 3 meses. <span>Aqui o seu dinheiro vale mais</span>!'>
+        <>Conteudo</>
+      </Section>
+
+      <Section 
+        barstitle="on"
+        title='<span><b>DBM Digital:</b></span>  <b>Sua Ponte para o Metaverso</b>' >
         <>Conteudo</>
       </Section>
     </>
