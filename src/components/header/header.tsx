@@ -29,7 +29,7 @@ const Header = ({ scrollPosition }: Props) => {
           'scrolled': scrollPosition > 0
       })}>
         <div 
-        className={classNames('container', {
+        className={classNames('container m-auto', {
           'pt-3 pb-3': scrollPosition > 0,
           'pt-6 pb-6': scrollPosition <= 0,
         })}>
