@@ -5,7 +5,7 @@ export default {
   title: "header",
 };
 
-export const Default = () => <Header />;
+export const Default = () => <Header scrollPosition={0} />;
 
 Default.story = {
   name: 'default',
