@@ -1,21 +1,22 @@
 import styled from 'styled-components';
 import { pxToRem } from "@/utils";
 
+export interface Typo {
+    defaultexpanded?: string;
+}
+
 export const Submenu = styled.div`
-    position: absolute;
-    top: 100%;
-    left: 0;
     min-width: 100%;
 `;
 
-export const ListItem = styled.li`
+export const ListItem = styled.li<Typo>`
     font-weight: 700;
     position: relative;
     font-size: ${pxToRem(16)};
     line-height: ${pxToRem(24)};
     &.expanded,
     &:hover {
-        color: ${props => props.theme._colors.primary.bdm1} !important;
+        color: ${props => props.defaultexpanded && props.defaultexpanded == "on" ? "initial" : props.theme._colors.primary.bdm1}
     }
     &.expanded {
         [class*="fa-"] {
@@ -32,17 +33,16 @@ export const List = styled.ul`
  
 `;
 
-export const Container = styled.nav`
+export const Container = styled.nav<Typo>`
     ${Submenu} {
         ${List} {
-            background-color: ${props => props.theme._colors.primary.bdm1};
-            padding: ${pxToRem(20)};
+            background-color: ${props => props.defaultexpanded && props.defaultexpanded == "on" ? "initial" : props.theme._colors.primary.bdm1}; 
             border-radius: ${pxToRem(10)};
             ${ListItem} {
                 color: black;
                 font-weight: 600;
                 &:hover {
-                    color: white !important;
+                    color: ${props => props.defaultexpanded && props.defaultexpanded == "on" ? "initial" : "white"}
                 }
                 a {
                     color: inherit

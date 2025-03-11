@@ -66,24 +66,18 @@ export default function RootLayout({
                   initial={true}
                   onExitComplete={() => window.scrollTo(0, 0)}
                 >
-                  <motion.div
-                    initial={{ x: 0, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    exit={{ x: 0, opacity: 0 }}
-                  >
-                    <App id='primary'>
-                      <motion.div
-                        className='min-h-screen flex flex-start flex-col'
-                        initial={{ x: 0, opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        exit={{ x: 0, opacity: 0 }}
-                      >
-                        <Header scrollPosition={scrollPosition} />
-                        {children}
-                        <Footer/>
-                      </motion.div>
-                    </App>
-                  </motion.div>                  
+                  <App id='primary'>
+                    <motion.div
+                      className='min-h-screen flex flex-start flex-col'
+                      initial={{ x: 0, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      exit={{ x: 0, opacity: 0 }}
+                    >
+                      <Header scrollPosition={scrollPosition} />
+                      {children}
+                      <Footer/>
+                    </motion.div>
+                  </App>
                 </AnimatePresence>
               </StyledJsxRegistry>
             </Suspense>

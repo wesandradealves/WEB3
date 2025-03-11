@@ -13,4 +13,6 @@ export interface Props {
     gap?: number;
     data: navigation[];
     ListClassName?: string;
+    isScrolling?: number;
+    defaultexpanded?: string;
 }
