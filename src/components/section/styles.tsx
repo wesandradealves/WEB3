@@ -4,6 +4,10 @@ import styled, { css } from 'styled-components';
 export interface Typo {
     background?: string;
     backgroundcolor?: string;
+    backgroundsize?: string;
+    backgroundposition?: string;
+    backgroundattachment?: string;
+    backgroundimage?: string;
     barstitle?: string;
 }
 
@@ -13,11 +17,33 @@ export const Container = styled.section<Typo>`
     background-size: cover;
     background-repeat: no-repeat;
     ${({ background }) => background && css`
-        background-image: url(${background});
+        background: ${background};
+    `} 
+    ${({ backgroundimage }) => backgroundimage && css`
+        background-image: url(${backgroundimage});
     `} 
     ${({ backgroundcolor }) => backgroundcolor && css`
         background-color: ${backgroundcolor};
     `}  
+    ${({ backgroundsize }) => backgroundsize && css`
+        background-size: ${backgroundsize};
+    `}  
+    ${({ backgroundposition }) => backgroundposition && css`
+        background-position: ${backgroundposition};
+    `}  
+    ${({ backgroundattachment }) => backgroundattachment && css`
+        background-attachment: ${backgroundattachment};
+    `}  
+    p {
+        color: inherit;
+        font-size: ${pxToRem(18)};
+        @media screen and (min-width: ${props => props.theme._breakpoints.xxl}) {
+            font-size: ${pxToRem(32)};
+        }
+        span {
+            color: ${props => props.theme._colors.primary.bdm3};
+        }
+    }
 `;
 
 export const Title = styled.h2<Typo>`
@@ -49,14 +75,6 @@ export const Title = styled.h2<Typo>`
 `;
 
 export const Subtitle = styled.p`
-    color: inherit;
-    font-size: ${pxToRem(18)};
-    @media screen and (min-width: ${props => props.theme._breakpoints.xxl}) {
-        font-size: ${pxToRem(32)};
-    }
-    span {
-        color: ${props => props.theme._colors.primary.bdm3};
-    }
 `;
 
 export const SectionHeader = styled.div`
