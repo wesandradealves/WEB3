@@ -14,4 +14,5 @@ export interface Props {
     data: navigation[];
     ListClassName?: string;
     isScrolling?: number;
+    defaultexpanded?: string;
 }

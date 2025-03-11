@@ -1,21 +1,11 @@
 import styled from 'styled-components';
-import { colors } from '@/assets/scss/colors';
+import { Submenu, List } from '../navigation/styles';
 
 export const Container = styled.footer`
-  .custom-underline {
-    position: relative;
-    &:after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0;
-      height: 1px;
-      background:  ${colors.primary.bdm4};
-      transition: width 0.3s ease;
-    }
-    &:hover:after {
-      width: 100%;
+  ${Submenu} {
+    ${List} {
+      gap: .75rem;
+      margin-top: 1.75rem
     }
   }
 `;

@@ -46,7 +46,7 @@ const Header = ({ scrollPosition }: Props) => {
               </Link>
             </div>
             
-            <Navigation isScrolling={scrollPosition} className='hidden xl:flex flex-1' ListClassName='gap-6 2xl:gap-20' data={[
+            <Navigation isScrolling={scrollPosition} className='hidden xl:flex flex-1' ListClassName='gap-6 2xl:gap-20 justify-center items-center' data={[
               { title: 'Soluções e Produtos', url: '#', below: [
                 { title: 'Ouro', url: '#' },
                 { title: 'Prata', url: '#' },
@@ -59,7 +59,7 @@ const Header = ({ scrollPosition }: Props) => {
 
             <div className='ms-auto flex items-center justify-end gap-6'>
 
-              <Navigation ListClassName='gap-6' data={[
+              <Navigation ListClassName='gap-6 justify-center items-center' data={[
                 { title: 'Login', url: '#', className: 'hidden sm:block' },
                 { title: 'Registro', url: '#', type: 'button', btnClass: '--primary' },
               ]} className={'--shortcuts'} />
