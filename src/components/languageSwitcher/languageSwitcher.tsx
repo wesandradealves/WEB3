@@ -9,7 +9,7 @@ export default function LanguageSwitcher({ data, float, effect, className }: Pro
   const [currentLang, setCurrentLang] = useState<string | null>(null);
   const [hoveredItem, setHoveredItem] = useState<number | null>(null);
   const [showAll, setShowAll] = useState<boolean>(false);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
