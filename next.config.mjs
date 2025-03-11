@@ -5,7 +5,7 @@ const nextConfig = {
   basePath: "",
 
   sassOptions: {
-    includePaths: [path.join("/", "pages"), "src/assets"],
+    includePaths: [path.join("/", "app"), "src/assets"],
   },
   reactStrictMode: true,
   images: {
