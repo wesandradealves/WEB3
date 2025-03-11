@@ -8,25 +8,25 @@ import Button from '../button/button';
 import { useState, useRef, useEffect } from 'react';
 import classNames from 'classnames';
 
-export default function Navigation(Props: Props) {
+export default function Navigation({ children, className, mobile, data, ListClassName, isScrolling, defaultexpanded }: Props) {
     const [expandedItems, setExpandedItems] = useState<{ [key: number]: boolean }>({});
     const navRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        if (Props.isScrolling) {
+        if (isScrolling) {
             setExpandedItems({});
         }
-    }, [Props.isScrolling]);
+    }, [isScrolling]);
 
     useEffect(() => {
-        if (Props.defaultexpanded) {
-            const allExpanded = Props.data.reduce((acc, _, index) => {
+        if (defaultexpanded) {
+            const allExpanded = data.reduce((acc, _, index) => {
                 acc[index] = true;
                 return acc;
             }, {} as { [key: number]: boolean });
             setExpandedItems(allExpanded);
         }
-    }, [Props.defaultexpanded, Props.data]);
+    }, [defaultexpanded, data]);
 
     const toggleExpand = (index: number) => {
         setExpandedItems(prevState => ({
@@ -62,52 +62,55 @@ export default function Navigation(Props: Props) {
 
     return (
         <Container role='navigation' 
-            defaultexpanded={Props.defaultexpanded}
-            className={classNames(`navigation ${Props.className}`, { '--mobile h-full w-full fixed top-0 z-1000': !!Props?.mobile })} ref={navRef}>
+            defaultexpanded={defaultexpanded}
+            className={classNames(`navigation ${className}`, { '--mobile h-full w-full fixed top-0 z-1000': !!mobile })} ref={navRef}>
             <List 
-                className={classNames(`list w-full flex ${Props?.ListClassName}`, {
-                    'container m-auto flex-col': Props?.mobile
+                className={classNames(`list w-full flex ${ListClassName}`, {
+                    'container m-auto flex-col': mobile
                 })}>
-                {Props.data && Props.data.map(function(row: navigation, i: number){
-                return (
-                <ListItem 
-                    defaultexpanded={Props.defaultexpanded}
-                    className={classNames('item flex flex-col', row?.className, { 
-                    'expanded': expandedItems[i],
-                    [Props?.ListClassName || '']: Props.mobile
-                })} key={i}>
-                    {row?.type && row.type == 'button' ? <Button className={row?.btnClass} href={row.url} tag={'a'}>{row.title}</Button> : <Link className='flex items-center gap-3' title={row.title} href={row.url} onClick={(event) => handleLinkClick(event, row.url)}>
-                        {row.title}
- 
-                        {row?.below && row.below.length && !Props.defaultexpanded && <i className="fa-solid fa-angle-down" onClick={() => toggleExpand(i)}></i>}
-                    </Link>}
-                    {row?.below && row.below.length && <Submenu 
-                        className={classNames('left-0', { 
-                            "block": Props.defaultexpanded || !Props.defaultexpanded && expandedItems[i],
-                            "hidden": !Props.defaultexpanded && !expandedItems[i],
-                            "relative top-0": Props.defaultexpanded,
-                            "absolute top-[100%]": !Props.defaultexpanded
-                        })}>
-                        <List 
-                            className={classNames('list flex flex-col', { 
-                                "p-0": Props.defaultexpanded,
-                                "p-4": !Props.defaultexpanded,
-                                [Props?.ListClassName || '']: Props.mobile
-                            })}>
-                            {row.below.map(function(below: navigation, j: number){
-                                return (
-                                    <ListItem className='item' key={j}>
-                                        <Link title={below.title} href={below.url} onClick={(event) => handleLinkClick(event, below.url)}>
-                                            {below.title}
-                                        </Link>
-                                    </ListItem>
-                                    );
-                                }) }
-                        </List>
-                    </Submenu>}
-                </ListItem>
-                );
-            }) }  
+
+                {data && data.map(function(row: navigation, i: number){
+                    return (
+                        <ListItem 
+                            defaultexpanded={defaultexpanded}
+                            className={classNames('item flex flex-col', row?.className, { 
+                            'expanded': expandedItems[i],
+                                [ListClassName || '']: mobile
+                            })} key={i}>
+                            {row?.type && row.type == 'button' ? <Button className={row?.btnClass} href={row.url} tag={'a'}>{row.title}</Button> : <Link className='flex items-center gap-3' title={row.title} href={row.url} onClick={(event) => handleLinkClick(event, row.url)}>
+                                {row.title}
+        
+                                {row?.below && row.below.length && !defaultexpanded && <i className="fa-solid fa-angle-down" onClick={() => toggleExpand(i)}></i>}
+                            </Link>}
+                            {row?.below && row.below.length && <Submenu 
+                                className={classNames('left-0', { 
+                                    "block": defaultexpanded || !defaultexpanded && expandedItems[i],
+                                    "hidden": !defaultexpanded && !expandedItems[i],
+                                    "relative top-0": defaultexpanded,
+                                    "absolute top-[100%]": !defaultexpanded
+                                })}>
+                                <List 
+                                    className={classNames('list flex flex-col', { 
+                                        "p-0": defaultexpanded,
+                                        "p-4": !defaultexpanded,
+                                        [ListClassName || '']: mobile
+                                    })}>
+                                    {row.below.map(function(below: navigation, j: number){
+                                        return (
+                                            <ListItem className='item' key={j}>
+                                                <Link title={below.title} href={below.url} onClick={(event) => handleLinkClick(event, below.url)}>
+                                                    {below.title}
+                                                </Link>
+                                            </ListItem>
+                                            );
+                                        }) }
+                                </List>
+                            </Submenu>}
+                        </ListItem>
+                    );
+                }) }  
+                
+                {children && (<>{ children }</>)}
             </List>
         </Container>
     );
