@@ -47,7 +47,7 @@ const Header = ({ scrollPosition }: Props) => {
               </Link>
             </div>
             
-            <Navigation isScrolling={scrollPosition} className='hidden xl:flex flex-1' ListClassName='gap-6 2xl:gap-12 justify-center items-center' data={[
+            <Navigation isScrolling={scrollPosition} className='hidden xl:flex flex-1' ListClassName='gap-6 2xl:gap-20 justify-center items-center' data={[
               { title: 'Soluções e Produtos', url: '#', below: [
                 { title: 'Ouro', url: '#' },
                 { title: 'Prata', url: '#' },
@@ -83,7 +83,7 @@ const Header = ({ scrollPosition }: Props) => {
                 </button>
               </span>
 
-              <LanguageSwitcher effect='rubberBand' float='on' className="hidden xl:flex" data={[
+              <LanguageSwitcher float='on' className="hidden xl:flex" data={[
                 {
                   title: 'Portugês',
                   code: 'br'
@@ -100,33 +100,33 @@ const Header = ({ scrollPosition }: Props) => {
         </div> 
 
         <Navigation
-        className={classNames({ 
-          'block': expanded,
-          'hidden': !expanded
-        })}
-        mobile={true} ListClassName='gap-6' data={[
-          { title: 'Soluções e Produtos', url: '#', below: [
-            { title: 'Ouro', url: '#' },
-            { title: 'Prata', url: '#' },
-          ] },
-          { title: 'Mercados', url: '#' },
-          { title: 'Clientes', url: '#' },
-          { title: 'Para empresas', url: '#' },
-          { title: 'Sobre nós', url: '#' },
-        ]}>
-          <LanguageSwitcher className="mt-6" data={[
-            {
-              title: 'Portugês',
-              code: 'br'
-            }, {
-              title: 'Inglês',
-              code: 'us'
-            }, {
-              title: 'Espanhol',
-              code: 'es'
-            }
-              ]} />
-        </Navigation>
+          className={classNames({ 
+            'block': expanded,
+            'hidden': !expanded
+          })}
+          mobile={true} ListClassName='gap-6' data={[
+            { title: 'Soluções e Produtos', url: '#', below: [
+              { title: 'Ouro', url: '#' },
+              { title: 'Prata', url: '#' },
+            ] },
+            { title: 'Mercados', url: '#' },
+            { title: 'Clientes', url: '#' },
+            { title: 'Para empresas', url: '#' },
+            { title: 'Sobre nós', url: '#' },
+          ]}>
+            <LanguageSwitcher className="mt-6" data={[
+              {
+                title: 'Portugês',
+                code: 'br'
+              }, {
+                title: 'Inglês',
+                code: 'us'
+              }, {
+                title: 'Espanhol',
+                code: 'es'
+              }
+                ]} />
+          </Navigation>
       </Container>
   );
 }
