@@ -10,9 +10,9 @@ export interface navigation {
 export interface Props {
     className?: string;
     mobile?: boolean;
-    gap?: number;
     data: navigation[];
     ListClassName?: string;
-    isScrolling?: number;
+    isScrolling?: number;    
+    children?: React.ReactNode;
     defaultexpanded?: string;
 }

@@ -29,6 +29,7 @@ export default function Footer() {
                 { title: 'Twitter', url: 'https://twitter.com' },
                 { title: 'Instagram', url: 'https://instagram.com' },
                 { title: 'Linkedin', url: 'https://linkedin.com' },
+                { title: 'Pinterest', url: 'https://pinterest.com' },
               ]} />
 
               <p className="text-sm text-gray-700 leading-normal mt-2">

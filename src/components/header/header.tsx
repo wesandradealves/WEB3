@@ -8,6 +8,7 @@ import 'hamburgers/dist/hamburgers.css';
 import { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import Props from './typo';
+import LanguageSwitcher from '../languageSwitcher/languageSwitcher';
 
 const Header = ({ scrollPosition }: Props) => {
   const [expanded, setExpand] = useState<boolean>(false);
@@ -46,7 +47,7 @@ const Header = ({ scrollPosition }: Props) => {
               </Link>
             </div>
             
-            <Navigation isScrolling={scrollPosition} className='hidden xl:flex flex-1' ListClassName='gap-6 2xl:gap-20 justify-center items-center' data={[
+            <Navigation isScrolling={scrollPosition} className='hidden xl:flex flex-1' ListClassName='gap-6 2xl:gap-12 justify-center items-center' data={[
               { title: 'Soluções e Produtos', url: '#', below: [
                 { title: 'Ouro', url: '#' },
                 { title: 'Prata', url: '#' },
@@ -81,6 +82,19 @@ const Header = ({ scrollPosition }: Props) => {
                   </span>
                 </button>
               </span>
+
+              <LanguageSwitcher effect='rubberBand' float='on' className="hidden xl:flex" data={[
+                {
+                  title: 'Portugês',
+                  code: 'br'
+                }, {
+                  title: 'Inglês',
+                  code: 'us'
+                }, {
+                  title: 'Espanhol',
+                  code: 'es'
+                }
+              ]} />
             </div>
           </div>
         </div> 
@@ -99,7 +113,20 @@ const Header = ({ scrollPosition }: Props) => {
           { title: 'Clientes', url: '#' },
           { title: 'Para empresas', url: '#' },
           { title: 'Sobre nós', url: '#' },
-        ]} />
+        ]}>
+          <LanguageSwitcher className="mt-6" data={[
+            {
+              title: 'Portugês',
+              code: 'br'
+            }, {
+              title: 'Inglês',
+              code: 'us'
+            }, {
+              title: 'Espanhol',
+              code: 'es'
+            }
+              ]} />
+        </Navigation>
       </Container>
   );
 }
