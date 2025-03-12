@@ -1,6 +1,9 @@
 "use client";
 import Hero from "@/components/hero/hero";
 import Section from "@/components/section/section";
+import Box from "@/components/box/box";
+import Card from "@/components/card/card";
+import { Props } from "@/components/card/typo";
 
 export default function Home() {
   return (
@@ -30,7 +33,65 @@ export default function Home() {
         backgroundattachment='fixed'
         backgroundimage='/img/tecnologia-que-transforma-realidades.png'
         title='Tecnologia que <span><b>Transforma Realidades</b></span>' >
-        <>Conteudo</>
+          <Box alignment='stretch' className='ps-10 pe-10 xl:ps-[6rem] pt-10 xl:pe-[6rem] pb-10 xl:mt-[8rem] xl:mb-7 gap-8 xl:gap-16'> 
+            <>
+              {[
+                {
+                  image: '/img/insights.png',
+                  title: 'Blockchain BDM',
+                  text: 'Plataforma 100% nacional, criptografada e escalável para transações ilimitadas.'
+                },              {
+                  image: '/img/insights.png',
+                  title: 'Dourado.cash',
+                  text: 'Sua carteira digital para o Metaverso: compre, venda e invista em criptomoedas.'
+                },              {
+                  image: '/img/insights.png',
+                  title: 'Aplicativo BDM ',
+                  text: 'Disponível para uso em diversas plataformas. O App é simples, prático, intuitivo e está em pleno funcionamento.'
+                },              {
+                  image: '/img/insights.png',
+                  title: 'BDMap',
+                  text: 'Mapa com a localização  e informações de todos que utilizam o BDM Digital.  Ele é uma vitrine que facilita a visibilidade do seu negócio para o público em geral.'
+                }
+              ].map((item: Props, j: number) => {
+                return (
+                  <Card className='xl:flex-1' key={j} image={item.image} title={item.title} text={item.text} />
+                );
+              })}
+            </>
+          </Box>
+          <div className='flex items-stretch flex-col xl:flex-row justify-between gap-7 xl:gap-4'>
+            <Box alignment='stretch' className='p-8'> 
+                <>
+                  {[
+                    {
+                      image: '/img/insights.png',
+                      title: 'Com o BDM Digital<br/>tudo é possível',
+                      text: 'Pague suas contas, seu café e até as férias dos seus sonhos. A Blockchain descentraliza suas finanças e coloca infinitas possibilidades na sua mão.'
+                    }
+                  ].map((item: Props, j: number) => {
+                    return (
+                      <Card className='xl:flex-1' key={j} image={item.image} title={item.title} text={item.text} />
+                    );
+                  })}
+                </>
+            </Box>
+            <Box alignment='stretch' className='p-8'> 
+              <>
+                {[
+                  {
+                    image: '/img/insights.png',
+                    title: 'BDM Negócios',
+                    text: 'É uma plataforma exclusiva para empresários, comerciantes e autônomos que buscam mais do que bons negócios. Conheça as vantagens de ser nosso parceiro!'
+                  }
+                ].map((item: Props, j: number) => {
+                  return (
+                    <Card className='xl:flex-1' key={j} image={item.image} title={item.title} text={item.text} />
+                  );
+                })}
+              </>
+            </Box>
+          </div>
       </Section>
 
       <Section 
