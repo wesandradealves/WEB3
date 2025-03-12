@@ -77,7 +77,7 @@ export default function Navigation({ children, className, mobile, data, ListClas
                             'expanded': expandedItems[i],
                                 [ListClassName || '']: mobile
                             })} key={i}>
-                            {row?.type && row.type == 'button' ? <Button className={row?.btnClass} href={row.url} tag={'a'}>{row.title}</Button> : <Link className='flex items-center gap-3' title={row.title} href={row.url} onClick={(event) => handleLinkClick(event, row.url)}>
+                            {row?.type && row.type == 'button' ? <Button effect={row?.btnAnimation} className={row?.btnClass} href={row.url} tag={'a'}>{row.title}</Button> : <Link className='flex items-center gap-3' title={row.title} href={row.url} onClick={(event) => handleLinkClick(event, row.url)}>
                                 {row.title}
         
                                 {row?.below && row.below.length && !defaultexpanded && <i className="fa-solid fa-angle-down" onClick={() => toggleExpand(i)}></i>}

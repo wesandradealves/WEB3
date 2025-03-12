@@ -6,6 +6,7 @@ interface Data {
   btnClass?: string;
   media?: string;
   placeholder?: string;
+  btnAnimation?: string;
 }
 
 export default interface Props {
