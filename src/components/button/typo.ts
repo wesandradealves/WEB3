@@ -5,6 +5,7 @@ export interface Props {
     href?: string;
     className?: string;
     radius?: number;
-    children: ReactNode;
+    children: ReactNode;    
+    effect?: string;
 }
   

@@ -62,7 +62,7 @@ const Header = ({ scrollPosition }: Props) => {
 
               <Navigation ListClassName='gap-6 justify-center items-center' data={[
                 { title: 'Login', url: '#', className: 'hidden sm:block' },
-                { title: 'Registro', url: '#', type: 'button', btnClass: '--primary' },
+                { title: 'Registro', url: '#', type: 'button', btnAnimation: 'pulse', btnClass: '--primary',  },
               ]} className={'--shortcuts'} />
 
               <span className='hamburger-wrapper block xl:hidden'>

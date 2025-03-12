@@ -5,6 +5,7 @@ export interface navigation {
     btnClass?: string;
     below?: navigation[];
     className?: string;
+    btnAnimation?: string;
 }
 
 export interface Props {

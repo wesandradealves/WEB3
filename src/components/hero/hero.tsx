@@ -58,7 +58,7 @@ const Hero = (Props: Props) => {
       <div className='container relative z-1 m-auto flex flex-col gap-16 items-center justify-center'>
         {Props.data.title && <Title className='text-center' dangerouslySetInnerHTML={{ __html: Props.data.title }} />}
         {Props.data.text && <Text className='text-center' dangerouslySetInnerHTML={{ __html: Props.data.text }} />}
-        {Props.data.url && Props.data.btnLabel && <Button radius={999} tag="a" href={Props.data.url} className={`text-center ${Props.data.btnClass ?? ""}`}>{Props.data.btnLabel}</Button>}
+        {Props.data.url && Props.data.btnLabel && <Button effect={Props.btnAnimation} radius={999} tag="a" href={Props.data.url} className={`text-center ${Props.data.btnClass ?? ""}`}>{Props.data.btnLabel}</Button>}
       </div>
     </Container>
   );
