@@ -23,6 +23,11 @@ export default function Home() {
         backgroundattachment='fixed'
         backgroundimage='/img/copie-de-onde-o-dinheiro-se-transforma-em-ouro-3.png'
         title='Uma <span><b>Nova Era</b></span> de Prosperidade <b>Compartilhada</b>' >
+        <div className='flex justify-between items-center flex-wrap'>
+          <div className='flex-1'><img className='w-min-[100%]' loading='lazy' src='img/1.gif' /></div>
+          <div><img className='w-min-[100%]' loading='lazy' src='img/coin.png'/></div>
+          <div className='flex-1'><img className='w-min-[100%]' loading='lazy' src='img/2.gif'/></div>
+        </div>
         <p className='text-center'>O Metaverso e as criptomoedas estão redefinindo como negociamos, criamos e nos conectamos. <b>Na BDM Digital</b>, desenvolvemos a primeira <span>blockchain brasileira</span> com validação em segundos, 
         usando um <b>Proof-of-Stake aprimorado</b>, para garantir transações rápidas e seguras. <br/><br/>Combinada à <span><b>Dourado.cash</b></span>, nossa plataforma de pagamentos, oferecemos uma ponte entre o mundo físico e o digital, onde todos podem usufruir de liberdade financeira, seja em moeda social (BDM) ou em criptoativos globais.</p>
       </Section>
@@ -33,7 +38,7 @@ export default function Home() {
         backgroundattachment='fixed'
         backgroundimage='/img/tecnologia-que-transforma-realidades.png'
         title='Tecnologia que <span><b>Transforma Realidades</b></span>' >
-          <Box alignment='stretch' className='ps-10 pe-10 xl:ps-[6rem] pt-10 xl:pe-[6rem] pb-10 xl:mt-[8rem] xl:mb-7 gap-8 xl:gap-16'> 
+          <Box alignment='stretch' className='ps-10 pe-10 xl:ps-[6rem] pt-10 xl:pe-[6rem] pb-10 xl:mt-[8rem] xl:mb-7 gap-8 xl:gap-16 flex-col lg:flex-row'> 
             <>
               {[
                 {

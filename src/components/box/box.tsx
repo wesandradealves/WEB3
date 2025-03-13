@@ -2,10 +2,13 @@
 
 import { Container } from './styles';
 import { Props } from './typo';
-
-export default function Box({ className, children, alignment }: Props) {
+import classNames from 'classnames';
+export default function Box({ className, children, alignment, justify, wrap }: Props) {
   return (
-    <Container className={`box flex flex-wrap justify-between items-${alignment ?? 'center'} ${className}`}>
+    <Container 
+      className={classNames(`box flex justify-${justify ?? 'between'} items-${alignment ?? 'center'} ${className}`, className, {
+        'flex-wrap': wrap
+      })}>
       {children}
     </Container>
   );
