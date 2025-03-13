@@ -5,6 +5,7 @@ import Box from "@/components/box/box";
 import Card from "@/components/card/card";
 import { Props } from "@/components/card/typo";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { motion } from 'framer-motion';
 
 export default function Home() {
   return (
@@ -26,7 +27,14 @@ export default function Home() {
         title='Uma <span><b>Nova Era</b></span> de Prosperidade <b>Compartilhada</b>' >
         <div className='flex justify-between items-center flex-wrap'>
           <div className='flex-1 hidden sm:block'><LazyLoadImage className='w-min-[100%]' src={'img/1.gif'} /></div>
-          <div className='m-auto'><LazyLoadImage className='w-auto' src={'img/coin.png'} /></div>
+          <div className='m-auto'>
+            <motion.div
+              animate={{ rotateY: 360 }}
+              transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+            >
+              <LazyLoadImage className='w-auto' src={'img/coin.png'} />
+            </motion.div>
+          </div>
           <div className='flex-1 hidden sm:block'><LazyLoadImage className='w-min-[100%]' src={'img/1.gif'} /></div>
         </div>
         <p className='text-center'>O Metaverso e as criptomoedas estão redefinindo como negociamos, criamos e nos conectamos. <b>Na BDM Digital</b>, desenvolvemos a primeira <span>blockchain brasileira</span> com validação em segundos,
@@ -123,7 +131,7 @@ export default function Home() {
             </defs>
             <rect x="0" y="0" width="100%" height="434" stroke="none" strokeWidth="0" fill="#ffffff"></rect>
             <g>
-              <text textAnchor="start" x="70" y="41.9" font-family="Arial" font-size="14"
+              <text textAnchor="start" x="70" y="41.9" fontFamily="Arial" fontSize="14"
                 fontWeight="bold" stroke="none" strokeWidth="0" fill="#333333">BDM X REAIS - MÉDIA
                 MENSAL</text>
               <rect x="70" y="30" width="100%" height="14" stroke="none" strokeWidth="0" fillOpacity="0"
@@ -136,7 +144,7 @@ export default function Home() {
                 <rect x="70" y="53" width="148" height="14" stroke="none" strokeWidth="0"
                   fillOpacity="0" fill="#ffffff"></rect>
                 <g>
-                  <text textAnchor="start" x="103" y="64.9" font-family="Arial" font-size="14"
+                  <text textAnchor="start" x="103" y="64.9" fontFamily="Arial" fontSize="14"
                     stroke="none" strokeWidth="0" fill="#fcb441">Cotação em Reais</text>
                 </g>
                 <path d="M70,60L98,60" stroke="#ff9900" strokeWidth="2" fillOpacity="1" fill="none"></path>
@@ -144,7 +152,7 @@ export default function Home() {
             </g>
             <g>
               <rect x="70" y="83" width="100%" height="268" stroke="none" strokeWidth="0" fill="#ffffff"></rect>
-              <g clip-path="url(https://app.dourado.cash/chartBDM2024.php#_ABSTRACT_RENDERER_ID_1)">
+              <g clipPath="url(https://app.dourado.cash/chartBDM2024.php#_ABSTRACT_RENDERER_ID_1)">
                 <g>
                   <rect x="70" y="350" width="100%" height="1" stroke="none" strokeWidth="0"
                     fill="#cccccc"></rect>
@@ -298,203 +306,203 @@ export default function Home() {
               <g>
                 <g>
                   <text textAnchor="end" x="83.3640350877193" y="365.0310889132455"
-                    font-family="Arial" font-size="10"
+                    fontFamily="Arial" fontSize="10"
                     transform="rotate(-30 83.3640350877193 365.0310889132455)" stroke="none"
                     strokeWidth="0" fill="#222222">01/02/20</text>
                 </g>
                 <g>
                   <text textAnchor="end" x="127.8201754385965" y="365.0310889132455"
-                    font-family="Arial" font-size="10"
+                    fontFamily="Arial" fontSize="10"
                     transform="rotate(-30 127.8201754385965 365.0310889132455)" stroke="none"
                     strokeWidth="0" fill="#222222">16/06/20</text>
                 </g>
                 <g>
                   <text textAnchor="end" x="172.2763157894737" y="365.0310889132455"
-                    font-family="Arial" font-size="10"
+                    fontFamily="Arial" fontSize="10"
                     transform="rotate(-30 172.2763157894737 365.0310889132455)" stroke="none"
                     strokeWidth="0" fill="#222222">05/08/20</text>
                 </g>
                 <g>
                   <text textAnchor="end" x="216.73245614035088" y="365.0310889132455"
-                    font-family="Arial" font-size="10"
+                    fontFamily="Arial" fontSize="10"
                     transform="rotate(-30 216.73245614035088 365.0310889132455)" stroke="none"
                     strokeWidth="0" fill="#222222">27/10/20</text>
                 </g>
                 <g>
                   <text textAnchor="end" x="261.18859649122805" y="365.0310889132455"
-                    font-family="Arial" font-size="10"
+                    fontFamily="Arial" fontSize="10"
                     transform="rotate(-30 261.18859649122805 365.0310889132455)" stroke="none"
                     strokeWidth="0" fill="#222222">09/12/20</text>
                 </g>
                 <g>
                   <text textAnchor="end" x="305.64473684210526" y="365.0310889132455"
-                    font-family="Arial" font-size="10"
+                    fontFamily="Arial" fontSize="10"
                     transform="rotate(-30 305.64473684210526 365.0310889132455)" stroke="none"
                     strokeWidth="0" fill="#222222">01/02/21</text>
                 </g>
                 <g>
                   <text textAnchor="end" x="350.10087719298247" y="365.0310889132455"
-                    font-family="Arial" font-size="10"
+                    fontFamily="Arial" fontSize="10"
                     transform="rotate(-30 350.10087719298247 365.0310889132455)" stroke="none"
                     strokeWidth="0" fill="#222222">04/04/21</text>
                 </g>
                 <g>
                   <text textAnchor="end" x="394.5570175438596" y="365.0310889132455"
-                    font-family="Arial" font-size="10"
+                    fontFamily="Arial" fontSize="10"
                     transform="rotate(-30 394.5570175438596 365.0310889132455)" stroke="none"
                     strokeWidth="0" fill="#222222">03/06/21</text>
                 </g>
                 <g>
                   <text textAnchor="end" x="439.0131578947368" y="365.0310889132455"
-                    font-family="Arial" font-size="10"
+                    fontFamily="Arial" fontSize="10"
                     transform="rotate(-30 439.0131578947368 365.0310889132455)" stroke="none"
                     strokeWidth="0" fill="#222222">05/08/21</text>
                 </g>
                 <g>
                   <text textAnchor="end" x="483.469298245614" y="365.0310889132455"
-                    font-family="Arial" font-size="10"
+                    fontFamily="Arial" fontSize="10"
                     transform="rotate(-30 483.469298245614 365.0310889132455)" stroke="none"
                     strokeWidth="0" fill="#222222">05/10/21</text>
                 </g>
                 <g>
                   <text textAnchor="end" x="527.9254385964912" y="365.0310889132455"
-                    font-family="Arial" font-size="10"
+                    fontFamily="Arial" fontSize="10"
                     transform="rotate(-30 527.9254385964912 365.0310889132455)" stroke="none"
                     strokeWidth="0" fill="#222222">06/12/21</text>
                 </g>
                 <g>
                   <text textAnchor="end" x="572.3815789473683" y="365.0310889132455"
-                    font-family="Arial" font-size="10"
+                    fontFamily="Arial" fontSize="10"
                     transform="rotate(-30 572.3815789473683 365.0310889132455)" stroke="none"
                     strokeWidth="0" fill="#222222">07/02/22</text>
                 </g>
                 <g>
                   <text textAnchor="end" x="616.8377192982456" y="365.0310889132455"
-                    font-family="Arial" font-size="10"
+                    fontFamily="Arial" fontSize="10"
                     transform="rotate(-30 616.8377192982456 365.0310889132455)" stroke="none"
                     strokeWidth="0" fill="#222222">04/04/22</text>
                 </g>
                 <g>
                   <text textAnchor="end" x="661.2938596491227" y="365.0310889132455"
-                    font-family="Arial" font-size="10"
+                    fontFamily="Arial" fontSize="10"
                     transform="rotate(-30 661.2938596491227 365.0310889132455)" stroke="none"
                     strokeWidth="0" fill="#222222">06/06/22</text>
                 </g>
                 <g>
-                  <text textAnchor="end" x="705.75" y="365.0310889132455" font-family="Arial"
-                    font-size="10" transform="rotate(-30 705.75 365.0310889132455)" stroke="none"
+                  <text textAnchor="end" x="705.75" y="365.0310889132455" fontFamily="Arial"
+                    fontSize="10" transform="rotate(-30 705.75 365.0310889132455)" stroke="none"
                     strokeWidth="0" fill="#222222">03/08/22</text>
                 </g>
                 <g>
                   <text textAnchor="end" x="750.2061403508771" y="365.0310889132455"
-                    font-family="Arial" font-size="10"
+                    fontFamily="Arial" fontSize="10"
                     transform="rotate(-30 750.2061403508771 365.0310889132455)" stroke="none"
                     strokeWidth="0" fill="#222222">04/10/22</text>
                 </g>
                 <g>
                   <text textAnchor="end" x="794.6622807017544" y="365.0310889132455"
-                    font-family="Arial" font-size="10"
+                    fontFamily="Arial" fontSize="10"
                     transform="rotate(-30 794.6622807017544 365.0310889132455)" stroke="none"
                     strokeWidth="0" fill="#222222">02/12/22</text>
                 </g>
                 <g>
                   <text textAnchor="end" x="839.1184210526316" y="365.0310889132455"
-                    font-family="Arial" font-size="10"
+                    fontFamily="Arial" fontSize="10"
                     transform="rotate(-30 839.1184210526316 365.0310889132455)" stroke="none"
                     strokeWidth="0" fill="#222222">08/02/23</text>
                 </g>
                 <g>
                   <text textAnchor="end" x="883.5745614035087" y="365.0310889132455"
-                    font-family="Arial" font-size="10"
+                    fontFamily="Arial" fontSize="10"
                     transform="rotate(-30 883.5745614035087 365.0310889132455)" stroke="none"
                     strokeWidth="0" fill="#222222">19/04/23</text>
                 </g>
                 <g>
                   <text textAnchor="end" x="928.030701754386" y="365.0310889132455"
-                    font-family="Arial" font-size="10"
+                    fontFamily="Arial" fontSize="10"
                     transform="rotate(-30 928.030701754386 365.0310889132455)" stroke="none"
                     strokeWidth="0" fill="#222222">12/06/23</text>
                 </g>
                 <g>
                   <text textAnchor="end" x="972.4868421052631" y="365.0310889132455"
-                    font-family="Arial" font-size="10"
+                    fontFamily="Arial" fontSize="10"
                     transform="rotate(-30 972.4868421052631 365.0310889132455)" stroke="none"
                     strokeWidth="0" fill="#222222">08/08/23</text>
                 </g>
                 <g>
                   <text textAnchor="end" x="1016.9429824561403" y="365.0310889132455"
-                    font-family="Arial" font-size="10"
+                    fontFamily="Arial" fontSize="10"
                     transform="rotate(-30 1016.9429824561403 365.0310889132455)" stroke="none"
                     strokeWidth="0" fill="#222222">12/11/23</text>
                 </g>
                 <g>
                   <text textAnchor="end" x="1061.3991228070176" y="365.0310889132455"
-                    font-family="Arial" font-size="10"
+                    fontFamily="Arial" fontSize="10"
                     transform="rotate(-30 1061.3991228070176 365.0310889132455)" stroke="none"
                     strokeWidth="0" fill="#222222">12/01/24</text>
                 </g>
                 <g>
                   <text textAnchor="end" x="1105.8552631578948" y="365.0310889132455"
-                    font-family="Arial" font-size="10"
+                    fontFamily="Arial" fontSize="10"
                     transform="rotate(-30 1105.8552631578948 365.0310889132455)" stroke="none"
                     strokeWidth="0" fill="#222222">04/03/24</text>
                 </g>
                 <g>
                   <text textAnchor="end" x="1150.311403508772" y="365.0310889132455"
-                    font-family="Arial" font-size="10"
+                    fontFamily="Arial" fontSize="10"
                     transform="rotate(-30 1150.311403508772 365.0310889132455)" stroke="none"
                     strokeWidth="0" fill="#222222">19/05/24</text>
                 </g>
                 <g>
                   <text textAnchor="end" x="1194.767543859649" y="365.0310889132455"
-                    font-family="Arial" font-size="10"
+                    fontFamily="Arial" fontSize="10"
                     transform="rotate(-30 1194.767543859649 365.0310889132455)" stroke="none"
                     strokeWidth="0" fill="#222222">04/07/24</text>
                 </g>
                 <g>
                   <text textAnchor="end" x="1239.2236842105262" y="365.0310889132455"
-                    font-family="Arial" font-size="10"
+                    fontFamily="Arial" fontSize="10"
                     transform="rotate(-30 1239.2236842105262 365.0310889132455)" stroke="none"
                     strokeWidth="0" fill="#222222">21/09/24</text>
                 </g>
                 <g>
                   <text textAnchor="end" x="1283.6798245614034" y="365.0310889132455"
-                    font-family="Arial" font-size="10"
+                    fontFamily="Arial" fontSize="10"
                     transform="rotate(-30 1283.6798245614034 365.0310889132455)" stroke="none"
                     strokeWidth="0" fill="#222222">04/11/24</text>
                 </g>
                 <g>
                   <text textAnchor="end" x="1328.1359649122808" y="365.0310889132455"
-                    font-family="Arial" font-size="10"
+                    fontFamily="Arial" fontSize="10"
                     transform="rotate(-30 1328.1359649122808 365.0310889132455)" stroke="none"
                     strokeWidth="0" fill="#222222">27/02/25</text>
                 </g>
                 <g>
-                  <text textAnchor="end" x="60" y="354" font-family="Arial" font-size="10"
+                  <text textAnchor="end" x="60" y="354" fontFamily="Arial" fontSize="10"
                     stroke="none" strokeWidth="0" fill="#444444">0.0</text>
                 </g>
                 <g>
-                  <text textAnchor="end" x="60" y="309.5" font-family="Arial" font-size="10"
+                  <text textAnchor="end" x="60" y="309.5" fontFamily="Arial" fontSize="10"
                     stroke="none" strokeWidth="0" fill="#444444">2.5</text>
                 </g>
                 <g>
-                  <text textAnchor="end" x="60" y="265" font-family="Arial" font-size="10"
+                  <text textAnchor="end" x="60" y="265" fontFamily="Arial" fontSize="10"
                     stroke="none" strokeWidth="0" fill="#444444">5.0</text>
                 </g>
                 <g>
-                  <text textAnchor="end" x="60" y="220.5" font-family="Arial" font-size="10"
+                  <text textAnchor="end" x="60" y="220.5" fontFamily="Arial" fontSize="10"
                     stroke="none" strokeWidth="0" fill="#444444">7.5</text>
                 </g>
                 <g>
-                  <text textAnchor="end" x="60" y="176" font-family="Arial" font-size="10"
+                  <text textAnchor="end" x="60" y="176" fontFamily="Arial" fontSize="10"
                     stroke="none" strokeWidth="0" fill="#444444">10.0</text>
                 </g>
                 <g>
-                  <text textAnchor="end" x="60" y="131.5" font-family="Arial" font-size="10"
+                  <text textAnchor="end" x="60" y="131.5" fontFamily="Arial" fontSize="10"
                     stroke="none" strokeWidth="0" fill="#444444">12.5</text>
                 </g>
                 <g>
-                  <text textAnchor="end" x="60" y="87" font-family="Arial" font-size="10"
+                  <text textAnchor="end" x="60" y="87" fontFamily="Arial" fontSize="10"
                     stroke="none" strokeWidth="0" fill="#444444">15.0</text>
                 </g>
               </g>
@@ -505,10 +513,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="81.6140350877193" y="283.6"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">3</text>
                       <text textAnchor="middle" x="81.6140350877193" y="283.6"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">3</text>
                     </g>
                     <rect x="78.6140350877193" y="275.1" width="6" height="10" stroke="none"
@@ -521,10 +529,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="103.84210526315789" y="265.8"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">4</text>
                       <text textAnchor="middle" x="103.84210526315789" y="265.8"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">4</text>
                     </g>
                     <rect x="100.84210526315789" y="257.3" width="6" height="10" stroke="none"
@@ -537,10 +545,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="126.0701754385965" y="257.78999999999996"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">4.45</text>
                       <text textAnchor="middle" x="126.0701754385965" y="257.78999999999996"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">4.45</text>
                     </g>
                     <rect x="116.5701754385965" y="249.28999999999996" width="19" height="10"
@@ -553,10 +561,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="148.29824561403507" y="256.01"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">4.55</text>
                       <text textAnchor="middle" x="148.29824561403507" y="256.01"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">4.55</text>
                     </g>
                     <rect x="138.79824561403507" y="247.51" width="19" height="10" stroke="none"
@@ -569,10 +577,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="170.5263157894737" y="257.43399999999997"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">4.47</text>
                       <text textAnchor="middle" x="170.5263157894737" y="257.43399999999997"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">4.47</text>
                     </g>
                     <rect x="161.0263157894737" y="248.93399999999997" width="19" height="10"
@@ -585,10 +593,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="192.75438596491227" y="255.654"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">4.57</text>
                       <text textAnchor="middle" x="192.75438596491227" y="255.654"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">4.57</text>
                     </g>
                     <rect x="183.25438596491227" y="247.154" width="19" height="10" stroke="none"
@@ -601,10 +609,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="214.98245614035088" y="245.68599999999998"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">5.13</text>
                       <text textAnchor="middle" x="214.98245614035088" y="245.68599999999998"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">5.13</text>
                     </g>
                     <rect x="205.48245614035088" y="237.18599999999998" width="19" height="10"
@@ -617,10 +625,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="237.21052631578948" y="246.75400000000002"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">5.07</text>
                       <text textAnchor="middle" x="237.21052631578948" y="246.75400000000002"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">5.07</text>
                     </g>
                     <rect x="227.71052631578948" y="238.25400000000002" width="19" height="10"
@@ -633,10 +641,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="259.43859649122805" y="244.618"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">5.19</text>
                       <text textAnchor="middle" x="259.43859649122805" y="244.618"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">5.19</text>
                     </g>
                     <rect x="249.93859649122805" y="236.118" width="19" height="10" stroke="none"
@@ -649,10 +657,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="281.66666666666663" y="237.498"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">5.59</text>
                       <text textAnchor="middle" x="281.66666666666663" y="237.498"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">5.59</text>
                     </g>
                     <rect x="272.16666666666663" y="228.998" width="19" height="10" stroke="none"
@@ -665,10 +673,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="303.89473684210526" y="234.82799999999997"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">5.74</text>
                       <text textAnchor="middle" x="303.89473684210526" y="234.82799999999997"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">5.74</text>
                     </g>
                     <rect x="294.39473684210526" y="226.32799999999997" width="19" height="10"
@@ -681,10 +689,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="326.1228070175439" y="232.336"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">5.88</text>
                       <text textAnchor="middle" x="326.1228070175439" y="232.336"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">5.88</text>
                     </g>
                     <rect x="316.6228070175439" y="223.836" width="19" height="10" stroke="none"
@@ -697,10 +705,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="348.35087719298247" y="227.17399999999998"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">6.17</text>
                       <text textAnchor="middle" x="348.35087719298247" y="227.17399999999998"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">6.17</text>
                     </g>
                     <rect x="338.85087719298247" y="218.67399999999998" width="19" height="10"
@@ -713,10 +721,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="370.57894736842104" y="208.662"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">7.21</text>
                       <text textAnchor="middle" x="370.57894736842104" y="208.662"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">7.21</text>
                     </g>
                     <rect x="361.07894736842104" y="200.162" width="19" height="10" stroke="none"
@@ -729,10 +737,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="392.8070175438596" y="205.636"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">7.38</text>
                       <text textAnchor="middle" x="392.8070175438596" y="205.636"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">7.38</text>
                     </g>
                     <rect x="383.3070175438596" y="197.136" width="19" height="10" stroke="none"
@@ -745,10 +753,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="415.03508771929825" y="203.322"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">7.51</text>
                       <text textAnchor="middle" x="415.03508771929825" y="203.322"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">7.51</text>
                     </g>
                     <rect x="405.53508771929825" y="194.822" width="19" height="10" stroke="none"
@@ -761,10 +769,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="437.2631578947368" y="202.60999999999999"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">7.55</text>
                       <text textAnchor="middle" x="437.2631578947368" y="202.60999999999999"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">7.55</text>
                     </g>
                     <rect x="427.7631578947368" y="194.10999999999999" width="19" height="10"
@@ -777,10 +785,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="459.49122807017545" y="199.40599999999998"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">7.73</text>
                       <text textAnchor="middle" x="459.49122807017545" y="199.40599999999998"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">7.73</text>
                     </g>
                     <rect x="449.99122807017545" y="190.90599999999998" width="19" height="10"
@@ -793,10 +801,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="481.719298245614" y="196.736"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">7.88</text>
                       <text textAnchor="middle" x="481.719298245614" y="196.736"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">7.88</text>
                     </g>
                     <rect x="472.219298245614" y="188.236" width="19" height="10" stroke="none"
@@ -809,10 +817,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="503.9473684210526" y="194.778"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">7.99</text>
                       <text textAnchor="middle" x="503.9473684210526" y="194.778"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">7.99</text>
                     </g>
                     <rect x="494.4473684210526" y="186.278" width="19" height="10" stroke="none"
@@ -825,10 +833,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="526.1754385964912" y="194.244"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">8.02</text>
                       <text textAnchor="middle" x="526.1754385964912" y="194.244"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">8.02</text>
                     </g>
                     <rect x="516.6754385964912" y="185.744" width="19" height="10" stroke="none"
@@ -841,10 +849,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="548.4035087719299" y="192.998"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">8.09</text>
                       <text textAnchor="middle" x="548.4035087719299" y="192.998"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">8.09</text>
                     </g>
                     <rect x="538.9035087719299" y="184.498" width="19" height="10" stroke="none"
@@ -857,10 +865,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="570.6315789473683" y="190.86199999999997"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">8.21</text>
                       <text textAnchor="middle" x="570.6315789473683" y="190.86199999999997"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">8.21</text>
                     </g>
                     <rect x="561.1315789473683" y="182.36199999999997" width="19" height="10"
@@ -873,10 +881,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="592.859649122807" y="186.23399999999998"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">8.47</text>
                       <text textAnchor="middle" x="592.859649122807" y="186.23399999999998"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">8.47</text>
                     </g>
                     <rect x="583.359649122807" y="177.73399999999998" width="19" height="10"
@@ -889,10 +897,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="615.0877192982456" y="182.674"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">8.67</text>
                       <text textAnchor="middle" x="615.0877192982456" y="182.674"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">8.67</text>
                     </g>
                     <rect x="605.5877192982456" y="174.174" width="19" height="10" stroke="none"
@@ -905,10 +913,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="637.3157894736842" y="177.51199999999997"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">8.96</text>
                       <text textAnchor="middle" x="637.3157894736842" y="177.51199999999997"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">8.96</text>
                     </g>
                     <rect x="627.8157894736842" y="169.01199999999997" width="19" height="10"
@@ -921,10 +929,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="659.5438596491227" y="171.638"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">9.29</text>
                       <text textAnchor="middle" x="659.5438596491227" y="171.638"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">9.29</text>
                     </g>
                     <rect x="650.0438596491227" y="163.138" width="19" height="10" stroke="none"
@@ -937,10 +945,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="681.7719298245614" y="171.10399999999998"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">9.32</text>
                       <text textAnchor="middle" x="681.7719298245614" y="171.10399999999998"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">9.32</text>
                     </g>
                     <rect x="672.2719298245614" y="162.60399999999998" width="19" height="10"
@@ -952,11 +960,11 @@ export default function Home() {
                     <rect x="692.5" y="157.5" width="24" height="12" stroke="none" strokeWidth="0"
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
-                      <text textAnchor="middle" x="704" y="167.01" font-family="Arial"
-                        font-size="10" stroke="#ffffff" strokeWidth="3" fill="#ff9900"
+                      <text textAnchor="middle" x="704" y="167.01" fontFamily="Arial"
+                        fontSize="10" stroke="#ffffff" strokeWidth="3" fill="#ff9900"
                         aria-hidden="true">9.55</text>
-                      <text textAnchor="middle" x="704" y="167.01" font-family="Arial"
-                        font-size="10" stroke="none" strokeWidth="0" fill="#ff9900">9.55</text>
+                      <text textAnchor="middle" x="704" y="167.01" fontFamily="Arial"
+                        fontSize="10" stroke="none" strokeWidth="0" fill="#ff9900">9.55</text>
                     </g>
                     <rect x="694.5" y="158.51" width="19" height="10" stroke="none" strokeWidth="0"
                       fillOpacity="0" fill="#ffffff"></rect>
@@ -968,10 +976,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="726.2280701754386" y="167.544"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">9.52</text>
                       <text textAnchor="middle" x="726.2280701754386" y="167.544"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">9.52</text>
                     </g>
                     <rect x="716.7280701754386" y="159.044" width="19" height="10" stroke="none"
@@ -984,10 +992,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="748.4561403508771" y="166.476"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">9.58</text>
                       <text textAnchor="middle" x="748.4561403508771" y="166.476"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">9.58</text>
                     </g>
                     <rect x="738.9561403508771" y="157.976" width="19" height="10" stroke="none"
@@ -1000,10 +1008,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="770.6842105263157" y="163.98399999999998"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">9.72</text>
                       <text textAnchor="middle" x="770.6842105263157" y="163.98399999999998"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">9.72</text>
                     </g>
                     <rect x="761.1842105263157" y="155.48399999999998" width="19" height="10"
@@ -1016,10 +1024,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="792.9122807017544" y="160.068"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">9.94</text>
                       <text textAnchor="middle" x="792.9122807017544" y="160.068"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">9.94</text>
                     </g>
                     <rect x="783.4122807017544" y="151.568" width="19" height="10" stroke="none"
@@ -1032,10 +1040,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="815.140350877193" y="158.10999999999999"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">10.05</text>
                       <text textAnchor="middle" x="815.140350877193" y="158.10999999999999"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">10.05</text>
                     </g>
                     <rect x="802.640350877193" y="149.60999999999999" width="25" height="10"
@@ -1048,10 +1056,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="837.3684210526316" y="156.864"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">10.12</text>
                       <text textAnchor="middle" x="837.3684210526316" y="156.864"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">10.12</text>
                     </g>
                     <rect x="824.8684210526316" y="148.364" width="25" height="10" stroke="none"
@@ -1064,10 +1072,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="859.5964912280701" y="156.32999999999998"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">10.15</text>
                       <text textAnchor="middle" x="859.5964912280701" y="156.32999999999998"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">10.15</text>
                     </g>
                     <rect x="847.0964912280701" y="147.82999999999998" width="25" height="10"
@@ -1080,10 +1088,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="881.8245614035087" y="139.242"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">11.11</text>
                       <text textAnchor="middle" x="881.8245614035087" y="139.242"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">11.11</text>
                     </g>
                     <rect x="869.8245614035087" y="130.742" width="24" height="10" stroke="none"
@@ -1096,10 +1104,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="904.0526315789474" y="138.174"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">11.17</text>
                       <text textAnchor="middle" x="904.0526315789474" y="138.174"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">11.17</text>
                     </g>
                     <rect x="892.0526315789474" y="129.674" width="24" height="10" stroke="none"
@@ -1112,10 +1120,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="926.280701754386" y="137.106"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">11.23</text>
                       <text textAnchor="middle" x="926.280701754386" y="137.106"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">11.23</text>
                     </g>
                     <rect x="914.280701754386" y="128.606" width="24" height="10" stroke="none"
@@ -1128,10 +1136,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="948.5087719298245" y="136.394"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">11.27</text>
                       <text textAnchor="middle" x="948.5087719298245" y="136.394"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">11.27</text>
                     </g>
                     <rect x="936.5087719298245" y="127.894" width="24" height="10" stroke="none"
@@ -1144,10 +1152,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="970.7368421052631" y="135.148"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">11.34</text>
                       <text textAnchor="middle" x="970.7368421052631" y="135.148"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">11.34</text>
                     </g>
                     <rect x="958.7368421052631" y="126.648" width="24" height="10" stroke="none"
@@ -1160,10 +1168,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="992.9649122807017" y="133.902"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">11.41</text>
                       <text textAnchor="middle" x="992.9649122807017" y="133.902"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">11.41</text>
                     </g>
                     <rect x="980.9649122807017" y="125.40199999999999" width="24" height="10"
@@ -1176,10 +1184,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="1015.1929824561403" y="132.83399999999997"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">11.47</text>
                       <text textAnchor="middle" x="1015.1929824561403" y="132.83399999999997"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">11.47</text>
                     </g>
                     <rect x="1003.1929824561403" y="124.33399999999997" width="24" height="10"
@@ -1192,10 +1200,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="1037.421052631579" y="132.29999999999998"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">11.5</text>
                       <text textAnchor="middle" x="1037.421052631579" y="132.29999999999998"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">11.5</text>
                     </g>
                     <rect x="1027.921052631579" y="123.79999999999998" width="19" height="10"
@@ -1208,10 +1216,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="1059.6491228070176" y="131.766"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">11.53</text>
                       <text textAnchor="middle" x="1059.6491228070176" y="131.766"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">11.53</text>
                     </g>
                     <rect x="1047.6491228070176" y="123.26599999999999" width="24" height="10"
@@ -1224,10 +1232,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="1081.877192982456" y="131.05399999999997"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">11.57</text>
                       <text textAnchor="middle" x="1081.877192982456" y="131.05399999999997"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">11.57</text>
                     </g>
                     <rect x="1069.877192982456" y="122.55399999999997" width="24" height="10"
@@ -1240,10 +1248,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="1104.1052631578948" y="130.342"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">11.61</text>
                       <text textAnchor="middle" x="1104.1052631578948" y="130.342"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">11.61</text>
                     </g>
                     <rect x="1092.1052631578948" y="121.84200000000001" width="24" height="10"
@@ -1256,10 +1264,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="1126.3333333333333" y="124.82399999999998"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">11.92</text>
                       <text textAnchor="middle" x="1126.3333333333333" y="124.82399999999998"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">11.92</text>
                     </g>
                     <rect x="1114.3333333333333" y="116.32399999999998" width="24" height="10"
@@ -1272,10 +1280,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="1148.561403508772" y="121.798"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">12.09</text>
                       <text textAnchor="middle" x="1148.561403508772" y="121.798"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">12.09</text>
                     </g>
                     <rect x="1136.061403508772" y="113.298" width="25" height="10" stroke="none"
@@ -1288,10 +1296,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="1170.7894736842104" y="120.72999999999999"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">12.15</text>
                       <text textAnchor="middle" x="1170.7894736842104" y="120.72999999999999"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">12.15</text>
                     </g>
                     <rect x="1158.2894736842104" y="112.22999999999999" width="25" height="10"
@@ -1304,10 +1312,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="1193.017543859649" y="119.66199999999998"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">12.21</text>
                       <text textAnchor="middle" x="1193.017543859649" y="119.66199999999998"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">12.21</text>
                     </g>
                     <rect x="1180.517543859649" y="111.16199999999998" width="25" height="10"
@@ -1320,10 +1328,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="1215.2456140350878" y="119.30599999999998"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">12.23</text>
                       <text textAnchor="middle" x="1215.2456140350878" y="119.30599999999998"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">12.23</text>
                     </g>
                     <rect x="1202.7456140350878" y="110.80599999999998" width="25" height="10"
@@ -1336,10 +1344,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="1237.4736842105262" y="117.88199999999998"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">12.31</text>
                       <text textAnchor="middle" x="1237.4736842105262" y="117.88199999999998"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">12.31</text>
                     </g>
                     <rect x="1224.9736842105262" y="109.38199999999998" width="25" height="10"
@@ -1352,10 +1360,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="1259.701754385965" y="117.16999999999999"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">12.35</text>
                       <text textAnchor="middle" x="1259.701754385965" y="117.16999999999999"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">12.35</text>
                     </g>
                     <rect x="1247.201754385965" y="108.66999999999999" width="25" height="10"
@@ -1368,10 +1376,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="1281.9298245614034" y="115.924"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">12.42</text>
                       <text textAnchor="middle" x="1281.9298245614034" y="115.924"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">12.42</text>
                     </g>
                     <rect x="1269.4298245614034" y="107.424" width="25" height="10" stroke="none"
@@ -1384,10 +1392,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="1304.157894736842" y="114.678"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">12.49</text>
                       <text textAnchor="middle" x="1304.157894736842" y="114.678"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">12.49</text>
                     </g>
                     <rect x="1291.657894736842" y="106.178" width="25" height="10" stroke="none"
@@ -1400,10 +1408,10 @@ export default function Home() {
                       fillOpacity="0" fill="#ffffff"></rect>
                     <g>
                       <text textAnchor="middle" x="1326.3859649122808" y="106.31199999999998"
-                        font-family="Arial" font-size="10" stroke="#ffffff" strokeWidth="3"
+                        fontFamily="Arial" fontSize="10" stroke="#ffffff" strokeWidth="3"
                         fill="#ff9900" aria-hidden="true">12.96</text>
                       <text textAnchor="middle" x="1326.3859649122808" y="106.31199999999998"
-                        font-family="Arial" font-size="10" stroke="none" strokeWidth="0"
+                        fontFamily="Arial" fontSize="10" stroke="none" strokeWidth="0"
                         fill="#ff9900">12.96</text>
                     </g>
                     <rect x="1313.8859649122808" y="97.81199999999998" width="25" height="10"
@@ -1416,8 +1424,31 @@ export default function Home() {
           </svg>
         </Box>
         <p className='w-full text-center mt-[4rem] mb-6'>Empresas e Parceiros que confiam na <b>BDM Digital</b></p>
-        <Box className='p-5'>
-          Conteudo
+        <Box className='p-5 overflow-auto flex items-center max-w-100
+          [&::-webkit-scrollbar]:h-1
+          [&::-webkit-scrollbar-track]:bg-transparent
+          [&::-webkit-scrollbar-track]:ms-7
+          [&::-webkit-scrollbar-track]:me-7
+          [&::-webkit-scrollbar-track]:rounded-full
+          [&::-webkit-scrollbar-thumb]:bg-yellow-500
+          [&::-webkit-scrollbar-thumb]:rounded-full
+          [&::-webkit-scrollbar-thumb]:cursor-move
+        '>
+          <LazyLoadImage src={'img/logo-rodape-bdmbank.png'} />
+          <LazyLoadImage src={'img/logo-rodape-bdmdigital.png'} />
+          <LazyLoadImage src={'img/logo-rodape-bkc-ceramica.png'} />
+          <LazyLoadImage src={'img/logo-rodape-dakila-pesquisas.png'} />
+          <LazyLoadImage src={'img/logo-rodape-ecossistema-dakila.png'} />
+          <LazyLoadImage src={'img/logo-rodape-kimberlito.png'} />
+          <LazyLoadImage src={'img/logo-rodape-kion.png'} />
+          <LazyLoadImage src={'img/logo-rodape-ratanaba.png'} />
+          <LazyLoadImage src={'img/logo-rodape-recanto-avalon.png'} />
+          <LazyLoadImage src={'img/logo-rodape-recanto-peabiru.png'} />
+          <LazyLoadImage src={'img/logo-rodape-ta-na-mao.png'} />
+          <LazyLoadImage src={'img/logo-rodape-universidade-dakila.png'} />
+          <LazyLoadImage src={'img/logo-rodape-zigurats-materiais-construcao.png'} />
+          <LazyLoadImage src={'img/logo-rodape-zigurats.png'} />
+          <LazyLoadImage src={'img/logo-rodape-ziguratur.png'} />
         </Box>
       </Section>
 
