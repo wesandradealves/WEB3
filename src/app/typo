@@ -1,6 +1,0 @@
-
-export interface CardsTypo {
-  title?: string;
-  text?: string;
-  image?: string;
-}
