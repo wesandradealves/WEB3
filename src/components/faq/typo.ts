@@ -4,5 +4,6 @@ export interface FAQItem {
 }
   
 export interface Props {
+    className: string;
     data: FAQItem[];
 }
