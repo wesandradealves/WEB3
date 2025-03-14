@@ -5,6 +5,7 @@ import { Props } from './typo';
 import Section from '../section/section';
 import { Select } from './style';
 import DynamicComponent from '../DynamicComponent/DynamicComponent';
+import classNames from 'classnames';
 
 export default function SectionSwitcher({ data, className, title, background }: Props) {
     const [selectedValue, setSelectedValue] = useState(data.length > 0 ? data[0].machineName : '');
@@ -42,7 +43,10 @@ export default function SectionSwitcher({ data, className, title, background }: 
             <div className='flex flex-wrap justify-between gap-12 xl:gap-[137px] items-start xl:pt-12'>
                 <Select ref={selectRef} onClick={() => setIsExpanded(!isExpanded)} className='flex w-full xl:max-w-[273px] items-center rounded-full overflow-hidden flex-wrap justify-between pt-1 pb-1 ps-6 pe-6'>
                     <span className='flex-1 overflow-hidden relative'>
-                        <select className={`w-[200%] cursor-pointer ${isExpanded ? 'expanded' : ''}`} value={selectedValue} onChange={handleChange}>
+                        <select 
+                        className={classNames(`w-[100%] appearance-none bg-none cursor-pointer`, {
+                            'expanded': isExpanded
+                        })} value={selectedValue} onChange={handleChange}>
                             {data.map((item, index) => (
                                 <option key={index} value={item.machineName}>{item.label}</option>
                             ))}
