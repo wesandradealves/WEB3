@@ -35,7 +35,6 @@ export default function SectionSwitcher({ data, className, title, background }: 
                 <Select ref={selectRef} onClick={() => setIsExpanded(!isExpanded)} className='flex w-full max-w-[273px] items-center rounded-full overflow-hidden flex-wrap justify-between pt-1 pb-1 ps-6 pe-6'>
                     <span className='flex-1 overflow-hidden relative'>
                         <select className={`w-[200%] cursor-pointer ${isExpanded ? 'expanded' : ''}`} value={selectedValue} onChange={handleChange}>
-                            <option value=''>-</option>
                             {data.map((item, index) => (
                                 <option key={index} value={item.machineName}>{item.label}</option>
                             ))}
