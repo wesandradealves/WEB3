@@ -19,11 +19,11 @@ export const ListItem = styled.li<Typo>`
         color: ${props => props.defaultexpanded && props.defaultexpanded == "on" ? "initial" : props.theme._colors.primary.bdm1}
     }
     &.expanded {
-        [class*="fa-"] {
+        .arrow {
             transform: rotate(180deg);
         }
     }
-    [class*="fa-"] {
+    .arrow {
         font-size: ${pxToRem(14)};
         color: ${props => props.theme._colors.primary.bdm1};
     }

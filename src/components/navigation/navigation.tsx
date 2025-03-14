@@ -7,6 +7,7 @@ import { navigation } from './typo';
 import Button from '../button/button';
 import { useState, useRef, useEffect } from 'react';
 import classNames from 'classnames';
+import { FaAngleDown } from 'react-icons/fa';
 
 export default function Navigation({ children, className, mobile, data, ListClassName, isScrolling, defaultexpanded }: Props) {
     const [expandedItems, setExpandedItems] = useState<{ [key: number]: boolean }>({});
@@ -80,7 +81,7 @@ export default function Navigation({ children, className, mobile, data, ListClas
                             {row?.type && row.type == 'button' ? <Button effect={row?.btnAnimation} className={row?.btnClass} href={row.url} tag={'a'}>{row.title}</Button> : <Link className='flex items-center gap-3' title={row.title} href={row.url} onClick={(event) => handleLinkClick(event, row.url)}>
                                 {row.title}
         
-                                {row?.below && row.below.length && !defaultexpanded && <i className="fa-solid fa-angle-down" onClick={() => toggleExpand(i)}></i>}
+                                {row?.below && row.below.length && !defaultexpanded && <FaAngleDown className='arrow' onClick={() => toggleExpand(i)} />}
                             </Link>}
                             {row?.below && row.below.length && <Submenu 
                                 className={classNames('left-0', { 

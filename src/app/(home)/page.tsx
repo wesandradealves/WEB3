@@ -6,6 +6,7 @@ import Card from "@/components/card/card";
 import { Props } from "@/components/card/typo";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { motion } from 'framer-motion';
+import SectionSwitcher from "@/components/sectionSwitcher/sectionSwitcher";
 
 export default function Home() {
   return (
@@ -1452,11 +1453,15 @@ export default function Home() {
         </Box>
       </Section>
 
-      <Section
-        background='linear-gradient(180deg, #161516 54.74%, #777777 91.02%)'
-        title='<span><b>DBM Digital:</b></span>  <b>Sua Ponte para o Metaverso</b>' >
-        <>Conteudo</>
-      </Section>
+      <SectionSwitcher 
+        data={[
+            {
+              machineName: 'faq',
+              label: 'FAQ'
+            }
+        ]}
+        background='linear-gradient(180deg, #161516 54.74%, #777777 91.02%)' 
+        title='<span><b>DBM Digital:</b></span>  <b>Sua Ponte para o Metaverso</b>' />
     </>
   );
 }
