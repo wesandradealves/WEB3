@@ -48,7 +48,7 @@ export default function SectionSwitcher({ data, className, title, background }: 
                             ))}
                         </select>
                     </span>
-                    {Icon && <Icon className='arrow ms-auto pointer-events-auto -ms-5 cursor-pointer' />}
+                    {Icon && <Icon className='arrow ms-auto pointer-events-none -ms-20 cursor-pointer' />}
                 </Select>
                 {selectedValue && (<DynamicComponent className='flex-1' machineName={selectedValue} />)}
             </div>
