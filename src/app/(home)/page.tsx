@@ -1435,32 +1435,40 @@ export default function Home() {
           [&::-webkit-scrollbar-thumb]:rounded-full
           [&::-webkit-scrollbar-thumb]:cursor-move
         '>
-          <LazyLoadImage src={'img/logo-rodape-bdmbank.png'} />
-          <LazyLoadImage src={'img/logo-rodape-bdmdigital.png'} />
-          <LazyLoadImage src={'img/logo-rodape-bkc-ceramica.png'} />
-          <LazyLoadImage src={'img/logo-rodape-dakila-pesquisas.png'} />
-          <LazyLoadImage src={'img/logo-rodape-ecossistema-dakila.png'} />
-          <LazyLoadImage src={'img/logo-rodape-kimberlito.png'} />
-          <LazyLoadImage src={'img/logo-rodape-kion.png'} />
-          <LazyLoadImage src={'img/logo-rodape-ratanaba.png'} />
-          <LazyLoadImage src={'img/logo-rodape-recanto-avalon.png'} />
-          <LazyLoadImage src={'img/logo-rodape-recanto-peabiru.png'} />
-          <LazyLoadImage src={'img/logo-rodape-ta-na-mao.png'} />
-          <LazyLoadImage src={'img/logo-rodape-universidade-dakila.png'} />
-          <LazyLoadImage src={'img/logo-rodape-zigurats-materiais-construcao.png'} />
-          <LazyLoadImage src={'img/logo-rodape-zigurats.png'} />
-          <LazyLoadImage src={'img/logo-rodape-ziguratur.png'} />
+          {[
+            'img/logo-rodape-bdmbank.png',
+            'img/logo-rodape-bdmdigital.png',
+            'img/logo-rodape-bkc-ceramica.png',
+            'img/logo-rodape-dakila-pesquisas.png',
+            'img/logo-rodape-ecossistema-dakila.png',
+            'img/logo-rodape-kimberlito.png',
+            'img/logo-rodape-kion.png',
+            'img/logo-rodape-ratanaba.png',
+            'img/logo-rodape-recanto-avalon.png',
+            'img/logo-rodape-recanto-peabiru.png',
+            'img/logo-rodape-ta-na-mao.png',
+            'img/logo-rodape-universidade-dakila.png',
+            'img/logo-rodape-zigurats-materiais-construcao.png',
+            'img/logo-rodape-zigurats.png',
+            'img/logo-rodape-ziguratur.png'
+          ].map((logo, index) => (
+            <LazyLoadImage key={index} src={logo} />
+          ))}
         </Box>
       </Section>
 
       <SectionSwitcher 
         data={[
           {
+            machineName: 'media',
+            label: 'Media'
+          },
+          {
             machineName: 'faq',
             label: 'FAQ'
           }, {
             machineName: 'opnioes',
-            label: 'Opnioes'
+            label: 'Opniões'
           }
         ]}
         background='linear-gradient(180deg, #161516 54.74%, #777777 91.02%)' 
