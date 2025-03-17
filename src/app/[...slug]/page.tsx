@@ -8,9 +8,6 @@ export default function Single() {
 
   useEffect(() => {
     if (slug) {
-      // Fetch or retrieve the media data based on the slug
-      // For example, you can use an API call to get the data
-      // setMediaData(fetchMediaData(slug));
       console.log(`Slug received: ${slug}`);
     }
   }, [slug]);
