@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import Script from 'next/script';
 import { useMetadata } from '@/hooks/useMetadata';
 import {
@@ -11,6 +11,8 @@ const theme = {
 };
 import { App, GlobalStyle } from '@/app/style';
 import '@/assets/scss/globals.scss';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import { AnimatePresence, motion, useScroll } from 'motion/react';
 import { ThemeProvider } from 'styled-components';
 import StyledJsxRegistry from './registry';

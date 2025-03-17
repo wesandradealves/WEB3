@@ -1,5 +1,6 @@
 import styled, {createGlobalStyle} from "styled-components";
 import { pxToRem } from "@/utils";
+
 export const GlobalStyle = createGlobalStyle `
     *,
     *:before,

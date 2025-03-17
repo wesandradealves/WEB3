@@ -1455,10 +1455,13 @@ export default function Home() {
 
       <SectionSwitcher 
         data={[
-            {
-              machineName: 'faq',
-              label: 'FAQ'
-            }
+          {
+            machineName: 'faq',
+            label: 'FAQ'
+          }, {
+            machineName: 'opnioes',
+            label: 'Opnioes'
+          }
         ]}
         background='linear-gradient(180deg, #161516 54.74%, #777777 91.02%)' 
         title='<span><b>DBM Digital:</b></span>  <b>Sua Ponte para o Metaverso</b>' />
