@@ -15,7 +15,7 @@ export default function Faq({ data = [
     question: "Existe tarifa?",
     answer: "Instalar o APP é sem custo, não existe mensalidade nem anuidades, muito menos taxa de adesão. Para transferências entre contas BDM é cobrado 0,01 BDM, independente dos valores transferidos. Para a venda de BDM DIGITAL, existe um deságio de 10% em cima do valor solicitado, que corresponde exatamente com a cotação de venda. Tudo isso já é calculado pelo aplicativo."
   },
-], className }: Props) {
+] as { question: string; answer: string }[], className }: Props) {
   const [expandedItems, setExpandedItems] = useState<{ [key: number]: boolean }>({});
 
   const toggleItem = (index: number) => {
