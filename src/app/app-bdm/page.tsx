@@ -30,8 +30,8 @@ export default function AppDownloadPage() {
           {/* Textos Esquerda */}
           <div className="space-y-8">
             <Card
-              title="Banco de Forma Crítica"
-              text="Garantia total de até 50 mil euros"
+              title="<span>Obtenha seu cartão <br> BDM de forma gratuíta</span>"
+              text="Não é necessário histórico de crédito, <br> verificação de crédito ou depósito mínimo."
               gap={4}
             />
             <Card
