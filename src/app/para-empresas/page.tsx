@@ -11,6 +11,7 @@ export default function ParaEmpresas() {
       title='<b>Para Empresas</b>'>
       <ContentBox
         reverse={true}
+        img='/img/bdm-pos.png'
         className='pt-[3rem] lg:pt-[6rem]'
         title='<b><span>BDM</span> POS</b>'
         text='
@@ -28,6 +29,7 @@ export default function ParaEmpresas() {
         reverse={true}
         className='pt-[3rem] lg:pt-[6rem]'
         title='<b>BD<span>MAP</span></b>'
+        img='/img/bdm-map.png'
         text='
           <ul>
             <li>Encontre e seja encontrado: negócios locais e globais que aceitam BDM Digital em tempo real.</li>
@@ -41,6 +43,7 @@ export default function ParaEmpresas() {
       <ContentBox
         className='pt-[3rem] lg:pt-[6rem]'
         title='<b>BDM<span>PAY</span></b>'
+        img='/img/bdm-pay.png'
         text='
           <ul>
             <li>Encontre negócios locais e globais que aceitam BDM Digital em tempo real.</li>

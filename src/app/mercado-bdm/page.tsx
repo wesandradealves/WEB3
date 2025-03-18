@@ -12,6 +12,7 @@ export default function MercadoBDM() {
       <ContentBox 
         className='pt-[3rem] lg:pt-[6rem]'
         title='<b><span>Mercado</span> BDM</b>'
+        img='/img/mercado-bdm.png'
         text='
           <ul>
             <li>Encontre negócios locais e globais que aceitam BDM Digital em tempo real.</li>
@@ -27,6 +28,7 @@ export default function MercadoBDM() {
         className='pt-[3rem] lg:pt-[6rem]'
         reverse={true}
         title='<b><span>Ofertas</span></b>'
+        img='/img/ofertas.png'
         text='
           <ul>
             <li>Cadastre sua oferta pública ou privada</li>
