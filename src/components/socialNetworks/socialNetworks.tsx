@@ -39,7 +39,6 @@ export default function SocialNetworks({ data, className }: Props) {
                             href={item.url}
                             target="_blank"
                             rel="noopener"
-                            className="text-black hover:opacity-70"
                         >
                             {IconComponent && <IconComponent />}
                         </a>

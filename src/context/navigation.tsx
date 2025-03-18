@@ -22,7 +22,7 @@ export const NavigationProvider = ({ children }: { children: ReactNode }) => {
     { title: 'Mercado BDM', url: 'mercado-bdm' },
     { title: 'Clientes', url: 'clientes' },
     { title: 'Para empresas', url: 'para-empresas' },
-    { title: 'Sobre nós', url: '#' },
+    { title: 'Sobre nós', url: 'sobre-nos' },
   ]);
 
   return (

@@ -30,7 +30,8 @@ export const ListItem = styled.li<Typo>`
 `;
 
 export const List = styled.ul`
- 
+    list-style: none;
+    line-height: 1;
 `;
 
 export const Container = styled.nav<Typo>`

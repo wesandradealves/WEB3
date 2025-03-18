@@ -9,7 +9,7 @@ export default function Card({ className, title, text, image, gap }: Props) {
   return (
     <Container className={`card flex flex-col gap-${gap ?? 3 } ${className}`}>
       {image && (
-        <LazyLoadImage className='max-w-[100%] me-auto ' alt={title} src={image} />
+        <LazyLoadImage className='max-w-[100%] me-auto' alt={title} src={image} />
       )}
       {title && (
         <Title dangerouslySetInnerHTML={{ __html: title }} />

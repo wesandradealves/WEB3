@@ -9,6 +9,7 @@ export interface Props {
     backgroundattachment?: string;
     className?: string;
     id?: string;
-    children: React.ReactNode;
+    direction?: string;
+    children?: React.ReactNode;
     barstitle?: string;
 }
