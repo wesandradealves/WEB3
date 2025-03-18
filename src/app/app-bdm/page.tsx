@@ -35,8 +35,8 @@ export default function AppDownloadPage() {
               gap={4}
             />
             <Card
-              title="Segurança Máxima"
-              text="Certificação digital de última geração"
+              title="<span>Consiga comprar e vender <br> BDM com desconto</span>"
+              text="Com o Mercado BDM você <br> consegue utilizar o saldo de sua <br> conta BDM Digital para comprar e <br> vender ativos com desconto."
               gap={4}
             />
           </div>
@@ -55,13 +55,13 @@ export default function AppDownloadPage() {
           {/* Textos Direita */}
           <div className="space-y-8">
             <Card
-              title="Transações Ilimitadas"
-              text="Envie e receba valores sem restrições"
+              title="<span>Transações Ilimitadas</span>"
+              text="Envie e Receba valores sem limitações <br> ou restrições, no BDM Digital <br> você pode mais"
               gap={4}
             />
             <Card
-              title="Suporte 24/7"
-              text="Atendimento especializado sempre disponível"
+              title="<span>Disponível no Brasil <br> e fora dele</span>"
+              text="BDM Digital não está disponível <br> somente no Brasil, você poderá <br> pagar com BDM também na Europa!"
               gap={4}
             />
           </div>
@@ -69,19 +69,22 @@ export default function AppDownloadPage() {
       </Section>
 
       {/* Seção 3 - Download do App */}
-      <Section title="Download do App" backgroundcolor="primary-bdm0" className="py-16 text-center">
+      <Section title="" backgroundcolor="primary-bdm0" className="py-16 text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-8">
-          Baixe já o app BDM Digital
+        Baixe já o app <span className="text-yellow-500">BDM Digital</span>
         </h2>
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-2x2 mx-auto">
           <Image
-            src="/img/app-store-badges.png"
+            src="/img/download-now.png"
             alt="Disponível nas App Stores"
-            width={600}
-            height={200}
+            width={950}
+            height={600}
             className="mx-auto"
           />
+          <br/>
         </div>
+        <li>Blockchain própria com Proof-of-Stake aprimorado: validações em segundos e mais de 100 serviços globais.</li>
+        <li>Integração via API para e-commerce e sistemas empresariais. </li>
       </Section>
     </PageLayout>
   );
