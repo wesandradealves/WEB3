@@ -48,7 +48,7 @@ const Header = ({ scrollPosition }: Props) => {
             </div>
             
             <Navigation isScrolling={scrollPosition} className='hidden xl:flex flex-1' ListClassName='gap-6 2xl:gap-20 justify-center items-center' data={[
-              { title: 'Soluções e Produtos', url: '#', below: [
+              { title: 'Aplicativo BDM', url: '/app-bdm-page', below: [
                 { title: 'Ouro', url: '#' },
                 { title: 'Prata', url: '#' },
               ] },
