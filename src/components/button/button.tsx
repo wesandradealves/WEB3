@@ -12,7 +12,7 @@ export default function Button({ href, radius, className, effect, tag: Tag = 'bu
     <Container 
       radius={radius} 
       href={href} 
-      className={classNames('button', className, {
+      className={classNames('button text-center', className, {
         'animate__animated': hovered,
         [`animate__${effect}`]: hovered && effect
       })} 

@@ -1,6 +1,5 @@
 'use client';
 import Script from 'next/script';
-import { useMetadata } from '@/hooks/useMetadata';
 import {
   _colors,
   _breakpoints,
@@ -20,6 +19,7 @@ import { Suspense, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import Header from '@/components/header/header';
 import Footer from '@/components/footer/footer';
+import { NavigationProvider } from '../context/navigation';
 
 export default function RootLayout({
   children,
@@ -43,14 +43,6 @@ export default function RootLayout({
     };
   }, [scrollY]);
 
-  useMetadata({
-    title: 'Dourado Cash',
-    description: 'Onde o dinheiro se transforma em Ouro!',
-    // favicon: './favicon.png',
-    ogTitle: 'Dourado Cash',
-    // ogImage: '//mercado.dourado.cash/icons/Icon-192.png',
-  });
-
   return (
     <html lang='pt-br' ref={scrollRef}>    
       <body suppressHydrationWarning={true}
@@ -61,28 +53,30 @@ export default function RootLayout({
           strategy='afterInteractive'
         />
         <ThemeProvider theme={theme}>
-            <Suspense fallback={<div>Loading...</div>}>
-              <StyledJsxRegistry>
-                <AnimatePresence
-                  mode='wait'
-                  initial={true}
-                  onExitComplete={() => window.scrollTo(0, 0)}
-                >
-                  <App id='primary'>
-                    <motion.div
-                      className='min-h-screen flex flex-start flex-col'
-                      initial={{ x: 0, opacity: 0 }}
-                      animate={{ x: 0, opacity: 1 }}
-                      exit={{ x: 0, opacity: 0 }}
-                    >
-                      <Header scrollPosition={scrollPosition} />
-                      {children}
-                      <Footer/>
-                    </motion.div>
-                  </App>
-                </AnimatePresence>
-              </StyledJsxRegistry>
-            </Suspense>
+            <NavigationProvider>
+              <Suspense fallback={<div>Loading...</div>}>
+                <StyledJsxRegistry>
+                  <AnimatePresence
+                    mode='wait'
+                    initial={true}
+                    onExitComplete={() => window.scrollTo(0, 0)}
+                  >
+                    <App id='primary'>
+                      <motion.div
+                        className='min-h-screen flex flex-start flex-col'
+                        initial={{ x: 0, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        exit={{ x: 0, opacity: 0 }}
+                      >
+                        <Header scrollPosition={scrollPosition} />
+                        {children}
+                        <Footer/>
+                      </motion.div>
+                    </App>
+                  </AnimatePresence>
+                </StyledJsxRegistry>
+              </Suspense>
+            </NavigationProvider>
             <GlobalStyle />
         </ThemeProvider>
       </body>

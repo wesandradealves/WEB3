@@ -9,9 +9,11 @@ import { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import Props from './typo';
 import LanguageSwitcher from '../languageSwitcher/languageSwitcher';
+import { useNavigation } from '@/context/navigation';
 
 const Header = ({ scrollPosition }: Props) => {
   const [expanded, setExpand] = useState<boolean>(false);
+  const { menuData } = useNavigation();
 
   useEffect(() => {
       if (scrollPosition) {
@@ -47,16 +49,7 @@ const Header = ({ scrollPosition }: Props) => {
               </Link>
             </div>
             
-            <Navigation isScrolling={scrollPosition} className='hidden xl:flex flex-1' ListClassName='gap-6 2xl:gap-20 justify-center items-center' data={[
-              { title: 'Soluções e Produtos', url: '#', below: [
-                { title: 'Ouro', url: '#' },
-                { title: 'Prata', url: '#' },
-              ] },
-              { title: 'Mercados', url: '#' },
-              { title: 'Clientes', url: '#' },
-              { title: 'Para empresas', url: '#' },
-              { title: 'Sobre nós', url: '#' },
-            ]} />
+            <Navigation isScrolling={scrollPosition} className='hidden xl:flex flex-1' ListClassName='gap-6 2xl:gap-20 justify-center items-center' data={menuData} />
 
             <div className='ms-auto flex items-center justify-end gap-6'>
 
@@ -104,16 +97,7 @@ const Header = ({ scrollPosition }: Props) => {
             'block': expanded,
             'hidden': !expanded
           })}
-          mobile={true} ListClassName='gap-6' data={[
-            { title: 'Soluções e Produtos', url: '#', below: [
-              { title: 'Ouro', url: '#' },
-              { title: 'Prata', url: '#' },
-            ] },
-            { title: 'Mercados', url: '#' },
-            { title: 'Clientes', url: '#' },
-            { title: 'Para empresas', url: '#' },
-            { title: 'Sobre nós', url: '#' },
-          ]}>
+          mobile={true} ListClassName='gap-6' data={menuData}>
             <LanguageSwitcher className="mt-6" data={[
               {
                 title: 'Portugês',
