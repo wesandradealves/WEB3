@@ -44,6 +44,13 @@ export const Container = styled.section<Typo>`
             color: ${props => props.theme._colors.primary.bdm3};
         }
     }
+    ul {
+        li {
+            span {
+                color: ${props => props.theme._colors.primary.bdm3};
+            }
+        }
+    }
 `;
 
 export const Title = styled.h2<Typo>`
@@ -56,10 +63,9 @@ export const Title = styled.h2<Typo>`
         color: ${props => props.theme._colors.primary.bdm3};
     }
     ${({ barstitle }) => (barstitle && barstitle == "on") && css`
-        position: relative;
         &::before,
         &::after {
-            position: relative;
+            position: absolute;
             display: block;
             content: '';
             right: 0;
@@ -70,6 +76,12 @@ export const Title = styled.h2<Typo>`
             background: -webkit-linear-gradient(90deg, rgba(2,0,36,0) 0%, ${props => props.theme._colors.primary.bdm3} 50%, rgba(0,212,255,0) 100%);
             background: linear-gradient(90deg, rgba(2,0,36,0) 0%, ${props => props.theme._colors.primary.bdm3} 50%, rgba(0,212,255,0) 100%);
             filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#020024",endColorstr="#00d4ff",GradientType=1);
+        }
+        &::before {
+            top: 0
+        }
+        &::after {
+            bottom: 0
         }
     `} 
 `;

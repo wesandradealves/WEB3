@@ -119,6 +119,17 @@ export const GlobalStyle = createGlobalStyle `
             background-color: ${props => props.theme._colors.primary.bdm0} !important;
         }
     } 
+
+    ul {
+        list-style: disc;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    .container {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
 `;
 
 export const App = styled.div `
