@@ -18,7 +18,7 @@ const NavigationContext = createContext<NavigationContextProps | undefined>(unde
 
 export const NavigationProvider = ({ children }: { children: ReactNode }) => {
   const [menuData, setMenuData] = useState<NavigationItem[]>([
-    { title: 'Soluções e Produtos', url: '#' },
+    { title: 'App BDM', url: 'app-bdm' },
     { title: 'Mercado BDM', url: 'mercado-bdm' },
     { title: 'Clientes', url: 'clientes' },
     { title: 'Para empresas', url: 'para-empresas' },
