@@ -78,6 +78,7 @@ export const GlobalStyle = createGlobalStyle `
         overflow-x: hidden;
         min-width: ${props => props.theme._breakpoints.sm};
         font-size: ${pxToRem(16)};
+        background: ${props => props.theme._colors.primary.bdm9};
     }
 
     ol,

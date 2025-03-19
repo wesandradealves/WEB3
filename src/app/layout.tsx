@@ -46,7 +46,7 @@ export default function RootLayout({
   return (
     <html lang='pt-br' ref={scrollRef}>    
       <body suppressHydrationWarning={true}
-        className={classNames('antialiased bg-black overflow-x-hidden')}
+        className={classNames('antialiased overflow-x-hidden')}
       >
         <Script
           src='https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js'

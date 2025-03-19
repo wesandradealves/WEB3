@@ -4,7 +4,7 @@ import Section from "@/components/section/section";
 import Box from "@/components/box/box";
 import Card from "@/components/card/card";
 import SocialNetworks from "@/components/socialNetworks/socialNetworks";
-import { SocialWrapper } from "./style";
+import { SocialWrapper } from "./styles";
 export default function SobreNos() {
     return (
         <>

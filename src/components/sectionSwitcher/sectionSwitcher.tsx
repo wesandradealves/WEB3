@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Props } from './typo';
 import Section from '../section/section';
-import { Select } from './style';
+import { Select } from './styles';
 import DynamicComponent from '../DynamicComponent/DynamicComponent';
 import classNames from 'classnames';
 

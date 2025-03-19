@@ -32,7 +32,7 @@ const ContentBox: React.FC<Props> = ({
           <LazyLoadImage className='min-w-[100%] object-cover' src={img} />
         </div>)}
 
-        <div className='flex-1 flex flex-col gap-10 leading-1'>
+        <div className='flex-1 flex flex-col gap-10 leading-none'>
           {title && <Title dangerouslySetInnerHTML={{ __html: title }} />}
           {text && <Text dangerouslySetInnerHTML={{ __html: text }} />}
           {url && btnLabel && <Button effect={btnAnimation} radius={16} tag="a" href={url} className={`${btnClass}`}>{btnLabel}</Button>}
