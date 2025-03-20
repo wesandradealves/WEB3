@@ -36,25 +36,31 @@ const Hero = (Props: Props) => {
   }, []);
 
   return (
-    <Container backgroundimage={Props.backgroundimage} className='w-full h-screen flex flex-col items-center justify-center relative overflow-hidden'>
-      {!isVideoLoaded && Props.data.placeholder && (
-        <Placeholder
-          loading='lazy'
-          src={Props.data.placeholder}
-          alt={Props.data.title}
-          className='opacity-25 block w-full h-full object-cover absolute top-0 left-0 z-0'
-        />
-      )}
-      <video
-        ref={videoRef}
-        src={Props.data.media}
-        className={`opacity-25 block w-full h-full object-cover absolute top-0 left-0 z-0 ${isVideoLoaded ? 'loaded' : ''}`}
-        autoPlay
-        loop
-        muted
-        onLoadedData={handleVideoLoad}
-        preload="none"
-      />
+    <Container backgroundimage={Props.data?.backgroundimage} className='w-full h-screen flex flex-col items-center justify-center relative overflow-hidden'>
+      {
+        !Props.data.backgroundimage && (
+          <>
+            {!isVideoLoaded && Props.data.placeholder && (
+              <Placeholder
+                loading='lazy'
+                src={Props.data.placeholder}
+                alt={Props.data.title}
+                className='opacity-25 block w-full h-full object-cover absolute top-0 left-0 z-0'
+              />
+            )}
+            <video
+              ref={videoRef}
+              src={Props.data.media}
+              className={`opacity-25 block w-full h-full object-cover absolute top-0 left-0 z-0 ${isVideoLoaded ? 'loaded' : ''}`}
+              autoPlay
+              loop
+              muted
+              onLoadedData={handleVideoLoad}
+              preload="none"
+            />
+          </>
+        )
+      }
       <div className='container relative z-1 m-auto flex flex-col gap-16 items-center justify-center'>
         {Props.data.title && <Title className='text-center' dangerouslySetInnerHTML={{ __html: Props.data.title }} />}
         {Props.data.text && <Text className='text-center' dangerouslySetInnerHTML={{ __html: Props.data.text }} />}

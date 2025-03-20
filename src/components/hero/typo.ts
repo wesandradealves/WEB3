@@ -7,10 +7,10 @@ interface Data {
   media?: string;
   placeholder?: string;
   btnAnimation?: string;
+  backgroundimage?: string;
 }
 
 export default interface Props {
   btnAnimation?: string;
   data: Data;
-  backgroundimage?: string;
 }
