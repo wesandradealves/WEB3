@@ -35,7 +35,7 @@ export default function AppDownloadPage() {
       <Section
         helper='+ 50.000 downloads & contando'
         title='<b>Sem taxas ocultas, conta 100% grátis.</b><br/>Sem barreiras para construir seu capital.'
-        className='xl:-mb-[6rem] overflow-hidden'>
+        className='-mb-[6rem] lg:mb-0 overflow-hidden'>
         <div className="flex justify-between">
           <div className='flex flex-col gap-[84px] pt-20'>
             <Card
@@ -65,7 +65,6 @@ export default function AppDownloadPage() {
                 className="m-auto max-w-[80%]"
               />
             </motion.div>
-
           </motion.div>
 
 
