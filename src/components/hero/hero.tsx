@@ -36,7 +36,7 @@ const Hero = (Props: Props) => {
   }, []);
 
   return (
-    <Container className='w-full h-screen flex flex-col items-center justify-center relative overflow-hidden'>
+    <Container backgroundimage={Props.backgroundimage} className='w-full h-screen flex flex-col items-center justify-center relative overflow-hidden'>
       {!isVideoLoaded && Props.data.placeholder && (
         <Placeholder
           loading='lazy'

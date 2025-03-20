@@ -5,8 +5,17 @@ export const Container = styled.header`
     transition: background-color 0.5s ease;
 
     ${List} {
-        ${ListItem} {
+        > ${ListItem} {
             color: white;
+            &.current,
+            &.expanded,
+            &:hover {
+                > a {
+                    &:not(.button) {
+                        color: ${props => props.theme._colors.primary.bdm1};
+                    }
+                }
+            }
         }
     }
 
@@ -31,14 +40,6 @@ export const Container = styled.header`
         &.is-active .hamburger-inner::after {
             background-color: ${props => props.theme._colors.primary.bdm1};
         } 
-    }
-
-    .navigation {
-        &.--shortcuts {
-            .list-item {
-                font-weight: 500;
-            }
-        }
     }
 
     .container {

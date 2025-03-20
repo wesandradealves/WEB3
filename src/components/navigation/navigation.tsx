@@ -8,10 +8,12 @@ import Button from '../button/button';
 import { useState, useRef, useEffect } from 'react';
 import classNames from 'classnames';
 import { FaAngleDown } from 'react-icons/fa';
+import { usePathname } from 'next/navigation';
 
 export default function Navigation({ children, className, mobile, data, ListClassName, isScrolling, defaultexpanded }: Props) {
     const [expandedItems, setExpandedItems] = useState<{ [key: number]: boolean }>({});
     const navRef = useRef<HTMLDivElement>(null);
+    const pathname = usePathname();
 
     useEffect(() => {
         if (isScrolling) {
@@ -66,7 +68,7 @@ export default function Navigation({ children, className, mobile, data, ListClas
             defaultexpanded={defaultexpanded}
             className={classNames(`navigation ${className}`, { '--mobile h-full w-full fixed top-0 z-1000': !!mobile })} ref={navRef}>
             <List 
-                className={classNames(`list w-full flex ${ListClassName}`, {
+                className={classNames(`list list-none w-full flex leading-none ${ListClassName}`, {
                     'container m-auto flex-col': mobile
                 })}>
 
@@ -74,9 +76,10 @@ export default function Navigation({ children, className, mobile, data, ListClas
                     return (
                         <ListItem 
                             defaultexpanded={defaultexpanded}
-                            className={classNames('item flex flex-col', row?.className, { 
+                            className={classNames('item font-bold flex flex-col', row?.className, { 
                             'expanded': expandedItems[i],
-                                [ListClassName || '']: mobile
+                                [ListClassName || '']: mobile,
+                                'current': pathname.replace('/', '') == row.url
                             })} key={i}>
                             {row?.type && row.type == 'button' ? <Button effect={row?.btnAnimation} className={row?.btnClass} href={row.url} tag={'a'}>{row.title}</Button> : <Link className='flex items-center gap-3' title={row.title} href={row.url} onClick={(event) => handleLinkClick(event, row.url)}>
                                 {row.title}
@@ -98,7 +101,7 @@ export default function Navigation({ children, className, mobile, data, ListClas
                                     })}>
                                     {row.below.map(function(below: navigation, j: number){
                                         return (
-                                            <ListItem className='item' key={j}>
+                                            <ListItem className='item font-normal' key={j}>
                                                 <Link title={below.title} href={below.url} onClick={(event) => handleLinkClick(event, below.url)}>
                                                     {below.title}
                                                 </Link>

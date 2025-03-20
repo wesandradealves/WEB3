@@ -12,7 +12,7 @@ export default function Card({ className, title, text, image, gap }: Props) {
         <LazyLoadImage className='max-w-[100%] me-auto' alt={title} src={image} />
       )}
       {title && (
-        <Title dangerouslySetInnerHTML={{ __html: title }} />
+        <Title className='font-bold' dangerouslySetInnerHTML={{ __html: title }} />
       )}
       {text && (
         <Text dangerouslySetInnerHTML={{ __html: text }} />

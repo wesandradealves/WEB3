@@ -25,6 +25,7 @@ export const Container = styled.div`
 `;
 
 export const Rating = styled.ul`
+
 `;
 
 export const Item = styled.article`
@@ -35,7 +36,6 @@ export const ItemInner = styled.div`
   ${Text} {
     font-size: ${pxToRem(14)};
   }
-  padding: 36px;
 `;
 
 export const Rate = styled.li`
@@ -45,6 +45,5 @@ export const Rate = styled.li`
 
 export const Title = styled.h3`
   font-size: ${pxToRem(12)};
-  font-weight: bold;
 `;
 

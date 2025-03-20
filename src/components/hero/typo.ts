@@ -12,4 +12,5 @@ interface Data {
 export default interface Props {
   btnAnimation?: string;
   data: Data;
+  backgroundimage?: string;
 }

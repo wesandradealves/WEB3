@@ -26,7 +26,6 @@ export const FaqItem = styled.div`
 `;
 
 export const Question = styled.h3`
-  font-weight: 700;
   font-size: ${pxToRem(18)};
   line-height: 1.4;
   color: black;

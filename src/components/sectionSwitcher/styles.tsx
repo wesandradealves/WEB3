@@ -8,7 +8,6 @@ export const Select = styled.div`
         border: 0;
         outline: initial;
         color: #FBFBFBE5;
-        font-weight: bold;
         font-size: ${pxToRem(32)};
         option {
             color: initial;

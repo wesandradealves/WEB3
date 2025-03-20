@@ -76,8 +76,8 @@ export default function Opnioes({ data = [{
       <Slider {...settings}>
         {data.map((item, index) => (
           <Item title={item.text} className='h-full cursor-pointer' key={index}>
-            <ItemInner className='flex flex-col gap-4 bg-white rounded-[48px] h-full'>
-              <Rating className='flex items-center gap-2'>
+            <ItemInner className='flex p-9 flex-col gap-4 bg-white rounded-[48px] h-full'>
+              <Rating className='flex items-center gap-2 list-none'>
                 {[...Array(5)].map((_, i) => (
                   <Rate key={i}>
                     {i < item.rating ? <FaStar /> : <FaRegStar />}
@@ -85,7 +85,7 @@ export default function Opnioes({ data = [{
                 ))}
               </Rating>
               {item.text && (<Text className='flex-1'>{truncateText(item.text, 80)}</Text>)}
-              <Title className='mt-auto'>{item.title}</Title>
+              <Title className='mt-auto font-bold'>{item.title}</Title>
             </ItemInner>
           </Item>
         ))}

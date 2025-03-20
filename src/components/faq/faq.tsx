@@ -35,7 +35,7 @@ export default function Faq({ data = [
             })}
             onClick={() => toggleItem(index)}
           >
-            <Question className="flex justify-between items-center gap-4">{item.question} {
+            <Question className="flex font-bold justify-between items-center gap-4">{item.question} {
               expandedItems[index] ? <FaAngleUp className='icon ms-auto pointer-events-auto -ms-5 cursor-pointer' /> : <FaAngleDown className='icon ms-auto pointer-events-auto -ms-5 cursor-pointer' />
             }</Question>
             <Answer

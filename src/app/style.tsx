@@ -79,11 +79,9 @@ export const GlobalStyle = createGlobalStyle `
         min-width: ${props => props.theme._breakpoints.sm};
         font-size: ${pxToRem(16)};
         background: ${props => props.theme._colors.primary.bdm9};
-    }
-
-    ol,
-    ul {
-        list-style: none;
+        * { 
+            transition: 30ms ease-in-out all;
+        }
     }
 
     blockquote,
@@ -121,6 +119,7 @@ export const GlobalStyle = createGlobalStyle `
         }
     } 
 
+    ol,
     ul {
         list-style: disc;
         line-height: 1.6;
