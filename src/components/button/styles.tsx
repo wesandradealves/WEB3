@@ -8,7 +8,6 @@ export interface Typo {
 export const Container = styled.button<Typo>`
   padding: ${pxToRem(17)} ${pxToRem(30)};
   border-radius: 4px;
-  font-weight: bold;
   font-size: ${pxToRem(18)};
   text-align: center;
   cursor: pointer;

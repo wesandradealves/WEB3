@@ -1,20 +1,26 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { pxToRem } from '@/utils';
 
-export const Container = styled.section`
+export interface Typo {
+    backgroundimage?: string;
+}
+
+export const Container = styled.section<Typo>`
     color: white;
     .button {
         padding-top: ${pxToRem(8)};
         padding-bottom: ${pxToRem(8)};
         padding-left: ${pxToRem(55)};
         padding-right: ${pxToRem(55)};
-        font-weight: 600;
         text-transform: uppercase;
         font-size: ${pxToRem(16)};
         @media screen and (min-width: ${props => props.theme._breakpoints.xxl}) {
             font-size: ${pxToRem(20)};
         }
     }
+    ${({ backgroundimage }) => backgroundimage && css`
+        background: url(${backgroundimage}) center center / cover no-repeat transparent;
+    `}  
 `;
 
 export const Placeholder = styled.img`

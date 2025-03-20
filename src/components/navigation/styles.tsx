@@ -10,7 +10,6 @@ export const Submenu = styled.div`
 `;
 
 export const ListItem = styled.li<Typo>`
-    font-weight: 700;
     position: relative;
     font-size: ${pxToRem(16)};
     line-height: ${pxToRem(24)};
@@ -30,8 +29,6 @@ export const ListItem = styled.li<Typo>`
 `;
 
 export const List = styled.ul`
-    list-style: none;
-    line-height: 1;
 `;
 
 export const Container = styled.nav<Typo>`
@@ -41,7 +38,6 @@ export const Container = styled.nav<Typo>`
             border-radius: ${pxToRem(10)};
             ${ListItem} {
                 color: black;
-                font-weight: 600;
                 &:hover {
                     color: ${props => props.defaultexpanded && props.defaultexpanded == "on" ? "initial" : "white"}
                 }

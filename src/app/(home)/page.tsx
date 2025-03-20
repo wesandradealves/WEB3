@@ -19,6 +19,7 @@ export default function Home() {
           url: '/',
           btnLabel: 'Comece Agora',
           btnClass: '--primary',
+          // backgroundimage: '/img/hero.gif',
           media: '/img/hero.mp4'
         }} />
 

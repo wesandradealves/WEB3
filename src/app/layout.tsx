@@ -46,7 +46,18 @@ export default function RootLayout({
   return (
     <html lang='pt-br' ref={scrollRef}>    
       <body suppressHydrationWarning={true}
-        className={classNames('antialiased overflow-x-hidden')}
+        className={classNames(
+          `antialiased 
+          overflow-x-hidden
+          [&::-webkit-scrollbar]:w-1
+          [&::-webkit-scrollbar-track]:bg-transparent
+          [&::-webkit-scrollbar-track]:ms-7
+          [&::-webkit-scrollbar-track]:me-7
+          [&::-webkit-scrollbar-track]:rounded-full
+          [&::-webkit-scrollbar-thumb]:bg-yellow-500
+          [&::-webkit-scrollbar-thumb]:rounded-full
+          [&::-webkit-scrollbar-thumb]:cursor-move
+          `)}
       >
         <Script
           src='https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js'

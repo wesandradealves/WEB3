@@ -5,6 +5,8 @@ import Box from "@/components/box/box";
 import Card from "@/components/card/card";
 import SocialNetworks from "@/components/socialNetworks/socialNetworks";
 import { SocialWrapper } from "./styles";
+import Bubbles from "@/components/bubbles/bubbles";
+
 export default function SobreNos() {
     return (
         <>
@@ -14,7 +16,21 @@ export default function SobreNos() {
                 backgroundimage='img/luz-lampada.png'
                 title='<b>Sobre Nós</b>'
                 barstitle="on">
-                <p className='text-center xl:pt-[117px] pb-[30px]'>De Uma Moeda Social a uma <span><b>Revolução Global</b></span></p>
+                <p className='text-center 2xl:pt-[117px] pb-[30px]'>De Uma Moeda Social a uma <span><b>Revolução Global</b></span></p>
+                <Bubbles data={[{
+                    title: '2015',
+                    text: 'Criação do BDM físico em cidades brasileiras',
+                    image: 'img/bdmicon.png'
+                },{
+                    title: '2021',
+                    text: 'Lançamento da Blockchain BDM',
+                    image: 'img/bdmicon.png'
+                },{
+                    title: '2024',
+                    text: 'Expansão para o Metaverso com Dourado.cash',
+                    image: 'img/bdmicon.png'
+                }]}
+                />
             </Section>
             <Section
                 backgroundattachment='fixed'

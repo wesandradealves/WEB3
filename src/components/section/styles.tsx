@@ -89,6 +89,16 @@ export const Title = styled.h2<Typo>`
 export const Subtitle = styled.p`
 `;
 
+export const Helper = styled.p`
+    text-transform: uppercase;
+    font-size: ${pxToRem(12)};
+    @media screen and (min-width: ${props => props.theme._breakpoints.xxl}) {
+        font-size: ${pxToRem(14)};
+    }
+`;
+
 export const SectionHeader = styled.div`
- 
+    ${Helper} {
+        color: ${props => props.theme._colors.primary.bdm3};
+    }
 `;

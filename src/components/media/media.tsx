@@ -83,7 +83,7 @@ export default function Media({ data = [
               <ItemInner className='flex flex-col gap-4 rounded-[48px] h-full overflow-hidden justify-start items-start'>
                 {item.img && (<LazyLoadImage className='w-full object-fit' src={item.img} alt={item.title} />)}
                 <div  className='flex flex-col gap-4 p-3 pb-8 mt-auto flex-1'>
-                  <Title>{item.title}</Title>
+                  <Title className='font-bold'>{item.title}</Title>
                   {item.text && (<Text className='text-center'>{truncateText(item.text || '', 80)}</Text>)}
                 </div>
               </ItemInner>

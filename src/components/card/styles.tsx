@@ -13,7 +13,6 @@ export const Container = styled.div`
 
 export const Title = styled.h3`
     font-size: ${pxToRem(24)};
-    font-weight: bold;
      span {
         color: ${props => props.theme._colors.primary.bdm3};
     }
