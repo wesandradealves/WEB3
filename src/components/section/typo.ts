@@ -10,6 +10,7 @@ export interface Props {
     className?: string;
     id?: string;
     direction?: string;
+    helper?: string;
     children?: React.ReactNode;
     barstitle?: string;
 }

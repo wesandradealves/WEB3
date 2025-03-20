@@ -38,14 +38,14 @@ export default function Bubbles({ className, data }: Props) {
             })}
           >
             <ImgWrapper className='flex  lg:hover:scale-[1.1] flex-col justify-center items-center  m-auto relative'>
-              <span className='rounded-full p-6 overflow-hidden z-10'>
+              <span className='rounded-full p-8 overflow-hidden z-10'>
                 <LazyLoadImage className='max-w-[100%]' src={item.image} />
               </span>
 
               {index < data.length - 1 && (
                   <Blob
                     className={classNames('absolute hidden lg:block transform z-1', {
-                      '-top-[27%] left-[60%] rotate-[16deg]': index % 2 !== 0,
+                      '-top-[19%] left-[60%] rotate-[16deg]': index % 2 !== 0,
                       'top-[37%] left-[62%] -rotate-[15deg]': index % 2 === 0,
                     })}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" fill="none" viewBox="0 0 200 200">

@@ -2,30 +2,42 @@
 
 import Section from '@/components/section/section';
 import Card from '@/components/card/card';
-import Image from 'next/image';
-import { SmallHighlight } from './style';
+import { motion, Variants } from 'framer-motion';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 export default function AppDownloadPage() {
+  const cardVariants: Variants = {
+    offscreen: {
+        y: 300,
+    },
+    onscreen: {
+        y: 50,
+        rotate: -10,
+        transition: {
+            type: "spring",
+            bounce: 0.4,
+            duration: 0.8,
+        },
+    },
+}
+
   return (
-    <PageLayout>
-      {/* Seção 1 - Hero com Background */}
-      <Section 
-        title=""
+    <>
+      <Section
+        backgroundattachment='fixed'
         backgroundimage='/img/bg-app-bdm.png'
-        className="relative min-h-[100vh] flex items-center"
+        className="min-h-[100vh] flex items-center"
       >
-        <div className="relative z-10 mx-auto text-center">
-         <Image src="/img/text-hero-app.svg" alt="BDM Digital" width={1250} height={1250} />
-          
+        <div className="m-auto text-center">
+          <LazyLoadImage src="/img/text-hero-app.svg" alt="BDM Digital" />
         </div>
       </Section>
-
-
-      {/* Seção 2 - Imagem Central com Informações */}
-      <Section title="" className="py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 relative">
-          {/* Textos Esquerda */}
-          <div className="space-y-8">
+      <Section
+        helper='+ 50.000 downloads & contando'
+        title='<b>Sem taxas ocultas, conta 100% grátis.</b><br/>Sem barreiras para construir seu capital.'
+        className='xl:-mb-[6rem] overflow-hidden'>
+        <div className="flex justify-between">
+          <div className='flex flex-col gap-[84px] pt-20'>
             <Card
               image='/img/app-1.png'
               title="Obtenha seu cartão <br> BDM de forma gratuíta"
@@ -40,26 +52,24 @@ export default function AppDownloadPage() {
             />
           </div>
 
-          {/* Imagem Central */}
-          <div className="absolute left-1/2 -translate-x-1/2 -translate-y-12 hidden md:block">
-          <SmallHighlight className="text-center mb-2">
-              +50.000 DOWNLOADS & CONTANDO
-            </SmallHighlight>
-          <p className="text-xl md:text-2x2 max-w-2x2 mx-auto text-center">
-            <b>Sem taxas ocultas, conta 100% grátis.</b><br/>
-            Sem barreiras para construir seu capital.
-          </p>
-            <Image
-              src="/img/smartphone2-appbdm.png"
-              alt="App Interface"
-              width={1000}
-              height={1000}
-              className="mx-auto"
-            />
-          </div>
+          <motion.div
+            className='flex-1 hidden xl:flex justify-center items-center'
+            initial="offscreen"
+            whileInView="onscreen"
+            viewport={{ amount: 0.8 }}
+          >
+            <motion.div variants={cardVariants}>
+              <LazyLoadImage
+                src="/img/smartphone2-appbdm.png"
+                alt="App Interface"
+                className="m-auto max-w-[80%]"
+              />
+            </motion.div>
 
-          {/* Textos Direita */}
-          <div className="space-y-8 md:ml-auto md:max-w-[500px] md:text-right">
+          </motion.div>
+
+
+          <div className='flex flex-col gap-[84px]  pt-20'>
             <Card
               image='/img/app-3.png'
               title="Transações Ilimitadas"
@@ -75,47 +85,21 @@ export default function AppDownloadPage() {
           </div>
         </div>
       </Section>
-
-      {/* Seção 3 - Download do App */}
-      <Section title="" backgroundcolor="primary-bdm0" className="py-16 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-8">
-        Baixe já o app <span className="text-yellow-500">BDM Digital</span>
-        </h2>
-        <div className="max-w-2x2 mx-auto">
-          <Image
+      <Section title='<b>Baixe já o app <span>BDM Digital</span></b>'>
+        <div className='flex flex-col items-center gap-12'>
+          <LazyLoadImage
+            className="inline-block"
             src="/img/download-now.png"
             alt="Disponível nas App Stores"
             width={950}
             height={600}
-            className="mx-auto"
           />
-          <br/>
+          <ul className='font-light'>
+            <li>Blockchain própria com Proof-of-Stake aprimorado: validações em segundos e mais de 100 serviços globais.</li>
+            <li>Integração via API para e-commerce e sistemas empresariais. </li>
+          </ul>
         </div>
-        <li>Blockchain própria com Proof-of-Stake aprimorado: validações em segundos e mais de 100 serviços globais.</li>
-        <li>Integração via API para e-commerce e sistemas empresariais. </li>
       </Section>
-    </PageLayout>
-  );
-}
-
-// Componente Layout da Página
-function PageLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="w-full">
-      {children}
-      <style jsx global>{`
-        /* Estilos para overlay do background */
-        section[background]::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
-          z-index: 0;
-        }
-      `}</style>
-    </div>
+    </>
   );
 }
