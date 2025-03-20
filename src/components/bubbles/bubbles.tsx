@@ -5,28 +5,45 @@ import { Props } from './typo';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Title, Text, Item, ImgWrapper, Blob } from './styles';
 import classNames from 'classnames';
+import { truncateText } from '../opnioes/opnioes';
+import { useEffect, useState } from 'react';
 
 export default function Bubbles({ className, data }: Props) {
+  const [isDesktop, setIsDesktop] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.outerWidth >= 1024); 
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    handleResize();
+    
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <Container 
-    className={classNames(`${className} flex flex-wrap list-none items-center justify-center gap-10 flex-col 2xl:flex-row`, {
-      '-mt-[54px]': data.length > 1
+    className={classNames(`${className} flex flex-wrap list-none items-center justify-center gap-10 flex-col lg:flex-row`, {
+      'lg:-mt-[54px]': data.length > 1
     })}>
       {data &&
         data.map((item, index) => (
           <Item
+            title={item.text}
             key={index}
             className={classNames('flex flex-col justify-center items-center gap-4 relative', {
-              '2xl:flex-col-reverse 2xl:pt-[125px] -me-[10px] -ms-[10px]': index % 2 !== 0, // Adiciona a classe para itens ímpares
+              'lg:flex-col-reverse lg:pt-[125px] -me-[10px] -ms-[10px]': index % 2 !== 0, 
             })}
           >
-            <ImgWrapper className='flex p-6 flex-col justify-center items-center rounded-full m-auto relative'>
+            <ImgWrapper className='flex p-6 lg:hover:scale-[1.1] flex-col justify-center items-center rounded-full m-auto relative'>
               <LazyLoadImage className='max-w-[100%]' src={item.image} />
               {index < data.length - 1 && (
                 <Blob 
-                className={classNames('absolute hidden 2xl:block transform', {
-                  '-top-[27%] left-[60%] rotate-[16deg]': index % 2 !== 0, // Adiciona a classe para itens ímpares
-                  'top-[37%] left-[62%] -rotate-[15deg]': index % 2 === 0, // Adiciona a classe para itens ímpares
+                className={classNames('absolute hidden lg:block transform', {
+                  '-top-[27%] left-[60%] rotate-[16deg]': index % 2 !== 0, 
+                  'top-[37%] left-[62%] -rotate-[15deg]': index % 2 === 0, 
                 })}>
                   <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" fill="none" viewBox="0 0 200 200">
                     <defs>
@@ -52,7 +69,7 @@ export default function Bubbles({ className, data }: Props) {
             </ImgWrapper>
             <div className='flex flex-col gap-1 text-center'>
               {item.title && <Title className='font-bold leading-none' dangerouslySetInnerHTML={{ __html: item.title }} />}
-              {item.text && <Text className='max-w-[190px] leading-[1.2] m-auto' dangerouslySetInnerHTML={{ __html: item.text }} />}
+              {item.text && <Text className='max-w-[150px] leading-[1.2] m-auto' dangerouslySetInnerHTML={{ __html: isDesktop ? truncateText(item.text, 37) : item.text }} />}
             </div>
           </Item>
         ))}
