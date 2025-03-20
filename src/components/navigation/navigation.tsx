@@ -94,7 +94,7 @@ export default function Navigation({ children, className, mobile, data, ListClas
                                     "absolute top-[100%]": !defaultexpanded
                                 })}>
                                 <List 
-                                    className={classNames('list flex flex-col', { 
+                                    className={classNames('list flex flex-col list-none', { 
                                         "p-0": defaultexpanded,
                                         "p-4": !defaultexpanded,
                                         [ListClassName || '']: mobile
