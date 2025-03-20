@@ -49,7 +49,7 @@ export default function RootLayout({
         className={classNames(
           `antialiased 
           overflow-x-hidden
-          [&::-webkit-scrollbar]:h-1
+          [&::-webkit-scrollbar]:w-1
           [&::-webkit-scrollbar-track]:bg-transparent
           [&::-webkit-scrollbar-track]:ms-7
           [&::-webkit-scrollbar-track]:me-7
