@@ -2,8 +2,36 @@
 
 import ContentBox from "@/components/ContentBox/ContentBox";
 import Section from "@/components/section/section";
+import Slider from "react-slick";
+import { Item, ItemInner, Title, Subtitle, SlideWrapper } from "./style";
+import { SliderTypo } from "./typo";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export default function ParaEmpresas() {
+  const settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    centerMode: false,
+    arrows: false,
+    initialSlide: 0,
+    slidesToScroll: 1
+  };
+
+  const slide: SliderTypo[] = [
+    {
+      image: 'img/integracao-bdmap.png',
+      title: 'mais clientes',
+      backtext: 'maior visibilidade',
+      subtitle: 'melhores receitas'
+    },    {
+      image: 'img/integracao-bdmap.png',
+      title: 'mais clientes',
+      backtext: 'maior visibilidade',
+      subtitle: 'melhores receitas'
+    }
+  ];
+
   return (
     <Section
       className='pt-[117px] lg:-mb-[6rem]'
@@ -24,6 +52,26 @@ export default function ParaEmpresas() {
         btnLabel='Saiba Mais'
         btnClass='--primary inline-block me-auto'
         btnAnimation='pulse' />
+
+      {slide && slide.length && (<SlideWrapper className='relative'><Slider {...settings}>
+        {slide.map((item, index) => {
+          return (
+            <Item
+              key={index}
+              className='pt-5'
+            >
+              <ItemInner className='flex flex-col gap-20 lg:gap-[6rem]'>
+                {(item.title || item.subtitle) && (<div className='flex flex-col items-center uppercase gap-4'>
+                  {item.title && (<Title data-backtext={item.backtext} className='font-normal leading-none text-center relative flex flex-col-reverse'>{item.title}</Title>)}
+                  {item.subtitle && (<Subtitle className='font-bold text-center p-2 pt-1 pb-1'>{item.subtitle}</Subtitle>)}
+                </div>)}
+
+                {item.image && (<LazyLoadImage className='w-full object-fit' src={item.image} alt={item.title} />)}
+              </ItemInner>
+            </Item>
+          );
+        })}
+      </Slider></SlideWrapper>)}
 
       <ContentBox
         reverse={true}

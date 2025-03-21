@@ -23,7 +23,7 @@ const ContentBox: React.FC<Props> = ({
   return (
     <Container className={classNames(className)}>
       <div 
-      className={classNames(`box container gap-10 flex flex-col lg:gap-20 justify-${justify ?? 'between'} items-${alignment ?? 'start'}`, {
+      className={classNames(`contentBox container gap-10 flex flex-col lg:gap-20 justify-${justify ?? 'between'} items-${alignment ?? 'start'}`, {
         'flex-wrap': wrap,
         'lg:flex-row': !reverse,
         'lg:flex-row-reverse': reverse
