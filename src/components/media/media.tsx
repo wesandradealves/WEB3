@@ -2,8 +2,7 @@
 
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Container, Title, Text, Item, ItemInner } from './styles';
-import { Props } from './typo';
-import { Data } from './typo';
+import { Props, Data } from './typo';
 import React from "react";
 import Slider from "react-slick";
 import { useRouter } from 'next/navigation';
