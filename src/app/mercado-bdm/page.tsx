@@ -35,7 +35,7 @@ export default function MercadoBDM() {
             </Numbers>
           </div>
       </Section>
-      <Section>
+      <Section className='lg:-mb-[6rem]'>
         <ContentBox 
           className='pt-[3rem] lg:pt-[6rem]'
           title='<b><span>Mercado</span> BDM</b>'

@@ -18,4 +18,9 @@ export const Container = styled.button<Typo>`
     color: black;
     background: var(--Dourado-Exchange-Dourado-Boto, linear-gradient(93deg, ${props => props.theme._colors.primary.bdm1} 1.67%, ${props => props.theme._colors.primary.bdm2} 83.65%));
   }
+  &.--secondary {
+    color: white;
+    border: 1px white solid;
+    background: transparent;
+  }
 `;
