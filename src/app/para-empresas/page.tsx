@@ -6,7 +6,7 @@ import Section from "@/components/section/section";
 export default function ParaEmpresas() {
   return (
     <Section
-      className='pt-[117px]'
+      className='pt-[117px] lg:-mb-[6rem]'
       barstitle='on'
       title='<b>Para Empresas</b>'>
       <ContentBox
