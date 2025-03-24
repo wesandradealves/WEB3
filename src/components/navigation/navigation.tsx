@@ -3,12 +3,12 @@
 import Link from 'next/link';
 import { Container, List, ListItem, Submenu } from './styles';
 import { Props } from './typo';
-import { navigation } from './typo';
 import Button from '../button/button';
 import { useState, useRef, useEffect } from 'react';
 import classNames from 'classnames';
 import { FaAngleDown } from 'react-icons/fa';
 import { usePathname } from 'next/navigation';
+import { NavigationItem } from '@/context/navigation';
 
 export default function Navigation({ children, className, mobile, data, ListClassName, isScrolling, defaultexpanded }: Props) {
     const [expandedItems, setExpandedItems] = useState<{ [key: number]: boolean }>({});
@@ -72,7 +72,7 @@ export default function Navigation({ children, className, mobile, data, ListClas
                     'container m-auto flex-col': mobile
                 })}>
 
-                {data && data.map(function(row: navigation, i: number){
+                {data && data.map(function(row: NavigationItem, i: number){
                     return (
                         <ListItem 
                             defaultexpanded={defaultexpanded}
@@ -99,7 +99,7 @@ export default function Navigation({ children, className, mobile, data, ListClas
                                         "p-4": !defaultexpanded,
                                         [ListClassName || '']: mobile
                                     })}>
-                                    {row.below.map(function(below: navigation, j: number){
+                                    {row.below.map(function(below: NavigationItem, j: number){
                                         return (
                                             <ListItem className='item font-normal' key={j}>
                                                 <Link title={below.title} href={below.url} onClick={(event) => handleLinkClick(event, below.url)}>

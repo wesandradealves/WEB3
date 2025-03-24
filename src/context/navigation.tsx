@@ -1,12 +1,13 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
-interface NavigationItem {
+export interface NavigationItem {
   title: string;
   url: string;
   className?: string;
   type?: string;
   btnAnimation?: string;
   btnClass?: string;
+  below?: NavigationItem[];
 }
 
 interface NavigationContextProps {
@@ -35,7 +36,7 @@ export const NavigationProvider = ({ children }: { children: ReactNode }) => {
 export const useNavigation = () => {
   const context = useContext(NavigationContext);
   if (!context) {
-    throw new Error('useNavigation must be used within a NavigationProvider');
+    throw new Error('useNavigation must be used within a provider');
   }
   return context;
 };
