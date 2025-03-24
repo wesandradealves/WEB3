@@ -16,7 +16,7 @@ export default function Section({ barstitle, direction, helper, children, backgr
         backgroundattachment={backgroundattachment}
         className={`w-full m-auto overflow-hidden relative ${ className }`}>
         <div className={`container relative m-auto flex flex-${direction ?? 'col'} pt-[6rem] pb-[6rem] gap-7`}>
-            <SectionHeader className='flex flex-col justify-center items-center text-center w-full gap-7'>
+            {(helper || title || subtitle) && (<SectionHeader className='flex flex-col justify-center items-center text-center w-full gap-7'>
                 {(helper || title) && (<span>
                   {helper && <Helper className='text-center' dangerouslySetInnerHTML={{ __html: helper }} />}
                   {title && <Title barstitle={barstitle} 
@@ -25,7 +25,7 @@ export default function Section({ barstitle, direction, helper, children, backgr
                   dangerouslySetInnerHTML={{ __html: title }} />}
                 </span>)}
                 {subtitle && <Subtitle className='text-center' dangerouslySetInnerHTML={{ __html: subtitle }} />}
-            </SectionHeader>
+            </SectionHeader>)}
             {children}
         </div>
     </Container>

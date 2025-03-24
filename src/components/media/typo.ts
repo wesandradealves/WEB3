@@ -1,11 +1,6 @@
-export interface Data {
-    id: number,
-    img?: string;
-    text?: string;
-    title: string;
-}
+import { MediaProp } from "@/context/media";
   
 export interface Props {
     className: string;
-    data: Data[];
+    data: MediaProp[];
 }
