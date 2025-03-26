@@ -37,7 +37,7 @@ export default function Home() {
               <LazyLoadImage className='w-auto' src={'img/coin.png'} />
             </motion.div>
           </div>
-          <div className='flex-1 hidden sm:block'><LazyLoadImage className='w-min-[100%]' src={'img/1.gif'} /></div>
+          <div className='flex-1 hidden sm:block'><LazyLoadImage className='w-min-[100%]' src={'img/2.gif'} /></div>
         </div>
         <p className='text-center'>O Metaverso e as criptomoedas estão redefinindo como negociamos, criamos e nos conectamos. <b>Na BDM Digital</b>, desenvolvemos a primeira <span>blockchain brasileira</span> com validação em segundos,
           usando um <b>Proof-of-Stake aprimorado</b>, para garantir transações rápidas e seguras. <br /><br />Combinada à <span><b>Dourado.cash</b></span>, nossa plataforma de pagamentos, oferecemos uma ponte entre o mundo físico e o digital, onde todos podem usufruir de liberdade financeira, seja em moeda social (BDM) ou em criptoativos globais.</p>
