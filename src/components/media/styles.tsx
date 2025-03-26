@@ -38,3 +38,20 @@ export const Container = styled.div`
         }
     }
 `; 
+
+export const Meta = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: ${pxToRem(12)};
+  color: ${props => props.theme._colors.primary.bdm4};};
+`;
+
+export const CategoryTag = styled.span`
+  background: ${props => props.theme._colors.primary.bdm8};
+  color: ${props => props.theme._colors.primary.bdm3};
+  padding: ${pxToRem(4)} ${pxToRem(12)};
+  border-radius: ${pxToRem(20)};
+  font-size: ${pxToRem(12)};
+  font-weight: 600;
+`;
+
