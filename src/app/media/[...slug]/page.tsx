@@ -6,6 +6,9 @@ import { useMedia } from '@/context/media';
 import { useEffect, useState } from 'react';
 import slugify from 'slugify';
 import { MediaProp } from '@/context/media'; 
+import { FiClock, FiUser, FiArrowLeft } from 'react-icons/fi';
+import Link from 'next/link';
+import { formatDate } from '@/utils/date';
 
 export default function Single() {
   const { slug } = useParams();
@@ -41,16 +44,62 @@ export default function Single() {
   return (
     <>
       {slug && filteredMedia ? (
-        <div className='text-white text-center pt-[128px]'>
+        <div className='text-gray-800'>
           <Section
-            backgroundattachment='fixed'
+            className='relative min-h-[60vh] flex items-center'
             backgroundimage={filteredMedia?.thumbnail}
-            title={`<b>${filteredMedia.title}</b>`}
-          />
+          >
+            <div className='absolute inset-0 bg-gradient-to-t from-black/80 to-transparent' />
+            <div className='container relative z-10 text-white pt-32 pb-16'>
+              <div className='max-w-4xl mx-auto'>
+                <Link 
+                  href="/" 
+                  className='mb-8 inline-flex items-center gap-2 hover:text-primary-bdm3 transition-colors'
+                >
+                  <FiArrowLeft /> Voltar para notícias
+                </Link>
+                <div className='flex flex-wrap gap-4 mb-6 text-sm'>
+                  <span className='flex items-center gap-2'>
+                    <FiUser size={16} /> {filteredMedia.author}
+                  </span>
+                  <span className='flex items-center gap-2'>
+                    <FiClock size={16} /> {formatDate(filteredMedia.date || '')} • {filteredMedia.readTime}
+                  </span>
+                </div>
+                <h1 className='text-4xl md:text-5xl font-bold mb-6'>
+                  {filteredMedia.title}
+                </h1>
+                <div className='inline-block bg-primary-bdm3 text-primary-bdm4 px-4 py-2 rounded-full text-sm'>
+                  {filteredMedia.category}
+                </div>
+              </div>
+            </div>
+          </Section>
 
-          {filteredMedia?.body && (<Section>
-            <div dangerouslySetInnerHTML={{ __html: filteredMedia?.body }} />
-          </Section>)}
+          <Section className='py-16'>
+            <div className='container max-w-4xl mx-auto prose lg:prose-xl'>
+              <div 
+                className='text-gray-700 leading-relaxed'
+                dangerouslySetInnerHTML={{ __html: filteredMedia?.body || '' }} 
+              />
+            </div>
+          </Section>
+
+           {/* Seção de Conteúdo */}
+        <Section className='py-16'>
+            <div className='container max-w-4xl mx-auto prose lg:prose-xl'>
+                <article 
+                    className='text-gray-700 leading-relaxed'
+                    dangerouslySetInnerHTML={{ __html: filteredMedia.noticeText || filteredMedia.body || '' }} 
+                />
+            </div>
+            <Link 
+                  href="/" 
+                  className='mb-8 inline-flex items-center gap-2 hover:text-primary-bdm3 transition-colors'
+                >
+                  <FiArrowLeft /> Voltar para notícias
+                </Link>
+        </Section>
         </div>
       ) : (
         <div className="text-white text-center pt-[128px]">
