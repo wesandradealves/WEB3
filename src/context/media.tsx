@@ -3,7 +3,8 @@ import React, { createContext, useContext, useState, ReactNode } from 'react';
 export interface MediaProp {
     id: number;
     title: string;
-    body?: string;
+    body?: string;          // Texto resumido para a listagem
+    noticeText?: string;    // Texto completo para a página individual da notícia
     thumbnail?: string;
     date?: string;
     author?: string;
