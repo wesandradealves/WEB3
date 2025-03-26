@@ -53,7 +53,7 @@ export default function Single() {
             <div className='container relative z-10 text-white pt-32 pb-16'>
               <div className='max-w-4xl mx-auto'>
                 <Link 
-                  href="/media" 
+                  href="/" 
                   className='mb-8 inline-flex items-center gap-2 hover:text-primary-bdm3 transition-colors'
                 >
                   <FiArrowLeft /> Voltar para notícias
@@ -84,6 +84,22 @@ export default function Single() {
               />
             </div>
           </Section>
+
+           {/* Seção de Conteúdo */}
+        <Section className='py-16'>
+            <div className='container max-w-4xl mx-auto prose lg:prose-xl'>
+                <article 
+                    className='text-gray-700 leading-relaxed'
+                    dangerouslySetInnerHTML={{ __html: filteredMedia.noticeText || filteredMedia.body || '' }} 
+                />
+            </div>
+            <Link 
+                  href="/" 
+                  className='mb-8 inline-flex items-center gap-2 hover:text-primary-bdm3 transition-colors'
+                >
+                  <FiArrowLeft /> Voltar para notícias
+                </Link>
+        </Section>
         </div>
       ) : (
         <div className="text-white text-center pt-[128px]">
