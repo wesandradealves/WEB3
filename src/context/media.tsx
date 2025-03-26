@@ -30,7 +30,7 @@ export const MediaProvider = ({ children }: { children: ReactNode }) => {
             author: 'BM&C News',
             category: 'Mercados',
             readTime: '5 min de leitura',
-            noticeText: `<article class="prose lg:prose-xl max-w-none">
+            noticeText: `
             <p> Com estreia marcada para o segundo semestre deste ano nas operadoras de TV a cabo, a BM&C News, que surgiu há pouco mais de um ano nas plataformas de streaming – com quase 300 mil inscritos – já ultrapassou todos os canais do mesmo segmento e se tornou o maior canal de notícias do mercado financeiro do Brasil, em número de visualizações no Youtube.
 <br><br>
 O canal teve grande destaque na cobertura dos conflitos entre Rússia e Ucrânia, trazendo as informações em tempo real e os impactos na economia e nos investimentos, através das opiniões de grandes especialistas. A BM&C superou a audiência da Jovem Pan na maior parte do tempo e ficou em muitos momentos em primeiro lugar de um canal ao vivo no país.
@@ -67,7 +67,7 @@ E as novidades não param por aí, em breve novas frentes serão anunciadas.
             author: 'Correio do Estado',
             category: 'Ativos Digitais',
             readTime: '5 min de leitura',
-            noticeText: `<article class="prose lg:prose-xl max-w-none">
+            noticeText: `
     <h1>BDM Digital: a Moeda que Está Mudando a Vida de Muitas Pessoas</h1>
     <br><br>
     <p>Vanguarda no setor de ativos virtuais, a BDM Digital - conhecida por ser a "moeda de Zigurats", como parte do Ecossistema Dakila - deve ser amplamente beneficiada com a nova Lei das Criptomoedas, que foi sancionada ontem (21) e publicada na manhã desta quinta-feira (22) em Diário Oficial. 
@@ -122,7 +122,7 @@ Essas penas serão devidamente aplicadas para aqueles agentes e prestadoras de s
             author: 'G1 - Globo',
             category: 'Mercados',
             readTime: '10 min de leitura',
-            noticeText: `<article class="prose lg:prose-xl max-w-none">
+            noticeText: `
     <h1>BDM Digital: a Moeda que Está Mudando a Vida de Muitas Pessoas</h1>
     <br>
     <p>Um dinheiro digital que nasceu em Mato Grosso do Sul, e hoje segue em grande expansão em diversos estados do Brasil e até em outros países, está mudando a vida de muitas pessoas que estão utilizando-a. Diferente de outras moedas, o BDM Digital (Bônus Dourado Mercantil) serve tanto para investir quanto para aplicar no dia a dia, colocando o real poder de compra na mão de quem a utiliza.
