@@ -5,6 +5,10 @@ export interface MediaProp {
     title: string;
     body?: string;
     thumbnail?: string;
+    date?: string;
+    author?: string;
+    category?: string;
+    readTime?: string;
 }
 
 interface Props {
