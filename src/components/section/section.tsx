@@ -37,7 +37,7 @@ export default function Section({ barstitle, gap, direction, helper, children, o
       </div>
 
       {opacity && (
-        <div className={`absolute z-1 bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-black bg-fixed opacity-${opacity}`}></div>
+        <div className={`absolute z-1 bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed bg-black opacity-${opacity}`}></div>
       )}
     </Container>
   );

@@ -60,7 +60,7 @@ export default function Media({ data, className }: Props) {
           });
           return (
             <Item
-              title={item.body}
+              title={item.body || item.summary}
               className='h-full cursor-pointer group'
               key={index}
               onClick={() => router.push(`media/${slug}`)}
@@ -91,9 +91,9 @@ export default function Media({ data, className }: Props) {
                   <Title className='font-bold text-xl text-gray-800'>
                     {item.title}
                   </Title>
-                  {item.body && (
+                  {item.summary && (
                     <Text className='text-gray-600'>
-                      {truncateText(item.body || '', 120)}
+                      {truncateText(item.summary, 120)}
                     </Text>
                   )}
                 </div>

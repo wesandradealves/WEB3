@@ -49,7 +49,7 @@ export default function Single() {
           <Section
             backgroundattachment='fixed'
             className='text-white text-center pt-[90px] lg:pt-[128px] lg:pb-[90px] flex-col-reverse'
-            opacity={50}
+            opacity={90}
             gap={4}
             backgroundimage={filteredMedia?.thumbnail}
           >
@@ -69,7 +69,7 @@ export default function Single() {
                 </li>
               </ul>
               <Title className='text-start'><b>{filteredMedia.title}</b></Title>
-              <span className='px-4 py-2 rounded-full text-sm bg-gray-900 bg-opacity-55 m-auto'>
+              <span className='px-4 py-2 rounded-full text-sm bg-white bg-opacity-5 m-auto'>
                 {filteredMedia.category}
               </span>
             </>
