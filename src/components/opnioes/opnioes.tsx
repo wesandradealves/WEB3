@@ -83,7 +83,17 @@ export default function Opnioes({ data = [{
                   </Rate>
                 ))}
               </Rating>
-              {item.text && (<Text className='flex-1'>{truncateText(item.text, 80)}</Text>)}
+              {item.text && (<Text 
+              className='flex-1 overflow-auto lg:max-h-[100px]
+              [&::-webkit-scrollbar]:w-1
+              [&::-webkit-scrollbar-track]:bg-transparent
+              [&::-webkit-scrollbar-track]:ms-7
+              [&::-webkit-scrollbar-track]:me-7
+              [&::-webkit-scrollbar-track]:rounded-full
+              [&::-webkit-scrollbar-thumb]:bg-yellow-500
+              [&::-webkit-scrollbar-thumb]:rounded-full
+              [&::-webkit-scrollbar-thumb]:cursor-move
+            '>{truncateText(item.text, 80)}</Text>)}
               <Title className='mt-auto font-bold'>{item.title}</Title>
             </ItemInner>
           </Item>
