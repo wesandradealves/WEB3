@@ -13,4 +13,6 @@ export interface Props {
     helper?: string;
     children?: React.ReactNode;
     barstitle?: string;
+    opacity?: number;
+    gap?: number;
 }

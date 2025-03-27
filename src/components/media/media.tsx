@@ -17,7 +17,7 @@ const truncateText = (text: string, limit: number) => {
 
 export default function Media({ data, className }: Props) {
   const { media } = useMedia();
-  
+
   const items = data || media;
 
   const router = useRouter();
@@ -65,28 +65,27 @@ export default function Media({ data, className }: Props) {
               key={index}
               onClick={() => router.push(`media/${slug}`)}
             >
-              <ItemInner className='flex flex-col gap-4 rounded-[48px] h-full overflow-hidden bg-white transition-all duration-300 group-hover:shadow-xl'>
+              <ItemInner className='flex flex-col gap-4 rounded-[48px] h-full overflow-hidden'>
                 {item.thumbnail && (
-                  <div className='relative h-48 overflow-hidden'>
-                    <LazyLoadImage 
-                      className='w-full h-full object-cover transition-transform duration-300 group-hover:scale-105' 
-                      src={item.thumbnail} 
-                      alt={item.title} 
+                  <div className='h-[190px] overflow-hidden relative'>
+                    <LazyLoadImage
+                      className='w-full object-cover transition-transform duration-300 group-hover:scale-105'
+                      src={item.thumbnail}
+                      alt={item.title}
                     />
                     <CategoryTag className='absolute top-4 left-4'>
                       {item.category}
                     </CategoryTag>
                   </div>
                 )}
-                <div className='flex flex-col gap-4 p-6 flex-1'>
+                <div className='flex flex-col gap-4 p-6 flex-1 pt-0'>
                   <Meta className='flex items-center gap-4 text-sm text-gray-500'>
                     <span className='flex items-center gap-1'>
                       <FiUser size={14} />
                       {item.author}
                     </span>
                     <span className='flex items-center gap-1'>
-                      <FiClock size={14} />
-                      {item.date} • {item.readTime}
+                      <FiClock size={14} /> {`${item.date} • ${item.readTime}`}
                     </span>
                   </Meta>
                   <Title className='font-bold text-xl text-gray-800'>
