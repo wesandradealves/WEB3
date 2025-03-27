@@ -56,7 +56,7 @@ export default function Opnioes({ data = [{
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 2,
     centerMode: false,
     arrows: false,
     autoplay: true,
