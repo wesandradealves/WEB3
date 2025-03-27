@@ -10,6 +10,7 @@ import { FiClock, FiUser, FiArrowLeft } from 'react-icons/fi';
 import Link from 'next/link';
 import { formatDate } from '@/utils/date';
 import { Title } from '@/components/section/styles';
+import { Body } from './style';
 
 export default function Single() {
   const { slug } = useParams();
@@ -68,16 +69,15 @@ export default function Single() {
                   <FiClock size={16} /> {formatDate(filteredMedia.date || '')} • {filteredMedia.readTime}
                 </li>
               </ul>
-              <Title className='text-start'><b>{filteredMedia.title}</b></Title>
+              <Title className='text-start leading-1'><b>{filteredMedia.title}</b></Title>
               <span className='px-4 py-2 rounded-full text-sm bg-white bg-opacity-5 m-auto'>
                 {filteredMedia.category}
               </span>
             </>
-
           </Section>
 
           {filteredMedia?.body && (<Section>
-            <div dangerouslySetInnerHTML={{ __html: filteredMedia?.body }} />
+            <Body className='text-base lg:text-lg' dangerouslySetInnerHTML={{ __html: filteredMedia?.body }} />
           </Section>)}
         </>
       ) : (

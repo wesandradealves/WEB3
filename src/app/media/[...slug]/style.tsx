@@ -1,0 +1,7 @@
+import styled from 'styled-components';
+
+export const Body = styled.article`
+    p {
+        font-size: inherit
+    }
+`; 
