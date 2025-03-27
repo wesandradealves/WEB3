@@ -45,7 +45,7 @@ export default function Bubbles({ className, data }: Props) {
               {index < data.length - 1 && (
                   <Blob
                     className={classNames('absolute hidden lg:block transform z-1', {
-                      '-top-[19%] left-[60%] rotate-[16deg]': index % 2 !== 0,
+                      '-top-[21%] left-[62%] rotate-[15deg]': index % 2 !== 0,
                       'top-[37%] left-[62%] -rotate-[15deg]': index % 2 === 0,
                     })}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" fill="none" viewBox="0 0 200 200">
@@ -73,9 +73,9 @@ export default function Bubbles({ className, data }: Props) {
                   </Blob>
                 )}
             </ImgWrapper>
-            <div className='flex flex-col gap-1 text-center'>
-              {item.title && <Title className='font-bold leading-none' dangerouslySetInnerHTML={{ __html: item.title }} />}
-              {item.text && <Text className='max-w-[150px] leading-[1.2] m-auto' dangerouslySetInnerHTML={{ __html: isDesktop ? truncateText(item.text, 37) : item.text }} />}
+            <div className='flex flex-col gap-1 text-center '>
+              {item.title && <Title className='font-bold leading-none text-lg' dangerouslySetInnerHTML={{ __html: item.title }} />}
+              {item.text && <Text className='max-w-[150px] text-base leading-[1.2] m-auto' dangerouslySetInnerHTML={{ __html: isDesktop ? truncateText(item.text, 37) : item.text }} />}
             </div>
           </Item>
         ))}

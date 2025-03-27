@@ -27,20 +27,20 @@ export default function Media({ data, className }: Props) {
     infinite: false,
     speed: 500,
     slidesToShow: 3,
-    centerMode: false,
     arrows: false,
     initialSlide: 0,
     slidesToScroll: 1,
     responsive: [
       {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1
-        }
-      }, {
-        breakpoint: 992,
+        breakpoint: 1536,
         settings: {
           slidesToShow: 2
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1
         }
       }
     ]
@@ -61,25 +61,25 @@ export default function Media({ data, className }: Props) {
           return (
             <Item
               title={item.body || item.summary}
-              className='h-full cursor-pointer group'
+              className='h-full cursor-pointer group text-base'
               key={index}
               onClick={() => router.push(`media/${slug}`)}
             >
               <ItemInner className='flex flex-col gap-4 rounded-[48px] h-full overflow-hidden'>
                 {item.thumbnail && (
-                  <div className='h-[190px] overflow-hidden relative'>
+                  <div className='lg:h-[190px] overflow-hidden relative'>
                     <LazyLoadImage
-                      className='w-full object-cover transition-transform duration-300 group-hover:scale-105'
+                      className='w-full object-cover transition-transform duration-300 lg:group-hover:scale-105'
                       src={item.thumbnail}
                       alt={item.title}
                     />
-                    <CategoryTag className='absolute top-4 left-4'>
+                    <CategoryTag className='absolute top-4 left-4 rounded-full px-4 py-2'>
                       {item.category}
                     </CategoryTag>
                   </div>
                 )}
                 <div className='flex flex-col gap-4 p-6 flex-1 pt-0'>
-                  <Meta className='flex items-center gap-4 text-sm text-gray-500'>
+                  <Meta className='flex items-center gap-1 text-base'>
                     <span className='flex items-center gap-1'>
                       <FiUser size={14} />
                       {item.author}
@@ -88,13 +88,9 @@ export default function Media({ data, className }: Props) {
                       <FiClock size={14} /> {`${item.date} • ${item.readTime}`}
                     </span>
                   </Meta>
-                  <Title className='font-bold text-xl text-gray-800'>
-                    {item.title}
-                  </Title>
+                  <Title dangerouslySetInnerHTML={{ __html: item.title }} className='font-bold lg:text-xl'/>
                   {item.summary && (
-                    <Text className='text-gray-600'>
-                      {truncateText(item.summary, 120)}
-                    </Text>
+                    <Text  dangerouslySetInnerHTML={{ __html: truncateText(item.summary, 120) }} />
                   )}
                 </div>
               </ItemInner>

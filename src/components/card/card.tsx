@@ -7,15 +7,15 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 export default function Card({ className, title, text, image, gap }: Props) {
   return (
-    <Container className={`card flex flex-col gap-${gap ?? 3 } ${className}`}>
+    <Container className={`card flex text-base flex-col gap-${gap ?? 3 } ${className}`}>
       {image && (
         <LazyLoadImage className='max-w-[100%] me-auto' alt={title} src={image} />
       )}
       {title && (
-        <Title className='font-bold' dangerouslySetInnerHTML={{ __html: title }} />
+        <Title className='font-bold lg:text-xl' dangerouslySetInnerHTML={{ __html: title }} />
       )}
       {text && (
-        <Text dangerouslySetInnerHTML={{ __html: text }} />
+        <Text  dangerouslySetInnerHTML={{ __html: text }} />
       )}
     </Container>
   );

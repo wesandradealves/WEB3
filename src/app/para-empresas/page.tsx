@@ -62,8 +62,8 @@ export default function ParaEmpresas() {
             >
               <ItemInner className='flex flex-col gap-20 lg:gap-[6rem]'>
                 {(item.title || item.subtitle) && (<div className='flex flex-col items-center uppercase gap-4'>
-                  {item.title && (<Title data-backtext={item.backtext} className='font-normal leading-none text-center relative flex flex-col-reverse'>{item.title}</Title>)}
-                  {item.subtitle && (<Subtitle className='font-bold text-center p-2 pt-1 pb-1'>{item.subtitle}</Subtitle>)}
+                  {item.title && (<Title data-backtext={item.backtext} className='text-4xl xl:text-6xl font-normal leading-none text-center relative flex flex-col-reverse'>{item.title}</Title>)}
+                  {item.subtitle && (<Subtitle className='font-bold text-center p-2 pt-1 pb-1 text-xl lg:text-2xl'>{item.subtitle}</Subtitle>)}
                 </div>)}
 
                 {item.image && (<LazyLoadImage className='w-full object-fit' src={item.image} alt={item.title} />)}

@@ -30,16 +30,16 @@ export default function Faq({ data = [
         {data.map((item, index) => (
           <FaqItem
             key={index}
-            className={classNames('p-6', {
+            className={classNames('p-6 rounded-[12px]', {
               'active': expandedItems[index]
             })}
             onClick={() => toggleItem(index)}
           >
-            <Question className="flex font-bold justify-between items-center gap-4">{item.question} {
+            <Question className="flex text-lg xl:text-xl font-bold justify-between items-center gap-4 text-stone-900">{item.question} {
               expandedItems[index] ? <FaAngleUp className='icon ms-auto pointer-events-auto -ms-5 cursor-pointer' /> : <FaAngleDown className='icon ms-auto pointer-events-auto -ms-5 cursor-pointer' />
             }</Question>
             <Answer
-              className={classNames('mt-4 cursor-pointer overflow-auto', {
+              className={classNames('mt-4 cursor-pointer overflow-auto text-base xl:text-lg', {
                 'block': expandedItems[index],
                 'hidden': !expandedItems[index],
               })}>

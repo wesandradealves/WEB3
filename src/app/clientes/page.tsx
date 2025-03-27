@@ -44,13 +44,13 @@ export default function Clientes() {
           {clients.map((client, index) => (
             <Client key={index} className="flex-col gap-2 flex">
               <LazyLoadImage className="w-full" src={client.image} />
-              <Title className="flex items-center gap-2 font-bold">
+              <Title className="flex items-center gap-2 font-bold text-lg">
                 <LazyLoadImage src="img/dot.png" />
                 {client.title}
               </Title>
               <Taglist className="list-none flex-wrap flex items-center gap-2">
                 {client.tags.map((tag, j) => (
-                  <Tag key={j} className="lowercase overflow-hidden text-ellipsis whitespace-nowrap bg-white p-4 pt-[2px] pb-[2px] rounded-[2px]">
+                  <Tag key={j} className="lowercase text-stone-900 text-sm overflow-hidden text-ellipsis whitespace-nowrap bg-white p-4 pt-[2px] pb-[2px] rounded-[2px]">
                     {tag}
                   </Tag>
                 ))}

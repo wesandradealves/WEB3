@@ -1,4 +1,3 @@
-import { pxToRem } from '@/utils';
 import styled, { css } from 'styled-components';
 
 export interface Typo {
@@ -36,10 +35,6 @@ export const Container = styled.section<Typo>`
     `}  
     p {
         color: inherit;
-        font-size: ${pxToRem(18)};
-        @media screen and (min-width: ${props => props.theme._breakpoints.xxl}) {
-            font-size: ${pxToRem(32)};
-        }
         span {
             color: ${props => props.theme._colors.primary.bdm3};
         }
@@ -55,10 +50,6 @@ export const Container = styled.section<Typo>`
 
 export const Title = styled.h2<Typo>`
     color: inherit;
-    font-size: ${pxToRem(24)};
-    @media screen and (min-width: ${props => props.theme._breakpoints.xxl}) {
-        font-size: ${pxToRem(48)};
-    }
     span {
         color: ${props => props.theme._colors.primary.bdm3};
     }
@@ -91,10 +82,6 @@ export const Subtitle = styled.p`
 
 export const Helper = styled.p`
     text-transform: uppercase;
-    font-size: ${pxToRem(12)};
-    @media screen and (min-width: ${props => props.theme._breakpoints.xxl}) {
-        font-size: ${pxToRem(14)};
-    }
 `;
 
 export const SectionHeader = styled.div`

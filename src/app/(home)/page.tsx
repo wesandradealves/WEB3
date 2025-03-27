@@ -18,7 +18,7 @@ export default function Home() {
           text: 'Na <b>BDM Digital</b>, unimos a inovação da <span>blockchain própria</span><br/>à missão de empoderar <span>pessoas</span> e <span>negócios</span>.',
           url: '/',
           btnLabel: 'Comece Agora',
-          btnClass: '--primary',
+          btnClass: '--primary uppercase px-12',
           // backgroundimage: '/img/hero.gif',
           media: '/img/hero.mp4'
         }} />

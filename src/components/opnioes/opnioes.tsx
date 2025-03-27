@@ -51,19 +51,18 @@ export default function Opnioes({ data = [{
     infinite: false,
     speed: 500,
     slidesToShow: 4,
-    centerMode: false,
     arrows: false,
     initialSlide: 0,
     slidesToScroll: 1,
     responsive: [
       {
-        breakpoint: 1280,
+        breakpoint: 1536,
         settings: {
           slidesToShow: 3
         }
       },
       {
-        breakpoint: 480,
+        breakpoint: 768,
         settings: {
           slidesToShow: 2
         }
@@ -76,10 +75,10 @@ export default function Opnioes({ data = [{
       <Slider {...settings}>
         {data.map((item, index) => (
           <Item title={item.text} className='h-full cursor-pointer' key={index}>
-            <ItemInner className='flex p-9 flex-col gap-4 bg-white rounded-[48px] h-full'>
+            <ItemInner className='flex text-base text-stone-900 p-9 flex-col gap-4 bg-white rounded-[48px] h-full'>
               <Rating className='flex items-center gap-2 list-none'>
                 {[...Array(5)].map((_, i) => (
-                  <Rate key={i}>
+                  <Rate className='text-base lg:text-xl' key={i}>
                     {i < item.rating ? <FaStar /> : <FaRegStar />}
                   </Rate>
                 ))}

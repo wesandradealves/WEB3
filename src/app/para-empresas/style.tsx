@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { pxToRem } from '@/utils';
 
 export const Title = styled.h3`
     &::after {
@@ -67,16 +66,11 @@ export const SlideWrapper = styled.div`
 
 export const Item = styled.article`
     ${Title} {
-        font-size: ${pxToRem(32)};
-        @media screen and (min-width: ${props => props.theme._breakpoints.xxl}) {
-            font-size: ${pxToRem(56)};
-        }
         color: ${props => props.theme._colors.primary.bdm3};
     }
     ${Subtitle} {
         background-color: ${props => props.theme._colors.primary.bdm3};
         color: black;
-        font-size: ${pxToRem(24)};
     }
 `;
 

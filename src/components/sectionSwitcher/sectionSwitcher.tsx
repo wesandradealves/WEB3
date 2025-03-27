@@ -40,19 +40,19 @@ export default function SectionSwitcher({ data, className, title, background }: 
 
     return (
         <Section title={title} background={background} className={className}>
-            <div className='flex flex-wrap justify-between gap-12 xl:gap-[137px] items-start xl:pt-12'>
-                <Select ref={selectRef} onClick={() => setIsExpanded(!isExpanded)} className='flex font-bold w-full xl:max-w-[273px] items-center rounded-full overflow-hidden flex-wrap justify-between pt-1 pb-1 ps-6 pe-6'>
+            <div className='flex flex-wrap justify-between gap-12 xl:gap-[90px] items-start xl:pt-12'>
+                <Select ref={selectRef} onClick={() => setIsExpanded(!isExpanded)} className='flex lg:text-3xl font-bold w-full xl:max-w-[273px] items-center rounded-full overflow-hidden flex-wrap justify-between px-4 py-1 lg:px-6 lg:py-3'>
                     <span className='flex-1 overflow-hidden relative'>
                         <select 
                         className={classNames(`w-[100%] appearance-none bg-none cursor-pointer`, {
                             'expanded': isExpanded
                         })} value={selectedValue} onChange={handleChange}>
                             {data.map((item, index) => (
-                                <option key={index} value={item.machineName}>{item.label}</option>
+                                <option className='text-base' key={index} value={item.machineName}>{item.label}</option>
                             ))}
                         </select>
                     </span>
-                    {Icon && <Icon className='arrow ms-auto pointer-events-none -ms-20 cursor-pointer' />}
+                    {Icon && <Icon className='arrow ms-auto pointer-events-none -ms-20 cursor-pointer text-4xl' />}
                 </Select>
                 {selectedValue && (<DynamicComponent className='flex-1 overflow-hidden relative' machineName={selectedValue} />)}
             </div>

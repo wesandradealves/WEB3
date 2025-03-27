@@ -1,14 +1,11 @@
 import styled, { css } from 'styled-components';
-import { pxToRem } from "@/utils";
 
 export interface Typo {
   radius?: number;
 }
 
 export const Container = styled.button<Typo>`
-  padding: ${pxToRem(17)} ${pxToRem(30)};
   border-radius: 4px;
-  font-size: ${pxToRem(18)};
   text-align: center;
   cursor: pointer;
   ${({ radius }) => radius && css`

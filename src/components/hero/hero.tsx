@@ -61,9 +61,9 @@ const Hero = (Props: Props) => {
           </>
         )
       }
-      <div className='container relative z-1 m-auto flex flex-col gap-16 items-center justify-center'>
-        {Props.data.title && <Title className='text-center' dangerouslySetInnerHTML={{ __html: Props.data.title }} />}
-        {Props.data.text && <Text className='text-center' dangerouslySetInnerHTML={{ __html: Props.data.text }} />}
+      <div className='container text-white relative z-1 m-auto flex flex-col gap-16 items-center justify-center'>
+        {Props.data.title && <Title className='text-center text-3xl lg:text-6xl' dangerouslySetInnerHTML={{ __html: Props.data.title }} />}
+        {Props.data.text && <Text className='text-center text-base lg:text-3xl' dangerouslySetInnerHTML={{ __html: Props.data.text }} />}
         {Props.data.url && Props.data.btnLabel && <Button effect={Props.btnAnimation} radius={999} tag="a" href={Props.data.url} className={`${Props.data.btnClass}`}>{Props.data.btnLabel}</Button>}
       </div>
     </Container>
