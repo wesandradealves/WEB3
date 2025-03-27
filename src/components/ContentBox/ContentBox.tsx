@@ -33,8 +33,8 @@ const ContentBox: React.FC<Props> = ({
         </div>)}
 
         <div className='flex-1 flex flex-col gap-10 leading-none'>
-          {title && <Title dangerouslySetInnerHTML={{ __html: title }} />}
-          {text && <Text dangerouslySetInnerHTML={{ __html: text }} />}
+          {title && <Title className='text-4xl xl:text-6xl' dangerouslySetInnerHTML={{ __html: title }} />}
+          {text && <Text className='text-base xl:text-xl' dangerouslySetInnerHTML={{ __html: text }} />}
           {url && btnLabel && <Button effect={btnAnimation} radius={16} tag="a" href={url} className={`${btnClass}`}>{btnLabel}</Button>}
         </div>
       </div>

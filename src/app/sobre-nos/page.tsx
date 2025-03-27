@@ -43,7 +43,7 @@ export default function SobreNos() {
                         image='img/insights.png'
                         title='Missão'
                         text='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ' />
-                    <p className='text-center uppercase'>
+                    <p className='text-center uppercase text-2xl xl:text-3xl'>
                         O <b>BDM Digital</b> veio para<span><br /><b>romper paradigmas</b></span>
                     </p>
                     <Card
@@ -55,14 +55,14 @@ export default function SobreNos() {
                 <p className='text-center uppercase mt-[98px] mb-7'>
                     <span>Conecte-se</span> conosco
                 </p>
-                <Box className='p-6 flex-wrap w-full max-w-[1140px] m-auto gap-14 2xl:gap-[123px]'>
+                <Box alignment='start' className='p-6 flex-col lg:flex-row flex-wrap w-full max-w-[1140px] m-auto gap-14 2xl:gap-[123px]'>
                     <Card
-                        className='flex-1'
+                        className='lg:flex-1'
                         image='img/insights.png'
                         title='Endereço'
                         text='Escritório Central: R. Maracaju,<br/>1297 – Campo Grande/MS.' />
-                    <SocialWrapper className='flex-1 text-center flex flex-col items-center justify-center'>
-                        <SocialNetworks data={[
+                    <SocialWrapper className='lg:flex-1 lg:self-center text-center flex flex-col items-center justify-center'>
+                        <SocialNetworks className='text-2xl' data={[
                             { title: 'Twitter', url: 'https://twitter.com' },
                             { title: 'Instagram', url: 'https://instagram.com' },
                             { title: 'Linkedin', url: 'https://linkedin.com' },
@@ -70,7 +70,7 @@ export default function SobreNos() {
                         ]} />
                     </SocialWrapper>
                     <Card
-                        className='flex-1'
+                        className='lg:flex-1'
                         image='img/insights.png'
                         title='Email'
                         text='<a href="mailto:comercial@bdm.digital">comercial@bdm.digital</a>' />

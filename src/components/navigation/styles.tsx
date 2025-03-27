@@ -6,13 +6,10 @@ export interface Typo {
 }
 
 export const Submenu = styled.div`
-    min-width: 100%;
 `;
 
 export const ListItem = styled.li<Typo>`
     position: relative;
-    font-size: ${pxToRem(16)};
-    line-height: ${pxToRem(24)};
     &.expanded,
     &:hover {
         color: ${props => props.defaultexpanded && props.defaultexpanded == "on" ? "initial" : props.theme._colors.primary.bdm1}
@@ -23,7 +20,6 @@ export const ListItem = styled.li<Typo>`
         }
     }
     .arrow {
-        font-size: ${pxToRem(14)};
         color: ${props => props.theme._colors.primary.bdm1};
     }
 `;
@@ -35,9 +31,9 @@ export const Container = styled.nav<Typo>`
     ${Submenu} {
         ${List} {
             background-color: ${props => props.defaultexpanded && props.defaultexpanded == "on" ? "initial" : props.theme._colors.primary.bdm1}; 
-            border-radius: ${pxToRem(10)};
+            // border-radius: ${pxToRem(10)};
             ${ListItem} {
-                color: black;
+                // color: black;
                 &:hover {
                     color: ${props => props.defaultexpanded && props.defaultexpanded == "on" ? "initial" : "white"}
                 }

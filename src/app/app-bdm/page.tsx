@@ -85,7 +85,7 @@ export default function AppDownloadPage() {
         </div>
       </Section>
       <Section title='<b>Baixe já o app <span>BDM Digital</span></b>'>
-        <div className='flex flex-col items-center gap-12'>
+        <div className='flex flex-col items-center gap-12 text-base lg:text-lg'>
           <LazyLoadImage
             className="inline-block"
             src="/img/download-now.png"

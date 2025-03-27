@@ -57,11 +57,11 @@ export default function Single() {
             <>
               <Link
                 href="/"
-                className='inline-flex items-center gap-2 hover:text-primary-bdm3 transition-colors'
+                className='inline-flex text-base lg:text-xl items-center gap-2 hover:text-primary-bdm3 transition-colors'
               >
                 <FiArrowLeft /> Voltar para notícias
               </Link>
-              <ul className='flex flex-wrap gap-4 text-sm list-none'>
+              <ul className='flex flex-wrap gap-4 text-sm list-none text-base lg:text-xl'>
                 <li className='flex items-center gap-2'>
                   <FiUser size={16} /> {filteredMedia.author}
                 </li>
@@ -69,15 +69,15 @@ export default function Single() {
                   <FiClock size={16} /> {formatDate(filteredMedia.date || '')} • {filteredMedia.readTime}
                 </li>
               </ul>
-              <Title className='text-start leading-1'><b>{filteredMedia.title}</b></Title>
-              <span className='px-4 py-2 rounded-full text-sm bg-white bg-opacity-5 m-auto'>
+              <Title className='text-start leading-1 text-xl lg:text-4xl'><b>{filteredMedia.title}</b></Title>
+              <span className='px-4 py-2 rounded-full text-sm bg-white bg-opacity-5 m-auto  text-base lg:text-xl'>
                 {filteredMedia.category}
               </span>
             </>
           </Section>
 
           {filteredMedia?.body && (<Section>
-            <Body className='text-base lg:text-lg' dangerouslySetInnerHTML={{ __html: filteredMedia?.body }} />
+            <Body className='text-base lg:text-lg xl:text-xl' dangerouslySetInnerHTML={{ __html: filteredMedia?.body }} />
           </Section>)}
         </>
       ) : (

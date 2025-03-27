@@ -6,14 +6,11 @@ import { Data } from './typo';
 import { FaStar, FaRegStar } from 'react-icons/fa';
 import React from "react";
 import Slider from "react-slick";
-import { useEffect, useRef } from "react";
-import { useState as reactUseState } from "react";
 
 export const truncateText = (text: string, limit: number) => {
   if (text.length <= limit) return text;
   return text.substring(0, limit) + '...';
 };
-
 
 export default function Opnioes({ data = [{
   title: 'Lilia Ferreira',
@@ -49,86 +46,59 @@ export default function Opnioes({ data = [{
   text: 'Interface simples e intuitiva, além de um ótimo suporte do moderador. Super recomendo! Em um futuro muito próximo, a digitalização das moedas será uma realidade. Ter uma criptomoeda confiável, sustentável e rentável é essencial, e o BDM é um projeto promissor e estável, com um grande grupo por trás. Se você é organizado e analítico como eu, recomendo fortemente!'
 }] as Data[], className }: Props) {
 
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
-  const sliderRef = useRef<Slider>(null);
-
   const settings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     speed: 500,
-    slidesToShow: 2,
-    centerMode: false,
+    slidesToShow: 3,
     arrows: false,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    pauseOnHover: true,
+    initialSlide: 0,
+    slidesToScroll: 1,
     responsive: [
       {
-        breakpoint: 1280,
-        settings: { slidesToShow: 3 }
+        breakpoint: 1536,
+        settings: {
+          slidesToShow: 2
+        }
       },
       {
-        breakpoint: 1024,
-        settings: { slidesToShow: 2 }
-      },
-      {
-        breakpoint: 768,
-        settings: { slidesToShow: 1 }
+        breakpoint: 500,
+        settings: {
+          slidesToShow: 1
+        }
       }
     ]
   };
-  
-  
-  // scroll automático
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (sliderRef.current) {
-        sliderRef.current.slickNext();
-      }
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <Container className={`${className}`}>
-      <h2 className="text-center text-3xl md:text-4xl font-bold mb-8 text-primary-bdm3">
-        Veja o que estão falando do BDM Digital
-      </h2>
-      <Slider ref={sliderRef} {...settings}>
+      <Slider {...settings}>
         {data.map((item, index) => (
-          <Item title={item.text} className='h-full cursor-pointer' key={index} onMouseEnter={() => setExpandedIndex(index)}
-          onMouseLeave={() => setExpandedIndex(null)}>
-            <ItemInner  className={`flex p-9 flex-col gap-4 bg-white rounded-[48px] h-full transition-all duration-300 ${
-                expandedIndex === index ? 'scale-105 shadow-xl' : 'shadow-lg'
-              }`}
-            >
+          <Item title={item.text} className='h-full cursor-pointer' key={index}>
+            <ItemInner className='flex text-base text-stone-900 p-9 flex-col gap-4 bg-white rounded-[48px] h-full'>
               <Rating className='flex items-center gap-2 list-none'>
                 {[...Array(5)].map((_, i) => (
-                  <Rate key={i}>
+                  <Rate className='text-base lg:text-xl' key={i}>
                     {i < item.rating ? <FaStar /> : <FaRegStar />}
                   </Rate>
                 ))}
               </Rating>
-              
-              <Text className='flex-1 text-sm md:text-base leading-relaxed'>
-                {expandedIndex === index 
-                  ? item.text 
-                  : item.text && item.text.length > 120 
-                  ? `${item.text.substring(0, 120)}...` 
-                  : item.text || ''}
-              </Text>
-
+              {item.text && (<Text 
+              className='flex-1 pe-8 overflow-auto max-h-[140px] lg:max-h-[100px]
+              [&::-webkit-scrollbar]:w-1
+              [&::-webkit-scrollbar-track]:bg-transparent
+              [&::-webkit-scrollbar-track]:ms-7
+              [&::-webkit-scrollbar-track]:me-7
+              [&::-webkit-scrollbar-track]:rounded-full
+              [&::-webkit-scrollbar-thumb]:bg-yellow-500
+              [&::-webkit-scrollbar-thumb]:rounded-full
+              [&::-webkit-scrollbar-thumb]:cursor-move
+            '>{item.text}</Text>)}
               <Title className='mt-auto font-bold'>{item.title}</Title>
             </ItemInner>
-          
           </Item>
         ))}
       </Slider>
     </Container>
   );
 }
-
-function useState<T>(initialValue: T): [T, React.Dispatch<React.SetStateAction<T>>] {
-  return reactUseState(initialValue);
-}
-

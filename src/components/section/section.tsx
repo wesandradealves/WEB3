@@ -18,14 +18,14 @@ export default function Section({ barstitle, gap, direction, helper, children, o
         'overflow-hidden': opacity
       })}
     >
-      <div className={`container relative z-10 m-auto flex flex-${direction ?? 'col'} pt-[6rem] pb-[6rem] gap-${gap || 7}`}>
+      <div className={`container text-lg lg:text-3xl leading-none relative z-10 m-auto flex flex-${direction ?? 'col'} pt-[6rem] pb-[6rem] gap-${gap || 7}`}>
         {(helper || title || subtitle) && (<SectionHeader className='flex flex-col justify-center items-center text-center w-full gap-7'>
           
           {(helper || title) && (<span>
             {helper && <Helper className='text-center' dangerouslySetInnerHTML={{ __html: helper }} />}
 
             {title && <Title barstitle={barstitle}
-              className={classNames(`text-center relative`, { 'pt-2 pb-2 ps-[150px] pe-[150px]': !!barstitle })}
+              className={classNames(`text-center relative text-3xl lg:text-5xl`, { 'pt-2 pb-2 ps-[150px] pe-[150px]': !!barstitle })}
               dangerouslySetInnerHTML={{ __html: title }} />}
           </span>)}
 

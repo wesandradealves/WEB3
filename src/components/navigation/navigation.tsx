@@ -76,7 +76,7 @@ export default function Navigation({ children, className, mobile, data, ListClas
                     return (
                         <ListItem 
                             defaultexpanded={defaultexpanded}
-                            className={classNames('item font-bold flex flex-col', row?.className, { 
+                            className={classNames('item font-bold flex flex-col text-base', row?.className, { 
                             'expanded': expandedItems[i],
                                 [ListClassName || '']: mobile,
                                 'current': pathname.replace('/', '') == row.url
@@ -84,19 +84,20 @@ export default function Navigation({ children, className, mobile, data, ListClas
                             {row?.type && row.type == 'button' ? <Button effect={row?.btnAnimation} className={row?.btnClass} href={row.url} tag={'a'}>{row.title}</Button> : <Link className='flex items-center gap-3' title={row.title} href={row.url} onClick={(event) => handleLinkClick(event, row.url)}>
                                 {row.title}
         
-                                {row?.below && row.below.length && !defaultexpanded && <FaAngleDown className='arrow' onClick={() => toggleExpand(i)} />}
+                                {row?.below && row.below.length && !defaultexpanded && <FaAngleDown className='arrow text-2xl' onClick={() => toggleExpand(i)} />}
                             </Link>}
+
                             {row?.below && row.below.length && <Submenu 
                                 className={classNames('left-0', { 
                                     "block": defaultexpanded || !defaultexpanded && expandedItems[i],
                                     "hidden": !defaultexpanded && !expandedItems[i],
                                     "relative top-0": defaultexpanded,
-                                    "absolute top-[100%]": !defaultexpanded
+                                    "absolute top-[100%] mt-2 min-w-[125%]": !defaultexpanded
                                 })}>
                                 <List 
-                                    className={classNames('list flex flex-col list-none', { 
+                                    className={classNames('list flex flex-col list-none rounded-[10px]', { 
                                         "p-0": defaultexpanded,
-                                        "p-4": !defaultexpanded,
+                                        "py-3 px-6": !defaultexpanded,
                                         [ListClassName || '']: mobile
                                     })}>
                                     {row.below.map(function(below: NavigationItem, j: number){

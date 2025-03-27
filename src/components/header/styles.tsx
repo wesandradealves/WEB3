@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { List, ListItem } from '../navigation/styles';
+import { List, ListItem, Submenu } from '../navigation/styles';
 
 export const Container = styled.header`
     transition: background-color 0.5s ease;
@@ -13,6 +13,17 @@ export const Container = styled.header`
                 > a {
                     &:not(.button) {
                         color: ${props => props.theme._colors.primary.bdm1};
+                    }
+                }
+            }
+        }
+        ${Submenu} {
+            ${ListItem} {
+                &:hover {
+                    > a {
+                        &:not(.button) {
+                            color: black;
+                        }
                     }
                 }
             }
