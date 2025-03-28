@@ -21,7 +21,7 @@ import Header from '@/components/header/header';
 import Footer from '@/components/footer/footer';
 import { NavigationProvider } from '../context/navigation';
 import { MediaProvider } from '@/context/media';
-import { AuthProvider } from '@/context/authContext';
+import { AuthProvider } from '@/context/auth';
 
 export default function RootLayout({
   children,
