@@ -21,6 +21,7 @@ import Header from '@/components/header/header';
 import Footer from '@/components/footer/footer';
 import { NavigationProvider } from '../context/navigation';
 import { MediaProvider } from '@/context/media';
+import { Login } from '@/services/userService';
 
 export default function RootLayout({
   children,
@@ -43,6 +44,25 @@ export default function RootLayout({
       unsubscribe();
     };
   }, [scrollY]);
+
+  const handleLogin = async () => {
+    try {
+      const data = await Login(process.env.NEXT_PUBLIC_API_USERNAME || '', process.env.NEXT_PUBLIC_API_PWD || '');
+      console.log('Login Successful:', data);
+    } catch (error: unknown) {
+      if (error instanceof Error && 'response' in error) {
+        const errorResponse = (error as { response?: { data?: unknown } }).response?.data;
+        console.error('Login Error:', errorResponse || error.message);
+      } else {
+        console.error('Login Error:', error);
+      }
+    }
+  };
+  
+  useEffect(() => {
+    handleLogin();
+  }, []);
+
 
   return (
     <html lang='pt-br' ref={scrollRef}>    
