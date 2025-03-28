@@ -14,7 +14,7 @@ export default function Section({ barstitle, gap, direction, helper, children, o
       backgroundposition={backgroundposition}
       backgroundsize={backgroundsize}
       backgroundattachment={backgroundattachment}
-      className={classNames(`w-full m-auto overflow-hidden relative ${className}`, {
+      className={classNames(`w-full m-auto relative ${className}`, {
         'overflow-hidden': opacity
       })}
     >
