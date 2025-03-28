@@ -26,9 +26,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       localStorage.setItem('token', data.token);
       setToken(data.token);
       setIsAuthenticated(true);
-      console.log('Login Successful:', data);
+      console.info(`✅ Você está logado como ${data.user_display_name} (${data.user_email})`);
     } catch (error: unknown) {
-      console.error('Login Error:', error);
+      console.error('❌ Login Error:', error);
       setIsAuthenticated(false);
     }
   };
