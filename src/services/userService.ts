@@ -1,6 +1,5 @@
 import api from './api';
 
-// Define a custom type for API errors
 interface ApiError {
   response?: {
     data?: unknown;
@@ -14,7 +13,6 @@ export const Login = async (username: string, password: string) => {
       username,
       password,
     });
-    // Save the token to localStorage or sessionStorage
     localStorage.setItem('token', response.data.token);
     return response.data;
   } catch (error: unknown) {

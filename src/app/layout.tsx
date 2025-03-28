@@ -15,13 +15,13 @@ import 'slick-carousel/slick/slick-theme.css';
 import { AnimatePresence, motion, useScroll } from 'motion/react';
 import { ThemeProvider } from 'styled-components';
 import StyledJsxRegistry from './registry';
-import { Suspense, useEffect, useRef, useState } from 'react';
+import { Suspense, useRef, useState } from 'react';
 import classNames from 'classnames';
 import Header from '@/components/header/header';
 import Footer from '@/components/footer/footer';
 import { NavigationProvider } from '../context/navigation';
 import { MediaProvider } from '@/context/media';
-import { Login } from '@/services/userService';
+import { AuthProvider } from '@/context/authContext';
 
 export default function RootLayout({
   children,
@@ -35,37 +35,12 @@ export default function RootLayout({
 
   const [scrollPosition, setScrollPosition] = useState<number>(0);
 
-  useEffect(() => {
-    const unsubscribe = scrollY.onChange((n) => {
-      setScrollPosition(n);
-    });
-
-    return () => {
-      unsubscribe();
-    };
-  }, [scrollY]);
-
-  const handleLogin = async () => {
-    try {
-      const data = await Login(process.env.NEXT_PUBLIC_API_USERNAME || '', process.env.NEXT_PUBLIC_API_PWD || '');
-      console.log('Login Successful:', data);
-    } catch (error: unknown) {
-      if (error instanceof Error && 'response' in error) {
-        const errorResponse = (error as { response?: { data?: unknown } }).response?.data;
-        console.error('Login Error:', errorResponse || error.message);
-      } else {
-        console.error('Login Error:', error);
-      }
-    }
-  };
-  
-  useEffect(() => {
-    handleLogin();
-  }, []);
-
+  scrollY.onChange((n) => {
+    setScrollPosition(n);
+  });
 
   return (
-    <html lang='pt-br' ref={scrollRef}>    
+    <html lang='pt-br' ref={scrollRef}>
       <body suppressHydrationWarning={true}
         className={classNames(
           `antialiased 
@@ -85,6 +60,7 @@ export default function RootLayout({
           strategy='afterInteractive'
         />
         <ThemeProvider theme={theme}>
+          <AuthProvider>
             <NavigationProvider>
               <MediaProvider>
                 <Suspense fallback={<div>Loading...</div>}>
@@ -103,7 +79,7 @@ export default function RootLayout({
                         >
                           <Header scrollPosition={scrollPosition} />
                           {children}
-                          <Footer/>
+                          <Footer />
                         </motion.div>
                       </App>
                     </AnimatePresence>
@@ -111,7 +87,8 @@ export default function RootLayout({
                 </Suspense>
               </MediaProvider>
             </NavigationProvider>
-            <GlobalStyle />
+          </AuthProvider>
+          <GlobalStyle />
         </ThemeProvider>
       </body>
     </html>
