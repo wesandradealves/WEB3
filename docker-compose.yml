@@ -7,5 +7,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3000:3000" # Mapeia a porta 3000 do contêiner para a porta 3000 no host
+    volumes:
+      - .:/app # Mapeia o diretório local para o contêiner
+      - /app/node_modules # Evita conflitos com node_modules do host
     environment:
-      - NODE_ENV=production
+      - CHOKIDAR_USEPOLLING=true # Garante que o hot reload funcione em sistemas de arquivos montados
