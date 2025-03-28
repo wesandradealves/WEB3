@@ -68,8 +68,9 @@ export default function SectionSwitcher({ data, className, title, background }: 
             <div className='flex flex-wrap justify-between gap-12 xl:gap-[90px] items-start xl:pt-12'>
                 <div
                     ref={selectRef}
-                    className={classNames(`flex relative bg-[#1B1F28] shadow-lg lg:text-3xl font-bold w-full rounded-tl-[40px] rounded-tr-[40px] xl:max-w-[273px] items-center  flex-wrap justify-between ps-6`, {
-                        'rounded-[30px]': !isExpanded
+                    className={classNames(`flex relative bg-[#1B1F28] shadow-lg lg:text-3xl font-bold w-full  xl:max-w-[273px] items-center  flex-wrap justify-between ps-6`, {
+                        'rounded-full': !isExpanded,
+                        'rounded-tl-[40px] rounded-tr-[40px]': isExpanded
                     })}
                 >
                     <Select
