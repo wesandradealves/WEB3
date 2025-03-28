@@ -7,13 +7,13 @@ export const Text = styled.p`
 export const Container = styled.div`
   .slick {
     &-list {
+      margin: 0 -16px;
       .slick-track {
-        margin: 0;
         display: flex;
-        gap: 31px;
         align-items: stretch;
         .slick-slide {
           height: auto;
+          padding: 0 16px;
           > div {
             height: 100%
           }
