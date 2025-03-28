@@ -76,18 +76,19 @@ const Header = ({ scrollPosition }: Props) => {
                 </button>
               </span>
 
-              <LanguageSwitcher float='on' className="hidden xl:flex" data={[
+              {/* <LanguageSwitcher float='on' className="hidden xl:flex" data={[
                 {
                   title: 'Portugês',
                   code: 'br'
-                }, {
+                }
+                , {
                   title: 'Inglês',
                   code: 'us'
                 }, {
                   title: 'Espanhol',
                   code: 'es'
                 }
-              ]} />
+              ]} /> */}
             </div>
           </div>
         </div> 

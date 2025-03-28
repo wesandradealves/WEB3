@@ -25,6 +25,7 @@
     "@mui/material": "^7.0.0",
     "@mui/styled-engine-sc": "^7.0.0",
     "@types/storybook__react": "^4.0.2",
+    "axios": "^1.8.4",
     "classnames": "^2.5.1",
     "compressorjs": "^1.2.1",
     "flag-icons": "^7.3.2",
