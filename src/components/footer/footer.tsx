@@ -18,21 +18,21 @@ export default function Footer() {
                 alt="BDM Digital" 
                 width={160} 
                 height={40}
-                className="w-24 h-auto"
+                className="h-auto"
                 priority
               />
             </Link>
             
             <div className="flex flex-col gap-4 md:max-w-[300px]">
   
-              <SocialNetworks data={[
+              <SocialNetworks className='text-xl' data={[
                 { title: 'Twitter', url: 'https://twitter.com' },
                 { title: 'Instagram', url: 'https://instagram.com' },
                 { title: 'Linkedin', url: 'https://linkedin.com' },
                 { title: 'Pinterest', url: 'https://pinterest.com' },
               ]} />
 
-              <p className="text-sm text-gray-700 leading-normal mt-2">
+              <p className="text-base text-gray-700 leading-normal mt-2">
                 © 2025 DBM Digital. Todos os direitos reservados.
                 <br />
                 Desenvolvido por Dourado.cash
