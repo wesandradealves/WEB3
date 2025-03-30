@@ -19,7 +19,6 @@ import { Suspense, useRef, useState, useEffect } from 'react';
 import classNames from 'classnames';
 import Header from '@/components/header/header';
 import Footer from '@/components/footer/footer';
-import { NavigationProvider } from '../context/navigation';
 import { MediaProvider } from '@/context/media';
 import { AuthProvider } from '@/context/auth';
 import { LoaderProvider, useLoader } from '@/context/spinner';
@@ -68,33 +67,31 @@ export default function RootLayout({
           <LoaderProvider>
             <LoaderSetup />
             <AuthProvider>
-              <NavigationProvider>
-                <MediaProvider>
-                  <Suspense fallback={<div>Loading...</div>}>
-                    <StyledJsxRegistry>
-                      <AnimatePresence
-                        mode="wait"
-                        initial={true}
-                        onExitComplete={() => window.scrollTo(0, 0)}
-                      >
-                        <App id="primary">
-                          <motion.div
-                            className="min-h-screen flex flex-start flex-col"
-                            initial={{ x: 0, opacity: 0 }}
-                            animate={{ x: 0, opacity: 1 }}
-                            exit={{ x: 0, opacity: 0 }}
-                          >
-                            <Header scrollPosition={scrollPosition} />
-                            {children}
-                            <Footer />
-                          </motion.div>
-                          <Spinner />
-                        </App>
-                      </AnimatePresence>
-                    </StyledJsxRegistry>
-                  </Suspense>
-                </MediaProvider>
-              </NavigationProvider>
+              <MediaProvider>
+                <Suspense fallback={<div>Loading...</div>}>
+                  <StyledJsxRegistry>
+                    <AnimatePresence
+                      mode="wait"
+                      initial={true}
+                      onExitComplete={() => window.scrollTo(0, 0)}
+                    >
+                      <App id="primary">
+                        <motion.div
+                          className="min-h-screen flex flex-start flex-col"
+                          initial={{ x: 0, opacity: 0 }}
+                          animate={{ x: 0, opacity: 1 }}
+                          exit={{ x: 0, opacity: 0 }}
+                        >
+                          <Header scrollPosition={scrollPosition} />
+                          {children}
+                          <Footer />
+                        </motion.div>
+                        <Spinner />
+                      </App>
+                    </AnimatePresence>
+                  </StyledJsxRegistry>
+                </Suspense>
+              </MediaProvider>
             </AuthProvider>
           </LoaderProvider>
           <GlobalStyle />
