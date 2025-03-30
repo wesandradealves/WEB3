@@ -8,7 +8,7 @@ import slugify from 'slugify';
 import { MediaProp } from '@/context/media';
 import { FiClock, FiUser, FiArrowLeft } from 'react-icons/fi';
 import Link from 'next/link';
-import { formatDate } from '@/utils/date';
+import { formatDate } from '@/utils/index';
 import { Title } from '@/components/section/styles';
 import { Body } from './style';
 

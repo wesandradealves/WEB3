@@ -13,6 +13,13 @@ export const setupInterceptors = (setLoading: (loading: boolean) => void) => {
   api.interceptors.request.use(
     (config) => {
       setLoading(true); 
+
+      const token = localStorage.getItem('token');
+
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+
       return config;
     },
     (error) => {

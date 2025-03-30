@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Container } from './styles';
-import Navigation from '../navigation/navigation';
+// import Navigation from '../navigation/navigation';
 import SocialNetworks from '../socialNetworks/socialNetworks';
 
 export default function Footer() {
@@ -40,7 +40,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <Navigation 
+          {/* <Navigation 
             defaultexpanded={"on"} 
             className='flex-1' 
             ListClassName='gap-8 md:gap-8 xl:gap-[16.25rem] flex-col md:flex-row md:justify-end' data={[
@@ -56,7 +56,7 @@ export default function Footer() {
               { title: 'Documentação', url: '#' },
               { title: 'API', url: '#' },
             ] }
-          ]} />
+          ]} /> */}
         </div>
       </div>
     </Container>
