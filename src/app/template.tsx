@@ -3,7 +3,7 @@
 import { PageService } from '../services/userService';
 import { usePathname } from 'next/navigation';
 import { useMetadata } from "@/hooks/useMetadata";
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 export default function Template({ children }: { children: React.ReactNode }) {
   interface Page {
@@ -15,18 +15,18 @@ export default function Template({ children }: { children: React.ReactNode }) {
   const [page, setPage] = useState<Page | null>(null);
   const pathname = usePathname();
 
-  const loadPage = async (pathname: string) => {
+  const loadPage = useCallback(async (pathname: string) => {
     try {
       const data = await PageService(pathname);
       if (data) setPage(data as Page); 
     } catch (error) {
       console.error('Error loading navigation:', error);
     }
-  };
+  }, []);
 
   useEffect(() => {
-    loadPage(pathname)
-  }, [pathname]);
+    loadPage(pathname);
+  }, [pathname, loadPage]);
 
   useMetadata({
     title: `BDM Digital ${page?.title?.rendered ? ' - ' + page.title.rendered : ''}`,
@@ -39,4 +39,3 @@ export default function Template({ children }: { children: React.ReactNode }) {
     </main>
   );
 }
-
