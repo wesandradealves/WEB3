@@ -3,24 +3,26 @@
 import React, { useState, useEffect, ReactElement } from 'react';
 import { Props } from './typo';
 
-const DynamicComponent: React.FC<Props> = ({ machineName, className }) => {
+const DynamicComponent: React.FC<Props> = ({ machineName, className, data }) => {
   const [importedComponent, setImportedComponent] = useState<ReactElement | null>(null);
 
   useEffect(() => {
     const importComponent = async () => {
       try {
-        const componentModule = await import(`@/components/${machineName}/${machineName}`);
+        const componentModule = await import(`@/components/${machineName}`);
         const Component = componentModule.default;
-        setImportedComponent(<Component id={machineName} />);
-      } catch (error) {
-        console.error(`Error loading component ${machineName}:`, error);
+        setImportedComponent(<Component className={className} id={machineName} {...data} />);
+      } catch {
+        console.warn(`Component not found for machineName: ${machineName}`);
       }
     };
 
-    importComponent();
-  }, [machineName]);
+    if (machineName) {
+      importComponent();
+    }
+  }, [machineName, data]);
 
-  return importedComponent ? <div className={className}>{importedComponent}</div> : null;
+  return importedComponent ?? null;
 };
 
 export default DynamicComponent;
