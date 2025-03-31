@@ -60,7 +60,6 @@ export default function Media({ data, className }: Props) {
           });
           return (
             <Item
-              title={item.body || item.summary}
               className='h-full cursor-pointer group text-base'
               key={index}
               onClick={() => router.push(`media/${slug}`)}

@@ -8,7 +8,7 @@ import 'hamburgers/dist/hamburgers.css';
 import { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import Props from './typo';
-import LanguageSwitcher from '../languageSwitcher/languageSwitcher';
+// import LanguageSwitcher from '../languageSwitcher/languageSwitcher';
 import { fetchNavigation } from '@/utils/index';
 import { MenuItem } from '@/services/userService';
 
@@ -29,10 +29,9 @@ const Header = ({ scrollPosition }: Props) => {
 
   const loadNavigation = async () => {
     try {
-      // Fetch two menus concurrently using Promise.all
       const menu = await Promise.all([
-        fetchNavigation('main'), // Fetch the main menu
-        fetchNavigation('lateral'), // Fetch the secondary menu
+        fetchNavigation('main'),
+        fetchNavigation('lateral'),
       ]);
   
       if(menu[0]) setMain(menu[0]);
@@ -69,11 +68,11 @@ const Header = ({ scrollPosition }: Props) => {
               </Link>
             </div>
             
-            <Navigation isScrolling={scrollPosition} className='hidden xl:flex flex-1' ListClassName='gap-6 2xl:gap-20 justify-center items-center' data={main} />
+            {main && (<Navigation isScrolling={scrollPosition} className='hidden xl:flex flex-1' ListClassName='gap-6 2xl:gap-20 justify-center items-center' data={main} />)}
 
             <div className='ms-auto flex items-center justify-end gap-6'>
 
-              <Navigation ListClassName='gap-6 justify-center items-center' data={lateral} />
+              {lateral && (<Navigation ListClassName='gap-6 justify-center items-center' data={lateral} />)}
 
               <span className='hamburger-wrapper block xl:hidden'>
                 <button 
@@ -116,7 +115,7 @@ const Header = ({ scrollPosition }: Props) => {
             'hidden': !expanded
           })}
           mobile={true} ListClassName='gap-6' data={main}>
-            <LanguageSwitcher className="mt-6" data={[
+            {/* <LanguageSwitcher className="mt-6" data={[
               {
                 title: 'Portugês',
                 code: 'br'
@@ -127,7 +126,7 @@ const Header = ({ scrollPosition }: Props) => {
                 title: 'Espanhol',
                 code: 'es'
               }
-                ]} />
+                ]} /> */}
           </Navigation>
       </Container>
   );

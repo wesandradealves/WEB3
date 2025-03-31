@@ -3,10 +3,31 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Container } from './styles';
-// import Navigation from '../navigation/navigation';
+import Navigation from '../navigation/navigation';
 import SocialNetworks from '../socialNetworks/socialNetworks';
+import { fetchNavigation } from '@/utils/index';
+import { MenuItem } from '@/services/userService';
+import { useEffect, useState } from 'react';
 
 export default function Footer() {
+  const [menu, setNavigation] = useState<MenuItem[]>([]);
+  
+  const loadNavigation = async () => {
+    try {
+      const menu = await Promise.all([
+        fetchNavigation('footer')
+      ]);
+  
+      if(menu[0]) setNavigation(menu[0]);
+    } catch (error) {
+      console.error('Error loading navigation:', error);
+    }
+  };
+
+  useEffect(() => {
+    loadNavigation();
+  }, []);
+
   return (
     <Container className="bg-white py-5 rounded-t-2xl">
       <div className="container m-auto px-5">
@@ -32,7 +53,7 @@ export default function Footer() {
                 { title: 'Pinterest', url: 'https://pinterest.com' },
               ]} />
 
-              <p className="text-base text-gray-700 leading-normal mt-2">
+              <p className="text-sm lg:text-md text-gray-700 leading-normal mt-2">
                 © 2025 DBM Digital. Todos os direitos reservados.
                 <br />
                 Desenvolvido por Dourado.cash
@@ -40,23 +61,10 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* <Navigation 
+          {menu && (<Navigation 
             defaultexpanded={"on"} 
             className='flex-1' 
-            ListClassName='gap-8 md:gap-8 xl:gap-[16.25rem] flex-col md:flex-row md:justify-end' data={[
-            { title: 'Explore', url: '#', below: [
-              { title: 'Sobre nós', url: '#' },
-              { title: 'BDM POS', url: '#' },
-              { title: 'BDMAP', url: '#' },
-              { title: 'Mercado BDM', url: '#' },
-            ] },
-            { title: 'Recursos', url: '#', below: [
-              { title: 'Blog', url: '#' },
-              { title: 'Suporte', url: '#' },
-              { title: 'Documentação', url: '#' },
-              { title: 'API', url: '#' },
-            ] }
-          ]} /> */}
+            ListClassName='gap-8 md:gap-4 xl:gap-[8rem] flex-col md:flex-row md:justify-end' data={menu} />)}
         </div>
       </div>
     </Container>
