@@ -1,4 +1,4 @@
- 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import api from './api';
 
 interface ApiError {
@@ -42,6 +42,7 @@ export interface MenuItem {
 }
 
 interface Page {
+  acf: any;
   data: {
     "title": {
       "rendered": string

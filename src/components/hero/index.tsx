@@ -24,19 +24,21 @@ const Hero = (Props: Props) => {
       { threshold: 0.25 }
     );
 
-    if (videoRef.current) {
-      observer.observe(videoRef.current);
+    const currentVideoRef = videoRef.current; // Copy the ref value to a local variable
+
+    if (currentVideoRef) {
+      observer.observe(currentVideoRef);
     }
 
     return () => {
-      if (videoRef.current) {
-        observer.unobserve(videoRef.current);
+      if (currentVideoRef) {
+        observer.unobserve(currentVideoRef);
       }
     };
   }, []);
 
   useEffect(() => {
-    console.log(Props)
+    console.log(Props);
   }, [Props]);
 
   return (

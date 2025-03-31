@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { Container } from './styles';
 import { Props } from './typo';
 import { IconType } from 'react-icons';
@@ -8,11 +8,11 @@ import { IconType } from 'react-icons';
 export default function SocialNetworks({ data, className }: Props) {
     const [icons, setIcons] = useState<{ [key: string]: IconType }>({});
 
-    const iconNameMap: { [key: string]: string } = {
+    const iconNameMap = useMemo<Record<string, string>>(() => ({
         facebook: 'FaFacebookF', 
         linkedin: 'FaLinkedin', 
         youtube: 'FaYoutube',  
-    };
+    }), []);
 
     useEffect(() => {
         if (data) {
@@ -34,7 +34,7 @@ export default function SocialNetworks({ data, className }: Props) {
 
             loadIcons();
         }
-    }, [data]);
+    }, [data, iconNameMap]);
 
     return (
         <Container className={`socialNetworks ${className}`}>
