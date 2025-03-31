@@ -11,11 +11,13 @@ import Props from './typo';
 // import LanguageSwitcher from '../languageSwitcher/languageSwitcher';
 import { fetchNavigation } from '@/utils/index';
 import { MenuItem } from '@/services/userService';
+import { useSettings } from '@/context/settings';
 
 const Header = ({ scrollPosition }: Props) => {
   const [expanded, setExpand] = useState<boolean>(false);
   const [main, setMain] = useState<MenuItem[]>([]);
   const [lateral, setLateral] = useState<MenuItem[]>([]);
+  const { settings } = useSettings();
 
   useEffect(() => {
       if (scrollPosition) {
@@ -62,11 +64,11 @@ const Header = ({ scrollPosition }: Props) => {
           'pt-6 pb-6': scrollPosition <= 0,
         })}>
           <div className='flex justify-between items-center gap-6'>
-            <div className='logo'>
+            {settings && (<div className='logo'>
               <Link href={'/'}>
-                <Image width={226} height={74} src='/img/bdm-logo-golden.svg' alt='Onde o dinheiro se transforma em Ouro!' />
+                <Image width={226} height={74} src={settings.custom_logo} alt={settings.blog_info.name} />
               </Link>
-            </div>
+            </div>)}
             
             {main && (<Navigation isScrolling={scrollPosition} className='hidden xl:flex flex-1' ListClassName='gap-6 2xl:gap-20 justify-center items-center' data={main} />)}
 
