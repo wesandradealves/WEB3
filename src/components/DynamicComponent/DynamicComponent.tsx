@@ -20,6 +20,7 @@ const DynamicComponent: React.FC<Props> = ({ machineName, data }) => {
     if (machineName) {
       importComponent();
     }
+
   }, [machineName, data]);
 
   return importedComponent ?? null;

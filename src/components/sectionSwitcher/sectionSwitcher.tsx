@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { Props } from './typo';
-import Section from '../section/section';
+import Section from '../section';
 import DynamicComponent from '../DynamicComponent/DynamicComponent';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { MenuItem, MenuProps, OutlinedInput } from '@mui/material';
@@ -142,7 +142,7 @@ export default function SectionSwitcher({ data, className, title, background }: 
                     <div ref={menuContainerRef} id="menu-container" />
                 </div>
                 {selectedValue.length > 0 && (
-                    <DynamicComponent className='flex-1 overflow-hidden relative' machineName={selectedValue[0]} />
+                    <DynamicComponent machineName={selectedValue[0]} />
                 )}
             </div>
         </Section>

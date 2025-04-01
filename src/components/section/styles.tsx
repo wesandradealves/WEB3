@@ -80,6 +80,9 @@ export const Title = styled.h2<Typo>`
 export const Subtitle = styled.p`
 `;
 
+export const Text = styled.article`
+`;
+
 export const Helper = styled.p`
     text-transform: uppercase;
 `;
