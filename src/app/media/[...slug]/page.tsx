@@ -1,7 +1,7 @@
 "use client";
 
 import { useParams } from 'next/navigation';
-import Section from '@/components/section/section';
+import Section from '@/components/section';
 import { useMedia } from '@/context/media';
 import { useEffect, useState } from 'react';
 import slugify from 'slugify';
