@@ -3,7 +3,7 @@
 import React, { useState, useEffect, ReactElement } from 'react';
 import { Props } from './typo';
 
-const DynamicComponent: React.FC<Props> = ({ machineName, className, data }) => {
+const DynamicComponent: React.FC<Props> = ({ machineName, data }) => {
   const [importedComponent, setImportedComponent] = useState<ReactElement | null>(null);
 
   useEffect(() => {
@@ -11,7 +11,7 @@ const DynamicComponent: React.FC<Props> = ({ machineName, className, data }) => 
       try {
         const componentModule = await import(`@/components/${machineName}`);
         const Component = componentModule.default;
-        setImportedComponent(<Component className={className} id={machineName} {...data} />);
+        setImportedComponent(<Component id={machineName} {...data} />);
       } catch {
         console.warn(`Component not found for machineName: ${machineName}`);
       }
@@ -20,7 +20,7 @@ const DynamicComponent: React.FC<Props> = ({ machineName, className, data }) => 
     if (machineName) {
       importComponent();
     }
-  }, [machineName, data, className]);
+  }, [machineName, data]);
 
   return importedComponent ?? null;
 };

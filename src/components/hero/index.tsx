@@ -5,10 +5,15 @@ import Props from './typo';
 import { Text, Title } from './styles';
 import Button from '../button/button';
 import { useState, useEffect, useRef } from 'react';
+import { MediaService } from '@/services/userService';
 
 const Hero = (Props: Props) => {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [media, setMedia] = useState({
+    backgroundimage: '',
+    video: ''
+  });
 
   const handleVideoLoad = () => {
     setIsVideoLoaded(true);
@@ -38,13 +43,34 @@ const Hero = (Props: Props) => {
   }, []);
 
   useEffect(() => {
-    console.log(Props);
-  }, [Props]);
+    const fetchMedia = async () => {
+      try {
+        if (Props.backgroundimage) {
+          const backgroundimage = await MediaService(Props.backgroundimage);
+          setMedia((prevMedia) => ({
+            ...prevMedia,
+            backgroundimage: backgroundimage.source_url,
+          }));
+        }
+        if (Props.media) {
+          const video = await MediaService(Props.media);
+          setMedia((prevMedia) => ({
+            ...prevMedia,
+            video: video.source_url,
+          }));
+        }
+      } catch (error) {
+        console.error('Error fetching media:', error);
+      }
+    };
+  
+    fetchMedia();
+  }, [Props.backgroundimage, Props.media]);
 
   return (
-    <Container backgroundimage={Props?.backgroundimage} className='w-full pb-[205px] pt-[310px] flex flex-col items-center justify-center relative overflow-hidden'>
+    <Container backgroundimage={media.backgroundimage} className='w-full pb-[205px] pt-[310px] flex flex-col items-center justify-center relative overflow-hidden'>
       {
-        !Props.backgroundimage && Props.media && (
+        !media.backgroundimage && media.video && (
           <>
             {!isVideoLoaded && Props.placeholder && (
               <Placeholder
@@ -56,7 +82,7 @@ const Hero = (Props: Props) => {
             )}
             <video
               ref={videoRef}
-              src={Props.media?.url}
+              src={media.video}
               className={`opacity-25 block w-full h-full object-cover absolute top-0 left-0 z-0 ${isVideoLoaded ? 'loaded' : ''}`}
               autoPlay
               loop
@@ -70,7 +96,7 @@ const Hero = (Props: Props) => {
       <div className='container text-white relative z-1 m-auto flex flex-col gap-16 items-center justify-center'>
         {Props.title && <Title className='text-center text-3xl lg:text-6xl' dangerouslySetInnerHTML={{ __html: Props.title }} />}
         {Props.text && <Text className='text-center text-base lg:text-3xl' dangerouslySetInnerHTML={{ __html: Props.text }} />}
-        {Props.cta && <Button effect={Props.cta.btnAnimation} radius={999} tag="a" href={Props.cta.url} className={`${Props.cta.btnClass}`}>{Props.cta.btnLabel}</Button>}
+        {Props.btnLabel && Props.url && (<Button effect={Props.btnAnimation} radius={999} tag="a" href={Props.url} className={`${Props.btnClass}`}>{Props.btnLabel}</Button>)}
       </div>
     </Container>
   );
