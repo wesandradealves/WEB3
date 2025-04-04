@@ -36,6 +36,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
   useMetadata({
     title: `${settings?.blog_info.name ?? 'BDM Digital'}${title}`,
     ogTitle: `${settings?.blog_info.name ?? 'BDM Digital'}${title}`,
+    favicon: settings?.favicon,
   });
 
   return (

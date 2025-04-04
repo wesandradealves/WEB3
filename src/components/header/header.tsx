@@ -18,20 +18,17 @@ const Header = ({ scrollPosition }: Props) => {
   const [nav, setNavigation] = useState<{ lateral?: MenuItem[], main?: MenuItem[] }>({});
   const { settings } = useSettings();
 
-  // Collapse menu on scroll
   useEffect(() => {
     if (scrollPosition) {
       setExpand(false);
     }
   }, [scrollPosition]);
 
-  // Debounced resize handler
   const handleResize = useCallback(
     debounce(() => setExpand(false), 200),
     []
   );
 
-  // Load main and lateral navigation
   const loadNavigation = useCallback(async () => {
     try {
       const [main, lateral] = await Promise.all([
