@@ -8,7 +8,6 @@ import { useEffect, useState, useCallback } from "react";
 import { MediaService } from "@/services/userService";
 
 export default function Card(Props: CardItem) {
-  // Ensure `image` is either a string or undefined
   const [imageUrl, setImageUrl] = useState<string | undefined>(
     typeof Props.image === "string" ? Props.image : undefined
   );
@@ -17,7 +16,7 @@ export default function Card(Props: CardItem) {
     if (typeof Props.image === "number") {
       try {
         const media = await MediaService(Props.image);
-        setImageUrl(media.source_url); // Replace ID with URL
+        setImageUrl(media.source_url); 
       } catch (error) {
         console.error("Error fetching image:", error);
       }

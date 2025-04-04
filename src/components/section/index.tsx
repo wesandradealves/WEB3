@@ -1,123 +1,127 @@
 "use client";
 
 import classNames from 'classnames';
-import { Container, SectionHeader, Subtitle, Title, Helper, Text } from './styles';
-import { Props } from './typo';
-import { useEffect, useState } from 'react';
-import { MediaService, MediaItem } from '@/services/userService';
+import { useEffect, useState, useCallback, useMemo } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { Container, SectionHeader, Subtitle, Title, Text } from './styles';
+import { Props } from './typo';
+import { MediaService, MediaItem } from '@/services/userService';
 
-const Section = (Props: Props) => {
-  const [processedProps, setProcessedProps] = useState<Props & { content?: number[], mediaUrls?: string[], backgroundImageUrl?: string }>({
-    ...Props,
-    mediaUrls: [],
-    backgroundImageUrl: '',
-  });
+const Section = (props: Props) => {
+  const [mediaUrls, setMediaUrls] = useState<string[]>([]);
+  const [backgroundImageUrl, setBackgroundImageUrl] = useState<string | undefined>(undefined);
+
+  const mediaKeys = useMemo(() => {
+    return Object.keys(props)
+      .filter(key => key.startsWith("media_") && key.endsWith("_media"))
+      .sort((a, b) => {
+        const indexA = parseInt(a.split("_")[1], 10);
+        const indexB = parseInt(b.split("_")[1], 10);
+        return indexA - indexB;
+      });
+  }, [props]);
+
+  const mediaIds = useMemo(() => mediaKeys.map(key => props[key] as number), [mediaKeys, props]);
+
+  const fetchMediaUrls = useCallback(async () => {
+    try {
+      const mediaItems: MediaItem[] = await Promise.all(
+        mediaIds.map(id => MediaService(id))
+      );
+      setMediaUrls(mediaItems.map(item => item.source_url));
+    } catch (error) {
+      console.error("Error fetching media URLs:", error);
+    }
+  }, [mediaIds]);
+
+  const fetchBackgroundImage = useCallback(async () => {
+    if (props.backgroundimage) {
+      try {
+        const bgImage = await MediaService(props.backgroundimage);
+        setBackgroundImageUrl(bgImage.source_url);
+      } catch (error) {
+        console.error("Error fetching background image:", error);
+      }
+    }
+  }, [props.backgroundimage]);
 
   useEffect(() => {
-    const mediaKeys = Object.keys(Props).filter(
-      (key) => key.startsWith("media_") && key.endsWith("_media")
-    );
-
-    mediaKeys.sort((a, b) => {
-      const indexA = parseInt(a.split("_")[1], 10);
-      const indexB = parseInt(b.split("_")[1], 10);
-      return indexA - indexB;
-    });
-
-    const media = mediaKeys.map((key) => Props[key] as number);
-
-    const fetchMediaUrls = async () => {
-      try {
-        const mediaItems: MediaItem[] = await Promise.all(
-          media.map((id) => MediaService(id))
-        );
-        const mediaUrls = mediaItems.map((item) => item.source_url);
-
-        setProcessedProps((prev) => ({
-          ...prev,
-          mediaUrls
-        }));
-      } catch (error) {
-        console.error("Error fetching media URLs:", error);
-      }
-    };
-
-    const fetchBackgroundImage = async () => {
-      if (Props.backgroundimage) {
-        try {
-          const bgImage = await MediaService(Props.backgroundimage);
-          setProcessedProps((prev) => ({
-            ...prev,
-            backgroundimage: bgImage.source_url
-          }));
-        } catch (error) {
-          console.error("Error fetching background image:", error);
-        }
-      }
-    };
-
-    fetchBackgroundImage();
-
     fetchMediaUrls();
-  }, [Props]);
+    fetchBackgroundImage();
+  }, [fetchMediaUrls, fetchBackgroundImage]);
 
   return (
     <Container
-      id={Props?.id}
-      background={Props?.background}
-      backgroundcolor={Props?.backgroundcolor}
-      backgroundimage={processedProps.backgroundimage}
-      backgroundposition={Props?.backgroundposition}
-      backgroundsize={Props?.backgroundsize}
-      backgroundattachment={Props?.backgroundattachment}
-      className={classNames(`w-full m-auto relative ${Props?.classname}`, {
-        'overflow-hidden': Props?.opacity
+      id={props?.id}
+      background={props?.background}
+      backgroundcolor={props?.backgroundcolor}
+      backgroundimage={backgroundImageUrl}
+      backgroundposition={props?.backgroundposition}
+      backgroundsize={props?.backgroundsize}
+      backgroundattachment={props?.backgroundattachment}
+      className={classNames(`w-full m-auto relative ${props?.classname}`, {
+        'overflow-hidden': props?.opacity
       })}
     >
-      <div className={`container flex-wrap text-lg lg:text-3xl leading-none relative z-10 m-auto flex flex-${Props?.direction ?? 'col'} pt-[6rem] pb-[6rem] gap-${Props?.gap || 7}`}>
-        {(Props?.helper || Props?.title || Props?.subtitle) && (
-          <SectionHeader className='flex flex-col justify-center items-center text-center w-full gap-7'>
-
-            {(Props?.helper || Props?.title) && (
+      <div className={classNames(
+        `container flex-wrap text-lg lg:text-3xl leading-none relative z-10 m-auto flex`,
+        `flex-${props?.direction ?? 'col'}`,
+        `pt-[6rem] pb-[6rem] gap-${props?.gap || 7}`
+      )}>
+        {(props?.helper || props?.title || props?.subtitle) && (
+          <SectionHeader className="flex flex-col justify-center items-center text-center w-full gap-7">
+            {(props?.helper || props?.title) && (
               <span>
-                {Props?.helper && <Helper className='text-center uppercase' dangerouslySetInnerHTML={{ __html: Props?.helper }} />}
-                {Props?.title && (
+                {/* Uncomment if Helper is needed */}
+                {/* {props?.helper && (
+                  <Helper
+                    className="text-center uppercase"
+                    dangerouslySetInnerHTML={{ __html: props.helper }}
+                  />
+                )} */}
+                {props?.title && (
                   <Title
-                    barstitle={Props?.barstitle}
+                    barstitle={props?.barstitle}
                     className={classNames(`text-center relative text-3xl lg:text-5xl`, {
-                      'pt-2 pb-2 ps-[150px] pe-[150px]': !!Props?.barstitle
+                      'pt-2 pb-2 ps-[150px] pe-[150px]': !!props?.barstitle
                     })}
-                    dangerouslySetInnerHTML={{ __html: Props?.title }}
+                    dangerouslySetInnerHTML={{ __html: props.title }}
                   />
                 )}
               </span>
             )}
-
-            {Props?.subtitle && <Subtitle className='text-center' dangerouslySetInnerHTML={{ __html: Props?.subtitle }} />}
+            {props?.subtitle && (
+              <Subtitle
+                className="text-center"
+                dangerouslySetInnerHTML={{ __html: props.subtitle }}
+              />
+            )}
           </SectionHeader>
         )}
 
-        {processedProps?.mediaUrls && processedProps.mediaUrls.length > 0 && (
+        {mediaUrls.length > 0 && (
           <div className="flex flex-wrap justify-between">
-            {processedProps.mediaUrls.map((url: string, index: number) => (
-                <div key={index} className='flex-1 flex justify-center items-center flex-wrap'>
-                  <LazyLoadImage  src={url} alt={`Media ${index + 1}`} />
-                </div>
+            {mediaUrls.map((url, index) => (
+              <div key={index} className="flex-1 flex justify-center items-center flex-wrap">
+                <LazyLoadImage src={url} alt={`Media ${index + 1}`} />
+              </div>
             ))}
           </div>
         )}
 
-        {Props?.text && (
+        {props?.text && (
           <Text
-            className={classNames(`text-center relative text-md lg:text-lg xl:text-xl`)}
-            dangerouslySetInnerHTML={{ __html: Props?.text }}
+            className="text-center relative text-md lg:text-lg xl:text-xl"
+            dangerouslySetInnerHTML={{ __html: props.text }}
           />
         )}
       </div>
 
-      {Props?.opacity && (
-        <div className={`absolute z-1 bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed bg-black opacity-${Props?.opacity}`}></div>
+      {props?.opacity && (
+        <div className={classNames(
+          `absolute z-1 bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed bg-black`,
+          `opacity-${props.opacity}`
+        )} />
       )}
     </Container>
   );
