@@ -71,6 +71,8 @@ const Boxes = (props: Props) => {
       ...prev,
       content: groupedBoxes,
     }));
+
+    console.log(processedProps)
   }, [groupedBoxes]);
 
   return (
