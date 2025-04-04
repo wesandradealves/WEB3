@@ -1,22 +1,42 @@
 "use client";
 
-import { Container } from './styles';
-import { Props } from './typo';
-import { Title, Text } from './styles';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { Container } from "./styles";
+import { Title, Text } from "./styles";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import { CardItem } from "../boxes/typo";
+import { useEffect, useState, useCallback } from "react";
+import { MediaService } from "@/services/userService";
 
-export default function Card({ className, title, text, image, gap }: Props) {
+export default function Card(Props: CardItem) {
+  // Ensure `image` is either a string or undefined
+  const [imageUrl, setImageUrl] = useState<string | undefined>(
+    typeof Props.image === "string" ? Props.image : undefined
+  );
+
+  const fetchImage = useCallback(async () => {
+    if (typeof Props.image === "number") {
+      try {
+        const media = await MediaService(Props.image);
+        setImageUrl(media.source_url); // Replace ID with URL
+      } catch (error) {
+        console.error("Error fetching image:", error);
+      }
+    }
+  }, [Props.image]);
+
+  useEffect(() => {
+    fetchImage();
+  }, [fetchImage]);
+
   return (
-    <Container className={`card flex text-base flex-col gap-${gap ?? 3 } ${className}`}>
-      {image && (
-        <LazyLoadImage className='max-w-[100%] me-auto' alt={title} src={image} />
+    <Container className={`card flex text-base flex-col flex-1 gap-${Props.gap !== '' ? Props.gap : 3} ${Props.classname}`}>
+      {imageUrl && (
+        <LazyLoadImage className="max-w-[100%] me-auto" src={imageUrl} alt="Card Image" />
       )}
-      {title && (
-        <Title className='font-bold lg:text-xl' dangerouslySetInnerHTML={{ __html: title }} />
+      {Props.title && (
+        <Title className="font-bold lg:text-xl" dangerouslySetInnerHTML={{ __html: Props.title }} />
       )}
-      {text && (
-        <Text  dangerouslySetInnerHTML={{ __html: text }} />
-      )}
+      {Props.text && <Text dangerouslySetInnerHTML={{ __html: Props.text }} />}
     </Container>
   );
 }

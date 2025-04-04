@@ -3,13 +3,14 @@
 import { Container } from './styles';
 import { Props } from './typo';
 import classNames from 'classnames';
-export default function Box({ className, children, alignment, justify, wrap }: Props) {
+
+export default function Box(Props: Props) {
   return (
     <Container 
-      className={classNames(`box flex justify-${justify ?? 'between'} items-${alignment ?? 'center'} ${className}`, className, {
-        'flex-wrap': wrap
+      className={classNames(`box gap-${Props.gap ?? 3} flex-col lg:flex-row flex justify-${Props.justify ?? 'between'} items-${Props.alignment ?? 'center'} ${Props.classname}`, {
+        'flex-wrap': Props.wrap
       })}>
-      {children}
+      {Props.children}
     </Container>
   );
 }

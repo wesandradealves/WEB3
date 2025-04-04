@@ -81,7 +81,7 @@ const Section = (Props: Props) => {
 
             {(Props?.helper || Props?.title) && (
               <span>
-                {Props?.helper && <Helper className='text-center' dangerouslySetInnerHTML={{ __html: Props?.helper }} />}
+                {Props?.helper && <Helper className='text-center uppercase' dangerouslySetInnerHTML={{ __html: Props?.helper }} />}
                 {Props?.title && (
                   <Title
                     barstitle={Props?.barstitle}

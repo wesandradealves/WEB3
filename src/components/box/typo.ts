@@ -1,7 +1,8 @@
 export interface Props {
-  className?: string;
+  classname?: string;
   alignment?: string;
   justify?: string;
   wrap?: string;
+  gap?: number;
   children?: React.ReactNode;
 }
