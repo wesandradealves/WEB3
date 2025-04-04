@@ -4,8 +4,12 @@ import { PageService } from '../services/userService';
 import { usePathname } from 'next/navigation';
 import { useMetadata } from "@/hooks/useMetadata";
 import { useEffect, useState, useCallback } from 'react';
+import { useSettings } from '@/context/settings';
 
 export default function Template({ children }: { children: React.ReactNode }) {
+  const { settings } = useSettings();
+  const [title, setTitle] = useState<string>();
+
   interface Page {
     title?: {
       rendered?: string;
@@ -28,9 +32,13 @@ export default function Template({ children }: { children: React.ReactNode }) {
     loadPage(pathname);
   }, [pathname, loadPage]);
 
+  useEffect(() => {
+    if(page && page?.title) setTitle(` - ${page?.title?.rendered}`)
+  }, [page]);
+
   useMetadata({
-    title: `BDM Digital ${page?.title?.rendered ? ' - ' + page.title.rendered : ''}`,
-    ogTitle: `BDM Digital ${page?.title?.rendered ? ' - ' + page.title.rendered : ''}`,
+    title: `${settings?.blog_info.name ?? 'BDM Digital'} ${title ?? ''}`,
+    ogTitle: `${settings?.blog_info.name ?? 'BDM Digital'} ${title ?? ''}`,
   });
 
   return (
