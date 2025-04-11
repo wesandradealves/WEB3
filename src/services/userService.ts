@@ -114,3 +114,15 @@ export const MediaService = async (id: number): Promise<MediaItem> => {
     throw error;
   }
 };
+
+// Get User
+
+export const getUser = async (id: number = 1) => {
+  try {
+    const response = await api.get(`/wp/v2/users/${id}?context=view`);
+    return response.data;
+  } catch (error) {
+    console.error('Erro ao buscar usuário:', error);
+    throw error;
+  }
+};

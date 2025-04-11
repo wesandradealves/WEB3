@@ -41,9 +41,8 @@ const Mediascroll = (props: Props) => {
             <div className="container flex-wrap text-lg lg:text-3xl leading-none relative z-10 m-auto flex flex-col pb-[6rem] -mt-[6rem] gap-7">
                 {(props?.helper || props?.title || props?.subtitle) && (
                     <SectionHeader className="flex flex-col justify-center items-center text-center w-full gap-7">
-                        {(props?.helper || props?.title) && (
+                        {(props?.title) && (
                             <span>
-                                {/* Helper can be included here if needed */}
                                 {props?.title && (
                                     <Title
                                         barstitle={props?.barstitle}

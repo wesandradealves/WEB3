@@ -12,6 +12,7 @@ export const Title = styled.h3`
 `; 
 
 export const Text = styled.p`
+    color: white;
 `; 
 
 export const Container = styled.div`
