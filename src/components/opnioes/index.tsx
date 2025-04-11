@@ -2,7 +2,7 @@
 
 import { Container, Title, Text, Rating, Rate, Item, ItemInner } from './styles';
 import { FaStar, FaRegStar } from 'react-icons/fa';
-import React, { useEffect } from "react";
+import React from "react";
 import Slider from "react-slick";
 import { ContentItem } from '@/services/ContentService';
 export const truncateText = (text: string, limit: number) => {
@@ -34,10 +34,6 @@ const Opnioes = ({ data, classname }: { data: ContentItem[]; classname?: string 
       }
     ]
   };
-
-  useEffect(() => {
-    console.log(data)
-  }, []);
 
   return (
     <Container className={`${classname}`}>
