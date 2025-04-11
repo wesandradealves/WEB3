@@ -5,7 +5,7 @@ import { Props } from './typo';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Title, Text, Item, ImgWrapper, Blob } from './styles';
 import classNames from 'classnames';
-import { truncateText } from '../opnioes/opnioes';
+import { truncateText } from '../opnioes/';
 import { useEffect, useState } from 'react';
 
 export default function Bubbles({ className, data }: Props) {

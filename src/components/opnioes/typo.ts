@@ -5,6 +5,6 @@ export interface Data {
 }
   
 export interface Props {
-    className: string;
+    classname: string;
     data: Data[];
 }

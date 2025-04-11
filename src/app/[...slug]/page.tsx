@@ -2,7 +2,7 @@
 "use client";
 
 import { useParams } from 'next/navigation';
-import { useEffect, useState, Suspense, useCallback } from 'react';
+import { useEffect, useState, Suspense, useCallback, useMemo } from 'react';
 import React from 'react';
 import { PageService } from '@/services/userService';
 import DynamicComponent from '@/components/DynamicComponent/DynamicComponent';
@@ -11,38 +11,33 @@ export default function Page() {
   const { slug } = useParams();
   const [content, setContent] = useState<any>(null);
 
-  const fetcthData = useCallback(async (slug: string) => {
+  const fetchData = useCallback(async (slug: string) => {
     try {
-      const _slug = Array.isArray(slug) ? Array.from(slug).pop() : slug;
+      const _slug = Array.isArray(slug) ? slug[slug.length - 1] : slug;
 
-      PageService(_slug)
-      .then((data) => {
-        setContent(data.acf_blocks)
-      })
-      .catch(err => {
-        console.error('Error fetching page data:', err);
-      });
-    } catch (error) {
-      console.error('Error loading navigation:', error);
+      const data = await PageService(_slug);
+      setContent(data.acf_blocks);
+    } catch (err) {
+      console.error('Error fetching page data:', err);
     }
   }, []);
 
   useEffect(() => {
-    if (slug) fetcthData(Array.isArray(slug) ? slug[0] : slug)
-  }, [slug]);
+    if (slug) {
+      fetchData(Array.isArray(slug) ? slug[0] : slug);
+    }
+  }, [slug, fetchData]);
 
-  return (
-    <>
-      {content && (
-        content.map((object: any, index: number) => (
-          <Suspense key={index} fallback={<div>Carregando...</div>}>
-            <DynamicComponent
-              data={object.attrs.data}
-              machineName={object.machine_name}
-            />
-          </Suspense>
-        ))
-      )}
-    </>
-  );
+  const renderedContent = useMemo(() => {
+    return content?.map((object: any, index: number) => (
+      <Suspense key={index} fallback={<div>Carregando...</div>}>
+        <DynamicComponent
+          data={object.attrs.data}
+          machineName={object.machine_name}
+        />
+      </Suspense>
+    ));
+  }, [content]);
+
+  return <>{renderedContent}</>;
 }

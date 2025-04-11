@@ -130,6 +130,7 @@ export const GlobalStyle = createGlobalStyle `
         padding-left: 24px;
         padding-right: 24px;
     }
+
 `;
 
 export const App = styled.div `
