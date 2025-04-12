@@ -5,16 +5,18 @@ import { usePathname } from 'next/navigation';
 import { useMetadata } from "@/hooks/useMetadata";
 import { useEffect, useState, useCallback, useMemo } from 'react';
 import { useSettings } from '@/context/settings';
+import { ContentService } from '@/services/ContentService';
+import { useMedia } from '@/context/media'; 
+
+interface Page {
+  title?: {
+    rendered?: string;
+  };
+}
 
 export default function Template({ children }: { children: React.ReactNode }) {
   const { settings } = useSettings();
-  
-  interface Page {
-    title?: {
-      rendered?: string;
-    };
-  }
-
+  const { setMediaData } = useMedia(); 
   const [page, setPage] = useState<Page | null>(null);
   const pathname = usePathname();
 
@@ -27,9 +29,29 @@ export default function Template({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
+  const loadPost = useCallback(async (id: string) => {
+    try {
+      const data = await ContentService('midia', id);
+      if (data) {
+        setPage(data as Page);
+  
+        const normalized = Array.isArray(data) ? data : [data]; 
+        setMediaData(normalized);
+      }
+    } catch (error) {
+      console.error('Error loading navigation:', error);
+    }
+  }, [setMediaData]);
+  
+
   useEffect(() => {
-    loadPage(pathname);
-  }, [pathname, loadPage]);
+    const id = pathname.split("/").pop();
+    if (pathname.split("/").includes('media') && id) {
+      loadPost(id);
+    } else {
+      loadPage(pathname);
+    }
+  }, [pathname, loadPage, loadPost]);
 
   const title = useMemo(() => (page?.title?.rendered ? ` - ${page.title.rendered}` : ''), [page]);
 
