@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Container, FaqItem, Question, Answer } from './styles';
 import classNames from 'classnames';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
@@ -9,13 +9,6 @@ import FaqSkeleton from './FaqSkeleton';
 
 const Faq = ({ data, classname }: { data: ContentItem[]; classname?: string }) => {
   const [expandedItems, setExpandedItems] = useState<Record<number, boolean>>({});
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    if (data && data.length > 0) {
-      setLoading(false);
-    }
-  }, [data]);
 
   const toggleItem = (index: number) => {
     setExpandedItems((prev) => ({
@@ -24,7 +17,7 @@ const Faq = ({ data, classname }: { data: ContentItem[]; classname?: string }) =
     }));
   };
 
-  if (loading) return <FaqSkeleton />;
+  if (!data) return <FaqSkeleton />;
 
   return (
     <Container className={classNames(

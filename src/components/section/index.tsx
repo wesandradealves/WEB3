@@ -66,8 +66,11 @@ const Section = (props: Props) => {
       <div className={classNames(
         `container flex-wrap text-lg lg:text-3xl leading-none relative z-10 m-auto flex`,
         `flex-${props?.direction ?? 'col'}`,
-        `pt-[6rem] pb-[6rem] gap-${props?.gap || 7}`
-      )}>
+        `pt-[6rem] pb-[6rem]`,
+          props?.gap?.toString().includes('px') 
+            ? `gap-[${props.gap}]` 
+            : `gap-${props.gap || 7}`, 
+        )}>
         {(props?.helper || props?.title || props?.subtitle) && (
           <SectionHeader className="flex flex-col justify-center items-center text-center w-full gap-7">
             {(props?.helper || props?.title) && (

@@ -47,10 +47,11 @@ const Boxes = (props: Props) => {
       const cardCount = props[`boxes_${i}_cards`] || 0;
       for (let j = 0; j < cardCount; j++) {
         const card: CardItem = {
-          classname: props[`boxes_${i}_cards_${j}_classname`] || "",
+          classname: `flex-1 ${props[`boxes_${i}_cards_${j}_classname`]}` || "flex-1",
           title: props[`boxes_${i}_cards_${j}_title`] || "",
           text: props[`boxes_${i}_cards_${j}_text`] || "",
           image: props[`boxes_${i}_cards_${j}_image`] || "",
+          imagealign: props[`boxes_${i}_cards_${j}_imagealign`] || "",
           gap: props[`boxes_${i}_cards_${j}_gap`] || "",
         };
         box.cards.push(card);
@@ -72,7 +73,6 @@ const Boxes = (props: Props) => {
       content: groupedBoxes,
     }));
 
-    console.log(processedProps)
   }, [groupedBoxes]);
 
   return (

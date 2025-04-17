@@ -6,6 +6,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import { CardItem } from "../boxes/typo";
 import { useEffect, useState, useCallback } from "react";
 import { MediaService } from "@/services/userService";
+import classNames from "classnames";
 
 export default function Card(Props: CardItem) {
   const [imageUrl, setImageUrl] = useState<string | undefined>(
@@ -16,7 +17,7 @@ export default function Card(Props: CardItem) {
     if (typeof Props.image === "number") {
       try {
         const media = await MediaService(Props.image);
-        setImageUrl(media.source_url); 
+        setImageUrl(media.source_url);
       } catch (error) {
         console.error("Error fetching image:", error);
       }
@@ -27,15 +28,20 @@ export default function Card(Props: CardItem) {
     fetchImage();
   }, [fetchImage]);
 
+
   return (
-    <Container className={`card flex text-base flex-col flex-1 gap-${Props.gap !== '' ? Props.gap : 3} ${Props.classname}`}>
+    <Container className={`card flex text-base flex-col gap-${Props.gap !== '' ? Props.gap : 3} ${Props.classname}`}>
       {imageUrl && (
-        <LazyLoadImage className="max-w-[100%] me-auto" src={imageUrl} alt="Card Image" />
+        <LazyLoadImage
+          className={classNames(
+            `inline max-w-[39px]`,
+            [`lg:${Props.imagealign}`],
+          )} src={imageUrl} alt="Card Image" />
       )}
       {Props.title && (
-        <Title className="font-bold lg:text-xl" dangerouslySetInnerHTML={{ __html: Props.title }} />
+        <Title className={`font-bold lg:text-xl ${Props.alignment}`} dangerouslySetInnerHTML={{ __html: Props.title }} />
       )}
-      {Props.text && <Text dangerouslySetInnerHTML={{ __html: Props.text }} />}
+      {Props.text && <Text className={Props.alignment} dangerouslySetInnerHTML={{ __html: Props.text }} />}
     </Container>
   );
 }

@@ -20,11 +20,14 @@ export interface Props {
 }
 
 export interface CardItem {
-    classname: string;
+    classname?: string;
     title: string;
     text: string;
-    image: number | string;
-    gap: string;
+    image?: number | string;
+    gap?: string;
+    imagealign?: string;
+    alignmentClass?: string;
+    alignment?: string;
 }
 
 export interface BoxItem {

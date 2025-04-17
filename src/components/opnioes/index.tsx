@@ -2,7 +2,6 @@
 
 import { Container, Title, Text, Rating, Rate, Item, ItemInner } from './styles';
 import { FaStar, FaRegStar } from 'react-icons/fa';
-import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import { ContentItem } from '@/services/ContentService';
 import OpnioesSkeleton from './OpnioesSkeleton';
@@ -13,12 +12,6 @@ export const truncateText = (text: string, limit: number) => {
 };
 
 const Opnioes = ({ data, classname }: { data: ContentItem[]; classname?: string }) => {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    if (data && data.length > 0) setLoading(false);
-  }, [data]);
-
   const settings = {
     dots: false,
     infinite: false,
@@ -33,7 +26,7 @@ const Opnioes = ({ data, classname }: { data: ContentItem[]; classname?: string 
     ]
   };
 
-  if (loading) return <OpnioesSkeleton />;
+  if (!data) return <OpnioesSkeleton />;
 
   return (
     <Container className={classname}>
