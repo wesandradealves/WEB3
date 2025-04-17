@@ -8,7 +8,7 @@ export const Container = styled.div`
   color: ${props => props.theme._colors.primary.bdm3}};
 `;
 
-export const FaqItem = styled.div`
+export const FaqItem = styled.article`
   background: ${props => props.theme._colors.primary.bdm4};
   cursor: pointer;
   transition: all 0.3s ease;
