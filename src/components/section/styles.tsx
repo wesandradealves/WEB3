@@ -7,7 +7,7 @@ export interface Typo {
     backgroundposition?: string;
     backgroundattachment?: string;
     backgroundimage?: string;
-    barstitle?: string;
+    barstitle?: string | number;
 }
 
 export const Container = styled.section<Typo>`
@@ -35,7 +35,7 @@ export const Container = styled.section<Typo>`
 `;
 
 export const Title = styled.h2<Typo>`
-    ${({ barstitle }) => (barstitle && barstitle == "on") && css`
+    ${({ barstitle }) => barstitle && barstitle == 1 && css`
         &::before,
         &::after {
             position: absolute;

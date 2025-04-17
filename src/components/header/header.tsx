@@ -75,8 +75,8 @@ const Header = ({ scrollPosition }: Props) => {
           {nav.main && (
             <Navigation
               isScrolling={scrollPosition}
-              className="hidden xl:flex flex-1"
-              ListClassName="gap-6 2xl:gap-20 justify-center items-center"
+              className="hidden xl:flex flex-1 ps-20 pe-20"
+              ListClassName="gap-6 2xl:gap-20 items-center"
               data={nav.main}
             />
           )}
