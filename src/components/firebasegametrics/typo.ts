@@ -4,6 +4,6 @@ export interface GABlockProps {
 }
 
 export interface UrlItem {
-    imagem: string;
-    link: string;
+  imagem: string;
+  link: string;
 }

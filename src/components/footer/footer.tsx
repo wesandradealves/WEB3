@@ -6,7 +6,7 @@ import { Container } from './styles';
 import Navigation from '../navigation/navigation';
 import SocialNetworks from '../socialNetworks/socialNetworks';
 import { fetchNavigation } from '@/utils/index';
-import { MenuItem } from '@/services/userService';
+import { MenuItem } from '@/services/navigationService';
 import { useEffect, useState, useCallback } from 'react';
 import { useSettings } from '@/context/settings';
 

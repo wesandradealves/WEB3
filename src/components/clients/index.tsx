@@ -60,7 +60,7 @@ const Clients = ({ data, classname }: { data: Props; classname?: string }) => {
     if (!data?.media) return;
 
     try {
-      const media = await MediaService(data.media);
+      const media = await MediaService(Number(data.media));
       setMediaUrl(media?.source_url || '');
     } catch (error) {
       console.error('Error fetching media:', error);

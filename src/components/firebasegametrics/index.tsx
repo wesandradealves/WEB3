@@ -60,10 +60,6 @@ const Firebasegametrics = (props: Props | GABlockProps) => {
         urlItems,
     };
 
-    useEffect(() => {
-        console.log(mergedProps)
-    }, [mergedProps]);
-
     return (
         <Container
             id={mergedProps?.id}

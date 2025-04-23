@@ -15,5 +15,6 @@ export interface Props {
   justify?: 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly';
   reverse?: boolean | string;
   cta?: number;
-  [key: string]: unknown;
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+  [key: string]: any;
 }

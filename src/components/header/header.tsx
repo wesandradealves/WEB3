@@ -4,11 +4,11 @@ import Link from 'next/link';
 import { Container } from './styles';
 import Navigation from '../navigation/navigation';
 import 'hamburgers/dist/hamburgers.css';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import classNames from 'classnames';
 import Props from './typo';
 import { fetchNavigation } from '@/utils/index';
-import { MenuItem } from '@/services/userService';
+import { MenuItem } from '@/services/navigationService';
 import { useSettings } from '@/context/settings';
 import { debounce } from "lodash";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
@@ -18,16 +18,15 @@ const Header = ({ scrollPosition }: Props) => {
   const [nav, setNavigation] = useState<{ lateral?: MenuItem[], main?: MenuItem[] }>({});
   const { settings } = useSettings();
 
+  const debouncedResize = useRef(
+    debounce(() => setExpand(false), 200)
+  ).current;
+
   useEffect(() => {
     if (scrollPosition) {
       setExpand(false);
     }
   }, [scrollPosition]);
-
-  const handleResize = useCallback(
-    debounce(() => setExpand(false), 200),
-    []
-  );
 
   const loadNavigation = useCallback(async () => {
     try {
@@ -40,16 +39,16 @@ const Header = ({ scrollPosition }: Props) => {
     } catch (error) {
       console.error('Error loading navigation:', error);
     }
-  }, []);
+  }, []); // Removed fetchNavigation as a dependency
 
   useEffect(() => {
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', debouncedResize);
     loadNavigation();
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', debouncedResize);
     };
-  }, [handleResize, loadNavigation]);
+  }, [debouncedResize, loadNavigation]); // debouncedResize and loadNavigation are stable
 
   return (
     <Container
