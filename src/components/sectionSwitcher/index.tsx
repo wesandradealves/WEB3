@@ -9,7 +9,7 @@ import classNames from 'classnames';
 
 import { Container, SectionHeader, Subtitle, Title } from '../section/styles';
 import { Props } from '../section/typo';
-import { MediaService } from '@/services/userService';
+import { MediaService } from '@/services/mediaService';
 import { ContentService, ContentItem } from '@/services/ContentService';
 
 const Sectionswitcher = (props: Props) => {

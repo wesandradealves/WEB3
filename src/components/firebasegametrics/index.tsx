@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { Container, Helper, SectionHeader, Subtitle, Title } from '../section/styles';
 import { Props } from '../section/typo';
 import { useCallback, useEffect, useState } from 'react';
-import { MediaService } from '@/services/userService';
+import { MediaService } from '@/services/mediaService';
 import { UrlItem, GABlockProps } from './typo';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Metrics, MetricsText, Text } from './styles';

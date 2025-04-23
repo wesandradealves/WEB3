@@ -5,7 +5,7 @@ import { useEffect, useState, useCallback, useMemo } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Container, SectionHeader, Subtitle, Title } from '../section/styles';
 import { Props } from '../section/typo';
-import { MediaService, MediaItem } from '@/services/userService';
+import { MediaService, MediaItem } from '@/services/mediaService';
 import { BoxContainer } from '../box/styles';
 
 const Mediascroll = (props: Props) => {

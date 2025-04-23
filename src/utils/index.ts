@@ -1,4 +1,4 @@
-import { NavigationService } from "@/services/userService";
+import { NavigationService } from "@/services/navigationService";
 
 export const formatDate = (dateString: string) => {
   const options: Intl.DateTimeFormatOptions = {

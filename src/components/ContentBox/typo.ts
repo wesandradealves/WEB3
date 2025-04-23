@@ -1,14 +1,19 @@
+export interface CTA {
+  btnLabel: string;
+  link: string;
+  classname: string;
+  effect: string;
+}
+
 export interface Props {
-    className?: string;
-    img?: string;
-    title: string;
-    text: string;
-    btnLabel?: string;
-    url?: string;
-    btnClass?: string;
-    alignment?: string;
-    justify?: string;
-    wrap?: boolean;
-    btnAnimation?: string;
-    reverse?: boolean;
+  id?: string;
+  className?: string;
+  media?: number | string;
+  title?: string;
+  text?: string;
+  alignment?: 'start' | 'center' | 'end';
+  justify?: 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly';
+  reverse?: boolean | string;
+  cta?: number;
+  [key: string]: unknown;
 }

@@ -4,7 +4,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import Card from '@/components/card/card';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Props } from '../section/typo';
-import { MediaService } from '@/services/userService';
+import { MediaService } from '@/services/mediaService';
 import { Container, SectionHeader, Subtitle, Title, Helper } from '../section/styles';
 import classNames from "classnames";
 import { CardItem } from "../boxes/typo";

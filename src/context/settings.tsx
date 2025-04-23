@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { ReactNode } from 'react';
-import { getSettings } from '../services/userService';
+import { getSettings } from '../services/settingsService';
 import { Data } from '@/components/socialNetworks/typo';
 
 export interface BlogInfo {

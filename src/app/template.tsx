@@ -1,6 +1,6 @@
 'use client';
 
-import { PageService } from '../services/userService';
+import { Page, PageService } from '../services/pageService';
 import { usePathname } from 'next/navigation';
 import { useMetadata } from "@/hooks/useMetadata";
 import { useEffect, useState, useCallback, useMemo } from 'react';
@@ -8,11 +8,6 @@ import { useSettings } from '@/context/settings';
 import { ContentService } from '@/services/ContentService';
 import { useMedia } from '@/context/media'; 
 
-interface Page {
-  title?: {
-    rendered?: string;
-  };
-}
 
 export default function Template({ children }: { children: React.ReactNode }) {
   const { settings } = useSettings();
@@ -33,7 +28,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
     try {
       const data = await ContentService('midia', id);
       if (data) {
-        setPage(data as Page);
+        setPage(data as unknown as Page);
   
         const normalized = Array.isArray(data) ? data : [data]; 
         setMediaData(normalized);

@@ -1,8 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 export interface Props {
     title?: string;
     subtitle?: string;
-    backgroundimage?:any;
+    backgroundimage?:unknown;
     background?: string;
     backgroundcolor?: string;
     backgroundsize?: string;
@@ -15,6 +15,6 @@ export interface Props {
     children?: React.ReactNode;
     barstitle?: string;
     opacity?: number;
-    gap?: any;
-    [key: string]: any;
+    gap?: unknown;
+    [key: string]: unknown;
 }
