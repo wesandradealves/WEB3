@@ -5,7 +5,7 @@ import { useEffect, useState, useCallback, useMemo } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Container, SectionHeader, Subtitle, Title, Text } from './styles';
 import { Props } from './typo';
-import { MediaService, MediaItem } from '@/services/userService';
+import { MediaService, MediaItem } from '@/services/mediaService';
 
 const Section = (props: Props) => {
   const [mediaUrls, setMediaUrls] = useState<string[]>([]);
@@ -37,7 +37,7 @@ const Section = (props: Props) => {
   const fetchBackgroundImage = useCallback(async () => {
     if (props.backgroundimage) {
       try {
-        const bgImage = await MediaService(props.backgroundimage);
+        const bgImage = await MediaService(Number(props.backgroundimage));
         setBackgroundImageUrl(bgImage.source_url);
       } catch (error) {
         console.error("Error fetching background image:", error);

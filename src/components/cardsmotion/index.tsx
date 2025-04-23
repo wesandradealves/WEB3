@@ -4,7 +4,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import Card from '@/components/card/card';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Props } from '../section/typo';
-import { MediaService } from '@/services/userService';
+import { MediaService } from '@/services/mediaService';
 import { Container, SectionHeader, Subtitle, Title, Helper } from '../section/styles';
 import classNames from "classnames";
 import { CardItem } from "../boxes/typo";
@@ -49,13 +49,13 @@ const Cardsmotion = (props: Props) => {
     const remapProps = useCallback(async (props: Props): Promise<RemappedProps> => {
         const cards: CardItem[] = [];
 
-        for (let i = 0; i < (props.cards || 0); i++) {
+        for (let i = 0; i < (Number(props._cards) || 0); i++) {
             const imageId = props[`cards_${i}_image`];
             let image = "";
 
             try {
                 if (imageId) {
-                    const media = await MediaService(imageId);
+                    const media = await MediaService(Number(imageId));
                     image = media?.source_url || "";
                 }
             } catch (error) {
@@ -63,13 +63,13 @@ const Cardsmotion = (props: Props) => {
             }
 
             cards.push({
-                alignment: getAlignmentClass(props[`cards_${i}_imagealign`]),
-                classname: props[`cards_${i}_classname`] || ``,
-                title: props[`cards_${i}_title`] || "",
-                text: props[`cards_${i}_text`] || "",
-                imagealign: props[`cards_${i}_imagealign`] || "",
+                alignment: getAlignmentClass(props[`cards_${i}_imagealign`] as string),
+                classname: String(props[`cards_${i}_classname`] || ``),
+                title: String(props[`cards_${i}_title`] || ""),
+                text: String(props[`cards_${i}_text`] || ""),
+                imagealign: String(props[`cards_${i}_imagealign`] || ""),
                 image,
-                gap: props[`cards_${i}_gap`] || "",
+                gap: String(props[`cards_${i}_gap`] || ""),
             });
         }
 
@@ -78,12 +78,12 @@ const Cardsmotion = (props: Props) => {
 
         try {
             if (props.backgroundimage) {
-                const bgImage = await MediaService(props.backgroundimage);
+                const bgImage = await MediaService(Number(props.backgroundimage));
                 backgroundImageUrl = bgImage?.source_url || "";
             }
 
             if (props.media) {
-                const mediaImage = await MediaService(props.media);
+                const mediaImage = await MediaService(Number(props.media));
                 mediaImageUrl = mediaImage?.source_url || "";
             }
         } catch (error) {

@@ -1,7 +1,7 @@
  
 
 import api from './api';
-import { Category } from './CategoryService';
+import { Taxonomy } from './TaxonomyService';
 
 export interface ContentItem {
   rating: number;
@@ -46,7 +46,8 @@ export interface ContentItem {
   meta: { [key: string]: any };
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   _links: { [key: string]: any };
-  _categories?: Category[];
+  _categories?: Taxonomy[];
+  _tags?: Taxonomy[];
 }
 
 export const ContentService = async (type: string, id?: string): Promise<ContentItem | ContentItem[]> => {

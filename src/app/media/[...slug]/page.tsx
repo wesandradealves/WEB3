@@ -12,8 +12,9 @@ import { Body } from './style';
 import { Container, Title } from '@/components/section/styles';
 import { CategoryTag } from '@/components/media/styles';
 
-import { getUser, MediaService } from '@/services/userService';
-import { CategoryService } from '@/services/CategoryService';
+import { getUser } from '@/services/userService';
+import { MediaService } from '@/services/mediaService';
+import { TaxonomyService } from '@/services/TaxonomyService';
 import { ContentItem } from '@/services/ContentService';
 import SingleSkeleton from './SingleSkeleton';
 
@@ -32,7 +33,7 @@ export default function Single() {
       const [thumbnail, author, categories] = await Promise.all([
         item.featured_media ? MediaService(Number(item.featured_media)) : null,
         item.author ? getUser(Number(item.author)) : null,
-        item.categories?.length ? Promise.all(item.categories.map(CategoryService)) : []
+        item.categories?.length ? Promise.all(item.categories.map((id) => TaxonomyService(id))) : []
       ]);
 
       return {

@@ -5,7 +5,7 @@ import { Title, Text } from "./styles";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { CardItem } from "../boxes/typo";
 import { useEffect, useState, useCallback } from "react";
-import { MediaService } from "@/services/userService";
+import { MediaService } from "@/services/mediaService";
 import classNames from "classnames";
 
 export default function Card(Props: CardItem) {

@@ -9,7 +9,7 @@ import classNames from 'classnames';
 
 import { Container, SectionHeader, Subtitle, Title } from '../section/styles';
 import { Props } from '../section/typo';
-import { MediaService } from '@/services/userService';
+import { MediaService } from '@/services/mediaService';
 import { ContentService, ContentItem } from '@/services/ContentService';
 
 const Sectionswitcher = (props: Props) => {
@@ -26,7 +26,7 @@ const Sectionswitcher = (props: Props) => {
     const fetchBackgroundImage = useCallback(async () => {
         if (props.backgroundimage) {
             try {
-                const bgImage = await MediaService(props.backgroundimage);
+                const bgImage = await MediaService(Number(props.backgroundimage));
                 setBackgroundImageUrl(bgImage.source_url);
             } catch (error) {
                 console.error("Error fetching background image:", error);
@@ -87,7 +87,7 @@ const Sectionswitcher = (props: Props) => {
         fetchContent();
     }, [fetchContent]);
 
-    const memoizedContent = useMemo(() => contentData, [JSON.stringify(contentData)]);
+    const memoizedContent = useMemo(() => contentData, [contentData]);
 
     const customMenuProps = useMemo<Partial<MenuProps>>(() => ({
         PaperProps: {

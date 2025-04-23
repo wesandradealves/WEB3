@@ -4,7 +4,7 @@
 import { useParams } from 'next/navigation';
 import { useEffect, useState, Suspense, useCallback, useMemo } from 'react';
 import React from 'react';
-import { PageService } from '@/services/userService';
+import { PageService } from '@/services/pageService';
 import DynamicComponent from '@/components/DynamicComponent/DynamicComponent';
 
 export default function Page() {

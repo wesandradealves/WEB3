@@ -7,9 +7,10 @@ import Slider from "react-slick";
 import { useRouter } from 'next/navigation';
 import { FiClock, FiUser } from 'react-icons/fi';
 import { ContentItem } from '@/services/ContentService';
-import { MediaService, getUser } from '@/services/userService';
+import { getUser } from '@/services/userService';
+import { MediaService } from '@/services/mediaService';
+import { TaxonomyService } from '@/services/TaxonomyService';
 import { formatDate } from '@/utils/index';
-import { CategoryService } from '@/services/CategoryService';
 import MediaSkeleton from './MediaSkeleton';
 
 const truncateText = (text: string, limit: number) =>
@@ -35,7 +36,7 @@ const Media = ({ data, classname }: { data: ContentItem[]; classname?: string })
             item.featured_media ? MediaService(Number(item.featured_media)) : null,
             item.author ? getUser(Number(item.author)) : null,
             item.categories?.length
-              ? Promise.all(item.categories.map((id: number) => CategoryService(id)))
+              ? Promise.all(item.categories.map((id: number) => TaxonomyService(id)))
               : [],
           ]);
 

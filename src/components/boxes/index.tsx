@@ -4,7 +4,7 @@ import classNames from "classnames";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Container, SectionHeader, Subtitle, Title, Helper } from "./styles";
 import { CardItem, Props, BoxItem } from "./typo";
-import { MediaService } from "@/services/userService";
+import { MediaService } from "@/services/mediaService";
 import Box from "../box/box";
 import Card from "../card/card";
 

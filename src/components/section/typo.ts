@@ -1,7 +1,9 @@
+ 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export interface Props {
     title?: string;
     subtitle?: string;
+    text?: string;
     backgroundimage?:any;
     background?: string;
     backgroundcolor?: string;
