@@ -9,6 +9,8 @@ export default {
     '2xl:-mb-[6rem]',
     '-mb-[6rem]',
     '-mt-[6rem]',
+    'lg:-mb-[6rem]',
+    'lg:-mt-[6rem]',
     'pt-[100px]',
     'pb-[200px]',
     'gap-[200px]',
