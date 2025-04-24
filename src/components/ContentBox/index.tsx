@@ -51,8 +51,8 @@ const ContentBox = (props: Props) => {
           `contentBox container m-auto pb-[6rem] pt-[6rem] gap-10 flex flex-col lg:gap-20 justify-${props.justify ?? 'between'} items-${props.alignment ?? 'start'}`,
           {
             'flex-wrap': true,
-            'lg:flex-row': !props.reverse,
-            'lg:flex-row-reverse': props.reverse,
+            'lg:flex-row': props.reverse == "0",
+            'lg:flex-row-reverse': props.reverse == "1",
           }
         )}
       >
