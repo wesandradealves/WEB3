@@ -110,6 +110,57 @@ Os contextos ficam em `src/context/` e centralizam estados globais, como autenti
 - Os blocks são renderizados como componentes React, de acordo com o tipo e dados vindos da API. Note que o id/machine_name do block **deve** ser o mesmo
 do componente que você deseja renderizar em `src/components/`.
 
+## Como criar um Block
+
+```
+    git clone git@github.com:wesandradealves/WEB3-api.git
+```
+
+- Acesse o tema `bdm-digital-website-api-theme`.
+- Edite `bdm-digital-website-api-theme\functions.php`
+
+Nesse snippet, registre um novo block onde `name`, deve ser o mesmo nome do componente criado em `\src\components` (Note que para ser um **bloco** vindo da api crie a pasta com o seguinte formato: `\src\components\{{name}}\index.tsx`).
+
+- A lógica para renderizaçao dinamica desses blocos pode ser encontrada em `src\components\DynamicComponent`
+
+```
+    function my_acf_blocks_init() {
+        if( function_exists('acf_register_block_type') ) {
+            $blocks = [
+                ... (demais objetos de block)
+
+                (object) [
+                    'name'        => 'hero',
+                    'title'       => __('Hero'),
+                    'description' => __('Hero Component'),
+                    'category'    => 'rest-api',
+                    'icon'        => '',
+                    'keywords'    => ['hero', 'acf', 'rest'],
+                    'supports'    => [
+                        'align' => true,
+                        'jsx'   => true, 
+                    ],
+                ],
+
+                ... (demais objetos de block)
+            ];
+
+            foreach ($blocks as $block) {
+                acf_register_block_type(array(
+                    'name'              => $block->name,
+                    'title'             => $block->title,
+                    'description'       => $block->description,
+                    'render_template'   => get_template_directory() . '/templates/blocks.php',
+                    'category'          => $block->category,
+                    'icon'              => $block->icon,
+                    'keywords'          => $block->keywords,
+                    'supports'          => $block->supports,
+                ));
+            }
+        }
+    }
+```
+
 ## Criando Novos Componentes
 
 1. Crie uma nova pasta em `src/components/` com o nome do componente.
