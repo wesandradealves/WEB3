@@ -200,7 +200,7 @@ components/
 - Siga o padrão de importação absoluta (`@/services/`, `@/components/`, etc)
 - Use ESLint e Prettier para manter o código limpo
 
-**Esse projeto usa `Husk` para testar os commits antes de serem enviados. Certifique-se que todo commit esteja corrigido com os erros do LINT, afim de evitar quebra de build nos ambientes de produçao.
+**Esse projeto usa `Husk` para testar os commits antes de serem enviados. Certifique-se que todo commit esteja corrigido com os erros do LINT, afim de evitar quebra de build nos ambientes de produçao.**
 
 ---
 
