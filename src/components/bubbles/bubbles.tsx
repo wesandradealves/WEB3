@@ -45,8 +45,8 @@ export default function Bubbles({ className, data }: Props) {
               {index < data.length - 1 && (
                   <Blob
                     className={classNames('absolute hidden lg:block transform z-1', {
-                      '-top-[21%] left-[62%] rotate-[15deg]': index % 2 !== 0,
-                      'top-[37%] left-[62%] -rotate-[15deg]': index % 2 === 0,
+                      '-top-[21%] left-[70%] rotate-[15deg]': index % 2 !== 0,
+                      'top-[40%] left-[66%] -rotate-[15deg]': index % 2 === 0,
                     })}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" fill="none" viewBox="0 0 200 200">
                       <defs>

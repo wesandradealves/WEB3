@@ -32,6 +32,7 @@ export interface CardItem {
 
 export interface BoxItem {
     classname: string;
+    title: string;
     justify: string;
     alignment: string;
     wrap: string;

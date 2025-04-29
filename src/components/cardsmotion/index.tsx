@@ -46,10 +46,23 @@ const Cardsmotion = (props: Props) => {
         mediaImageUrl: "",
     });
 
+    // ...existing code...
+
     const remapProps = useCallback(async (props: Props): Promise<RemappedProps> => {
         const cards: CardItem[] = [];
 
-        for (let i = 0; i < (Number(props._cards) || 0); i++) {
+        const cardIndexes = Array.from(
+            new Set(
+                Object.keys(props)
+                    .map(key => {
+                        const match = key.match(/^cards_(\d+)_/);
+                        return match ? Number(match[1]) : null;
+                    })
+                    .filter((v): v is number => v !== null)
+            )
+        ).sort((a, b) => a - b);
+
+        for (const i of cardIndexes) {
             const imageId = props[`cards_${i}_image`];
             let image = "";
 
@@ -76,18 +89,22 @@ const Cardsmotion = (props: Props) => {
         let backgroundImageUrl = "";
         let mediaImageUrl = "";
 
-        try {
-            if (props.backgroundimage) {
-                const bgImage = await MediaService(Number(props.backgroundimage));
-                backgroundImageUrl = bgImage?.source_url || "";
+        if (props.backgroundimage) {
+            try {
+                const media = await MediaService(Number(props.backgroundimage));
+                backgroundImageUrl = media?.source_url || "";
+            } catch (error) {
+                console.error("Erro ao buscar imagem de fundo:", error);
             }
+        }
 
-            if (props.media) {
-                const mediaImage = await MediaService(Number(props.media));
-                mediaImageUrl = mediaImage?.source_url || "";
+        if (props.media) {
+            try {
+                const media = await MediaService(Number(props.media));
+                mediaImageUrl = media?.source_url || "";
+            } catch (error) {
+                console.error("Erro ao buscar imagem de mídia:", error);
             }
-        } catch (error) {
-            console.error("Erro ao buscar imagem de fundo ou media:", error);
         }
 
         return {

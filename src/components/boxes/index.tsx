@@ -38,6 +38,7 @@ const Boxes = (props: Props) => {
     for (let i = 0; i < (props.boxes || 0); i++) {
       const box: BoxItem = {
         classname: props[`boxes_${i}_classname`] || "",
+        title: props[`boxes_${i}_title`] || "",
         justify: props[`boxes_${i}_justify`] || "",
         alignment: props[`boxes_${i}_alignment`] || "",
         wrap: props[`boxes_${i}_wrap`] || "",
@@ -89,9 +90,8 @@ const Boxes = (props: Props) => {
       })}
     >
       <div
-        className={`container flex-wrap text-lg lg:text-3xl leading-none relative z-10 m-auto flex flex-${
-          props?.direction ?? "col"
-        } pt-[6rem] pb-[6rem] gap-${props?.gap || 7}`}
+        className={`container flex-wrap text-lg lg:text-3xl leading-none relative z-10 m-auto flex flex-${props?.direction ?? "col"
+          } pt-[6rem] pb-[6rem] gap-${props?.gap || 7}`}
       >
         {(props?.helper || props?.title || props?.subtitle) && (
           <SectionHeader className="flex flex-col justify-center items-center text-center w-full gap-7">
@@ -128,11 +128,26 @@ const Boxes = (props: Props) => {
 
         {processedProps?.content &&
           processedProps.content.map((box: BoxItem, i: number) => (
-            <Box key={`box-${i}`} {...box}>
-              {box.cards.map((card: CardItem, j: number) => (
-                <Card key={`card-${i}-${j}`} {...card} />
-              ))}
-            </Box>
+            <div
+              className={classNames(`flex flex-col gap-8`, {
+                [box?.classname]: box?.classname,
+              })} key={`box-${i}`}>
+
+              {box.title && (
+                <Title
+                  className={classNames(
+                    `text-center relative text-3xl lg:text-5xl`
+                  )}
+                  dangerouslySetInnerHTML={{ __html: box.title }}
+                />
+              )}
+
+              {(box.cards && box.cards.length) ? <Box {...box}>
+                {box.cards.map((card: CardItem, j: number) => (
+                  <Card key={`card-${i}-${j}`} {...card} />
+                ))}
+              </Box> : ''}
+            </div>
           ))}
       </div>
 

@@ -44,6 +44,7 @@ export const ImgWrapper = styled.div`
 
 export const Item = styled.li`
     counter-increment: list-counter;
+    color: white;
     &:first-of-type {
         ${ImgWrapper} {
             &::before {

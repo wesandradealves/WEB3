@@ -39,7 +39,7 @@ const Header = ({ scrollPosition }: Props) => {
     } catch (error) {
       console.error('Error loading navigation:', error);
     }
-  }, []); // Removed fetchNavigation as a dependency
+  }, []); 
 
   useEffect(() => {
     window.addEventListener('resize', debouncedResize);
@@ -48,7 +48,7 @@ const Header = ({ scrollPosition }: Props) => {
     return () => {
       window.removeEventListener('resize', debouncedResize);
     };
-  }, [debouncedResize, loadNavigation]); // debouncedResize and loadNavigation are stable
+  }, [debouncedResize, loadNavigation]); 
 
   return (
     <Container
@@ -75,7 +75,7 @@ const Header = ({ scrollPosition }: Props) => {
             <Navigation
               isScrolling={scrollPosition}
               className="hidden xl:flex flex-1 ps-20 pe-20"
-              ListClassName="gap-6 2xl:gap-20 items-center"
+              ListClassName="gap-6 2xl:gap-20 items-center justify-center"
               data={nav.main}
             />
           )}

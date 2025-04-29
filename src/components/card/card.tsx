@@ -30,7 +30,7 @@ export default function Card(Props: CardItem) {
 
 
   return (
-    <Container className={`card flex text-base flex-col gap-${Props.gap !== '' ? Props.gap : 3} ${Props.classname}`}>
+    <Container className={`card flex text-base w-full lg:w-auto flex-col gap-${Props.gap !== '' ? Props.gap : 3} ${Props.classname}`}>
       {imageUrl && (
         <LazyLoadImage
           className={classNames(
