@@ -2,6 +2,8 @@
 
 Este projeto é o frontend da aplicação web do BDM Digital, desenvolvido em ReactJS com Next.js, consumindo uma API REST headless do WordPress/ACF.
 
+- [Backend](https://github.com/wesandradealves/WEB3-api)
+
 ## Sumário
 - [Visão Geral](#visão-geral)
 - [Requisitos](#requisitos)
