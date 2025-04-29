@@ -163,6 +163,17 @@ Nesse snippet, registre um novo block onde `name`, deve ser o mesmo nome do comp
     }
 ```
 
+- Os campos customizados devem ser registrados em ([http://localhost:8000/wp-admin/edit.php?post_type=acf-field-group])
+- Adicionar novo
+- Regras - `contexto` mostrar este grupo de campos se `condicao` `valor`.
+
+Escolha o contexto se for aparecer em Bloco, Menu, Pages, Etc.
+Para adicionar a um novo componente `(block)`, escolha Bloco.
+
+**De preferencia ao tipo de campo `clone`, e em Campos, escolha fields já criados, para reutilizar campos já criados e nao criar novas nomenclaturas sem necessidade.**
+
+Crie somente campos novos se houver necessidade.
+
 ## Criando Novos Componentes
 
 1. Crie uma nova pasta em `src/components/` com o nome do componente.
