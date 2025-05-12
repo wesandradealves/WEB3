@@ -23,7 +23,7 @@ jobs:
 
       - name: Copy repository to EC2
         run: |
-          scp -o -v StrictHostKeyChecking=no -r path-code/* ubuntu@${{ secrets.EC2_HOST }}:/home/ubuntu/apps/web3-page
+          scp -o StrictHostKeyChecking=no -r path-code/* ubuntu@${{ secrets.EC2_HOST }}:/home/ubuntu/apps/web3-page
 
       - name: Deploy to EC2 with Docker Compose
         run: |
