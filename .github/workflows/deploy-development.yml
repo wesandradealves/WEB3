@@ -23,13 +23,13 @@ jobs:
 
       - name: Copy repository to EC2
         run: |
-          scp -o StrictHostKeyChecking=no -r path-code/* ubuntu@${{ secrets.EC2_HOST }}:/home/ubuntu/apps/web3-page
+          scp -ov StrictHostKeyChecking=no -r path-code/* ubuntu@${{ secrets.EC2_HOST }}:/home/ubuntu/apps/web3-page
 
       - name: Deploy to EC2 with Docker Compose
         run: |
           ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.EC2_HOST }} << 'EOF'
             cd /home/ubuntu/apps/web3-page
-            docker compose -f docker-compose.yml down
-            docker system prune -a --volumes -f
-            docker compose -f docker-compose.yml up -d --build
+            sudo docker compose -f docker-compose.yml down
+            sudo docker system prune -a --volumes -f
+            sudo docker compose -f docker-compose.yml up -d --build
           EOF
