@@ -29,7 +29,7 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.EC2_HOST }} << 'EOF'
             cd /home/ubuntu/apps/web3-page
-            docker-compose -f docker-compose.yml down
+            docker compose -f docker-compose.yml down
             docker system prune -a --volumes -f
-            docker-compose -f docker-compose.yml up -d --build
+            docker compose -f docker-compose.yml up -d --build
           EOF
