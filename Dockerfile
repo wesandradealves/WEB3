@@ -7,7 +7,7 @@ FROM node:18-alpine
 WORKDIR /app
 
 # Copie apenas os arquivos de dependências para o contêiner
-COPY .env package.json package-lock.json ./
+COPY .env package.json 
 
 # Instale as dependências
 RUN npm install
