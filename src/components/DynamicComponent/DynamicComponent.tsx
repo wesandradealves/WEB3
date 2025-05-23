@@ -9,11 +9,9 @@ const DynamicComponent: React.FC<Props> = ({ machineName, data, classname }) => 
   useEffect(() => {
     const importComponent = async () => {
       try {
-        if(machineName.toLowerCase() === 'slider') {
-          machineName = 'slide';
-        }
+        const resolvedMachineName = machineName.toLowerCase() === 'slider' ? 'slide' : machineName;
 
-        const componentModule = await import(`@/components/${machineName}`);
+        const componentModule = await import(`@/components/${resolvedMachineName}`);
         const Component = componentModule.default;
   
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -22,7 +20,7 @@ const DynamicComponent: React.FC<Props> = ({ machineName, data, classname }) => 
         setImportedComponent(
           <Component
             classname={classname}
-            id={machineName}
+            id={resolvedMachineName}
             {...(expectsArray ? { data } : data)}
           />
         );
