@@ -11,7 +11,7 @@ const nextConfig = {
             value: 'dev-bdm.dourado.cash',
           },
         ],
-        destination: 'http://177.71.161.215:8000/images/:path*',
+        destination: 'https://177.71.161.215:8000/images/:path*',
       },
     ];
   },
