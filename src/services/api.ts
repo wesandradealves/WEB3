@@ -1,8 +1,14 @@
 import axios from 'axios';
-import { getApiBaseURL } from '@/utils/getApiBaseURL';
+
+const isHml = process.env.NEXT_PUBLIC_ENVIROMENT === 'hml' || process.env.NODE_ENV === 'production';
+
+const baseURL =
+  isHml
+    ? process.env.NEXT_PUBLIC_API_BASE_URL
+    : `${process.env.NEXT_PUBLIC_API_URL_DEV}${process.env.NEXT_PUBLIC_API_BASE_URL}`;
 
 const api = axios.create({
-  baseURL: getApiBaseURL(),
+  baseURL,
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
