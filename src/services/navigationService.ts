@@ -19,6 +19,8 @@ export interface MenuItem {
       const response = await api.get(`/custom/v1/menus`, {
         params: { slug },
       });
+
+      console.log(response)
   
       return response.data as MenuItem[];
     } catch (error: unknown) {
