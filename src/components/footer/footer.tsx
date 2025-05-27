@@ -1,7 +1,6 @@
 "use client";
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { Container } from './styles';
 import Navigation from '../navigation/navigation';
 import SocialNetworks from '../socialNetworks/socialNetworks';
@@ -9,6 +8,7 @@ import { fetchNavigation } from '@/utils/index';
 import { MenuItem } from '@/services/navigationService';
 import { useEffect, useState, useCallback } from 'react';
 import { useSettings } from '@/context/settings';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 export default function Footer() {
   const [menu, setNavigation] = useState<MenuItem[] | null>(null);
@@ -36,21 +36,20 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-start gap-8 py-5">
           <div className='flex flex-col gap-4 2xl:flex-row 2xl:gap-[9rem]'>
 
-            <Link href="/">
-              <Image
-                src={settings.custom_logo}
-                alt={settings.blog_info.name}
+            {settings?.custom_logo && (<Link href="/">
+              <LazyLoadImage
+                src={settings?.custom_logo}
+                alt={settings?.blog_info?.name}
                 width={160}
                 height={40}
                 className="h-auto"
-                priority
               />
-            </Link>
+            </Link>)}
 
             <div className="flex flex-col gap-4 md:max-w-[300px]">
-              <SocialNetworks className="text-xl" data={settings.social_networks} />
+              <SocialNetworks className="text-xl" data={settings?.social_networks} />
               <p className="text-sm lg:text-md text-gray-700 leading-normal mt-2">
-                {`© ${year} ${settings.blog_info.name}. Todos os direitos reservados.`}
+                {`© ${year} ${settings?.blog_info?.name}. Todos os direitos reservados.`}
                 <br />
                 Desenvolvido por Dourado.cash
               </p>

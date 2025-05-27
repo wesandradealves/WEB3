@@ -51,8 +51,8 @@ export default function Template({ children }: { children: React.ReactNode }) {
   const title = useMemo(() => (page?.title?.rendered ? ` - ${page.title.rendered}` : ''), [page]);
 
   useMetadata({
-    title: `${settings?.blog_info.name ?? 'BDM Digital'}${title}`,
-    ogTitle: `${settings?.blog_info.name ?? 'BDM Digital'}${title}`,
+    title: `${settings?.blog_info?.name ?? 'BDM Digital'}${title}`,
+    ogTitle: `${settings?.blog_info?.name ?? 'BDM Digital'}${title}`,
     favicon: settings?.favicon,
   });
 

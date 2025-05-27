@@ -39,9 +39,9 @@ export default function SocialNetworks({ data, className }: Props) {
     return (
         <Container className={`socialNetworks ${className}`}>
             <div className="flex gap-4">
-                {data
-                    .filter((item) => item.title && item.url) // Filter out invalid items
-                    .map((item, index) => {
+                    {(Array.isArray(data) ? data : [])
+                        .filter((item) => item.title && item.url)
+                        .map((item, index) => {
                         const IconComponent = icons[item.title.toLowerCase()];
                         return (
                             <a

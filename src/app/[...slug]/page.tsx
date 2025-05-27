@@ -16,6 +16,7 @@ export default function Page() {
       const _slug = Array.isArray(slug) ? slug[slug.length - 1] : slug;
 
       const data = await PageService(_slug);
+      console.log(data)
       setContent(data.acf_blocks);
     } catch (err) {
       console.error('Error fetching page data:', err);
