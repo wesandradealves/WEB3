@@ -23,28 +23,22 @@ const Clients = ({ data, classname }: { data: Props; classname?: string }) => {
     try {
       const response = await ContentService('clientes');
       const rawClients = Array.isArray(response) ? response : [response];
+      const filteredClients = rawClients.filter((item): item is ContentItem => !!item);
 
       const mappedClients = await Promise.all(
-        rawClients.map(async (item) => {
-          try {
-            const [media, tags] = await Promise.all([
-              item.featured_media ? MediaService(Number(item.featured_media)) : null,
-              item.tags?.length
-                ? Promise.all(item.tags.map((id: number) => TaxonomyService(id, 'tags')))
-                : [],
-            ]);
+        filteredClients.map(async (item) => {
+          const [media, tags] = await Promise.all([
+            item.featured_media ? MediaService(Number(item.featured_media)) : null,
+            item.tags?.length
+              ? Promise.all(item.tags.map((id: number) => TaxonomyService(id, 'tags')))
+              : [],
+          ]);
 
-            return {
-              ...item,
-              thumbnail: media?.source_url,
-              _tags: tags ?? [],
-            };
-          } catch {
-            return {
-              ...item,
-              _tags: [],
-            };
-          }
+          return {
+            ...item,
+            thumbnail: media?.source_url,
+            _tags: tags ?? [],
+          };
         })
       );
 

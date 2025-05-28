@@ -42,7 +42,9 @@ const Firebasegametrics = (props: Props | GABlockProps) => {
         if (data.backgroundimage) {
             try {
                 const bgImage = await MediaService(data.backgroundimage);
-                setBackgroundImageUrl(bgImage.source_url);
+                if (bgImage && bgImage.source_url) {
+                    setBackgroundImageUrl(bgImage.source_url);
+                }
             } catch (error) {
                 console.error("Erro ao buscar imagem de fundo:", error);
             }
