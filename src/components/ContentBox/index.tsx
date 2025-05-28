@@ -9,8 +9,7 @@ import { MediaService } from '@/services/mediaService';
 import { Props, CTA } from './typo';
 import { proxiedImageUrl } from '@/utils/imageProxy';
 
-const ContentBox = (props: Props) => {
-  console.log('ContentBox props:', props);
+const Contentbox = (props: Props) => {
   const [mediaUrl, setMediaUrl] = useState<string | undefined>(undefined);
   const [cta, setCtaList] = useState<CTA[]>([]);
 
@@ -95,4 +94,4 @@ const ContentBox = (props: Props) => {
   );
 };
 
-export default ContentBox;
+export default Contentbox;
