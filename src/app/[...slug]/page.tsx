@@ -8,7 +8,8 @@ import { PageService } from '@/services/pageService';
 import DynamicComponent from '@/components/DynamicComponent/DynamicComponent';
 
 export default function Page() {
-  const { slug } = useParams();
+  const params = useParams<Record<string, string | string[]>>();
+  const slug = params?.slug;
   const [content, setContent] = useState<any>(null);
 
   const fetchData = useCallback(async (slug: string) => {

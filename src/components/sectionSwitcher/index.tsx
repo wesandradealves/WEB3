@@ -11,6 +11,7 @@ import { Container, SectionHeader, Subtitle, Title } from '../section/styles';
 import { Props } from '../section/typo';
 import { MediaService } from '@/services/mediaService';
 import { ContentService, ContentItem } from '@/services/ContentService';
+import { proxiedImageUrl } from '@/utils/imageProxy';
 
 const Sectionswitcher = (props: Props) => {
     const [selectedValue, setSelectedValue] = useState<string[]>(props?.components?.length ? [props.components[0]] : []);
@@ -143,7 +144,7 @@ const Sectionswitcher = (props: Props) => {
             id={props?.id}
             background={props?.background}
             backgroundcolor={props?.backgroundcolor}
-            backgroundimage={backgroundImageUrl}
+            backgroundimage={proxiedImageUrl(backgroundImageUrl || '')}
             backgroundposition={props?.backgroundposition}
             backgroundsize={props?.backgroundsize}
             backgroundattachment={props?.backgroundattachment}

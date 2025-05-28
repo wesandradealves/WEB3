@@ -7,6 +7,7 @@ import { CardItem } from "../boxes/typo";
 import { useEffect, useState, useCallback } from "react";
 import { MediaService } from "@/services/mediaService";
 import classNames from "classnames";
+import { proxiedImageUrl } from '@/utils/imageProxy';
 
 export default function Card(Props: CardItem) {
   const [imageUrl, setImageUrl] = useState<string | undefined>(
@@ -36,7 +37,9 @@ export default function Card(Props: CardItem) {
           className={classNames(
             `inline max-w-[39px]`,
             [`lg:${Props.imagealign}`],
-          )} src={imageUrl} alt="Card Image" />
+          )}
+          src={proxiedImageUrl(imageUrl)}
+          alt="Card Image" />
       )}
       {Props.title && (
         <Title className={`font-bold lg:text-xl ${Props.alignment}`} dangerouslySetInnerHTML={{ __html: Props.title }} />

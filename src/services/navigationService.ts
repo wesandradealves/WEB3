@@ -19,7 +19,7 @@ export interface MenuItem {
       const response = await api.get(`/custom/v1/menus`, {
         params: { slug },
       });
-  
+
       return response.data as MenuItem[];
     } catch (error: unknown) {
       console.error('Navigation Error:', error);

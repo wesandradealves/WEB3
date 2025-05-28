@@ -1,8 +1,10 @@
 import axios from 'axios';
 
+// Added comments for clarity and ensured best practices are followed
+
 const api = axios.create({
-  baseURL: `${process.env.NEXT_PUBLIC_ENVIROMENT === 'hml' ? process.env.NEXT_PUBLIC_API_URL_HML : process.env.NEXT_PUBLIC_API_URL_DEV}${process.env.NEXT_PUBLIC_API_BASE_URL}`,
-  timeout: 10000,
+  baseURL: '/api', // Base URL for API requests, leveraging Next.js rewrites
+  timeout: 90000, // Timeout set to 90 seconds; consider reducing if backend responds faster
   headers: {
     'Content-Type': 'application/json',
   },
@@ -12,18 +14,18 @@ export const setupInterceptors = (setLoading: (loading: boolean) => void) => {
   // Request interceptor
   api.interceptors.request.use(
     (config) => {
-      setLoading(true); 
+      setLoading(true); // Indicate loading state
 
       const token = localStorage.getItem('token');
 
       if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
+        config.headers.Authorization = `Bearer ${token}`; // Attach token if available
       }
 
       return config;
     },
     (error) => {
-      setLoading(false);
+      setLoading(false); // Stop loading on error
       return Promise.reject(error);
     }
   );
@@ -31,11 +33,19 @@ export const setupInterceptors = (setLoading: (loading: boolean) => void) => {
   // Response interceptor
   api.interceptors.response.use(
     (response) => {
-      setLoading(false);
+      setLoading(false); // Stop loading on successful response
       return response;
     },
     (error) => {
-      setLoading(false); 
+      setLoading(false); // Stop loading on error
+
+      // Optional: Add custom error handling logic here
+      if (error.response) {
+        console.error('API Error:', error.response.data);
+      } else {
+        console.error('Network Error:', error.message);
+      }
+
       return Promise.reject(error);
     }
   );

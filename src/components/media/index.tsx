@@ -12,6 +12,7 @@ import { MediaService } from '@/services/mediaService';
 import { TaxonomyService } from '@/services/TaxonomyService';
 import { formatDate } from '@/utils/index';
 import MediaSkeleton from './MediaSkeleton';
+import { proxiedImageUrl } from '@/utils/imageProxy';
 
 const truncateText = (text: string, limit: number) =>
   text.length <= limit ? text : `${text.substring(0, limit)}...`;
@@ -99,7 +100,7 @@ const Media = ({ data, classname }: { data: ContentItem[]; classname?: string })
                 <div className="lg:h-[190px] overflow-hidden relative">
                   <LazyLoadImage
                     className="w-full object-cover transition-transform duration-300 lg:group-hover:scale-105"
-                    src={item.thumbnail}
+                    src={proxiedImageUrl(item.thumbnail)}
                     alt={item.title.rendered}
                   />
                   {(item._categories ?? []).length > 0 && (

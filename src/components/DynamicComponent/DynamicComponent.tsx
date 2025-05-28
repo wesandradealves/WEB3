@@ -9,9 +9,9 @@ const DynamicComponent: React.FC<Props> = ({ machineName, data, classname }) => 
   useEffect(() => {
     const importComponent = async () => {
       try {
-        const resolvedMachineName = machineName.toLowerCase() === 'slider' ? 'slide' : machineName;
+        const resolvedMachineName = machineName.toLowerCase() === 'slider' ? 'slide' : machineName.toLowerCase();
 
-        const componentModule = await import(`@/components/${resolvedMachineName}`);
+        const componentModule = await import(`../${resolvedMachineName}`);
         const Component = componentModule.default;
   
         // eslint-disable-next-line @typescript-eslint/no-explicit-any

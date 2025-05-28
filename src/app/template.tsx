@@ -7,6 +7,7 @@ import { useEffect, useState, useCallback, useMemo } from 'react';
 import { useSettings } from '@/context/settings';
 import { ContentService } from '@/services/ContentService';
 import { useMedia } from '@/context/media'; 
+import { proxiedImageUrl } from '@/utils/imageProxy';
 
 
 export default function Template({ children }: { children: React.ReactNode }) {
@@ -40,20 +41,20 @@ export default function Template({ children }: { children: React.ReactNode }) {
   
 
   useEffect(() => {
-    const id = pathname.split("/").pop();
-    if (pathname.split("/").includes('media') && id) {
+    const id = (pathname ?? '').split("/").pop();
+    if ((pathname ?? '').split("/").includes('media') && id) {
       loadPost(id);
     } else {
-      loadPage(pathname);
+      loadPage(pathname ?? '');
     }
   }, [pathname, loadPage, loadPost]);
 
   const title = useMemo(() => (page?.title?.rendered ? ` - ${page.title.rendered}` : ''), [page]);
 
   useMetadata({
-    title: `${settings?.blog_info.name ?? 'BDM Digital'}${title}`,
-    ogTitle: `${settings?.blog_info.name ?? 'BDM Digital'}${title}`,
-    favicon: settings?.favicon,
+    title: `${settings?.blog_info?.name ?? 'BDM Digital'}${title}`,
+    ogTitle: `${settings?.blog_info?.name ?? 'BDM Digital'}${title}`,
+    favicon: proxiedImageUrl(settings?.favicon || ''),
   });
 
   return (

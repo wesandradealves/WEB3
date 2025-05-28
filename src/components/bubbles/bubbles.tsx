@@ -7,6 +7,7 @@ import { Title, Text, Item, ImgWrapper, Blob } from './styles';
 import classNames from 'classnames';
 import { truncateText } from '../opnioes/';
 import { useEffect, useState } from 'react';
+import { proxiedImageUrl } from '@/utils/imageProxy';
 
 export default function Bubbles({ className, data }: Props) {
   const [isDesktop, setIsDesktop] = useState<boolean>(false);
@@ -39,7 +40,7 @@ export default function Bubbles({ className, data }: Props) {
           >
             <ImgWrapper className='flex  lg:hover:scale-[1.1] flex-col justify-center items-center  m-auto relative'>
               <span className='rounded-full p-8 overflow-hidden z-10'>
-                <LazyLoadImage className='max-w-[100%]' src={item.image} />
+                <LazyLoadImage className='max-w-[100%]' src={proxiedImageUrl(item.image || '')} />
               </span>
 
               {index < data.length - 1 && (

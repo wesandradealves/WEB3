@@ -22,7 +22,7 @@ export default function Navigation({ children, className, mobile, data, ListClas
     }, [isScrolling]);
 
     useEffect(() => {
-        if (defaultexpanded) {
+        if (defaultexpanded && Array.isArray(data)) {
             const allExpanded = data.reduce((acc, _, index) => {
                 acc[index] = true;
                 return acc;
@@ -66,14 +66,14 @@ export default function Navigation({ children, className, mobile, data, ListClas
                     'container m-auto flex-col': mobile
                 })}>
 
-                {data && (data as MenuItem[]).map(function (row: MenuItem, i: number) {
+                {(Array.isArray(data) ? data : []).map(function (row: MenuItem, i: number) {
                     return (
                         <ListItem
                             defaultexpanded={defaultexpanded}
                             className={classNames('item font-bold flex flex-col text-base', row?.className, {
                                 'expanded': expandedItems[i],
                                 [ListClassName || '']: mobile,
-                                'current': pathname.replaceAll('/', '') == row.url.replaceAll('/', '')
+                                'current': pathname && pathname.replaceAll('/', '') == row.url.replaceAll('/', '')
                             })} key={i}>
 
                             {(row.acf && row.acf.isButton) ? (

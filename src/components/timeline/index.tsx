@@ -6,6 +6,7 @@ import { Container, SectionHeader, Title, Text } from '../section/styles';
 import { Props } from '../section/typo';
 import { MediaService } from '@/services/mediaService';
 import Bubbles from '../bubbles/bubbles';
+import { proxiedImageUrl } from '@/utils/imageProxy';
 
 type TimelineItem = {
   title: string;
@@ -64,15 +65,11 @@ const Timeline = (props: Props) => {
     processTimeline();
   }, [fetchBackgroundImage, processTimeline]);
 
-  useEffect(() => {
-    console.log(timeline, props)
-  }, [timeline, props]);
-
   return (
     <Container
       id={props?.id}
       backgroundcolor={props?.backgroundcolor}
-      backgroundimage={backgroundImageUrl}
+      backgroundimage={proxiedImageUrl(backgroundImageUrl || '')}
       backgroundposition={props?.backgroundposition}
       backgroundsize={props?.backgroundsize}
       backgroundattachment={props?.backgroundattachment}
