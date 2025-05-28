@@ -6,6 +6,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Container, SectionHeader, Subtitle, Title, Text } from './styles';
 import { Props } from './typo';
 import { MediaService, MediaItem } from '@/services/mediaService';
+import { proxiedImageUrl } from '@/utils/imageProxy';
 
 const Section = (props: Props) => {
   const [mediaUrls, setMediaUrls] = useState<string[]>([]);
@@ -106,7 +107,7 @@ const Section = (props: Props) => {
           <div className="flex flex-wrap justify-between">
             {mediaUrls.map((url, index) => (
               <div key={index} className="flex-1 flex justify-center items-center flex-wrap">
-                <LazyLoadImage src={url} alt={`Media ${index + 1}`} />
+                <LazyLoadImage src={proxiedImageUrl(url)} alt={`Media ${index + 1}`} />
               </div>
             ))}
           </div>

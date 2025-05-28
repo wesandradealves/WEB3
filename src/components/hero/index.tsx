@@ -5,6 +5,7 @@ import { Container, Placeholder, Text, Title } from './styles';
 import Button from '../button/button';
 import Props from './typo';
 import { MediaService } from '@/services/mediaService';
+import { proxiedImageUrl } from '@/utils/imageProxy';
 
 const Hero = (props: Props) => {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
@@ -69,14 +70,14 @@ const Hero = (props: Props) => {
           {!isVideoLoaded && props.placeholder && (
             <Placeholder
               loading='lazy'
-              src={props.placeholder}
+              src={proxiedImageUrl(props.placeholder)}
               alt={props.title}
               className='opacity-25 block w-full h-full object-cover absolute top-0 left-0 z-0'
             />
           )}
           <video
             ref={videoRef}
-            src={media.video}
+            src={proxiedImageUrl(media.video)}
             className={`opacity-25 block w-full h-full object-cover absolute top-0 left-0 z-0 ${isVideoLoaded ? 'loaded' : ''}`}
             autoPlay
             loop

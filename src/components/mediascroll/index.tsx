@@ -7,6 +7,7 @@ import { Container, SectionHeader, Subtitle, Title } from '../section/styles';
 import { Props } from '../section/typo';
 import { MediaService, MediaItem } from '@/services/mediaService';
 import { BoxContainer } from '../box/styles';
+import { proxiedImageUrl } from '@/utils/imageProxy';
 
 const Mediascroll = (props: Props) => {
     const [mediaUrls, setMediaUrls] = useState<string[]>([]);
@@ -75,7 +76,7 @@ const Mediascroll = (props: Props) => {
                         {mediaUrls.map((url, index) => (
                             <div key={index} className='flex-shrink-0 mr-5'>
                                 <LazyLoadImage
-                                    src={url}
+                                    src={proxiedImageUrl(url)}
                                     alt={`Media ${index + 1}`}
                                     className="object-cover rounded-lg"
                                 />

@@ -7,6 +7,7 @@ import { MediaService } from '@/services/mediaService';
 import { UrlItem, GABlockProps } from './typo';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Metrics, MetricsText, Text } from './styles';
+import { proxiedImageUrl } from '@/utils/imageProxy';
 
 const Firebasegametrics = (props: Props | GABlockProps) => {
     const data = 'data' in props ? props.data : props;
@@ -124,7 +125,7 @@ const Firebasegametrics = (props: Props | GABlockProps) => {
                     {mergedProps.urlItems && (<div className="flex gap-4 xl:justify-end items-center">
                         {mergedProps.urlItems?.map((item: UrlItem, index: number) => (
                             <a key={index} href={item.link} target="_blank" rel="noopener noreferrer">
-                                <LazyLoadImage src={item.imagem} alt={`Ícone ${index + 1}`} />
+                                <LazyLoadImage src={proxiedImageUrl(item.imagem)} alt={`Ícone ${index + 1}`} />
                             </a>
                         ))}
                     </div>)}

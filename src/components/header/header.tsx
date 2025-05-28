@@ -12,6 +12,7 @@ import { MenuItem } from '@/services/navigationService';
 import { useSettings } from '@/context/settings';
 import { debounce } from "lodash";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { proxiedImageUrl } from '@/utils/imageProxy';
 
 const Header = ({ scrollPosition }: Props) => {
   const [expanded, setExpand] = useState<boolean>(false);
@@ -66,7 +67,7 @@ const Header = ({ scrollPosition }: Props) => {
           {settings?.custom_logo && (
             <div className="logo">
               <Link href="/">
-                <LazyLoadImage width={226} src={settings.custom_logo} alt={settings.blog_info.name} />
+                <LazyLoadImage width={226} src={proxiedImageUrl(settings.custom_logo)} alt={settings.blog_info.name} />
               </Link>
             </div>
           )}
