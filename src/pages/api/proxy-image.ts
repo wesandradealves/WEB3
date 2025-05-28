@@ -9,7 +9,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     const cleanPath = imageUrl.startsWith('/') ? imageUrl : `/${imageUrl}`;
     const targetUrl = `http://18.231.174.187${cleanPath}`;
-    console.log('Proxying image:', targetUrl);
 
     const response = await fetch(targetUrl, {
       headers: {

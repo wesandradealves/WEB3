@@ -40,11 +40,11 @@ export default function Template({ children }: { children: React.ReactNode }) {
   
 
   useEffect(() => {
-    const id = pathname.split("/").pop();
-    if (pathname.split("/").includes('media') && id) {
+    const id = (pathname ?? '').split("/").pop();
+    if ((pathname ?? '').split("/").includes('media') && id) {
       loadPost(id);
     } else {
-      loadPage(pathname);
+      loadPage(pathname ?? '');
     }
   }, [pathname, loadPage, loadPost]);
 

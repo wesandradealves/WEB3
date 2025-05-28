@@ -8,7 +8,8 @@ import { PageService } from '@/services/pageService';
 import DynamicComponent from '@/components/DynamicComponent/DynamicComponent';
 
 export default function Page() {
-  const { slug } = useParams();
+  const params = useParams<Record<string, string | string[]>>();
+  const slug = params?.slug;
   const [content, setContent] = useState<any>(null);
 
   const fetchData = useCallback(async (slug: string) => {
@@ -16,7 +17,6 @@ export default function Page() {
       const _slug = Array.isArray(slug) ? slug[slug.length - 1] : slug;
 
       const data = await PageService(_slug);
-      console.log(data)
       setContent(data.acf_blocks);
     } catch (err) {
       console.error('Error fetching page data:', err);

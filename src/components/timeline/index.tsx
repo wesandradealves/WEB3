@@ -64,10 +64,6 @@ const Timeline = (props: Props) => {
     processTimeline();
   }, [fetchBackgroundImage, processTimeline]);
 
-  useEffect(() => {
-    console.log(timeline, props)
-  }, [timeline, props]);
-
   return (
     <Container
       id={props?.id}

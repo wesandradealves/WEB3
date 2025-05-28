@@ -55,10 +55,6 @@ const Slide = (props: Props) => {
     remapProps();
   }, [remapProps]);
 
-  useEffect(() => {
-    console.log(slider)
-  }, [slider]);
-
   return (
     <Container className={classNames(props.classname)}>
       <div
