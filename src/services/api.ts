@@ -9,41 +9,31 @@ const api = axios.create({
 });
 
 export const setupInterceptors = (setLoading: (loading: boolean) => void) => {
-  // Request interceptor
   api.interceptors.request.use(
     (config) => {
-      setLoading(true); // Indicate loading state
+      setLoading(true); 
 
       const token = localStorage.getItem('token');
 
       if (token) {
-        config.headers.Authorization = `Bearer ${token}`; // Attach token if available
+        config.headers.Authorization = `Bearer ${token}`; 
       }
 
       return config;
     },
     (error) => {
-      setLoading(false); // Stop loading on error
+      setLoading(false); 
       return Promise.reject(error);
     }
   );
 
-  // Response interceptor
   api.interceptors.response.use(
     (response) => {
-      setLoading(false); // Stop loading on successful response
+      setLoading(false); 
       return response;
     },
     (error) => {
-      setLoading(false); // Stop loading on error
-
-      // Optional: Add custom error handling logic here
-      if (error.response) {
-        console.error('API Error:', error.response.data);
-      } else {
-        console.error('Network Error:', error.message);
-      }
-
+      setLoading(false); 
       return Promise.reject(error);
     }
   );
