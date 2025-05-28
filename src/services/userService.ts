@@ -20,7 +20,7 @@ export const Login = async (username: string, password: string) => {
 
 export const getUser = async (id: number = 1) => {
   try {
-    const response = await api.get(`/wp/v2/users/${id}?context=view`);
+    const response = await api.get(`/wp/v2/users/${id}`);
     return response.data;
   } catch (error) {
     console.error('Erro ao buscar usuário:', error);
