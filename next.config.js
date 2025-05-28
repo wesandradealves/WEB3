@@ -1,0 +1,42 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
+const path = require('node:path');
+
+/** @type {import('next').NextConfig} */
+module.exports = {
+    basePath: '',
+    sassOptions: {
+        includePaths: [path.join('/', 'app'), 'src/assets'],
+    },
+    reactStrictMode: true,
+    images: {
+        remotePatterns: [
+            {
+                hostname: '**',
+            },
+        ],
+    },
+    compiler: {
+        styledComponents: true,
+    },
+    async headers() {
+        return [
+            {
+                source: '/(.*)',
+                headers: [
+                    {
+                        key: 'Referrer-Policy',
+                        value: 'origin-when-cross-origin',
+                    },
+                ],
+            },
+        ];
+    },
+    async rewrites() {
+        return [
+            {
+                source: '/api/:path*',
+                destination: 'http://18.231.174.187/wp-json/:path*',
+            },
+        ];
+    },
+};

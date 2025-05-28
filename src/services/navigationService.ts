@@ -20,8 +20,6 @@ export interface MenuItem {
         params: { slug },
       });
 
-      console.log(response)
-  
       return response.data as MenuItem[];
     } catch (error: unknown) {
       console.error('Navigation Error:', error);
