@@ -27,7 +27,9 @@ const Sectionswitcher = (props: Props) => {
         if (props.backgroundimage) {
             try {
                 const bgImage = await MediaService(Number(props.backgroundimage));
-                setBackgroundImageUrl(bgImage.source_url);
+                if (bgImage && bgImage.source_url) {
+                    setBackgroundImageUrl(bgImage.source_url);
+                }
             } catch (error) {
                 console.error("Error fetching background image:", error);
             }
@@ -76,7 +78,7 @@ const Sectionswitcher = (props: Props) => {
                 const [typeRaw, id] = selectedValue[0].split(':');
                 const type = normalizeType(typeRaw);
                 const data = id ? await ContentService(type, id) : await ContentService(type);
-                setContentData(Array.isArray(data) ? data : [data]);
+                setContentData(Array.isArray(data) ? data.filter((item): item is ContentItem => !!item) : [data].filter((item): item is ContentItem => !!item));
             }
         } catch (error) {
             console.error('Error fetching content:', error);

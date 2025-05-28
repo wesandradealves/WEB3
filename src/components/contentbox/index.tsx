@@ -17,7 +17,9 @@ const Contentbox = (props: Props) => {
       const mediaId = typeof props.media === 'string' ? parseInt(props.media, 10) : props.media;
       try {
         const mediaItem = await MediaService(mediaId);
-        setMediaUrl(mediaItem.source_url);
+        if (mediaItem && mediaItem.source_url) {
+          setMediaUrl(mediaItem.source_url);
+        }
       } catch (error) {
         console.error("Error fetching media URL:", error);
       }
