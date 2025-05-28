@@ -17,7 +17,6 @@ import { MediaService } from '@/services/mediaService';
 import { TaxonomyService } from '@/services/TaxonomyService';
 import { ContentItem } from '@/services/ContentService';
 import SingleSkeleton from './SingleSkeleton';
-import { proxiedImageUrl } from '@/utils/imageProxy';
 
 type EnrichedContent = ContentItem & {
   author_name?: string;
@@ -68,7 +67,7 @@ export default function Single() {
     <>
       <Container
         className='text-white text-center pt-[190px] pb-[90px] bg-fixed bg-cover relative overflow-hidden'
-        backgroundimage={proxiedImageUrl(content?.thumbnail || '')}
+        backgroundimage={content?.thumbnail || ''}
         backgroundposition='center top'
       >
         <div className='container m-auto gap-6 flex flex-col relative z-10'>

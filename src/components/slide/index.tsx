@@ -8,7 +8,6 @@ import { Props, SLIDE } from './typo';
 import Slider from "react-slick";
 import { Item, ItemInner, Title, Subtitle, SlideWrapper } from "./styles";
 import { useCallback, useEffect, useState } from 'react';
-import { proxiedImageUrl } from '@/utils/imageProxy';
 
 const Slide = (props: Props) => {
   const settings = {
@@ -75,7 +74,7 @@ const Slide = (props: Props) => {
                   {item.text && (<Subtitle className='font-bold text-center p-2 pt-1 pb-1 text-xl lg:text-2xl'>{item.text}</Subtitle>)}
                 </div>)}
 
-                {item.media && (<LazyLoadImage className='w-full object-fit' src={proxiedImageUrl(String(item.media))} alt={item.title} />)}
+                {item.media && (<LazyLoadImage className='w-full object-fit' src={String(item.media)} alt={item.title} />)}
               </ItemInner>
             </Item>
           );

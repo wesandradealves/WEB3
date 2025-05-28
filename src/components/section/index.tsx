@@ -6,7 +6,6 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Container, SectionHeader, Subtitle, Title, Text } from './styles';
 import { Props } from './typo';
 import { MediaService, MediaItem } from '@/services/mediaService';
-import { proxiedImageUrl } from '@/utils/imageProxy';
 
 const Section = (props: Props) => {
   const [mediaUrls, setMediaUrls] = useState<string[]>([]);
@@ -26,9 +25,9 @@ const Section = (props: Props) => {
 
   const fetchMediaUrls = useCallback(async () => {
     try {
-      const mediaItems: MediaItem[] = await Promise.all(
+      const mediaItems = (await Promise.all(
         mediaIds.map(id => MediaService(id))
-      );
+      )).filter((item): item is MediaItem => item !== undefined);
       setMediaUrls(mediaItems.map(item => item.source_url));
     } catch (error) {
       console.error("Error fetching media URLs:", error);
@@ -39,7 +38,7 @@ const Section = (props: Props) => {
     if (props.backgroundimage) {
       try {
         const bgImage = await MediaService(Number(props.backgroundimage));
-        setBackgroundImageUrl(bgImage.source_url);
+        if(bgImage) setBackgroundImageUrl(bgImage?.source_url);
       } catch (error) {
         console.error("Error fetching background image:", error);
       }
@@ -56,7 +55,7 @@ const Section = (props: Props) => {
       id={props?.id}
       background={props?.background}
       backgroundcolor={props?.backgroundcolor}
-      backgroundimage={proxiedImageUrl(backgroundImageUrl || '')}
+      backgroundimage={backgroundImageUrl || ''}
       backgroundposition={props?.backgroundposition}
       backgroundsize={props?.backgroundsize}
       backgroundattachment={props?.backgroundattachment}
@@ -107,7 +106,7 @@ const Section = (props: Props) => {
           <div className="flex flex-wrap justify-between">
             {mediaUrls.map((url, index) => (
               <div key={index} className="flex-1 flex justify-center items-center flex-wrap">
-                <LazyLoadImage src={proxiedImageUrl(url)} alt={`Media ${index + 1}`} />
+                <LazyLoadImage src={url} alt={`Media ${index + 1}`} />
               </div>
             ))}
           </div>

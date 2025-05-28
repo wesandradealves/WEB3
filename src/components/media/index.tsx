@@ -12,7 +12,6 @@ import { MediaService } from '@/services/mediaService';
 import { TaxonomyService } from '@/services/TaxonomyService';
 import { formatDate } from '@/utils/index';
 import MediaSkeleton from './MediaSkeleton';
-import { proxiedImageUrl } from '@/utils/imageProxy';
 
 const truncateText = (text: string, limit: number) =>
   text.length <= limit ? text : `${text.substring(0, limit)}...`;
@@ -85,6 +84,7 @@ const Media = ({ data, classname }: { data: ContentItem[]; classname?: string })
   };
 
   if (loading) return <MediaSkeleton />;
+  if (!_data.length) return null;
 
   return (
     <Container className={classname}>
@@ -96,11 +96,11 @@ const Media = ({ data, classname }: { data: ContentItem[]; classname?: string })
             onClick={() => router.push(`media/${item.id}`)}
           >
             <ItemInner className="flex flex-col gap-4 rounded-[48px] h-full overflow-hidden">
-              {item.thumbnail && (
+              {item.thumbnail ? (
                 <div className="lg:h-[190px] overflow-hidden relative">
                   <LazyLoadImage
                     className="w-full object-cover transition-transform duration-300 lg:group-hover:scale-105"
-                    src={proxiedImageUrl(item.thumbnail)}
+                    src={item.thumbnail}
                     alt={item.title.rendered}
                   />
                   {(item._categories ?? []).length > 0 && (
@@ -113,7 +113,7 @@ const Media = ({ data, classname }: { data: ContentItem[]; classname?: string })
                     </div>
                   )}
                 </div>
-              )}
+              ) : null}
               <div className="flex flex-col gap-4 p-6 flex-1 pt-0">
                 <Meta className="flex items-center gap-1 text-base">
                   <span className="flex items-center gap-1">

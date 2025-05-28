@@ -32,11 +32,6 @@ module.exports = {
         ];
     },
     async rewrites() {
-        return [
-            {
-                source: '/api/:path*',
-                destination: 'http://18.231.174.187/wp-json/:path*',
-            },
-        ];
+        return [];
     },
 };
