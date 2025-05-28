@@ -16,6 +16,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const login = async () => {
     try {
       const storedToken = localStorage.getItem('token');
+
       if (storedToken) {
         setToken(storedToken);
         setIsAuthenticated(true);
@@ -23,6 +24,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       }
 
       const data = await Login(process.env.NEXT_PUBLIC_API_USERNAME || '', process.env.NEXT_PUBLIC_API_PWD || '');
+
       localStorage.setItem('token', data.token);
       setToken(data.token);
       setIsAuthenticated(true);
