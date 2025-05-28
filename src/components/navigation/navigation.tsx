@@ -73,7 +73,7 @@ export default function Navigation({ children, className, mobile, data, ListClas
                             className={classNames('item font-bold flex flex-col text-base', row?.className, {
                                 'expanded': expandedItems[i],
                                 [ListClassName || '']: mobile,
-                                'current': pathname.replaceAll('/', '') == row.url.replaceAll('/', '')
+                                'current': pathname && pathname.replaceAll('/', '') == row.url.replaceAll('/', '')
                             })} key={i}>
 
                             {(row.acf && row.acf.isButton) ? (
