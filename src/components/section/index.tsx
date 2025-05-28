@@ -56,7 +56,7 @@ const Section = (props: Props) => {
       id={props?.id}
       background={props?.background}
       backgroundcolor={props?.backgroundcolor}
-      backgroundimage={backgroundImageUrl}
+      backgroundimage={proxiedImageUrl(backgroundImageUrl || '')}
       backgroundposition={props?.backgroundposition}
       backgroundsize={props?.backgroundsize}
       backgroundattachment={props?.backgroundattachment}

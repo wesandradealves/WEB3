@@ -103,7 +103,7 @@ const Firebasegametrics = (props: Props | GABlockProps) => {
 
                 <Metrics
                     className='rounded-[20px] p-[40px] xl:pt-[268px] text-white flex flex-col xl:flex-row gap-20 justify-between xl:items-end'
-                    backgroundimage={mergedProps.backgroundImageUrl}
+                    backgroundimage={proxiedImageUrl(mergedProps?.backgroundImageUrl)}
                     backgroundposition={mergedProps?.backgroundposition}
                     backgroundsize={mergedProps?.backgroundsize}
                     backgroundattachment={mergedProps?.backgroundattachment}>

@@ -127,7 +127,7 @@ const Cardsmotion = (props: Props) => {
             id={mergedProps?.id}
             background={mergedProps?.background}
             backgroundcolor={mergedProps?.backgroundcolor}
-            backgroundimage={remapped.backgroundImageUrl}
+            backgroundimage={proxiedImageUrl(remapped?.backgroundImageUrl)}
             backgroundposition={mergedProps?.backgroundposition}
             backgroundsize={mergedProps?.backgroundsize}
             backgroundattachment={mergedProps?.backgroundattachment}
