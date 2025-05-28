@@ -10,6 +10,7 @@ import { Props, CTA } from './typo';
 import { proxiedImageUrl } from '@/utils/imageProxy';
 
 const ContentBox = (props: Props) => {
+  console.log('ContentBox props:', props);
   const [mediaUrl, setMediaUrl] = useState<string | undefined>(undefined);
   const [cta, setCtaList] = useState<CTA[]>([]);
 
