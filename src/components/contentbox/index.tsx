@@ -7,7 +7,6 @@ import Button from "../button/button";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { MediaService } from '@/services/mediaService';
 import { Props, CTA } from './typo';
-import { proxiedImageUrl } from '@/utils/imageProxy';
 
 const Contentbox = (props: Props) => {
   const [mediaUrl, setMediaUrl] = useState<string | undefined>(undefined);
@@ -59,7 +58,7 @@ const Contentbox = (props: Props) => {
       >
         {mediaUrl && (
           <div className="flex-1">
-            <LazyLoadImage className="min-w-[100%] object-cover" src={proxiedImageUrl(mediaUrl)} />
+            <LazyLoadImage className="min-w-[100%] object-cover" src={mediaUrl} />
           </div>
         )}
 

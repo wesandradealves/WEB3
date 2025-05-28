@@ -16,12 +16,21 @@ export interface MediaItem {
     mime_type: string;
   }
   
-  export const MediaService = async (id: number): Promise<MediaItem> => {
-    try {
-      const response = await api.get(`/wp/v2/media/${id}`);
-      return response.data as MediaItem;
-    } catch (error: unknown) {
-      console.error(`Media Fetch Error (ID: ${id}):`, error);
-      throw error;
+  export const MediaService = async (id: number): Promise<MediaItem | undefined> => {
+    let retries = 3;
+    const delay = 2000;
+    while (retries > 0) {
+      try {
+        const response = await api.get(`/wp/v2/media/${id}`);
+        return response.data as MediaItem;
+      } catch (error: unknown) {
+        retries--;
+        if (retries === 0) {
+          console.warn(`Media Fetch Error (ID: ${id}):`, error);
+          return undefined;
+        }
+        await new Promise(res => setTimeout(res, delay));
+      }
     }
+    return undefined;
   };

@@ -6,7 +6,6 @@ import { Container, SectionHeader, Title, Text } from '../section/styles';
 import { Props } from '../section/typo';
 import { MediaService } from '@/services/mediaService';
 import Bubbles from '../bubbles/bubbles';
-import { proxiedImageUrl } from '@/utils/imageProxy';
 
 type TimelineItem = {
   title: string;
@@ -22,7 +21,7 @@ const Timeline = (props: Props) => {
     if (props.backgroundimage) {
       try {
         const bgImage = await MediaService(Number(props.backgroundimage));
-        setBackgroundImageUrl(bgImage.source_url);
+        setBackgroundImageUrl(bgImage?.source_url);
       } catch (error) {
         console.error("Error fetching background image:", error);
       }
@@ -69,7 +68,7 @@ const Timeline = (props: Props) => {
     <Container
       id={props?.id}
       backgroundcolor={props?.backgroundcolor}
-      backgroundimage={proxiedImageUrl(backgroundImageUrl || '')}
+      backgroundimage={backgroundImageUrl || ''}
       backgroundposition={props?.backgroundposition}
       backgroundsize={props?.backgroundsize}
       backgroundattachment={props?.backgroundattachment}

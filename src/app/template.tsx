@@ -7,7 +7,6 @@ import { useEffect, useState, useCallback, useMemo } from 'react';
 import { useSettings } from '@/context/settings';
 import { ContentService } from '@/services/ContentService';
 import { useMedia } from '@/context/media'; 
-import { proxiedImageUrl } from '@/utils/imageProxy';
 
 
 export default function Template({ children }: { children: React.ReactNode }) {
@@ -54,7 +53,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
   useMetadata({
     title: `${settings?.blog_info?.name ?? 'BDM Digital'}${title}`,
     ogTitle: `${settings?.blog_info?.name ?? 'BDM Digital'}${title}`,
-    favicon: proxiedImageUrl(settings?.favicon || ''),
+    favicon: settings?.favicon || '',
   });
 
   return (

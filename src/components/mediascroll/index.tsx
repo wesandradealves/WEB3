@@ -7,7 +7,6 @@ import { Container, SectionHeader, Subtitle, Title } from '../section/styles';
 import { Props } from '../section/typo';
 import { MediaService, MediaItem } from '@/services/mediaService';
 import { BoxContainer } from '../box/styles';
-import { proxiedImageUrl } from '@/utils/imageProxy';
 
 const Mediascroll = (props: Props) => {
     const [mediaUrls, setMediaUrls] = useState<string[]>([]);
@@ -26,8 +25,8 @@ const Mediascroll = (props: Props) => {
 
     const fetchMediaUrls = useCallback(async () => {
         try {
-            const mediaItems: MediaItem[] = await Promise.all(media.map(id => MediaService(id)));
-            setMediaUrls(mediaItems.map(item => item.source_url));
+            const mediaItems = (await Promise.all(media.map(id => MediaService(id)))).filter((item): item is MediaItem => !!item);
+            setMediaUrls(mediaItems.filter(item => item.source_url).map(item => item.source_url));
         } catch (error) {
             console.error("Error fetching media URLs:", error);
         }
@@ -74,13 +73,15 @@ const Mediascroll = (props: Props) => {
                         [&::-webkit-scrollbar-thumb]:cursor-move
                         '>
                         {mediaUrls.map((url, index) => (
-                            <div key={index} className='flex-shrink-0 mr-5'>
-                                <LazyLoadImage
-                                    src={proxiedImageUrl(url)}
-                                    alt={`Media ${index + 1}`}
-                                    className="object-cover rounded-lg"
-                                />
-                            </div>
+                            url ? (
+                                <div key={index} className='flex-shrink-0 mr-5'>
+                                    <LazyLoadImage
+                                        src={url}
+                                        alt={`Media ${index + 1}`}
+                                        className="object-cover rounded-lg"
+                                    />
+                                </div>
+                            ) : null
                         ))}
                     </BoxContainer>
                 )}

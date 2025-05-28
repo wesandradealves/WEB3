@@ -10,7 +10,6 @@ import { ContentItem, ContentService } from '@/services/ContentService';
 import { TaxonomyService } from '@/services/TaxonomyService';
 import ClientsSkeleton from './ClientsSkeleton';
 import { ClientTitle, Tags, TagItem, Tag} from './styles';
-import { proxiedImageUrl } from '@/utils/imageProxy';
 
 const Clients = ({ data, classname }: { data: Props; classname?: string }) => {
   const [mediaUrl, setMediaUrl] = useState('');
@@ -100,7 +99,7 @@ const Clients = ({ data, classname }: { data: Props; classname?: string }) => {
 
         {mediaUrl && (
           <LazyLoadImage
-            src={proxiedImageUrl(mediaUrl)}
+            src={mediaUrl}
             className="max-w-[100%] block me-auto"
           />
         )}
@@ -111,7 +110,7 @@ const Clients = ({ data, classname }: { data: Props; classname?: string }) => {
               <div key={client.id} className="flex flex-col gap-6">
                 {client.thumbnail && (
                   <LazyLoadImage
-                    src={proxiedImageUrl(client.thumbnail)}
+                    src={client.thumbnail}
                     alt={client.title?.rendered}
                     className="w-full h-48 object-cover object-center rounded-md h-[244px] md:h-[200px] lg:h-[244px] xl:h-[344px]"
                   />

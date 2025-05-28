@@ -9,7 +9,6 @@ import { MenuItem } from '@/services/navigationService';
 import { useEffect, useState, useCallback } from 'react';
 import { useSettings } from '@/context/settings';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { proxiedImageUrl } from '@/utils/imageProxy';
 
 export default function Footer() {
   const [menu, setNavigation] = useState<MenuItem[] | null>(null);
@@ -39,7 +38,7 @@ export default function Footer() {
 
             {settings?.custom_logo && (<Link href="/">
               <LazyLoadImage
-                src={proxiedImageUrl(settings?.custom_logo)}
+                src={settings?.custom_logo}
                 alt={settings?.blog_info?.name}
                 width={160}
                 height={40}

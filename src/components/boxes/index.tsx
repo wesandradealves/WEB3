@@ -7,7 +7,6 @@ import { CardItem, Props, BoxItem } from "./typo";
 import { MediaService } from "@/services/mediaService";
 import Box from "../box/box";
 import Card from "../card/card";
-import { proxiedImageUrl } from "@/utils/imageProxy";
 
 const Boxes = (props: Props) => {
   const [processedProps, setProcessedProps] = useState<
@@ -25,7 +24,7 @@ const Boxes = (props: Props) => {
         const bgImage = await MediaService(props.backgroundimage);
         setProcessedProps((prev) => ({
           ...prev,
-          backgroundimage: bgImage.source_url,
+          backgroundimage: bgImage?.source_url,
         }));
       } catch (error) {
         console.error("Error fetching background image:", error);
@@ -82,7 +81,7 @@ const Boxes = (props: Props) => {
       id={props?.id}
       background={props?.background}
       backgroundcolor={props?.backgroundcolor}
-      backgroundimage={proxiedImageUrl(processedProps?.backgroundimage)}
+      backgroundimage={processedProps?.backgroundimage}
       backgroundposition={props?.backgroundposition}
       backgroundsize={props?.backgroundsize}
       backgroundattachment={props?.backgroundattachment}

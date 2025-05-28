@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
-import DynamicComponent from '../DynamicComponent/DynamicComponent';
+import DynamicComponent from '../DynamicComponent';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { MenuItem, MenuProps, OutlinedInput } from '@mui/material';
 import { useTheme } from 'styled-components';
@@ -11,7 +11,6 @@ import { Container, SectionHeader, Subtitle, Title } from '../section/styles';
 import { Props } from '../section/typo';
 import { MediaService } from '@/services/mediaService';
 import { ContentService, ContentItem } from '@/services/ContentService';
-import { proxiedImageUrl } from '@/utils/imageProxy';
 
 const Sectionswitcher = (props: Props) => {
     const [selectedValue, setSelectedValue] = useState<string[]>(props?.components?.length ? [props.components[0]] : []);
@@ -144,7 +143,7 @@ const Sectionswitcher = (props: Props) => {
             id={props?.id}
             background={props?.background}
             backgroundcolor={props?.backgroundcolor}
-            backgroundimage={proxiedImageUrl(backgroundImageUrl || '')}
+            backgroundimage={backgroundImageUrl || ''}
             backgroundposition={props?.backgroundposition}
             backgroundsize={props?.backgroundsize}
             backgroundattachment={props?.backgroundattachment}

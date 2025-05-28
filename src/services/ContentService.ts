@@ -1,5 +1,3 @@
- 
-
 import api from './api';
 import { Taxonomy } from './TaxonomyService';
 
@@ -50,13 +48,23 @@ export interface ContentItem {
   _tags?: Taxonomy[];
 }
 
-export const ContentService = async (type: string, id?: string): Promise<ContentItem | ContentItem[]> => {
-  try {
-    const endpoint = id ? `/wp/v2/${type}/${id}` : `/wp/v2/${type}`;
-    const response = await api.get(endpoint);
-    return response.data as ContentItem | ContentItem[];
-  } catch (error: unknown) {
-    console.error(`Error fetching content (Type: ${type}, ID: ${id || 'all'}):`, error);
-    throw error;
+export const ContentService = async (type: string, id?: string): Promise<ContentItem | ContentItem[] | undefined> => {
+  let retries = 3;
+  const delay = 2000;
+  while (retries > 0) {
+    try {
+      const endpoint = id ? `/wp/v2/${type}/${id}` : `/wp/v2/${type}`;
+      const response = await api.get(endpoint);
+      if (response.data) return response.data as ContentItem | ContentItem[];
+      return undefined;
+    } catch (error: unknown) {
+      retries--;
+      if (retries === 0) {
+        console.error(`Error fetching content (Type: ${type}, ID: ${id || 'all'}):`, error);
+        return undefined;
+      }
+      await new Promise(res => setTimeout(res, delay));
+    }
   }
+  return undefined;
 };

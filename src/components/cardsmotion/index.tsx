@@ -10,7 +10,6 @@ import classNames from "classnames";
 import { CardItem } from "../boxes/typo";
 import { RemappedProps } from "./typo";
 import { motion, Variants } from 'framer-motion';
-import { proxiedImageUrl } from '@/utils/imageProxy';
 
 const Cardsmotion = (props: Props) => {
     const cardVariants: Variants = {
@@ -127,7 +126,7 @@ const Cardsmotion = (props: Props) => {
             id={mergedProps?.id}
             background={mergedProps?.background}
             backgroundcolor={mergedProps?.backgroundcolor}
-            backgroundimage={proxiedImageUrl(remapped?.backgroundImageUrl)}
+            backgroundimage={remapped?.backgroundImageUrl}
             backgroundposition={mergedProps?.backgroundposition}
             backgroundsize={mergedProps?.backgroundsize}
             backgroundattachment={mergedProps?.backgroundattachment}
@@ -198,7 +197,7 @@ const Cardsmotion = (props: Props) => {
                                 <motion.div variants={cardVariants}>
                                     <LazyLoadImage
                                         className="w-full max-w-[800px] m-auto"
-                                        src={proxiedImageUrl(mergedProps.mediaImageUrl)}
+                                        src={mergedProps.mediaImageUrl}
                                         alt="Background Image"
                                     />
                                 </motion.div>
