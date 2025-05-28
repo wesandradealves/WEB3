@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
-import DynamicComponent from '../DynamicComponent/DynamicComponent';
+import DynamicComponent from '../DynamicComponent';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { MenuItem, MenuProps, OutlinedInput } from '@mui/material';
 import { useTheme } from 'styled-components';

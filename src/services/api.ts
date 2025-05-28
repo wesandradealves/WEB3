@@ -1,10 +1,8 @@
 import axios from 'axios';
 
-// Added comments for clarity and ensured best practices are followed
-
 const api = axios.create({
-  baseURL: '/api', // Base URL for API requests, leveraging Next.js rewrites
-  timeout: 90000, // Timeout set to 90 seconds; consider reducing if backend responds faster
+  baseURL: '/api', 
+  timeout: 90000, 
   headers: {
     'Content-Type': 'application/json',
   },
