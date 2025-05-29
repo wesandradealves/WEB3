@@ -60,6 +60,8 @@ export default function RootLayout({
           `
         )}
       >
+        <link rel="preconnect" href="https://api-dev-bdm.dourado.cash" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://api-dev-bdm.dourado.cash" />
         <Script
           src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"
           strategy="afterInteractive"
