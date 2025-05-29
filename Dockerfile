@@ -19,8 +19,10 @@ COPY . .
 # Execute o build da aplicação
 RUN npm run build
 
+RUN ls -la /app/.next
+
 # Exponha a porta 3000 para o servidor de produção
 EXPOSE 3000
 
 # Comando para iniciar o servidor de produção
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "start"]
