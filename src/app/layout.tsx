@@ -1,54 +1,18 @@
-'use client';
 import Script from 'next/script';
-import {
-  _colors,
-  _breakpoints,
-} from '@/assets/scss/variables';
-const theme = {
-  _colors,
-  _breakpoints,
-};
-import { App, GlobalStyle } from '@/app/style';
 import '@/assets/scss/globals.scss';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { AnimatePresence, motion, useScroll } from 'motion/react';
-import { ThemeProvider } from 'styled-components';
-import StyledJsxRegistry from './registry';
-import { Suspense, useRef, useState, useEffect } from 'react';
 import classNames from 'classnames';
-import Header from '@/components/header/header';
-import Footer from '@/components/footer/footer';
-import { MediaProvider } from '@/context/media';
-import { AuthProvider } from '@/context/auth';
-import { LoaderProvider, useLoader } from '@/context/spinner';
-import { SettingsProvider } from '@/context/settings';
-import { setupInterceptors } from '@/services/api';
-import Spinner from '@/components/spinner/spinner';
+import LanguageRoot from './language';
+import ClientProviders from '@/app/client';
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  const scrollRef = useRef<HTMLHtmlElement | null>(null);
-  const { scrollY } = useScroll({
-    container: scrollRef,
-  });
-
-  const [scrollPosition, setScrollPosition] = useState<number>(0);
-
-  scrollY.onChange((n) => {
-    setScrollPosition(n);
-  });
-
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-br" ref={scrollRef}>
+    <html lang="pt-br">
       <body
         suppressHydrationWarning={true}
-        className={classNames(
-          `antialiased 
-          overflow-x-hidden
+        className={classNames(`
+          antialiased overflow-x-hidden
           [&::-webkit-scrollbar]:w-1
           [&::-webkit-scrollbar-track]:bg-transparent
           [&::-webkit-scrollbar-track]:ms-7
@@ -57,61 +21,20 @@ export default function RootLayout({
           [&::-webkit-scrollbar-thumb]:bg-yellow-500
           [&::-webkit-scrollbar-thumb]:rounded-full
           [&::-webkit-scrollbar-thumb]:cursor-move
-          `
-        )}
+        `)}
       >
-        <link rel="preconnect" href="https://api-dev-bdm.dourado.cash" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://api-dev-bdm.dourado.cash" />
+        <link rel="preconnect" href="http://localhost:8000" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="http://localhost:8000" />
         <Script
           src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"
           strategy="afterInteractive"
         />
-        <ThemeProvider theme={theme}>
-          <LoaderProvider>
-            <LoaderSetup />
-            <AuthProvider>
-              <MediaProvider>
-                <SettingsProvider>
-                  <Suspense fallback={<div>Loading...</div>}>
-                    <StyledJsxRegistry>
-                      <AnimatePresence
-                        mode="wait"
-                        initial={true}
-                        onExitComplete={() => window.scrollTo(0, 0)}
-                      >
-                        <App id="primary">
-                          <motion.div
-                            className="min-h-screen flex flex-start flex-col"
-                            initial={{ x: 0, opacity: 0 }}
-                            animate={{ x: 0, opacity: 1 }}
-                            exit={{ x: 0, opacity: 0 }}
-                          >
-                            <Header scrollPosition={scrollPosition} />
-                            {children}
-                            <Footer />
-                          </motion.div>
-                          <Spinner />
-                        </App>
-                      </AnimatePresence>
-                    </StyledJsxRegistry>
-                  </Suspense>
-                </SettingsProvider>
-              </MediaProvider>
-            </AuthProvider>
-          </LoaderProvider>
-          <GlobalStyle />
-        </ThemeProvider>
+        <LanguageRoot>
+          <ClientProviders>
+            {children}
+          </ClientProviders>
+        </LanguageRoot>
       </body>
     </html>
   );
-}
-
-function LoaderSetup() {
-  const { setLoading } = useLoader();
-
-  useEffect(() => {
-    setupInterceptors(setLoading);
-  }, [setLoading]);
-
-  return null;
 }

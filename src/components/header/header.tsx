@@ -12,6 +12,7 @@ import { MenuItem } from '@/services/navigationService';
 import { useSettings } from '@/context/settings';
 import { debounce } from "lodash";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import LanguageSwitcher from '../languageSwitcher/languageSwitcher';
 
 const Header = ({ scrollPosition }: Props) => {
   const [expanded, setExpand] = useState<boolean>(false);
@@ -39,7 +40,7 @@ const Header = ({ scrollPosition }: Props) => {
     } catch (error) {
       console.error('Error loading navigation:', error);
     }
-  }, []); 
+  }, []);
 
   useEffect(() => {
     window.addEventListener('resize', debouncedResize);
@@ -48,7 +49,7 @@ const Header = ({ scrollPosition }: Props) => {
     return () => {
       window.removeEventListener('resize', debouncedResize);
     };
-  }, [debouncedResize, loadNavigation]); 
+  }, [debouncedResize, loadNavigation]);
 
   return (
     <Container
@@ -101,6 +102,8 @@ const Header = ({ scrollPosition }: Props) => {
                 </span>
               </button>
             </span>
+
+            <LanguageSwitcher float="on" effect="fadeIn" />
           </div>
         </div>
       </div>
