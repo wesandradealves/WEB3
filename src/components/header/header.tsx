@@ -103,7 +103,7 @@ const Header = ({ scrollPosition }: Props) => {
               </button>
             </span>
 
-            <LanguageSwitcher float="on" effect="fadeIn" />
+            <LanguageSwitcher className='hidden xl:flex' effect="fadeIn" />
           </div>
         </div>
       </div>
@@ -117,7 +117,9 @@ const Header = ({ scrollPosition }: Props) => {
           mobile
           ListClassName="gap-6"
           data={nav.main}
-        />
+        >
+          <LanguageSwitcher effect="fadeIn" />
+        </Navigation>
       )}
     </Container>
   );
