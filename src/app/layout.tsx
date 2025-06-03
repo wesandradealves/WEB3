@@ -7,6 +7,8 @@ import LanguageRoot from './language';
 import ClientProviders from '@/app/client';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const baseURL = `${process.env.NEXT_PUBLIC_API_URL_HML ?? process.env.NEXT_PUBLIC_API_URL_DEV}`;
+
   return (
     <html lang="pt-br">
       <body
@@ -23,8 +25,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           [&::-webkit-scrollbar-thumb]:cursor-move
         `)}
       >
-        <link rel="preconnect" href="http://localhost:8000" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="http://localhost:8000" />
+        <link rel="preconnect" href={baseURL} crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href={baseURL} />
         <Script
           src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"
           strategy="afterInteractive"

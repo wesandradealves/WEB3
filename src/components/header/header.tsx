@@ -67,7 +67,7 @@ const Header = ({ scrollPosition }: Props) => {
           {settings?.custom_logo && (
             <div className="logo">
               <Link href="/">
-                <LazyLoadImage width={226} src={settings.custom_logo} alt={settings.blog_info.name} />
+                <LazyLoadImage className='min-w-[100%] max-w-[226px]' src={settings.custom_logo} alt={settings.blog_info.name} />
               </Link>
             </div>
           )}
@@ -84,7 +84,7 @@ const Header = ({ scrollPosition }: Props) => {
           <div className="ms-auto flex items-center justify-end gap-6">
             {nav.lateral && (
               <Navigation
-                ListClassName="gap-6 justify-center items-center"
+                ListClassName="gap-6 justify-center items-center hidden xl:flex"
                 data={nav.lateral}
               />
             )}

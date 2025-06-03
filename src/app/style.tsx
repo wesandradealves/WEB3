@@ -78,7 +78,6 @@ export const GlobalStyle = createGlobalStyle `
         font-optical-sizing: auto;
         font-style: normal;
         overflow-x: hidden;
-        min-width: ${props => props.theme._breakpoints.sm};
         font-size: ${pxToRem(16)};
         background: ${props => props.theme._colors.primary.bdm9};
         * { 
