@@ -84,7 +84,8 @@ const Header = ({ scrollPosition }: Props) => {
           <div className="ms-auto flex items-center justify-end gap-6">
             {nav.lateral && (
               <Navigation
-                ListClassName="gap-6 justify-center items-center hidden xl:flex"
+                className="hidden xl:flex"
+                ListClassName="gap-6 justify-center items-center"
                 data={nav.lateral}
               />
             )}
