@@ -38,9 +38,9 @@ export default function Bubbles({ className, data }: Props) {
             })}
           >
             <ImgWrapper className='flex  lg:hover:scale-[1.1] flex-col justify-center items-center  m-auto relative'>
-              <span className='rounded-full p-8 overflow-hidden z-10'>
+              {(item.image) && (<span className='rounded-full p-8 overflow-hidden z-10'>
                 <LazyLoadImage className='max-w-[100%]' src={item.image || ''} />
-              </span>
+              </span>)}
 
               {index < data.length - 1 && (
                   <Blob
