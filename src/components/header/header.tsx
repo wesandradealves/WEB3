@@ -12,6 +12,7 @@ import { MenuItem } from '@/services/navigationService';
 import { useSettings } from '@/context/settings';
 import { debounce } from "lodash";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import LanguageSwitcher from '../languageSwitcher/languageSwitcher';
 
 const Header = ({ scrollPosition }: Props) => {
   const [expanded, setExpand] = useState<boolean>(false);
@@ -39,7 +40,7 @@ const Header = ({ scrollPosition }: Props) => {
     } catch (error) {
       console.error('Error loading navigation:', error);
     }
-  }, []); 
+  }, []);
 
   useEffect(() => {
     window.addEventListener('resize', debouncedResize);
@@ -48,7 +49,7 @@ const Header = ({ scrollPosition }: Props) => {
     return () => {
       window.removeEventListener('resize', debouncedResize);
     };
-  }, [debouncedResize, loadNavigation]); 
+  }, [debouncedResize, loadNavigation]);
 
   return (
     <Container
@@ -66,7 +67,7 @@ const Header = ({ scrollPosition }: Props) => {
           {settings?.custom_logo && (
             <div className="logo">
               <Link href="/">
-                <LazyLoadImage width={226} src={settings.custom_logo} alt={settings.blog_info.name} />
+                <LazyLoadImage className='min-w-[100%] max-w-[226px]' src={settings.custom_logo} alt={settings.blog_info.name} />
               </Link>
             </div>
           )}
@@ -83,6 +84,7 @@ const Header = ({ scrollPosition }: Props) => {
           <div className="ms-auto flex items-center justify-end gap-6">
             {nav.lateral && (
               <Navigation
+                className="hidden xl:flex"
                 ListClassName="gap-6 justify-center items-center"
                 data={nav.lateral}
               />
@@ -101,6 +103,8 @@ const Header = ({ scrollPosition }: Props) => {
                 </span>
               </button>
             </span>
+
+            <LanguageSwitcher className='hidden xl:flex' effect="fadeIn" />
           </div>
         </div>
       </div>
@@ -114,7 +118,9 @@ const Header = ({ scrollPosition }: Props) => {
           mobile
           ListClassName="gap-6"
           data={nav.main}
-        />
+        >
+          <LanguageSwitcher effect="fadeIn" />
+        </Navigation>
       )}
     </Container>
   );

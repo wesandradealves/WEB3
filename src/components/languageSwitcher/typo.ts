@@ -4,7 +4,6 @@ export interface Data {
 }
 
 export interface Props {
-    data: Data[];
     float?: string;
     className?: string;
     effect?: string;
