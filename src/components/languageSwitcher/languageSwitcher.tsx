@@ -16,10 +16,6 @@ export default function LanguageSwitcher({ float, effect, className }: Props) {
   const containerRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
-    console.log(availableLangs, mounted)
-  }, [availableLangs, mounted]);
-
-  useEffect(() => {
     setMounted(true);
 
     getAvailableLanguages()
@@ -47,14 +43,14 @@ export default function LanguageSwitcher({ float, effect, className }: Props) {
 
   const handleLanguageChange = (code: string) => {
     if (float === 'on' && !showAll) {
-      setShowAll(true); 
+      setShowAll(true);
       return;
     }
     setLanguage(code as Language);
     if (float === 'on') {
-      setShowAll(false); 
+      setShowAll(false);
     }
-    window.location.reload(); 
+    window.location.reload();
   };
 
   return (
@@ -65,40 +61,33 @@ export default function LanguageSwitcher({ float, effect, className }: Props) {
         [className || '']: className,
       })}
     >
-      {mounted && (
-        availableLangs.length > 0
-          ? availableLangs.map((lang: string, idx: number) => {
-              const isCurrentLang = language === lang;
-              const shouldHide = float === 'on' && language && !isCurrentLang && !showAll;
-              const flagCode = lang === 'pt' ? 'br' : lang === 'en' ? 'us' : lang;
-              return (
-                <Item
-                  key={lang}
-                  onClick={() => handleLanguageChange(lang)}
-                  className={classNames('block cursor-pointer', {
-                    'current': isCurrentLang,
-                    'hidden': shouldHide,
-                  })}
-                >
-                  <Flag
-                    data-code={lang}
-                    title={lang}
-                    onMouseEnter={() => setHoveredItem(idx)}
-                    onMouseLeave={() => setHoveredItem(null)}
-                    className={classNames(`block relative fi fi-${flagCode}`, {
-                      [`animate__animated animate__${effect}`]: effect && hoveredItem === idx
-                    })}
-                    float={float}
-                  />
-                </Item>
-              );
-            })
-          : (
-            <Item className="block cursor-pointer opacity-50" title="Idiomas indisponíveis">
-              <Flag className="block relative" float={float} />
-              <span>Idiomas indisponíveis</span>
+      {mounted && availableLangs.length > 0 && (
+        availableLangs.map((lang: string, idx: number) => {
+          const isCurrentLang = language === lang;
+          const shouldHide = float === 'on' && language && !isCurrentLang && !showAll;
+          const flagCode = lang === 'pt' ? 'br' : lang === 'en' ? 'us' : lang;
+          return (
+            <Item
+              key={lang}
+              onClick={() => handleLanguageChange(lang)}
+              className={classNames('block cursor-pointer', {
+                'current': isCurrentLang,
+                'hidden': shouldHide,
+              })}
+            >
+              <Flag
+                data-code={lang}
+                title={lang}
+                onMouseEnter={() => setHoveredItem(idx)}
+                onMouseLeave={() => setHoveredItem(null)}
+                className={classNames(`block relative fi fi-${flagCode}`, {
+                  [`animate__animated animate__${effect}`]: effect && hoveredItem === idx
+                })}
+                float={float}
+              />
             </Item>
-          )
+          );
+        })
       )}
     </Container>
   );

@@ -9,7 +9,12 @@ const DynamicComponent: React.FC<Props> = ({ machineName, data, classname }) => 
   useEffect(() => {
     const importComponent = async () => {
       try {
-        const resolvedMachineName = machineName.toLowerCase() === 'slider' ? 'slide' : machineName.toLowerCase();
+        let resolvedMachineName = machineName.toLowerCase();
+        if (resolvedMachineName === 'slider') {
+          resolvedMachineName = 'slide';
+        } else if (resolvedMachineName.startsWith('core/')) {
+          resolvedMachineName = resolvedMachineName.replace('core/', '');
+        }
 
         const componentModule = await import(`../${resolvedMachineName}`);
         const Component = componentModule.default;
