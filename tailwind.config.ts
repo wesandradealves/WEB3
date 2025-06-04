@@ -7,6 +7,8 @@ export default {
   ],
   safelist: [
     '2xl:-mb-[6rem]',
+    '--primary',
+    'button',
     '-mb-[6rem]',
     '-mt-[6rem]',
     'p-6',
