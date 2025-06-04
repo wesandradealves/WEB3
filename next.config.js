@@ -21,6 +21,15 @@ module.exports = {
     async headers() {
         return [
             {
+                source: '/_next/image', // imagens otimizadas
+                headers: [
+                    {
+                        key: 'Cache-Control',
+                        value: 'public, max-age=31536000, immutable',
+                    },
+                ],
+            },
+            {
                 source: '/(.*)',
                 headers: [
                     {

@@ -33,7 +33,7 @@ export default function Page() {
     return content?.map((object: any, index: number) => (
       <Suspense key={index} fallback={<div>Carregando...</div>}>
         <DynamicComponent
-          data={object.attrs.data}
+          data={object.attrs.data ?? object}
           machineName={object.machine_name}
         />
       </Suspense>

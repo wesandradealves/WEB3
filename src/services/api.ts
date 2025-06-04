@@ -8,25 +8,26 @@ const api = axios.create({
   },
 });
 
-export const setupInterceptors = (setLoading: (loading: boolean) => void) => {
+// Adicione um param opcional para locale
+export const setupInterceptors = (setLoading: (loading: boolean) => void, getLocale?: () => string) => {
   api.interceptors.request.use(
     (config) => {
-      setLoading(true); 
+      setLoading(true);
 
       const token = localStorage.getItem('token');
+      if (token) config.headers.Authorization = `Bearer ${token}`;
 
-      if (token) {
-        config.headers.Authorization = `Bearer ${token}`; 
-      }
+      // Sempre adiciona o header de idioma
+      const locale = getLocale ? getLocale() : (typeof window !== 'undefined' ? (localStorage.getItem('locale') || 'pt') : 'pt');
+      config.headers['X-Language'] = locale;
 
       return config;
     },
     (error) => {
-      setLoading(false); 
+      setLoading(false);
       return Promise.reject(error);
     }
   );
-
   api.interceptors.response.use(
     (response) => {
       setLoading(false); 
@@ -38,5 +39,6 @@ export const setupInterceptors = (setLoading: (loading: boolean) => void) => {
     }
   );
 };
+
 
 export default api;
