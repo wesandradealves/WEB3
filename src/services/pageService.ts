@@ -16,11 +16,9 @@ export interface Page {
   
 export const PageService = async (slug: string): Promise<Page> => {
     try {
-      const response = await api.get('/wp/v2/pages', {
+      const response = await api.get('/custom/v1/post-by', {
         params: { slug },
       });
-      const xLang = response.config.headers['X-Language'];
-      console.log('X-Language header enviado:', xLang);
       if (response.data && response.data.length > 0) {
         return response.data[0];
       } else {
