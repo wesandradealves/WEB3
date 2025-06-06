@@ -13,11 +13,14 @@ import { TaxonomyService } from '@/services/TaxonomyService';
 import { formatDate } from '@/utils/index';
 import MediaSkeleton from './MediaSkeleton';
 import { useLanguage } from '@/context/language';
+import { useTranslate } from '@/hooks/useTranslate';
 
 const truncateText = (text: string, limit: number) =>
   text.length <= limit ? text : `${text.substring(0, limit)}...`;
 
 const Media = ({ data, classname }: { data: ContentItem[]; classname?: string }) => {
+  const { language } = useLanguage();
+  const { translate } = useTranslate(language);
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [_data, setData] = useState<Array<
@@ -37,7 +40,10 @@ const Media = ({ data, classname }: { data: ContentItem[]; classname?: string })
             item.featured_media ? MediaService(Number(item.featured_media)) : null,
             item.author ? getUser(Number(item.author)) : null,
             item.categories?.length
-              ? Promise.all(item.categories.map((id: number) => TaxonomyService(id)))
+              ? Promise.all(item.categories.map(async (id: number) => {
+                  const cat = await TaxonomyService(id);
+                  return { ...cat, name: await translate(cat.name) };
+                }))
               : [],
           ]);
 
@@ -58,13 +64,11 @@ const Media = ({ data, classname }: { data: ContentItem[]; classname?: string })
 
     setData(mapped);
     setLoading(false);
-  }, [data]);
+  }, [data, translate]);
 
   useEffect(() => {
     if (data?.length) fetchData();
   }, [data, fetchData]);
-
-  const { language } = useLanguage();
 
   const settings = {
     dots: false,
