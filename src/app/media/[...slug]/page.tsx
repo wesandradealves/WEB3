@@ -1,65 +1,98 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { FiClock, FiUser, FiArrowLeft } from 'react-icons/fi';
 import classNames from 'classnames';
-
-import { useMedia } from '@/context/media';
+import { useParams } from 'next/navigation';
+import { PostService } from '@/services/postService';
+import { getUser } from '@/services/userService';
+import { MediaService } from '@/services/mediaService';
+import { TaxonomyService } from '@/services/TaxonomyService';
+import { ContentItem } from '@/services/ContentService';
+import { useLanguage } from '@/context/language';
+import { useTranslate } from '@/hooks/useTranslate';
+import { useSettings } from '@/context/settings';
 import { formatDate } from '@/utils/index';
 
 import { Body } from './style';
 import { Container, Title } from '@/components/section/styles';
 import { CategoryTag } from '@/components/media/styles';
-
-import { getUser } from '@/services/userService';
-import { MediaService } from '@/services/mediaService';
-import { TaxonomyService } from '@/services/TaxonomyService';
-import { ContentItem } from '@/services/ContentService';
 import SingleSkeleton from './SingleSkeleton';
+import { useMetadata } from '@/hooks/useMetadata';
 
-type EnrichedContent = ContentItem & {
+type MappedContent = ContentItem & {
   author_name?: string;
   _categories?: { id: number; name: string }[];
   thumbnail?: string;
 };
 
 export default function Single() {
-  const { media } = useMedia();
-  const [content, setContent] = useState<EnrichedContent | null>(null);
-
-  const enrichMediaItem = useCallback(async (item: ContentItem): Promise<EnrichedContent> => {
-    try {
-      const [thumbnail, author, categories] = await Promise.all([
-        item.featured_media ? MediaService(Number(item.featured_media)) : null,
-        item.author ? getUser(Number(item.author)) : null,
-        item.categories?.length ? Promise.all(item.categories.map((id) => TaxonomyService(id))) : []
-      ]);
-
-      return {
-        ...item,
-        thumbnail: thumbnail?.source_url,
-        author_name: author?.name,
-        _categories: categories
-      };
-    } catch (error) {
-      console.error('Erro ao enriquecer item de mídia:', error);
-      return item;
-    }
-  }, []);
+  const params = useParams();
+  const [content, setContent] = useState<MappedContent | null>(null);
+  const { language } = useLanguage();
+  const { translate } = useTranslate(language);
+  const [backText, setBackText] = useState('Voltar para notícias');
+  const { settings } = useSettings();
+  
+  useEffect(() => {
+    let mounted = true;
+    (async () => {
+      const translated = await translate('Voltar para notícias');
+      if (mounted) setBackText(translated);
+    })();
+    return () => { mounted = false };
+  }, [translate]);
 
   useEffect(() => {
-    if (!media || media.length === 0) return;
-
-    (async () => {
-      const [firstItem] = await Promise.all(media.map(enrichMediaItem));
-      if (firstItem) {
-        setContent(firstItem);
-      } else {
-        console.warn('Nenhum conteúdo válido encontrado.');
+    const fetchContent = async () => {
+      try {
+        const id = Array.isArray(params?.slug) ? params.slug[0] : params?.slug;
+        if (!id) return;
+        const data = await PostService({ id, type: 'midia' });
+        // Conversão segura: Page -> ContentItem (parcial), preenchendo campos obrigatórios
+        const pageData = data as Partial<ContentItem>;
+        const featured_media = pageData.featured_media ?? '';
+        const author = pageData.author ?? '';
+        const categories = pageData.categories ?? [];
+        const [thumbnail, authorData, categoriesData] = await Promise.all([
+          featured_media ? MediaService(Number(featured_media)) : null,
+          typeof author === 'number' ? getUser(author) : null,
+          Array.isArray(categories) && categories.length ? Promise.all(categories.map((catId: number) => TaxonomyService(catId))) : []
+        ]);
+        setContent({
+          ...pageData,
+          rating: pageData.rating ?? 0,
+          categories: categories,
+          thumbnail: thumbnail?.source_url || pageData.thumbnail || (pageData as { source_url?: string }).source_url || '',
+          author_name: authorData?.name || '',
+          _categories: categoriesData,
+          date: formatDate(pageData.date || '', language),
+          content: pageData.content || { rendered: '', protected: false },
+          title: pageData.title || { rendered: '' },
+          excerpt: pageData.excerpt || { rendered: '', protected: false },
+          tags: pageData.tags ?? [],
+          id: pageData.id ?? 0,
+          slug: pageData.slug ?? '',
+          type: pageData.type ?? '',
+          link: pageData.link ?? '',
+          meta: pageData.meta ?? {},
+          _links: pageData._links ?? {},
+        } as MappedContent);
+      } catch (error) {
+        console.log('Error fetching content:', error);
       }
-    })();
-  }, [media, enrichMediaItem]);
+    };
+    fetchContent();
+  }, [params, language]);
+
+  const title = useMemo(() => (content?.title?.rendered ? ` - ${content.title.rendered}` : ''), [content]);
+
+  useMetadata({
+    title: `${settings?.blog_info?.name ?? 'BDM Digital'}${title}`,
+    ogTitle: `${settings?.blog_info?.name ?? 'BDM Digital'}${title}`,
+    favicon: settings?.favicon || '',
+  });
 
   if (!content) return <SingleSkeleton />;
 
@@ -75,7 +108,7 @@ export default function Single() {
             href="/"
             className='inline-flex text-base lg:text-xl items-center gap-2 hover:text-primary-bdm3 transition-colors'
           >
-            <FiArrowLeft /> Voltar para notícias
+            <FiArrowLeft /> {backText}
           </Link>
 
           <ul className='flex flex-wrap gap-4 text-sm list-none text-base lg:text-xl'>
@@ -83,7 +116,7 @@ export default function Single() {
               <FiUser size={16} /> {content.author_name}
             </li>
             <li className='flex items-center gap-2'>
-              <FiClock size={16} /> {formatDate(content.date || '')} • {content.acf?.readTime}
+              <FiClock size={16} /> {content.date} • {content.acf?.readTime}
             </li>
           </ul>
 
