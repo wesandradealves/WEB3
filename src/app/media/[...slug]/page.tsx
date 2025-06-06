@@ -50,15 +50,25 @@ export default function Single() {
         const id = Array.isArray(params?.slug) ? params.slug[0] : params?.slug;
         if (!id) return;
         const data = await PostService({ id, type: 'midia' });
-        // Conversão segura: Page -> ContentItem (parcial), preenchendo campos obrigatórios
         const pageData = data as Partial<ContentItem>;
         const featured_media = pageData.featured_media ?? '';
         const author = pageData.author ?? '';
         const categories = pageData.categories ?? [];
-        const [thumbnail, authorData, categoriesData] = await Promise.all([
+        const [thumbnail, authorData, categoriesData, tagsData] = await Promise.all([
           featured_media ? MediaService(Number(featured_media)) : null,
           typeof author === 'number' ? getUser(author) : null,
-          Array.isArray(categories) && categories.length ? Promise.all(categories.map((catId: number) => TaxonomyService(catId))) : []
+          Array.isArray(categories) && categories.length
+            ? Promise.all(categories.map(async (catId: number) => {
+                const cat = await TaxonomyService(catId);
+                return { ...cat, name: await translate(cat.name) };
+              }))
+            : [],
+          Array.isArray(pageData.tags) && pageData.tags.length
+            ? Promise.all(pageData.tags.map(async (tagId: number) => {
+                const tag = await TaxonomyService(tagId, 'tags');
+                return { ...tag, name: await translate(tag.name) };
+              }))
+            : []
         ]);
         setContent({
           ...pageData,
@@ -67,11 +77,11 @@ export default function Single() {
           thumbnail: thumbnail?.source_url || pageData.thumbnail || (pageData as { source_url?: string }).source_url || '',
           author_name: authorData?.name || '',
           _categories: categoriesData,
+          tags: tagsData,
           date: formatDate(pageData.date || '', language),
           content: pageData.content || { rendered: '', protected: false },
           title: pageData.title || { rendered: '' },
           excerpt: pageData.excerpt || { rendered: '', protected: false },
-          tags: pageData.tags ?? [],
           id: pageData.id ?? 0,
           slug: pageData.slug ?? '',
           type: pageData.type ?? '',
