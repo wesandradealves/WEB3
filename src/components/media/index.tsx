@@ -12,6 +12,7 @@ import { MediaService } from '@/services/mediaService';
 import { TaxonomyService } from '@/services/TaxonomyService';
 import { formatDate } from '@/utils/index';
 import MediaSkeleton from './MediaSkeleton';
+import { useLanguage } from '@/context/language';
 
 const truncateText = (text: string, limit: number) =>
   text.length <= limit ? text : `${text.substring(0, limit)}...`;
@@ -62,6 +63,8 @@ const Media = ({ data, classname }: { data: ContentItem[]; classname?: string })
   useEffect(() => {
     if (data?.length) fetchData();
   }, [data, fetchData]);
+
+  const { language } = useLanguage();
 
   const settings = {
     dots: false,
@@ -122,7 +125,7 @@ const Media = ({ data, classname }: { data: ContentItem[]; classname?: string })
                   </span>
                   <span className="flex items-center gap-1">
                     <FiClock size={14} />
-                    {`${formatDate(item.date)} ${item.acf?.readTime ? `• ${item.acf.readTime}` : ''}`}
+                    {`${formatDate(item.date, language)} ${item.acf?.readTime ? `• ${item.acf.readTime}` : ''}`}
                   </span>
                 </Meta>
                 <Title
