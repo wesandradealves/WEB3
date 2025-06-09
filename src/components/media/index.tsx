@@ -41,9 +41,9 @@ const Media = ({ data, classname }: { data: ContentItem[]; classname?: string })
             item.author ? getUser(Number(item.author)) : null,
             item.categories?.length
               ? Promise.all(item.categories.map(async (id: number) => {
-                  const cat = await TaxonomyService(id);
-                  return { ...cat, name: await translate(cat.name) };
-                }))
+                const cat = await TaxonomyService(id);
+                return { ...cat, name: await translate(cat.name) };
+              }))
               : [],
           ]);
 
