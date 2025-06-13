@@ -47,7 +47,7 @@ const Mediascroll = (props: Props) => {
                                     <Title
                                         barstitle={props?.barstitle}
                                         className={classNames(`text-center relative text-2xl lg:text-4xl`, {
-                                            'pt-2 pb-2 ps-[150px] pe-[150px]': !!props?.barstitle,
+                                            'pt-2 pb-2 lg:ps-[150px] lg:pe-[150px]': !!props?.barstitle,
                                         })}
                                         dangerouslySetInnerHTML={{ __html: props?.title }}
                                     />
