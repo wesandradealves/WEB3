@@ -16,7 +16,7 @@ const Heading = ({ data }: Props) => {
           <span>
             <Title
               barstitle={1}
-              className={classNames(`relative text-3xl lg:text-5xl pt-2 pb-2 ps-[150px] pe-[150px]`)}
+              className={classNames(`relative text-2xl lg:text-5xl pt-2 pb-2 lg:ps-[150px] lg:pe-[150px]`)}
               dangerouslySetInnerHTML={{ __html: item.innerContent.join('') }}
             />
           </span>
