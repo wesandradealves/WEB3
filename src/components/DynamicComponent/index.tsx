@@ -23,11 +23,11 @@ const DynamicComponent: React.FC<Props> = ({ machineName, data, classname }) => 
         const expectsArray = (Component as any).expectsArrayData;
   
         setImportedComponent(
-          <Component
-            classname={classname}
-            id={resolvedMachineName}
-            {...(expectsArray ? { data } : data)}
-          />
+            <Component
+              classname={classname}
+              id={resolvedMachineName}
+              {...(expectsArray ? { data } : data)}
+            />
         );
       } catch (error) {
         console.warn(`Component not found for machineName: ${machineName}`, error);

@@ -83,8 +83,8 @@ const Clients = ({ data, classname }: { data: Props; classname?: string }) => {
           <SectionHeader className="flex flex-col justify-center items-center text-center w-full gap-7">
             <Title
               barstitle={data?.barstitle}
-              className={classNames(`text-center relative text-3xl lg:text-5xl`, {
-                'pt-2 pb-2 ps-[150px] pe-[150px]': !!data?.barstitle,
+              className={classNames(`text-center relative text-2xl lg:text-5xl`, {
+                'pt-2 pb-2 lg:ps-[150px] lg:pe-[150px]': !!data?.barstitle,
               })}
               dangerouslySetInnerHTML={{ __html: data.title }}
             />

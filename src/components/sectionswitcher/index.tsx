@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
+import { useState, useEffect, useRef, useMemo, useCallback} from 'react';
 import DynamicComponent from '../DynamicComponent';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { MenuItem, MenuProps, OutlinedInput } from '@mui/material';
@@ -41,6 +41,7 @@ const Sectionswitcher = (props: Props) => {
     }, [fetchBackgroundImage]);
 
     const handleChange = useCallback((event: SelectChangeEvent<string[]>) => {
+        setContentData(null);
         setSelectedValue(typeof event.target.value === 'string' ? event.target.value.split(',') : event.target.value);
     }, []);
 
@@ -122,8 +123,8 @@ const Sectionswitcher = (props: Props) => {
                         {props?.title && (
                             <Title
                                 barstitle={props?.barstitle}
-                                className={classNames(`text-center relative text-3xl lg:text-5xl`, {
-                                    'pt-2 pb-2 ps-[150px] pe-[150px]': !!props?.barstitle
+                                className={classNames(`text-center relative text-2xl lg:text-5xl`, {
+                                    'pt-2 pb-2 lg:ps-[150px] lg:pe-[150px]': !!props?.barstitle
                                 })}
                                 dangerouslySetInnerHTML={{ __html: props.title }}
                             />
@@ -240,13 +241,13 @@ const Sectionswitcher = (props: Props) => {
                             <div ref={menuContainerRef} id="menu-container" />
                         </div>
 
-                        {selectedValue.length > 0 && contentData && (
-                            <div className='flex-1 relative w-full'>
-                                <div className='grid grid-cols-1'>
+                        <div className='flex-1 relative w-full'>
+                            <div className='grid grid-cols-1'>
+                                {contentData && (
                                     <DynamicComponent data={memoizedContent} classname="overflow-hidden w-full" machineName={selectedValue[0]} />
-                                </div>
+                                )}
                             </div>
-                        )}
+                        </div>
                     </div>
                 )}
             </div>
