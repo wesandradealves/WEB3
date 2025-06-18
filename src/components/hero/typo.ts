@@ -3,6 +3,7 @@ export default interface Props {
   title: string;
   text?: string;
   media?: number;
+  particles?: string;
   placeholder?: string;
   backgroundimage?: number;
   btnLabel?: string;

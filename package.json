@@ -28,6 +28,7 @@
     "axios": "^1.8.4",
     "classnames": "^2.5.1",
     "compressorjs": "^1.2.1",
+    "cra-template-particles-typescript": "^3.0.0",
     "dotenv": "^16.5.0",
     "flag-icons": "^7.3.2",
     "framer-motion": "^11.5.4",
