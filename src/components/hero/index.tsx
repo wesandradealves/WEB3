@@ -5,6 +5,10 @@ import { Container, Placeholder, Text, Title } from './styles';
 import Button from '../button/button';
 import Props from './typo';
 import { MediaService } from '@/services/mediaService';
+import { ISourceOptions } from "@tsparticles/engine";
+import particlesConfig from "./default.json";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
+import { loadFull } from "tsparticles";
 
 const Hero = (props: Props) => {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
@@ -13,6 +17,12 @@ const Hero = (props: Props) => {
     backgroundimage: '',
     video: ''
   });
+
+  useEffect(() => {
+      initParticlesEngine(async (engine) => {
+          await loadFull(engine);
+      });
+  }, []);
 
   const handleVideoLoad = () => setIsVideoLoaded(true);
 
@@ -59,12 +69,16 @@ const Hero = (props: Props) => {
     };
   }, []);
 
+  useEffect(() => {
+    console.log(props.particles)
+  }, [props]);
+
   return (
     <Container
       backgroundimage={media?.backgroundimage}
-      className='w-full pb-[205px] pt-[310px] flex flex-col items-center justify-center relative overflow-hidden'
+      className='w-full h-screen pb-[205px] pt-[310px] flex flex-col items-center justify-center relative overflow-hidden'
     >
-      {!media.backgroundimage && media.video && (
+      {!media.backgroundimage && media.video && !props.particles && (
         <>
           {!isVideoLoaded && props.placeholder && (
             <Placeholder
@@ -86,7 +100,23 @@ const Hero = (props: Props) => {
           />
         </>
       )}
-      <div className='container relative z-1 m-auto flex flex-col gap-16 items-center justify-center'>
+      {props.particles && (
+        <Particles
+            style={{ zIndex: 1 }}
+            className='absolute top-0 left-0 w-full h-full'
+            options={particlesConfig as unknown as ISourceOptions}
+        />
+      )}
+      {!props.particles && media.backgroundimage && (
+        <Placeholder
+          style={{ zIndex: 1 }}
+          loading='lazy'
+          src={media.backgroundimage}
+          alt={props.title}
+          className='opacity-25 block w-full h-full object-cover absolute top-0 left-0'
+        />
+      )}
+      <div style={{ zIndex: 2 }} className='container relative m-auto flex flex-col gap-16 items-center justify-center'>
         {props.title && (
           <Title
             className='text-center text-3xl lg:text-6xl'
