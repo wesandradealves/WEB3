@@ -84,7 +84,7 @@ const Section = (props: Props) => {
                 )} */}
                 {props?.title && (
                   <Title
-                    barstitle={props?.barstitle}
+                    barstitle={props?.barstitle?.toString()}
                     className={classNames(`text-center relative text-2xl lg:text-5xl`, {
                       'pt-2 pb-2 lg:ps-[150px] lg:pe-[150px]': !!props?.barstitle
                     })}
@@ -118,6 +118,7 @@ const Section = (props: Props) => {
             dangerouslySetInnerHTML={{ __html: props.text }}
           />
         )}
+        {props.children}
       </div>
 
       {props?.opacity && (

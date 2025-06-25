@@ -15,7 +15,7 @@ export interface Props {
     direction?: string;
     helper?: string;
     children?: React.ReactNode;
-    barstitle?: string;
+    barstitle?: string | boolean;
     opacity?: number;
     gap?: any;
     [key: string]: any;
