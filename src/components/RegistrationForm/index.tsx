@@ -111,15 +111,8 @@ const RegistrationForm = () => {
     const iconProps = { className: "h-5 w-5" };
 
     return (
-        <div className="bg-[#0D1117] text-white py-12 px-4 sm:px-6 lg:px-8">
+        <div className="bg-[#0D1117] text-white py-12 px-4 sm:px-6 lg:px-8 w-full max-w-5xl mx-auto">
             <div className="max-w-5xl mx-auto">
-                <h2 className="text-3xl md:text-4xl font-bold text-center text-white">
-                    Formulário de Cadastro
-                </h2>
-                <p className="mt-4 text-center text-gray-400 max-w-2xl mx-auto">
-                    Preencha os campos abaixo para cadastrar seu estabelecimento em nossa plataforma.
-                </p>
-
                 <form onSubmit={handleSubmit(onSubmit)} className="mt-12 space-y-10">
                     {/* Seção 1: Informações Principais */}
                     <fieldset className="border-t border-gray-700 pt-8">

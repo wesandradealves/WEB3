@@ -73,15 +73,8 @@ const Section = (props: Props) => {
         )}>
         {(props?.helper || props?.title || props?.subtitle) && (
           <SectionHeader className="flex flex-col justify-center items-center text-center w-full gap-7">
-            {(props?.helper || props?.title) && (
+            {props?.title && (
               <span>
-                {/* Uncomment if Helper is needed */}
-                {/* {props?.helper && (
-                  <Helper
-                    className="text-center uppercase"
-                    dangerouslySetInnerHTML={{ __html: props.helper }}
-                  />
-                )} */}
                 {props?.title && (
                   <Title
                     barstitle={props?.barstitle?.toString()}
@@ -102,23 +95,24 @@ const Section = (props: Props) => {
           </SectionHeader>
         )}
 
-        {mediaUrls.length > 0 && (
-          <div className="flex flex-wrap justify-between">
-            {mediaUrls.map((url, index) => (
-              <div key={index} className="flex-1 flex justify-center items-center flex-wrap">
-                <LazyLoadImage src={url} alt={`Media ${index + 1}`} />
-              </div>
-            ))}
-          </div>
-        )}
+        {props.children ? props.children : <>
+          {mediaUrls.length > 0 && (
+            <div className="flex flex-wrap justify-between">
+              {mediaUrls.map((url, index) => (
+                <div key={index} className="flex-1 flex justify-center items-center flex-wrap">
+                  <LazyLoadImage src={url} alt={`Media ${index + 1}`} />
+                </div>
+              ))}
+            </div>
+          )}
 
-        {props?.text && (
-          <Text
-            className="text-center relative text-md lg:text-lg xl:text-xl"
-            dangerouslySetInnerHTML={{ __html: props.text }}
-          />
-        )}
-        {props.children}
+          {props?.text && (
+            <Text
+              className="text-center relative text-md lg:text-lg xl:text-xl"
+              dangerouslySetInnerHTML={{ __html: props.text }}
+            />
+          )}
+        </>}
       </div>
 
       {props?.opacity && (

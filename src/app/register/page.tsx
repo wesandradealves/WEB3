@@ -7,16 +7,14 @@ const CadastroPage = () => {
       id="cadastro"
       background="#0D1117"
       backgroundcolor="#0D1117"
-      classname="text-white"
+      classname="pt-[140px] text-white"
       barstitle
-      title="Formulário de Cadastro"
-      subtitle="Preencha os campos abaixo para cadastrar seu estabelecimento em nossa plataforma."
+      title="<b>Formulário de Cadastro</b>"
+      subtitle="<span class='text-gray-400'>Preencha os campos abaixo para cadastrar<br/>seu estabelecimento em nossa plataforma.</span>"
       direction="col"
       gap={12}
     >
-      <div className="w-full max-w-5xl mx-auto">
-        <RegistrationForm />
-      </div>
+      <RegistrationForm />
     </Section>
   );
 };
