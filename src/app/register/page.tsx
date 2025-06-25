@@ -1,7 +1,19 @@
+"use client";
+
 import Section from '@/components/section';
 import RegistrationForm from '@/components/RegistrationForm';
-
+import { useMetadata } from '@/hooks/useMetadata';
+import { useSettings } from '@/context/settings';
 const CadastroPage = () => {
+  const settings = useSettings();
+  console.log(settings)
+
+  useMetadata({
+    title: `${settings?.blog_info?.name ?? 'BDM Digital'} - Registro`,
+    ogTitle: `${settings?.blog_info?.name ?? 'BDM Digital'} - Registro`,
+    favicon: settings?.favicon || '',
+  });
+  
   return (
     <Section
       id="cadastro"
