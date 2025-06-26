@@ -67,7 +67,7 @@ const Header = ({ scrollPosition }: Props) => {
           {settings?.custom_logo && (
             <div className="logo">
               <Link href="/">
-                <LazyLoadImage className='min-w-[100%] max-w-[226px]' src={settings.custom_logo} alt={settings.blog_info.name} />
+                <LazyLoadImage className='min-w-[100%] max-w-[100px]' src={settings.custom_logo} alt={settings.blog_info.name} />
               </Link>
             </div>
           )}
