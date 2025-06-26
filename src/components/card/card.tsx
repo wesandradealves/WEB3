@@ -34,7 +34,7 @@ export default function Card(Props: CardItem) {
       {imageUrl && (
         <LazyLoadImage
           className={classNames(
-            `inline max-w-[39px]`,
+            `inline max-w-[22px]`,
             [`lg:${Props.imagealign}`],
           )}
           src={imageUrl}
