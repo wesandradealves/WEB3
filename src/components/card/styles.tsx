@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { pxToRem } from '@/utils/pxToRem'; 
+import { pxToRem } from '@/utils'; 
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 export const Container = styled.article`
