@@ -9,7 +9,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { ContentItem, ContentService } from '@/services/ContentService';
 import { TaxonomyService } from '@/services/TaxonomyService';
 import ClientsSkeleton from './ClientsSkeleton';
-import { ClientTitle, Tags, TagItem, Tag} from './styles';
+import { ClientTitle, Tags, TagItem, Tag } from './styles';
 
 const Clients = ({ data, classname }: { data: Props; classname?: string }) => {
   const [mediaUrl, setMediaUrl] = useState('');
@@ -82,7 +82,7 @@ const Clients = ({ data, classname }: { data: Props; classname?: string }) => {
         {data?.title && (
           <SectionHeader className="flex flex-col justify-center items-center text-center w-full gap-7">
             <Title
-              barstitle={data?.barstitle}
+              barstitle={data?.barstitle?.toString()}
               className={classNames(`text-center relative text-2xl lg:text-5xl`, {
                 'pt-2 pb-2 lg:ps-[150px] lg:pe-[150px]': !!data?.barstitle,
               })}

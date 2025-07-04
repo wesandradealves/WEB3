@@ -154,7 +154,7 @@ const Cardsmotion = (props: Props) => {
                                 )}
                                 {mergedProps?.title && (
                                     <Title
-                                        barstitle={mergedProps?.barstitle}
+                                        barstitle={mergedProps?.barstitle?.toString()}
                                         className={classNames(`text-center relative text-2xl lg:text-5xl`, {
                                             'pt-2 pb-2 lg:ps-[150px] lg:pe-[150px]': !!mergedProps?.barstitle
                                         })}
@@ -207,7 +207,7 @@ const Cardsmotion = (props: Props) => {
                         {mergedProps.cards && (
                             <div className="flex  flex-1 flex-col gap-[84px]">
                                 {mergedProps.cards
-                                    .slice(Math.ceil(mergedProps.cards.length / 2)) 
+                                    .slice(Math.ceil(mergedProps.cards.length / 2))
                                     .map((card, index) => (
                                         <Card
                                             key={`second-half-${index}`}
