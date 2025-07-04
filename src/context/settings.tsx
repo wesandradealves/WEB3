@@ -19,9 +19,16 @@ export interface Settings {
 
 // Update the context to include proper typing
 const SettingsContext = createContext<{
+  favicon: string;
+  blog_info: BlogInfo | undefined;
   settings: Settings | null;
   loading: boolean;
-}>({ settings: null, loading: true });
+}>({
+  settings: null, 
+  loading: true,
+  favicon: '',
+  blog_info: undefined
+});
 
 export const SettingsProvider = ({ children }: { children: ReactNode }) => {
   const [settings, setSettings] = useState<Settings | null>(null);
@@ -43,7 +50,14 @@ export const SettingsProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   return (
-    <SettingsContext.Provider value={{ settings, loading }}>
+    <SettingsContext.Provider
+      value={{
+        settings,
+        loading,
+        favicon: settings?.favicon ?? '',
+        blog_info: settings?.blog_info ?? undefined,
+      }}
+    >
       {children}
     </SettingsContext.Provider>
   );
