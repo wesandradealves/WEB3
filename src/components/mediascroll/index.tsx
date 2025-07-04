@@ -50,7 +50,7 @@ const Mediascroll = (props: Props) => {
             {props?.title && (
               <span>
                 <Title
-                  barstitle={props?.barstitle}
+                  barstitle={props?.barstitle?.toString()}
                   className={classNames(`text-center relative text-2xl lg:text-4xl`, {
                     "pt-2 pb-2 lg:ps-[150px] lg:pe-[150px]": !!props?.barstitle,
                   })}
@@ -68,21 +68,21 @@ const Mediascroll = (props: Props) => {
         )}
 
         {mediaUrls.length > 0 && (
-            <div className="w-screen relative left-1/2 right-1/2 -translate-x-1/2">
-          <BoxContainer className="w-full widden overflow-hidden p-5">
-            <div className="scroll-infinite-wrapper">
-              {[...mediaUrls, ...mediaUrls].map((url, index) => (
-                <div key={index} className="flex-shrink-0">
-                  <LazyLoadImage
-                    src={url}
-                    alt={`Media ${index + 1}`}
-                    className="object-contain h-24 w-auto max-w-[150px]"
-                  />
-                </div>
-              ))}
-            </div>
-          </BoxContainer>
-             </div>
+          <div className="w-screen relative left-1/2 right-1/2 -translate-x-1/2">
+            <BoxContainer className="w-full widden overflow-hidden p-5">
+              <div className="scroll-infinite-wrapper">
+                {[...mediaUrls, ...mediaUrls].map((url, index) => (
+                  <div key={index} className="flex-shrink-0">
+                    <LazyLoadImage
+                      src={url}
+                      alt={`Media ${index + 1}`}
+                      className="object-contain h-24 w-auto max-w-[150px]"
+                    />
+                  </div>
+                ))}
+              </div>
+            </BoxContainer>
+          </div>
         )}
       </div>
     </Container>

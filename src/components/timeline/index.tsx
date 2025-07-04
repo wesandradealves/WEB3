@@ -86,8 +86,8 @@ const Timeline = (props: Props) => {
       )}>
 
         {props?.title && (
-          <SectionHeader className="flex flex-col justify-center items-center text-center w-full gap-7"><Title
-            barstitle={props?.barstitle}
+          <SectionHeader className="flex flex-col justify-center items-center text-center w-full gap-7">          <Title
+            barstitle={props?.barstitle?.toString()}
             className={classNames(`text-center relative text-2xl lg:text-5xl`, {
               'pt-2 pb-2 lg:ps-[150px] lg:pe-[150px]': !!props?.barstitle
             })}
