@@ -1,5 +1,21 @@
-
 .slick-track{ margin-left: 0 !important; }
 [class*="white-color"] {
     color: white;
+}
+
+@keyframes scroll-infinite {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.scroll-infinite-wrapper {
+  display: flex;
+  width: max-content;
+  animation: scroll-infinite 30s linear infinite;
+  gap: 3rem; 
+  align-items: center
 }
