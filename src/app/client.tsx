@@ -18,6 +18,7 @@ import {
   _breakpoints,
 } from '@/assets/scss/variables';
 import { MediaProvider } from '@/context/media';
+import ChatBubble from '@/components/chat/ChatBubble';
 
 const theme = {
   _colors,
@@ -69,6 +70,7 @@ export default function ClientProviders({ children }: { children: React.ReactNod
                         <Footer />
                       </motion.div>
                       <Spinner />
+                      <ChatBubble />
                     </App>
                   </AnimatePresence>
                 </StyledJsxRegistry>
