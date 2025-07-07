@@ -5,4 +5,5 @@ export interface Props {
     isScrolling?: number;    
     children?: React.ReactNode;
     defaultexpanded?: string;
+    onLinkClick?: () => void;
 }

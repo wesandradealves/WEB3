@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { Container, List, ListItem, Submenu } from './styles';
-import { Props } from './typo';
+import { Props } from './typo'; // Importa a interface Props atualizada do typo.ts
 import Button from '../button/button';
 import { useState, useRef, useEffect } from 'react';
 import classNames from 'classnames';
@@ -10,7 +10,7 @@ import { FaAngleDown } from 'react-icons/fa';
 import { usePathname } from 'next/navigation';
 import { MenuItem } from '@/services/navigationService';
 
-export default function Navigation({ children, className, mobile, data, ListClassName, isScrolling, defaultexpanded }: Props & { data: MenuItem[] }) {
+export default function Navigation({ children, className, mobile, data, ListClassName, isScrolling, defaultexpanded, onLinkClick }: Props & { data: MenuItem[] }) {
     const [expandedItems, setExpandedItems] = useState<{ [key: number]: boolean }>({});
     const navRef = useRef<HTMLDivElement>(null);
     const pathname = usePathname();
@@ -82,15 +82,19 @@ export default function Navigation({ children, className, mobile, data, ListClas
                                     effect={row.acf.effect}
                                     href={row.children && row.children.length ? '#' : row.url}
                                     tag={'a'}
+                                    onClick={row.children && row.children.length ? undefined : onLinkClick} 
                                 >
                                     {row.title}
                                 </Button>
-                            ) : <Link className={`flex items-center gap-3 ${Array.isArray(row.classes) ? row.classes.join(` `) : ''}`} title={row.title} href={row.children && row.children.length ? '#' : row.url}>
-                                {row.title}
-
-                                {(row?.children && row.children.length && !defaultexpanded) ? <FaAngleDown className='arrow text-2xl' onClick={() => toggleExpand(i)} /> : ''}
-                            </Link>}
-
+                            ) : <Link
+                                    className={`flex items-center gap-3 ${Array.isArray(row.classes) ? row.classes.join(` `) : ''}`}
+                                    title={row.title}
+                                    href={row.children && row.children.length ? '#' : row.url}
+                                    onClick={row.children && row.children.length ? undefined : onLinkClick} 
+                                >
+                                    {row.title}
+                                    {(row?.children && row.children.length && !defaultexpanded) ? <FaAngleDown className='arrow text-2xl' onClick={() => toggleExpand(i)} /> : ''}
+                                </Link>}
 
                             {(row?.children && row.children.length) ? (<Submenu
                                 className={classNames('left-0', {
@@ -105,11 +109,11 @@ export default function Navigation({ children, className, mobile, data, ListClas
                                         "py-3 px-6": !defaultexpanded,
                                         [ListClassName || '']: mobile
                                     })}>
-                                    {row.children.map(function (row: MenuItem, j: number) {
+                                    {row.children.map(function (childRow: MenuItem, j: number) {
                                         return (
                                             <ListItem className='item font-normal' key={j}>
-                                                <Link title={row.title} href={row.url}>
-                                                    {row.title}
+                                                <Link title={childRow.title} href={childRow.url} onClick={onLinkClick}> 
+                                                    {childRow.title}
                                                 </Link>
                                             </ListItem>
                                         );
