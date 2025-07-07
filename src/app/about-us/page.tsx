@@ -9,7 +9,7 @@ import { FeatureCardProps } from '@/components/about-us/typo';
 
 const HomePage: React.FC = () => {
   const heroData = {
-    title: 'Sobre a Dourado Cash',
+    title: 'Sobre o BDM Digital',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Aenean iaculis. Quisque condimentum. Etiam sit amet risus. Sed vitae mi libero. Curabitur diam quam, feugiat vitae, ultricies eu, luctus eu, urna. Sed ligula. Sed tincidunt, ante nec bibendum rutrum, magna erat faucibus libero, in convallis dolor sem in dui. In vel dolor. Ut eu odio justo.',
     buttonText: 'Entre em contato',
@@ -18,14 +18,14 @@ const HomePage: React.FC = () => {
 
   const featureCardsData: FeatureCardProps[] = [
     {
-      icon: '/images/rocket.svg',
+      icon: '/img/rocket-icon.png',
       title: 'DESCENTRALIZAÇÃO',
       description:
         'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s,',
       lineColor: 'gold',
     },
     {
-      icon: '/images/lightbulb.svg',
+      icon: '/img/lamp-icon.png',
       title: 'INOVAÇÃO E SEGURANÇA',
       description:
         'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s,',
