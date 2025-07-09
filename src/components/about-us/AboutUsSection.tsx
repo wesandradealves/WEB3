@@ -1,11 +1,9 @@
-// src/components/sections/AboutUsSection.tsx
 'use client';
 
 import React from 'react';
 import { AboutUsSectionProps } from './typo';
 import FeatureCard from './FeatureCard';
 
- 
 const AboutUsSection: React.FC<AboutUsSectionProps> = ({ title, mainDescription, featureCards }) => {
   return (
     <section className="w-full bg-darkBackground text-white py-20 px-4">

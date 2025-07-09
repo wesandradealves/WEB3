@@ -16,7 +16,7 @@ export const VerticalLine = styled.div<{ lineColor: 'gold' | 'darkGold' }>`
   top: 0;
   bottom: 0;
   margin-top: 1.5rem;
-  width: 4px; /* Largura da linha */
+  width: 4px;
   background-color: ${({ lineColor }) =>
     lineColor === 'gold' ? '#FFD700' : '#FFFFFF'};
 `;

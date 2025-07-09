@@ -1,4 +1,3 @@
-// src/components/cards/FeatureCard.tsx
 'use client';
 
 import React from 'react';

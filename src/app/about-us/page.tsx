@@ -1,8 +1,6 @@
-// src/app/page.tsx
-'use client'; // Indica que este é um Client Component
+'use client';
 
 import React from 'react';
-import Layout from '@/components/about-us/Layout';
 import HeroSection from '@/components/about-us/HeroSection';
 import AboutUsSection from '@/components/about-us/AboutUsSection';
 import { FeatureCardProps } from '@/components/about-us/typo';
@@ -45,7 +43,7 @@ const HomePage: React.FC = () => {
   };
 
   return (
-    <Layout>
+    <>
       <HeroSection
         title={heroData.title}
         description={heroData.description}
@@ -59,7 +57,7 @@ const HomePage: React.FC = () => {
         mainDescription={aboutUsData.mainDescription}
         featureCards={aboutUsData.featureCards}
       />
-    </Layout>
+    </>
   );
 };
 

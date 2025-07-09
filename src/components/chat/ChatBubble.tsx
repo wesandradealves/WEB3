@@ -4,8 +4,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import { ChatButton, ChatContainer } from './style';
 import { ChatBubbleProps } from './typo';
 
-
-
 const ChatBubble: React.FC<ChatBubbleProps> = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<{ text: string; sender: 'user' | 'bot' }[]>([
@@ -18,7 +16,6 @@ const ChatBubble: React.FC<ChatBubbleProps> = () => {
   const toggleChat = () => {
     setIsOpen(!isOpen);
   };
-
 
   useEffect(() => {
     if (messagesEndRef.current) {
@@ -39,7 +36,7 @@ const ChatBubble: React.FC<ChatBubbleProps> = () => {
         { text: currentMessage.trim(), sender: 'user' },
       ]);
       setCurrentMessage(''); // Limpa o input
-      // Simula uma resposta do bot (opcional)
+      // Simula uma resposta do bot
       setTimeout(() => {
         setMessages((prevMessages) => [
           ...prevMessages,
@@ -61,7 +58,7 @@ const ChatBubble: React.FC<ChatBubbleProps> = () => {
       messageInputRef.current.focus();
     }
     // Limpar mensagens iniciais ou adicionar uma nova mensagem de "conversar iniciada"
-    // setMessages([]); // Limpa mensagens anteriores
+    // setMessages([]);
   };
 
   return (

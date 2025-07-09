@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { Container, List, ListItem, Submenu } from './styles';
-import { Props } from './typo'; // Importa a interface Props atualizada do typo.ts
+import { Props } from './typo';
 import Button from '../button/button';
 import { useState, useRef, useEffect } from 'react';
 import classNames from 'classnames';

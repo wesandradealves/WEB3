@@ -5,7 +5,6 @@ import Image from 'next/image';
 import Button from '@/components/button/button';
 import { HeroSectionProps } from './typo';
 
-
 const HeroSection: React.FC<HeroSectionProps> = ({
   title,
   description,
@@ -45,7 +44,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         hidden md:block // Oculta no mobile, mostra no desktop
       ">
         <Image
-          src={backgroundImage} // imagem da direita
+          src={backgroundImage}
           alt="Woman with Hat"
           layout="fill"
           objectFit="cover"
