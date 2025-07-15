@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useMemo, useCallback} from 'react';
+import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import DynamicComponent from '../DynamicComponent';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { MenuItem, MenuProps, OutlinedInput } from '@mui/material';
@@ -120,14 +120,13 @@ const Sectionswitcher = (props: Props) => {
             <SectionHeader className="flex flex-col justify-center items-center text-center w-full gap-7">
                 {(props?.helper || props?.title) && (
                     <span>
-                        {props?.title && (
-                            <Title
-                                barstitle={props?.barstitle}
-                                className={classNames(`text-center relative text-2xl lg:text-5xl`, {
-                                    'pt-2 pb-2 lg:ps-[150px] lg:pe-[150px]': !!props?.barstitle
-                                })}
-                                dangerouslySetInnerHTML={{ __html: props.title }}
-                            />
+                        {props?.title && (<Title
+                            barstitle={props?.barstitle?.toString()}
+                            className={classNames(`text-center relative text-2xl lg:text-5xl`, {
+                                'pt-2 pb-2 lg:ps-[150px] lg:pe-[150px]': !!props?.barstitle
+                            })}
+                            dangerouslySetInnerHTML={{ __html: props.title }}
+                        />
                         )}
                     </span>
                 )}
