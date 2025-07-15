@@ -69,10 +69,6 @@ const Hero = (props: Props) => {
     };
   }, []);
 
-  useEffect(() => {
-    console.log(props.particles)
-  }, [props]);
-
   return (
     <Container
       backgroundimage={media?.backgroundimage}
