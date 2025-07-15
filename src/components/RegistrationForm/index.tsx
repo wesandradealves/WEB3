@@ -1,9 +1,13 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm, SubmitHandler, RegisterOptions } from 'react-hook-form';
 import Link from 'next/link';
 import type { FormValues, InputProps  } from './types';
+import { DashboardCategoriesService, CategoryTreeNode } from '@/services/dashboardCategoriesService';
+import { useLoader } from '@/context/spinner';
+import { setupDashboardInterceptors } from '@/services/dashboardApi';
+import { useLanguage } from '@/context/language';
 import { 
     UserIcon, 
     IdentificationIcon, 
@@ -102,10 +106,37 @@ const RegistrationForm = () => {
       }
     });
 
-    const onSubmit: SubmitHandler<FormValues> = data => {
-        console.log("Dados do Formulário:", data);
-        //  chamada para a API
-        alert("Cadastro enviado com sucesso! Verifique o console para ver os dados.");
+    const [categories, setCategories] = useState<CategoryTreeNode[]>([]);
+    const [categoriesLoading, setCategoriesLoading] = useState<boolean>(true);
+    const { setLoading } = useLoader();
+    const { language } = useLanguage();
+
+    useEffect(() => {
+        setupDashboardInterceptors(setLoading, () => language === 'pt' ? 'pt-BR' : 'en-US');
+    }, [setLoading, language]);
+
+    useEffect(() => {
+        const fetchCategories = async () => {
+            try {
+                setCategoriesLoading(true);
+                const response = await DashboardCategoriesService.getCategories({
+                    categoryLevel: 0,
+                    language: language === 'pt' ? 'pt-BR' : 'en-US'
+                });
+                setCategories(response.categories);
+            } catch (error) {
+                console.error('Erro ao carregar categorias:', error);
+                setCategories([]);
+            } finally {
+                setCategoriesLoading(false);
+            }
+        };
+
+        fetchCategories();
+    }, [language]);
+
+    const onSubmit: SubmitHandler<FormValues> = (data) => {
+        console.warn("Cadastro enviado com sucesso! Verifique o console para ver os dados.", data);
     };
 
     const iconProps = { className: "h-5 w-5" };
@@ -119,10 +150,14 @@ const RegistrationForm = () => {
                         <legend className="text-xl font-semibold text-amber-500 mb-6">Informações Principais</legend>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-8">
                             <FormSelect id="category" label="Categoria" register={register} error={errors.category}>
-                                <option value="">Selecione uma Categoria</option>
-                                <option value="restaurante">Restaurante</option>
-                                <option value="servicos">Serviços</option>
-                                <option value="varejo">Varejo</option>
+                                <option value="">
+                                    {categoriesLoading ? 'Carregando categorias...' : 'Selecione uma Categoria'}
+                                </option>
+                                {!categoriesLoading && categories.map((category) => (
+                                    <option key={category.categoryCode} value={category.categoryCode}>
+                                        {category.text}
+                                    </option>
+                                ))}
                             </FormSelect>
                             <FormInput id="accountEmail" label="Email Conta BDM" type="email" register={register} registerOptions={{ required: 'Email é obrigatório' }} error={errors.accountEmail} placeholder="seu.email@exemplo.com" icon={<EnvelopeIcon {...iconProps} />} />
                             <FormInput id="establishmentName" label="Nome do Estabelecimento" register={register} registerOptions={{ required: 'Nome do estabelecimento é obrigatório' }} error={errors.establishmentName} placeholder="Nome fantasia da sua empresa" icon={<BuildingStorefrontIcon {...iconProps} />} />
