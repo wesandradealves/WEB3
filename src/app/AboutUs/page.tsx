@@ -1,64 +1,90 @@
 'use client';
 
 import React from 'react';
-import HeroSection from '@/components/AboutUs/HeroSection';
-import AboutUsSection from '@/components/AboutUs/AboutUsSection';
-import { FeatureCardProps } from '@/components/AboutUs/typo';
+import Hero from '@/components/hero'; 
+import FeatureCard from '@/components/FeatureCard/FeatureCard';
+import { FeatureCardProps } from '@/components/FeatureCard/typo'; 
 
-const HomePage: React.FC = () => {
+const AboutUsPage: React.FC = () => {
   const heroData = {
     title: 'Sobre o BDM Digital',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Aenean iaculis. Quisque condimentum. Etiam sit amet risus. Sed vitae mi libero. Curabitur diam quam, feugiat vitae, ultricies eu, luctus eu, urna. Sed ligula. Sed tincidunt, ante nec bibendum rutrum, magna erat faucibus libero, in convallis dolor sem in dui. In vel dolor. Ut eu odio justo.',
-    buttonText: 'Entre em contato',
-    backgroundImage: '/img/about-us-img-direita.png', 
-    buildingImage: '/img/about-us-img-esquerda.png',   };
-
-  const featureCardsData: FeatureCardProps[] = [
-    {
-      icon: '/img/rocket-icon.png',
-      title: 'DESCENTRALIZAÇÃO',
-      description:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s,',
-      lineColor: 'gold',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Aenean iaculis. Quisque condimentum. Etiam sit amet risus. Sed vitae mi libero. Curabitur diam quam, feugiat vitae, ultricies eu, luctus eu, urna. Sed ligula. Sed tincidunt, ante nec bibendum rutrum, magna erat faucibus libero, in convallis dolor sem in dui. In vel dolor. Ut eu odio justo.',
+    btnLabel: 'Entre em contato',
+    url: '#contact',
+    leftImage: {
+        src: '/img/about-us-img-esquerda.png',
+        alt: 'Dourado Cash Building'
     },
-    {
-      icon: '/img/lamp-icon.png',
-      title: 'INOVAÇÃO E SEGURANÇA',
-      description:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s,',
-      lineColor: 'darkGold', 
-    },
-  ];
+    rightImage: {
+        src: '/img/about-us-img-direita.png',
+        alt: 'Woman with Hat'
+    }
+  };
 
   const aboutUsData = {
     title: 'Quem Somos nós',
     mainDescription:
       'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
-    featureCards: featureCardsData,
-  };
-
-  const handleContactClick = () => {
-    alert('Botão "Entre em contato" clicado!');
+    featureCards: [
+      {
+        icon: '/img/rocket-icon.png',
+        title: 'DESCENTRALIZAÇÃO',
+        description:
+          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s,',
+        lineColor: 'gold',
+      },
+      {
+        icon: '/img/lamp-icon.png',
+        title: 'INOVAÇÃO E SEGURANÇA',
+        description:
+          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s,',
+        lineColor: 'darkGold', 
+      },
+    ] as FeatureCardProps[],
   };
 
   return (
-    <>
-      <HeroSection
+    <main>
+      <Hero
         title={heroData.title}
-        description={heroData.description}
-        buttonText={heroData.buttonText}
-        onButtonClick={handleContactClick}
-        backgroundImage={heroData.backgroundImage}
-        buildingImage={heroData.buildingImage}
+        text={heroData.text}
+        btnLabel={heroData.btnLabel}
+        url={heroData.url}
+        leftImage={heroData.leftImage}
+        rightImage={heroData.rightImage}
       />
-      <AboutUsSection
-        title={aboutUsData.title}
-        mainDescription={aboutUsData.mainDescription}
-        featureCards={aboutUsData.featureCards}
-      />
-    </>
+
+      <section className="w-full bg-black text-white py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-12">
+                <div className="md:w-1/3">
+                    <h2 className="text-4xl md:text-5xl font-extrabold text-white leading-tight">
+                        {aboutUsData.title}
+                    </h2>
+                </div>
+                <div className="md:w-2/3">
+                    <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
+                        {aboutUsData.mainDescription}
+                    </p>
+                </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
+                {aboutUsData.featureCards.map((card, index) => (
+                    <FeatureCard
+                        key={index}
+                        icon={card.icon}
+                        title={card.title}
+                        description={card.description}
+                        lineColor={card.lineColor}
+                    />
+                ))}
+            </div>
+        </div>
+      </section>
+    </main>
   );
 };
 
-export default HomePage;
+export default AboutUsPage;
+
