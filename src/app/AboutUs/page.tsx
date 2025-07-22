@@ -1,9 +1,9 @@
 'use client';
 
 import React from 'react';
-import HeroSection from '@/components/about-us/HeroSection';
-import AboutUsSection from '@/components/about-us/AboutUsSection';
-import { FeatureCardProps } from '@/components/about-us/typo';
+import HeroSection from '@/components/AboutUs/HeroSection';
+import AboutUsSection from '@/components/AboutUs/AboutUsSection';
+import { FeatureCardProps } from '@/components/AboutUs/typo';
 
 const HomePage: React.FC = () => {
   const heroData = {
