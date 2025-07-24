@@ -2,8 +2,9 @@
 
 import React from 'react';
 import Hero from '@/components/hero'; 
-import FeatureCard from '@/components/FeatureCard/FeatureCard';
-import { FeatureCardProps } from '@/components/FeatureCard/typo'; 
+import FeatureCard from '@/components/FeatureCard'; // Caminho corrigido após refatoração anterior
+import { FeatureCardProps } from '@/components/FeatureCard/typo'; // Caminho corrigido
+import ContentHeader from '@/components/ContentHeader'; // Nosso novo componente
 
 const AboutUsPage: React.FC = () => {
   const heroData = {
@@ -56,30 +57,23 @@ const AboutUsPage: React.FC = () => {
 
       <section className="w-full bg-black text-white py-20 px-4">
         <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-12">
-                <div className="md:w-1/3">
-                    <h2 className="text-4xl md:text-5xl font-extrabold text-white leading-tight">
-                        {aboutUsData.title}
-                    </h2>
-                </div>
-                <div className="md:w-2/3">
-                    <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
-                        {aboutUsData.mainDescription}
-                    </p>
-                </div>
-            </div>
+          
+          <ContentHeader 
+            title={aboutUsData.title}
+            description={aboutUsData.mainDescription}
+          />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
-                {aboutUsData.featureCards.map((card, index) => (
-                    <FeatureCard
-                        key={index}
-                        icon={card.icon}
-                        title={card.title}
-                        description={card.description}
-                        lineColor={card.lineColor}
-                    />
-                ))}
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
+            {aboutUsData.featureCards.map((card, index) => (
+              <FeatureCard
+                key={index}
+                icon={card.icon}
+                title={card.title}
+                description={card.description}
+                lineColor={card.lineColor}
+              />
+            ))}
+          </div>
         </div>
       </section>
     </main>
@@ -87,4 +81,3 @@ const AboutUsPage: React.FC = () => {
 };
 
 export default AboutUsPage;
-
