@@ -2,9 +2,9 @@
 
 import React from 'react';
 import Hero from '@/components/hero'; 
-import FeatureCard from '@/components/FeatureCard'; // Caminho corrigido após refatoração anterior
-import { FeatureCardProps } from '@/components/FeatureCard/typo'; // Caminho corrigido
-import ContentHeader from '@/components/ContentHeader'; // Nosso novo componente
+import FeatureCard from '@/components/FeatureCard/FeatureCard'; 
+import { FeatureCardProps } from '@/components/FeatureCard/typo'; 
+import ContentHeader from '@/components/ContentHeader'; 
 
 const AboutUsPage: React.FC = () => {
   const heroData = {
