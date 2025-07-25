@@ -94,7 +94,7 @@ export default function Single() {
       }
     };
     fetchContent();
-  }, [params, language]);
+  }, [params, language, translate]);
 
   const title = useMemo(() => (content?.title?.rendered ? ` - ${content.title.rendered}` : ''), [content]);
 

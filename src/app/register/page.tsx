@@ -6,7 +6,6 @@ import { useMetadata } from '@/hooks/useMetadata';
 import { useSettings } from '@/context/settings';
 const CadastroPage = () => {
   const settings = useSettings();
-  console.log(settings)
 
   useMetadata({
     title: `${settings?.blog_info?.name ?? 'BDM Digital'} - Registro`,

@@ -207,7 +207,7 @@ const Cardsmotion = (props: Props) => {
                         {mergedProps.cards && (
                             <div className="flex  flex-1 flex-col gap-[84px]">
                                 {mergedProps.cards
-                                    .slice(Math.ceil(mergedProps.cards.length / 2)) 
+                                    .slice(Math.ceil(mergedProps.cards.length / 2))
                                     .map((card, index) => (
                                         <Card
                                             key={`second-half-${index}`}
