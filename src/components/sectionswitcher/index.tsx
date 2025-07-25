@@ -122,7 +122,7 @@ const Sectionswitcher = (props: Props) => {
                     <span>
                         {props?.title && (
                             <Title
-                                barstitle={props?.barstitle}
+                                barstitle={typeof props?.barstitle === 'string' || typeof props?.barstitle === 'number' ? props.barstitle : undefined}
                                 className={classNames(`text-center relative text-2xl lg:text-5xl`, {
                                     'pt-2 pb-2 lg:ps-[150px] lg:pe-[150px]': !!props?.barstitle
                                 })}

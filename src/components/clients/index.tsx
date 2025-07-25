@@ -82,7 +82,7 @@ const Clients = ({ data, classname }: { data: Props; classname?: string }) => {
         {data?.title && (
           <SectionHeader className="flex flex-col justify-center items-center text-center w-full gap-7">
             <Title
-              barstitle={data?.barstitle}
+              barstitle={typeof data?.barstitle === 'string' || typeof data?.barstitle === 'number' ? data.barstitle : undefined}
               className={classNames(`text-center relative text-2xl lg:text-5xl`, {
                 'pt-2 pb-2 lg:ps-[150px] lg:pe-[150px]': !!data?.barstitle,
               })}
