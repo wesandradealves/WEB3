@@ -12,7 +12,7 @@ const Heading = ({ data }: Props) => {
   return (
     <Container>
       {item?.innerContent && (
-        <SectionHeader className="flex flex-col justify-center items-center text-center w-full gap-7 pt-[100px] mt-[6rem] mb-[3rem]">
+        <SectionHeader className="flex heading flex-col justify-center items-center text-center w-full gap-7 pt-[100px] mt-[6rem] mb-[3rem]">
           <span>
             <Title
               barstitle={1}

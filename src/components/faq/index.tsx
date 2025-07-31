@@ -21,7 +21,7 @@ const Faq = ({ data, classname }: { data: ContentItem[]; classname?: string }) =
 
   return (
     <Container className={classNames(
-      'w-full grid grid-cols-1 md:grid-cols-2 gap-6 auto-cols-auto items-start',
+      'w-full faq grid grid-cols-1 md:grid-cols-2 gap-6 auto-cols-auto items-start',
       classname
     )}>
       {data.map((item, index) => (

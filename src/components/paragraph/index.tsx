@@ -8,7 +8,7 @@ const Paragraph = ({ data }: Props) => {
   const item = Array.isArray(data) ? data[0] : data;
 
   return (
-    <Container>
+    <Container className='paragraph'>
       <div className='container mx-auto px-4 py-8'>
         {item.innerContent && (<Text dangerouslySetInnerHTML={{ __html: item.innerContent.join('') }} />)}
       </div>

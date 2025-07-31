@@ -72,7 +72,7 @@ const Timeline = (props: Props) => {
       backgroundposition={props?.backgroundposition}
       backgroundsize={props?.backgroundsize}
       backgroundattachment={props?.backgroundattachment}
-      className={classNames(`w-full m-auto relative ${props?.classname}`, {
+      className={classNames(`w-full timeline m-auto relative ${props?.classname}`, {
         'overflow-hidden': props?.opacity
       })}
     >

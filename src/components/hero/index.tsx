@@ -72,7 +72,7 @@ const Hero = (props: Props) => {
   return (
     <Container
       backgroundimage={media?.backgroundimage}
-      className='w-full h-screen pb-[205px] pt-[310px] flex flex-col items-center justify-center relative overflow-hidden'
+      className='w-full hero h-screen pb-[205px] pt-[310px] flex flex-col items-center justify-center relative overflow-hidden'
     >
       {!media.backgroundimage && media.video && !props.particles && (
         <>

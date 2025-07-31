@@ -29,7 +29,7 @@ const Opnioes = ({ data, classname }: { data: ContentItem[]; classname?: string 
   if (!data) return <OpnioesSkeleton />;
 
   return (
-    <Container className={classname}>
+    <Container className={`${classname} opnioes`}>
       <Slider {...settings}>
         {data.map((item) => (
           <Item

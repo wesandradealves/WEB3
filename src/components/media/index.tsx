@@ -99,7 +99,7 @@ const Media = ({ data, classname }: { data: ContentItem[]; classname?: string })
         {_data.map((item) => (
           <Item
             key={item.id}
-            className="h-full cursor-pointer group text-base"
+            className="h-full media cursor-pointer group text-base"
             onClick={() => router.push(`media/${item.id}`)}
           >
             <ItemInner className="flex flex-col gap-4 rounded-[48px] h-full overflow-hidden">

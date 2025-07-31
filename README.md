@@ -2,7 +2,19 @@
 
 Este projeto é o frontend da aplicação web do BDM Digital, desenvolvido em ReactJS com Next.js, consumindo uma API REST headless do WordPress/ACF.
 
-- [Backend](https://github.com/wesandradealves/WEB3-api)
+- [Backend](https://github.com/Dourado-Cash/bdm-web3-frontend)
+
+## Stack Tecnológica
+
+- **Framework:** Next.js 15.3.3 + React 19.0.0
+- **TypeScript:** 5.x
+- **Estilização:** Styled Components 6.1.16 + Tailwind CSS 3.4.1
+- **Animações:** Framer Motion 11.5.4
+- **HTTP Client:** Axios 1.8.4
+- **UI Components:** Material-UI 7.0.0
+- **Ícones:** React Icons 5.5.0 + Heroicons 2.2.0
+- **Gerenciamento de Estado:** Context API
+- **Multi-idioma:** Sistema próprio com cache + Google Translate
 
 ## Sumário
 - [Visão Geral](#visão-geral)
@@ -77,33 +89,154 @@ src/
 
 ## Serviços Disponíveis
 
-Todos os serviços estão em `src/services/` e usam Axios para consumir a API REST do WordPress.
+Todos os serviços estão em `src/services/` e utilizam Axios para consumir APIs REST.
 
-- **api.ts**: Instância Axios configurada, com interceptors para loading e autenticação.
-- **ContentService.ts**: Busca posts, páginas, conteúdos customizados.
-- **mediaService.ts**: Busca dados de mídia (imagens, vídeos) por ID.
-- **navigationService.ts**: Busca menus de navegação customizados.
-- **pageService.ts**: Busca páginas por slug, incluindo blocks ACF.
-- **settingsService.ts**: Busca configurações globais do site.
-- **TaxonomyService.ts**: Busca taxonomias (categorias, tags, etc).
+### 1. Clientes HTTP Base
 
-### Exemplo de Consumo de Serviço
+- **api.ts**: Cliente HTTP para WordPress
+  - BaseURL dinâmica (HML/DEV)
+  - Timeout: 120 segundos
+  - Interceptors automáticos para loading states
+  - Header `X-Language` automático
+  - Autenticação JWT via Bearer token
+
+- **dashboardApi.ts**: Cliente HTTP para Dashboard externo
+  - Configuração similar ao api.ts
+  - Locale padrão: 'pt-BR'
+
+### 2. Serviços WordPress
+
+- **ContentService.ts**: Busca posts, páginas e conteúdos customizados
+  - Retry automático (3 tentativas)
+  - Suporte a tipos customizados
+  - Interface `ContentItem` completa
+
+- **mediaService.ts**: Busca dados de mídia por ID
+  - Retry automático com delay de 2s
+  - Retorna `undefined` em caso de erro
+  - Interface `MediaItem`
+
+- **navigationService.ts**: Busca menus de navegação
+  - Suporte a submenus (children)
+  - Campos ACF nos itens de menu
+  - Interface `MenuItem`
+
+- **pageService.ts**: Busca páginas por slug
+  - Retorna blocks ACF
+  - Interface `Page`
+
+- **postService.ts**: Busca posts flexível
+  - Parâmetros: slug, id ou type
+  - Versão estendida do pageService
+
+- **settingsService.ts**: Configurações globais
+  - Logo, favicon, redes sociais
+  - Informações do blog
+
+- **TaxonomyService.ts**: Busca taxonomias
+  - Cache local implementado
+  - Suporte a categorias e tags customizadas
+  - Interface `Taxonomy`
+
+- **languageService.ts**: Idiomas disponíveis
+  - Integração com Polylang
+  - Retorna array de códigos de idioma
+
+- **userService.ts**: Autenticação e usuários
+  - Login JWT (`/jwt-auth/v1/token`)
+  - Busca dados de usuário
+  - Token armazenado no localStorage
+
+### 3. Serviços Dashboard
+
+- **dashboardService.ts**: Serviço genérico do dashboard
+  - Método GET com retry automático
+  - Interface `DashboardErrorResponse`
+
+- **dashboardCategoriesService.ts**: Categorias hierárquicas
+  - Árvore de categorias com children
+  - Suporte multi-idioma (7 idiomas)
+  - Interfaces `CategoryTreeNode` e `DashboardCategoriesResponse`
+
+### 4. Sistema de Tradução
+
+- **API Route** (`/api/translate`): Endpoint de tradução
+  - Usa biblioteca `translate-google`
+  - Query params: `text` e `to`
+  - Retorna: `{ translated: string }`
+
+- **Hook useTranslate**: Hook para traduções
+  ```ts
+  const { translate } = useTranslate(language);
+  const translated = await translate('texto');
+  ```
+  - Cache local por idioma
+  - Fallback para texto original
+
+### Exemplo de Consumo
 ```ts
+// Buscar conteúdo
 import { ContentService } from '@/services/ContentService';
 const posts = await ContentService('posts');
+
+// Buscar página específica
+import { PageService } from '@/services/pageService';
+const page = await PageService('sobre-nos');
+
+// Traduzir texto
+const { translate } = useTranslate('en');
+const translated = await translate('Olá mundo');
 ```
 
 ## Context API
 
-Os contextos ficam em `src/context/` e centralizam estados globais, como autenticação, mídia, configurações e spinner de loading.
+Os contextos ficam em `src/context/` e centralizam estados globais:
+
 - **auth.tsx**: Autenticação de usuário
-- **media.tsx**: Estado de mídia global
+  - Login automático com credenciais do .env
+  - Estado `isAuthenticated`
+  - Token JWT no localStorage
+
+- **language.tsx**: Sistema multi-idioma
+  - Idiomas suportados: `pt` e `en`
+  - Persistência via Cookies e localStorage
+  - Hook `useLanguage()` para acesso
+
+- **media.tsx**: Cache de mídia global
+  - Array de `ContentItem`
+  - Evita requisições duplicadas
+
 - **settings.tsx**: Configurações globais
+  - Logo, favicon, redes sociais
+  - Informações do blog
+  - Carregamento único na inicialização
+
 - **spinner.tsx**: Controle de loading global
+  - Estado `isLoading`
+  - Integrado com interceptors do Axios
 
 ## Hooks Úteis
 
-- **useMetadata.ts**: Hook para atualizar dinamicamente as tags de metadata da página (SEO, OpenGraph, favicon, etc).
+- **useMetadata**: Atualização dinâmica de meta tags
+  ```ts
+  useMetadata({
+    title: 'Título da Página',
+    description: 'Descrição SEO',
+    keywords: 'palavras, chave',
+    ogTitle: 'Título Open Graph',
+    ogImage: 'https://site.com/image.jpg',
+    favicon: 'https://site.com/favicon.ico'
+  });
+  ```
+
+- **useTranslate**: Sistema de tradução com cache
+  ```ts
+  const { translate } = useTranslate('en');
+  const translated = await translate('Texto para traduzir');
+  ```
+  - Cache local por sessão
+  - Integração com Google Translate
+  - Fallback para texto original
 
 ## Renderização Dinâmica de Páginas e Blocks
 
@@ -192,19 +325,79 @@ components/
 
 ## Padrões de Código
 
-- Utilize sempre tipagem TypeScript (evite `any`)
-- Siga o padrão de componentes funcionais
-- Use hooks para lógica de estado e efeitos
-- Utilize Context API para estados globais
-- Estilize com TailwindCSS e styled-components quando necessário
-- Siga o padrão de importação absoluta (`@/services/`, `@/components/`, etc)
-- Use ESLint e Prettier para manter o código limpo
+### Regras Obrigatórias
 
-**Esse projeto usa `Husk` para testar os commits antes de serem enviados. Certifique-se que todo commit esteja corrigido com os erros do LINT, afim de evitar quebra de build nos ambientes de produçao.**
+1. **ZERO comentários no código** - Código deve ser autoexplicativo
+2. **TypeScript rigoroso** - Evite `any`, use tipagem completa
+3. **Componentes funcionais apenas** - Sem classes
+4. **Hooks para lógica** - useState, useEffect, custom hooks
+5. **Context API para estado global** - Nunca prop drilling
+6. **Importação absoluta** - Use `@/services/`, `@/components/`
+7. **ESLint e Prettier** - Código deve passar sem erros
+
+### Padrões de Estilização
+
+- **Tailwind CSS** para utilidades e layout
+- **Styled Components** para componentes complexos
+- **Mobile-first** - Sempre pensar em responsividade
+- **Tema centralizado** - Cores e breakpoints no theme
+
+### Estrutura de Componente
+
+```
+componente/
+├── index.tsx          # Lógica principal
+├── styles.tsx         # Styled Components
+├── typo.ts           # TypeScript interfaces
+└── [Nome]Skeleton.tsx # Loading state (opcional)
+```
+
+### Git e Commits
+
+- **Commits em português**: `[TICKET] tipo: descrição`
+- **Tipos**: feat, fix, refactor, chore, docs, style
+- **Husky**: Todos os commits passam por lint automático
+- **Build obrigatório**: `npm run build` antes de commitar
+
+**⚠️ Este projeto usa Husky para validar commits. Certifique-se que o código passe no lint antes de commitar.**
+
+## Variáveis de Ambiente
+
+Crie um arquivo `.env.local` com as seguintes variáveis:
+
+```env
+# API WordPress
+NEXT_PUBLIC_API_URL_DEV=http://localhost:8000
+NEXT_PUBLIC_API_URL_HML=https://api-hml.exemplo.com
+NEXT_PUBLIC_API_BASE_URL=/wp-json
+
+# API Dashboard (opcional)
+NEXT_PUBLIC_DASHBOARD_API_URL_DEV=http://localhost:8001
+NEXT_PUBLIC_DASHBOARD_API_URL_HML=https://dashboard-hml.exemplo.com
+NEXT_PUBLIC_DASHBOARD_API_BASE_URL=/api
+
+# Autenticação (para desenvolvimento)
+NEXT_PUBLIC_API_USERNAME=admin
+NEXT_PUBLIC_API_PWD=admin
+```
+
+---
+
+## Performance e Otimizações
+
+- **Lazy Loading**: Componentes carregados sob demanda
+- **Image Optimization**: Next.js Image com lazy loading
+- **Code Splitting**: Divisão automática de código
+- **Cache Strategy**: Cache local para traduções e taxonomias
+- **Retry Logic**: Retry automático em serviços críticos
+- **Debouncing**: Otimização de eventos de resize
 
 ---
 
 ## Observações
-- O projeto está preparado para integração contínua e deploy em ambiente Docker.
-- O consumo da API REST do WordPress é feito de forma desacoplada, permitindo flexibilidade para evoluções futuras.
-- Para dúvidas sobre blocks ou integração com o backend, consulte a equipe de backend ou o README do projeto WordPress.
+
+- O projeto está preparado para integração contínua e deploy em ambiente Docker
+- O consumo da API REST do WordPress é feito de forma desacoplada
+- Sistema de tradução usa Google Translate com cache local
+- Multi-idioma integrado com header `X-Language` na API
+- Para dúvidas sobre blocks ou integração com o backend, consulte o README do projeto WordPress

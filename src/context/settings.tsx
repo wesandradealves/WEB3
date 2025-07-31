@@ -17,7 +17,6 @@ export interface Settings {
   blog_info: BlogInfo;
 }
 
-// Update the context to include proper typing
 const SettingsContext = createContext<{
   favicon: string;
   blog_info: BlogInfo | undefined;
