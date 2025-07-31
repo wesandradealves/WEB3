@@ -51,7 +51,7 @@ const QuotationChart = (props: Props) => {
 
 
   const [period, setPeriod] = useState<'1D' | '5D' | '1M' | '6M' | '1A' | 'Max'>('Max');
-  
+
   const [backgroundImageUrl, setBackgroundImageUrl] = useState<string | undefined>(undefined);
 
   const fetchBackgroundImage = useCallback(async () => {
@@ -116,57 +116,61 @@ const QuotationChart = (props: Props) => {
           </SectionHeader>
         )}
 
-        <div className="flex justify-between items-center mb-4">
-          <div className="flex items-center gap-2">
-            <Image src="/img/br.png" alt="BR" width={24} height={24} className="w-6 h-6" />
-            <span className="text-gray-800 font-semibold">BDM X REAIS</span>
+        <div className='bg-white p-6 rounded-[20px] overflow-hidden block'>
+          <div className="flex justify-between items-center mb-4">
+            <div className="flex items-center gap-2">
+              <Image src="/img/br.png" alt="BR" width={24} height={24} className="w-6 h-6" />
+              <span className="text-gray-800 font-semibold">BDM X REAIS</span>
+            </div>
+            <span className="text-sm text-gray-400">Atualizado há 10 min</span>
           </div>
-          <span className="text-sm text-gray-400">Atualizado há 10 min</span>
+
+          <div className="flex items-end justify-between mb-2">
+            <div className="flex gap-2 items-center">
+              <span className="text-3xl font-bold text-gray-900">R$ 12,93</span>
+              <span className="text-green-600 font-semibold text-sm">▲ 0.47%</span>
+            </div>
+            <FilterGroup>
+              {(['1D', '5D', '1M', '6M', '1A', 'Max'] as Array<'1D' | '5D' | '1M' | '6M' | '1A' | 'Max'>).map((p) => (
+                <FilterButton
+                  key={p}
+                  className={p === period ? 'active' : ''}
+                  onClick={() => setPeriod(p)}
+                >
+                  {p}
+                </FilterButton>
+              ))}
+            </FilterGroup>
+          </div>
+
+          <ResponsiveContainer width="100%" height={220}>
+            <AreaChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+              <defs>
+                <linearGradient id="colorGold" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#FFB400" stopOpacity={0.3} />
+                  <stop offset="95%" stopColor="#FFB400" stopOpacity={0} />
+                </linearGradient>
+              </defs>
+              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" />
+              <XAxis dataKey="x" tick={{ fontSize: 11 }} />
+              <YAxis tick={{ fontSize: 11 }} domain={[0, 16]} />
+              <Tooltip
+                formatter={(value: number) => [`R$ ${value.toFixed(2)}`, '1 BDM']}
+                labelFormatter={(label: string) => `Data: ${label}`}
+              />
+              <Area
+                type="monotone"
+                dataKey="y"
+                stroke="#FFB400"
+                strokeWidth={2}
+                fillOpacity={1}
+                fill="url(#colorGold)"
+              />
+            </AreaChart>
+          </ResponsiveContainer>
         </div>
 
-        <div className="flex items-end justify-between mb-2">
-          <div className="flex gap-2 items-center">
-            <span className="text-3xl font-bold text-gray-900">R$ 12,93</span>
-            <span className="text-green-600 font-semibold text-sm">▲ 0.47%</span>
-          </div>
-          <FilterGroup>
-            {(['1D', '5D', '1M', '6M', '1A', 'Max'] as Array<'1D' | '5D' | '1M' | '6M' | '1A' | 'Max'>).map((p) => (
-              <FilterButton
-                key={p}
-                className={p === period ? 'active' : ''}
-                onClick={() => setPeriod(p)}
-              >
-                {p}
-              </FilterButton>
-            ))}
-          </FilterGroup>
-        </div>
 
-        <ResponsiveContainer width="100%" height={220}>
-          <AreaChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-            <defs>
-              <linearGradient id="colorGold" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#FFB400" stopOpacity={0.3} />
-                <stop offset="95%" stopColor="#FFB400" stopOpacity={0} />
-              </linearGradient>
-            </defs>
-            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" />
-            <XAxis dataKey="x" tick={{ fontSize: 11 }} />
-            <YAxis tick={{ fontSize: 11 }} domain={[0, 16]} />
-            <Tooltip
-              formatter={(value: number) => [`R$ ${value.toFixed(2)}`, '1 BDM']}
-              labelFormatter={(label: string) => `Data: ${label}`}
-            />
-            <Area
-              type="monotone"
-              dataKey="y"
-              stroke="#FFB400"
-              strokeWidth={2}
-              fillOpacity={1}
-              fill="url(#colorGold)"
-            />
-          </AreaChart>
-        </ResponsiveContainer>
 
         {props.children ? props.children : <>
           {props?.text && (
