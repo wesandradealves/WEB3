@@ -105,7 +105,7 @@ const Boxes = (props: Props) => {
                 )}
                 {props?.title && (
                   <Title
-                    barstitle={props?.barstitle?.toString()}
+                    barstitle={typeof props?.barstitle === 'string' || typeof props?.barstitle === 'number' ? props.barstitle : undefined}
                     className={classNames(
                       `text-center relative text-2xl lg:text-5xl`,
                       {

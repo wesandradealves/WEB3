@@ -154,7 +154,7 @@ const Cardsmotion = (props: Props) => {
                                 )}
                                 {mergedProps?.title && (
                                     <Title
-                                        barstitle={mergedProps?.barstitle?.toString()}
+                                        barstitle={typeof mergedProps?.barstitle === "string" || typeof mergedProps?.barstitle === "number" ? mergedProps.barstitle : undefined}
                                         className={classNames(`text-center relative text-2xl lg:text-5xl`, {
                                             'pt-2 pb-2 lg:ps-[150px] lg:pe-[150px]': !!mergedProps?.barstitle
                                         })}

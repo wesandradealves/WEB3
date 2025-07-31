@@ -19,6 +19,7 @@ export interface DashboardCategoriesParams {
   categoryLevel?: number;
   categoryCode?: string;
   language?: 'pt-BR' | 'en-US' | 'es-ES' | 'fr' | 'ar' | 'zh' | 'it';
+  [key: string]: unknown;
 }
 
 export const DashboardCategoriesService = {
