@@ -48,6 +48,10 @@ export default function Page() {
     }
   }, [slug, fetchData]);
 
+  useEffect(() => {
+    console.log(content)
+  }, [content]);
+
   const title = useMemo(() => (data?.title?.rendered ? ` - ${data.title.rendered}` : ''), [data]);
 
   useMetadata({

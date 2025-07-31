@@ -56,7 +56,7 @@ export default function LanguageSwitcher({ float, effect, className }: Props) {
   return (
     <Container
       ref={containerRef}
-      className={classNames('flex items-center gap-4', {
+      className={classNames('flex language-switcher items-center gap-4', {
         'fixed bottom-0 p-12 right-0': float === 'on',
         [className || '']: className,
       })}

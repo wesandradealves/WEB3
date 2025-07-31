@@ -69,7 +69,7 @@ const Clients = ({ data, classname }: { data: Props; classname?: string }) => {
   return (
     <Container
       id={data?.id}
-      className={classNames(`w-full m-auto relative ${classname || data?.classname}`)}
+      className={classNames(`w-full clients m-auto relative ${classname || data?.classname}`)}
     >
       <div
         className={classNames(

@@ -22,7 +22,7 @@ import {
 } from '@heroicons/react/24/outline';
 
 const FormInput = ({ id, label, register, registerOptions, error, icon, ...rest }: InputProps & { type?: string, registerOptions?: RegisterOptions<FormValues, keyof FormValues> }) => (
-    <div className={`w-full ${rest.className}`}>
+    <div className={`w-full registration-form ${rest.className}`}>
         <label htmlFor={id} className="block text-sm font-medium text-gray-300 mb-2">
             {label} {registerOptions && registerOptions.required && <span className="text-amber-500">*</span>}
         </label>

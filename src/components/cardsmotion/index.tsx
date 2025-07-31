@@ -130,7 +130,7 @@ const Cardsmotion = (props: Props) => {
             backgroundposition={mergedProps?.backgroundposition}
             backgroundsize={mergedProps?.backgroundsize}
             backgroundattachment={mergedProps?.backgroundattachment}
-            className={classNames(`w-full m-auto relative ${mergedProps?.classname}`, {
+            className={classNames(`w-full m-auto relative cards-motion ${mergedProps?.classname}`, {
                 'overflow-hidden': mergedProps?.opacity
             })}
         >

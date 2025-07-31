@@ -55,7 +55,7 @@ const Slide = (props: Props) => {
   }, [remapProps]);
 
   return (
-    <Container className={classNames(props.classname)}>
+    <Container className={classNames(`slide`, props.classname)}>
       <div
         className={classNames(
           `container m-auto pb-[6rem] pt-[6rem]`
