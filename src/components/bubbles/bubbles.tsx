@@ -25,7 +25,7 @@ export default function Bubbles({ className, data }: Props) {
 
   return (
     <Container
-      className={classNames(`${className} flex flex-wrap list-none items-center justify-center gap-10 flex-col lg:flex-row`, {
+      className={classNames(`${className} bubbles flex flex-wrap list-none items-center justify-center gap-10 flex-col lg:flex-row`, {
         'lg:-mt-[54px]': data.length > 1
       })}>
       {data &&

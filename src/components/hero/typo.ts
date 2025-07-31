@@ -9,4 +9,12 @@ export default interface Props {
   btnLabel?: string;
   btnClass?: string;
   url?: string;
+   leftImage?: {
+    src: string;
+    alt: string;
+  };
+  rightImage?: {
+    src: string;
+    alt: string;
+  };
 }

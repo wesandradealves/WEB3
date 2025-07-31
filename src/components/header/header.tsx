@@ -50,6 +50,9 @@ const Header = ({ scrollPosition }: Props) => {
       window.removeEventListener('resize', debouncedResize);
     };
   }, [debouncedResize, loadNavigation]);
+  const handleLinkClick = () => {
+    setExpand(false);
+  };
 
   return (
     <Container
@@ -59,7 +62,7 @@ const Header = ({ scrollPosition }: Props) => {
     >
       <div
         className={classNames("container m-auto", {
-          'pt-3 pb-3': scrollPosition > 0,
+          'pt-3 pb-3': scrollPosition > 0, 
           'pt-6 pb-6': scrollPosition <= 0,
         })}
       >
@@ -112,12 +115,13 @@ const Header = ({ scrollPosition }: Props) => {
       {nav.main && (
         <Navigation
           className={classNames({
-            'block': expanded,
-            'hidden': !expanded,
+            'block': expanded, 
+            'hidden': !expanded, 
           })}
-          mobile
+          mobile 
           ListClassName="gap-6"
           data={nav.main}
+          onLinkClick={handleLinkClick}
         >
           <LanguageSwitcher effect="fadeIn" />
         </Navigation>

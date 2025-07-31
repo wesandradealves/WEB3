@@ -12,12 +12,14 @@ import { Suspense, useRef, useState, useEffect } from 'react';
 import Header from '@/components/header/header';
 import Footer from '@/components/footer/footer';
 import { setupInterceptors } from '@/services/api';
+import { getCustomCss } from '@/services/customCssService';
 
 import {
   _colors,
   _breakpoints,
 } from '@/assets/scss/variables';
 import { MediaProvider } from '@/context/media';
+import ChatBubble from '@/components/chat/ChatBubble';
 
 const theme = {
   _colors,
@@ -25,7 +27,6 @@ const theme = {
 };
 
 export default function ClientProviders({ children }: { children: React.ReactNode }) {
-  // Scroll logic (copiado do seu layout.tsx)
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const { scrollY } = useScroll({
     container: scrollRef,
@@ -49,6 +50,7 @@ export default function ClientProviders({ children }: { children: React.ReactNod
         <AuthProvider>
           <MediaProvider> 
             <SettingsProvider>
+              <CustomCssSetup />
               <Suspense fallback={<div>Loading...</div>}>
                 <StyledJsxRegistry>
                   <AnimatePresence
@@ -69,6 +71,7 @@ export default function ClientProviders({ children }: { children: React.ReactNod
                         <Footer />
                       </motion.div>
                       <Spinner />
+                      <ChatBubble />
                     </App>
                   </AnimatePresence>
                 </StyledJsxRegistry>
@@ -82,7 +85,6 @@ export default function ClientProviders({ children }: { children: React.ReactNod
   );
 }
 
-// LoaderSetup igualzinho ao seu, para injetar os interceptors na API:
 function LoaderSetup() {
   const { setLoading } = useLoader();
 
@@ -91,4 +93,32 @@ function LoaderSetup() {
   }, [setLoading]);
 
   return null;
+}
+
+function CustomCssSetup() {
+  const [customCss, setCustomCss] = useState<string>('');
+
+  useEffect(() => {
+    const fetchCustomCss = async () => {
+      try {
+        const { custom_css } = await getCustomCss();
+        if (custom_css) {
+          setCustomCss(custom_css);
+        }
+      } catch (error) {
+        console.error('Error loading custom CSS:', error);
+      }
+    };
+
+    fetchCustomCss();
+  }, []);
+
+  if (!customCss) return null;
+
+  return (
+    <style 
+      dangerouslySetInnerHTML={{ __html: customCss }}
+      data-custom-css="wordpress"
+    />
+  );
 }

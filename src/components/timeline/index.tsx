@@ -72,7 +72,7 @@ const Timeline = (props: Props) => {
       backgroundposition={props?.backgroundposition}
       backgroundsize={props?.backgroundsize}
       backgroundattachment={props?.backgroundattachment}
-      className={classNames(`w-full m-auto relative ${props?.classname}`, {
+      className={classNames(`w-full timeline m-auto relative ${props?.classname}`, {
         'overflow-hidden': props?.opacity
       })}
     >
@@ -86,8 +86,8 @@ const Timeline = (props: Props) => {
       )}>
 
         {props?.title && (
-          <SectionHeader className="flex flex-col justify-center items-center text-center w-full gap-7">          <Title
-            barstitle={props?.barstitle?.toString()}
+          <SectionHeader className="flex flex-col justify-center items-center text-center w-full gap-7"><Title
+            barstitle={typeof props?.barstitle === 'string' || typeof props?.barstitle === 'number' ? props.barstitle : undefined}
             className={classNames(`text-center relative text-2xl lg:text-5xl`, {
               'pt-2 pb-2 lg:ps-[150px] lg:pe-[150px]': !!props?.barstitle
             })}

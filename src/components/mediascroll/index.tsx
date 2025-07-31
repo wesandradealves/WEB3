@@ -43,14 +43,14 @@ const Mediascroll = (props: Props) => {
   }, [fetchMediaUrls]);
 
   return (
-    <Container id={props?.id} className={classNames(`w-full m-auto relative ${props?.classname}`)}>
+    <Container id={props?.id} className={classNames(`w-full media-scroll m-auto relative ${props?.classname}`)}>
       <div className="container flex-wrap text-lg lg:text-3xl leading-none relative z-10 m-auto flex flex-col pb-[6rem] gap-7">
         {(props?.helper || props?.title || props?.subtitle) && (
           <SectionHeader className="flex flex-col justify-center items-center text-center w-full gap-7">
             {props?.title && (
               <span>
                 <Title
-                  barstitle={props?.barstitle?.toString()}
+                  barstitle={typeof props?.barstitle === "string" || typeof props?.barstitle === "number" ? props.barstitle : undefined}
                   className={classNames(`text-center relative text-2xl lg:text-4xl`, {
                     "pt-2 pb-2 lg:ps-[150px] lg:pe-[150px]": !!props?.barstitle,
                   })}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import classNames from 'classnames';
 import { Container, Title, Text } from './styles';
 import Button from "../button/button";
@@ -46,6 +46,10 @@ const Contentbox = (props: Props) => {
     remapProps();
   }, [fetchMediaUrl, remapProps]);
 
+  const hasOnlyButtons = useMemo(() => {
+    return !props.title && !props.text && !mediaUrl && cta.length > 0;
+  }, [props.title, props.text, mediaUrl, cta.length]);
+
   return (
     <Container className={classNames(props.classname)}>
       <div
@@ -53,8 +57,10 @@ const Contentbox = (props: Props) => {
           `contentBox container m-auto pb-[6rem] pt-[6rem] gap-10 flex flex-col lg:gap-20 justify-${props.justify ?? 'between'} items-${props.alignment ?? 'start'}`,
           {
             'flex-wrap': true,
-            'lg:flex-row': props.reverse == "0",
-            'lg:flex-row-reverse': props.reverse == "1",
+            'lg:flex-row': props.reverse == "0" && !hasOnlyButtons,
+            'lg:flex-row-reverse': props.reverse == "1" && !hasOnlyButtons,
+            'justify-center': hasOnlyButtons,
+            'items-center': hasOnlyButtons,
           }
         )}
       >
@@ -64,7 +70,12 @@ const Contentbox = (props: Props) => {
           </div>
         )}
 
-        <div className="flex-1 flex flex-col gap-10 leading-none">
+        <div className={classNames(
+          "flex-1 flex flex-col gap-10 leading-none",
+          {
+            "items-center": hasOnlyButtons,
+          }
+        )}>
           {props.title && (
             <Title
               className="text-4xl xl:text-6xl"
@@ -75,7 +86,12 @@ const Contentbox = (props: Props) => {
             <Text className="text-base xl:text-xl" dangerouslySetInnerHTML={{ __html: props.text }} />
           )}
           {cta.length > 0 && (
-            <div className="flex gap-4 flex-wrap">
+            <div className={classNames(
+              "flex ctas gap-4 flex-wrap",
+              {
+                "justify-center": hasOnlyButtons,
+              }
+            )}>
               {cta.map((cta, index) => (
                 <Button
                   key={index}

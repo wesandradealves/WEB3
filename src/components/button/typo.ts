@@ -7,5 +7,6 @@ export interface Props {
     radius?: number;
     children: ReactNode;   
     effect?: string;
+    onClick?: () => void;
 }
   
