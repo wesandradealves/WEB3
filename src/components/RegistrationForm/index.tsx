@@ -149,16 +149,20 @@ const RegistrationForm = () => {
                     <fieldset className="border-t border-gray-700 pt-8">
                         <legend className="text-xl font-semibold text-amber-500 mb-6">Informações Principais</legend>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-8">
-                            <FormSelect id="category" label="Categoria" register={register} error={errors.category}>
-                                <option value="">
-                                    {categoriesLoading ? 'Carregando categorias...' : 'Selecione uma Categoria'}
-                                </option>
-                                {!categoriesLoading && categories.map((category) => (
-                                    <option key={category.categoryCode} value={category.categoryCode}>
-                                        {category.text}
-                                    </option>
-                                ))}
-                            </FormSelect>
+                            {(!categoriesLoading && categories && categories.length > 0) ? (
+                                <FormSelect id="category" label="Categoria" register={register} error={errors.category}>
+                                    <option value="">Selecione uma Categoria</option>
+                                    {categories.map((category) => (
+                                        <option key={category.categoryCode} value={category.categoryCode}>
+                                            {category.text}
+                                        </option>
+                                    ))}
+                                </FormSelect>
+                            ) : categoriesLoading ? (
+                                <div className="flex items-center justify-center p-4">
+                                    <span className="text-gray-400">Carregando categorias...</span>
+                                </div>
+                            ) : null}
                             <FormInput id="accountEmail" label="Email Conta BDM" type="email" register={register} registerOptions={{ required: 'Email é obrigatório' }} error={errors.accountEmail} placeholder="seu.email@exemplo.com" icon={<EnvelopeIcon {...iconProps} />} />
                             <FormInput id="establishmentName" label="Nome do Estabelecimento" register={register} registerOptions={{ required: 'Nome do estabelecimento é obrigatório' }} error={errors.establishmentName} placeholder="Nome fantasia da sua empresa" icon={<BuildingStorefrontIcon {...iconProps} />} />
                             <FormInput id="companyCnpj" label="CNPJ Empresa" register={register} error={errors.companyCnpj} placeholder="00.000.000/0000-00" icon={<IdentificationIcon {...iconProps} />} />
