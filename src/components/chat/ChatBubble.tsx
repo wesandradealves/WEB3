@@ -35,8 +35,7 @@ const ChatBubble: React.FC<ChatBubbleProps> = () => {
         ...prevMessages,
         { text: currentMessage.trim(), sender: 'user' },
       ]);
-      setCurrentMessage(''); // Limpa o input
-      // Simula uma resposta do bot
+      setCurrentMessage(''); 
       setTimeout(() => {
         setMessages((prevMessages) => [
           ...prevMessages,
@@ -57,8 +56,6 @@ const ChatBubble: React.FC<ChatBubbleProps> = () => {
     if (messageInputRef.current) {
       messageInputRef.current.focus();
     }
-    // Limpar mensagens iniciais ou adicionar uma nova mensagem de "conversar iniciada"
-    // setMessages([]);
   };
 
   return (
