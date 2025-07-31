@@ -2,7 +2,9 @@
 
 import styled from 'styled-components';
 
-export const ChatButton = styled.button<{ isOpen: boolean }>`
+export const ChatButton = styled.button.withConfig({
+  shouldForwardProp: (prop) => prop !== 'isOpen',
+})<{ isOpen: boolean }>`
   position: fixed;
   bottom: 2rem; /* Distância do fundo */
   right: 2rem; /* Distância da direita */
@@ -43,7 +45,9 @@ export const ChatButton = styled.button<{ isOpen: boolean }>`
   }
 `;
 
-export const ChatContainer = styled.div<{ isOpen: boolean }>`
+export const ChatContainer = styled.div.withConfig({
+  shouldForwardProp: (prop) => prop !== 'isOpen',
+})<{ isOpen: boolean }>`
   position: fixed;
   bottom: 90px; /* Acima do botão */
   right: 2rem;
