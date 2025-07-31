@@ -48,10 +48,6 @@ export default function Page() {
     }
   }, [slug, fetchData]);
 
-  useEffect(() => {
-    console.log(content)
-  }, [content]);
-
   const title = useMemo(() => (data?.title?.rendered ? ` - ${data.title.rendered}` : ''), [data]);
 
   useMetadata({
@@ -65,6 +61,7 @@ export default function Page() {
       <Suspense key={index} fallback={<div>Carregando...</div>}>
         <DynamicComponent
           data={object.attrs.data ?? object}
+          type={object.type}
           machineName={object.machine_name}
         />
       </Suspense>

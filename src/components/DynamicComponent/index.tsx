@@ -3,8 +3,10 @@
 import React, { useState, useEffect, ReactElement } from 'react';
 import { Props } from './typo';
 
-const DynamicComponent: React.FC<Props> = ({ machineName, data, classname }) => {
+const DynamicComponent: React.FC<Props> = ({ machineName, data, classname, type }) => {
   const [importedComponent, setImportedComponent] = useState<ReactElement | null>(null);
+
+  console.log(classname)
 
   useEffect(() => {
     const importComponent = async () => {
@@ -24,7 +26,7 @@ const DynamicComponent: React.FC<Props> = ({ machineName, data, classname }) => 
   
         setImportedComponent(
             <Component
-              classname={classname}
+              classname={`${type} ${classname}`}
               id={resolvedMachineName}
               {...(expectsArray ? { data } : data)}
             />
@@ -37,7 +39,7 @@ const DynamicComponent: React.FC<Props> = ({ machineName, data, classname }) => 
     if (machineName) {
       importComponent();
     }
-  }, [machineName, data, classname]);
+  }, [machineName, data, classname, type]);
   
 
   return importedComponent ?? null;
