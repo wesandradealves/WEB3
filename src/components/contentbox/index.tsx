@@ -95,6 +95,7 @@ const Contentbox = (props: Props) => {
               {cta.map((cta, index) => (
                 <Button
                   key={index}
+                  tag="a"
                   className={cta.classname}
                   effect={cta.effect}
                   href={cta.link}
